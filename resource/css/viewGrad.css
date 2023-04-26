@@ -1,0 +1,133 @@
+*{
+  margin:0;
+  padding:0;
+  font-family: 'Montserrat', "sans-serif";
+  scroll-behavior: smooth;
+  --nav-load-time:500ms;
+}
+
+html{
+  background-color: white;
+  color:#555;
+  font-family: "Montserrat", "sans-serif";
+  font-size: 20px;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+header{
+  min-height: 93vh;
+  background-image: linear-gradient(to right, rgba(36, 18, 95, .95),rgba(220, 47, 156, .8)),url("../img/ceubg.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+body {
+  animation: fadeInAnimation ease 1.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+.navbar{
+  width: 100%;
+  background: rgba(28, 28, 28, .6);
+
+}
+
+td.staticon-approved {
+  font-size: 4rem;
+  text-align: center;
+  vertical-align: middle;
+  padding: 0;
+  color: #13a300
+}
+
+td.staticon-pending {
+  font-size: 4rem;
+  text-align: center;
+  vertical-align: middle;
+  padding: 0;
+  color: #cfcfcf
+}
+
+td.staticon-hold {
+  font-size: 4rem;
+  text-align: center;
+  vertical-align: middle;
+  padding: 0;
+  color: #ffe100
+}
+footer {
+  min-height: 7vh;
+  background-color: #1d2b34;
+}
+
+.ft {
+  color: #fff;
+  font-size: 60%;
+  text-align: center;
+}
+
+.logo{
+  height: 50px;
+}
+
+.ecleLogo{
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ecleLogodiv{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.buttonsdiv{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.fab{
+  color:#f04e98;
+}
+
+.navbar-nav{
+  text-align: right;
+}
+
+.content{
+  background: rgba(33,29,41, .8);
+  border-radius: 20px;
+  height:100%;
+}
+
+.text{
+  color: #000;
+  text-align: center;
+  font-size: 20px;
+}
+@media(max-width:820px) {
+  .content{
+    height: 100%;
+    width: 100%;
+  }
+  .text{
+    font-size: 15px;
+  }
+}

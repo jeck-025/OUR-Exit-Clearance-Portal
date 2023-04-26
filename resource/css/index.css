@@ -1,0 +1,705 @@
+*{
+  margin:0;
+  padding:0;
+  font-family: 'Montserrat', "sans-serif";
+  scroll-behavior: smooth;
+  --nav-load-time:500ms;
+}
+
+html{
+  background-color: white;
+  color:#555;
+  font-family: "Montserrat", "sans-serif";
+  font-size: 20px;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+body {
+  animation: fadeInAnimation ease 1.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+header{
+  min-height: 100vh;
+  background-image: linear-gradient(to right, rgba(36,18,95, .95),rgba(220, 47, 156, .8)),url("../img/ceubg.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.navbar{
+  width: 100%;
+  background: rgba(28, 28, 28, .6);
+  animation: nav-load var(--nav-load-time) ease-in;
+}
+
+.logo{
+  height: 50px;
+}
+
+.fab{
+  color:#f04e98;
+}
+
+.navbar-nav{
+  text-align: right;
+}
+.elogo{
+  height: 100%;
+  text-align: center;
+  margin: auto;
+}
+.content{
+  height: 70%;
+  position: relative;
+  top: 25%;
+  width: 100%;
+}
+.eclelogo{
+  width: 50%;
+  animation: logo-load 2s;
+}
+.eclelogo:hover{
+  width: 52%;
+  transition: 0.5s;
+  animation: logo-load 2s;
+}
+.content .seo p{
+  font-size: 15px;
+  padding: 20px;
+}
+.below:hover{
+  margin-top: 20px;
+  font-size: 16px;
+  transition: 0.5s;
+  animation: seo-load 3s;
+  background: rgba(33,29,41, .5);
+  padding: 20px;
+  border-radius: 10px;
+}
+.subTitle{
+  width: 80%;
+  margin: auto;
+  font-weight: bolder;
+  font-size: 30px;
+}
+.subTitle .ecle{
+  color: #f04e98;
+}
+.subTitle .ceu{
+  color: #f08bb9;
+}
+.content-box{
+  height: 500px;
+  width: 70%;
+  border-radius: 10px;
+  margin: auto;
+}
+.button3{
+  background-color: #24125f;
+  color: white;
+  border: 1px solid #f04e98;
+  border-radius: 35px;
+  width: 150px;
+  height: 40px;
+  font-size: 13px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.5s;
+  animation: seo-load 3s;
+}
+.button3:hover{
+  width: 170px;
+  height: 50px;
+  font-size: 15px;
+}
+
+.row .grad{
+  background: rgba(240,78,152, .7);
+  border-radius: 35px 0px 0px 35px;
+  border-collapse: collapse;
+  height:500px;
+
+}
+.row .trans{
+  background: rgba(36, 18, 95, .7);
+  border-radius: 0 35px 35px 0;
+  border-collapse: collapse;
+  height:500px;
+}
+
+.row-1{
+  border-radius: 35px;
+  border-collapse: collapse;
+  box-shadow: 0 0 15px .1px #000;
+}
+
+.row h1{
+  font-weight:bolder;
+  font-size: 70px;
+}
+.row p{
+  font-size: 15px;
+}
+
+.logo3{
+  height:80px;
+
+}
+
+
+.button1{
+  background-color: #24125f;
+  color: white;
+  border: 1px solid #f04e98;
+  border-radius: 35px;
+  width: 150px;
+  height: 40px;
+  font-size: 13px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.5s;
+  margin-top: 120px;
+}
+.button1:hover{
+  width: 170px;
+  height: 50px;
+  font-size: 15px;
+}
+.button2{
+  background-color: #f04e98;
+  color: white;
+  border: 1px solid #24125f;
+  border-radius: 35px;
+  width: 150px;
+  height: 40px;
+  font-size: 13px;
+  text-decoration: none;
+  margin-top: 50px;
+  font-weight: bold;
+  transition: 0.5s;
+  margin-left: 20px;
+}
+.button4{
+  background-color: #f04e98;
+  color: white;
+  border: 1px solid #24125f;
+  border-radius: 35px;
+  width: 150px;
+  height: 40px;
+  font-size: 13px;
+  text-decoration: none;
+  margin-top: 50px;
+  font-weight: bold;
+  transition: 0.5s;
+  margin-left: 20px;
+}
+.button2:hover{
+  width: 170px;
+  height: 50px;
+  font-size: 15px;
+}
+.button4:hover{
+  width: 170px;
+  height: 50px;
+  font-size: 15px;
+}
+
+.box2{
+  margin-top: 47px;
+}
+
+.section1{
+  min-height: 93vh;
+  background: linear-gradient(rgba(36, 18, 95, .95),rgba(220, 47, 156, .8)),url("../img/ceubg.jpg");
+  background-position: center;
+  background-size: cover;
+}
+footer{
+  min-height: 7vh;
+  background-color: #1d2b34;
+}
+
+.ft{
+  color: #fff;
+  font-size: 60%;
+  text-align: center;
+}
+
+
+@media only screen and (max-width: 1200px) {
+  .row .grad{
+    height: 550px;
+  }
+
+  .button1{
+    width: 140px;
+    height: 40px;
+    font-size: 12px;
+    margin-top: 140px;
+  }
+  .row .trans{
+    height: 550px;
+  }
+
+  .button2{
+    width: 140px;
+    height: 40px;
+    font-size: 12px;
+    margin-top: 50px;
+    margin-left: 5px
+  }
+  .button4{
+    width: 140px;
+    height: 40px;
+    font-size: 12px;
+    margin-top: 20px;
+    margin-left: 5px
+  }
+@media only screen and (max-width: 1025px) {
+  .row .grad{
+    height: 550px;
+  }
+
+  .button1{
+    width: 140px;
+    height: 40px;
+    font-size: 12px;
+    margin-top: 140px;
+  }
+  .row .trans{
+    height: 550px;
+  }
+
+  .button2{
+    width: 140px;
+    height: 40px;
+    font-size: 12px;
+    margin-top: 50px;
+    margin-left: 5px
+  }
+  .button4{
+    width: 140px;
+    height: 40px;
+    font-size: 12px;
+    margin-top: 20px;
+    margin-left: 5px
+  }
+@media only screen and (max-width: 991px) {
+  .row .grad{
+    height: 600px;
+  }
+
+  .button1{
+    width: 140px;
+    height: 40px;
+    font-size: 12px;
+    margin-top: 210px;
+  }
+  .row .trans{
+    height: 600px;
+  }
+
+  .button2{
+    width: 140px;
+    height: 40px;
+    font-size: 12px;
+    margin-left: 5px
+  }
+  .button4{
+    width: 140px;
+    height: 40px;
+    font-size: 12px;
+    margin-top: 20px;
+    margin-left: 5px
+  }
+@media only screen and (max-width: 961px) {
+  .content{
+    top: 10%;
+  }
+/*under 750*/
+@media only screen and (max-width: 767px) {
+  .eclelogo{
+    width: 400px;
+  }
+  .content .seo{
+    padding-top: 50px;
+    font-size: 12px;
+  }
+  .content{
+    position: absolute;
+    top: 55%;
+    left: 12%;
+    width: 77%;
+  }
+  .row{
+    box-shadow: none;
+  }
+  .row h1{
+    font-weight:bolder;
+    font-size: 70px;
+    text-align: center;
+  }
+  .row .grad{
+    margin: 0 20px 0 20px;
+    border-radius: 35px;
+    border-collapse: collapse;
+    box-shadow: 0 0 15px .1px #000;
+    height: 380px;
+  }
+  .gradText{
+    padding: 0 20px 0 20px;
+  }
+  .transText{
+    padding: 0 20px 0 20px;
+  }
+
+  .button1{
+    width: 140px;
+    height: 40px;
+    font-size: 12px;
+    margin-top: 10px;
+  }
+  .row .trans{
+    margin: 0 20px 0 20px;
+    background: rgba(36, 18, 95, .7);
+    border-radius: 35px;
+    border-collapse: collapse;
+    box-shadow: 0 0 15px .1px #000;
+    margin-top: 30px;
+    padding-top: 0;
+    margin-bottom: 20px;
+    height: 430px;
+  }
+
+  .button2{
+    width: 140px;
+    height: 40px;
+    font-size: 12px;
+    margin-top: 50px;
+    margin-left: 5px
+  }
+  .button4{
+    width: 140px;
+    height: 40px;
+    font-size: 12px;
+    margin-top: 20px;
+    margin-left: 5px
+  }
+  .box2{
+    margin-top: 0;
+  }
+
+  .row .pic{
+    margin: 50px 0;
+  }
+
+  .row .elogo{
+    height: 400px;
+  }
+}
+/*under 641*/
+@media only screen and (max-width: 641px) {
+  .eclelogo{
+    width: 400px;
+  }
+  .content .seo{
+    padding-top: 50px;
+    font-size: 12px;
+  }
+  .content{
+    position: absolute;
+    top: 55%;
+    left: 12%;
+    width: 77%;
+  }
+  .row{
+    box-shadow: none;
+  }
+  .row h1{
+    font-weight:bolder;
+    font-size: 70px;
+    text-align: center;
+  }
+  .row .grad{
+    margin: 0 20px 0 20px;
+    border-radius: 35px;
+    border-collapse: collapse;
+    box-shadow: 0 0 15px .1px #000;
+    height: 380px;
+  }
+  .gradText{
+    padding: 0 20px 0 20px;
+  }
+  .transText{
+    padding: 0 20px 0 20px;
+  }
+
+  .button1{
+    width: 140px;
+    height: 40px;
+    font-size: 12px;
+    margin-top: 10px;
+  }
+  .row .trans{
+    margin: 0 20px 0 20px;
+    background: rgba(36, 18, 95, .7);
+    border-radius: 35px;
+    border-collapse: collapse;
+    box-shadow: 0 0 15px .1px #000;
+    margin-top: 30px;
+    padding-top: 0;
+    margin-bottom: 20px;
+    height: 430px;
+  }
+
+  .button2{
+    width: 140px;
+    height: 40px;
+    font-size: 12px;
+    margin-top: 50px;
+    margin-left: 5px
+  }
+  .button4{
+    width: 140px;
+    height: 40px;
+    font-size: 12px;
+    margin-top: 20px;
+    margin-left: 5px
+  }
+  .box2{
+    margin-top: 0;
+  }
+
+  .row .pic{
+    margin: 50px 0;
+  }
+
+  .row .elogo{
+    height: 400px;
+  }
+}
+/*under 481*/
+@media only screen and (max-width: 481px) {
+  .eclelogo{
+    width: 250px;
+  }
+  .content .seo{
+    padding-top: 50px;
+    font-size: 12px;
+  }
+  .content{
+    position: absolute;
+    top: 55%;
+    left: 12%;
+    width: 77%;
+  }
+  .row{
+    box-shadow: none;
+  }
+  .row h1{
+    font-weight:bolder;
+    font-size: 50px;
+    text-align: center;
+  }
+  .row .grad{
+    margin: 0 20px 0 20px;
+    border-radius: 35px;
+    border-collapse: collapse;
+    box-shadow: 0 0 15px .1px #000;
+    height: 380px;
+  }
+  .gradText{
+    padding: 0 20px 0 20px;
+  }
+  .transText{
+    padding: 0 20px 0 20px;
+  }
+
+  .button1{
+    width: 100px;
+    height: 30px;
+    font-size: 10px;
+    margin-top: 30px;
+  }
+  .row .trans{
+    margin: 0 20px 0 20px;
+    background: rgba(36, 18, 95, .7);
+    border-radius: 35px;
+    border-collapse: collapse;
+    box-shadow: 0 0 15px .1px #000;
+    margin-top: 30px;
+    padding-top: 0;
+    margin-bottom: 20px;
+    height: 430px;
+  }
+
+  .button2{
+    width: 100px;
+    height: 30px;
+    font-size: 10px;
+    margin-top: 50px;
+    margin-left: 5px
+  }
+  .button4{
+    width: 100px;
+    height: 30px;
+    font-size: 10px;
+    margin-top: 20px;
+    margin-left: 5px
+  }
+  .box2{
+    margin-top: 0;
+  }
+
+  .row .pic{
+    margin: 50px 0;
+  }
+
+  .row .elogo{
+    height: 400px;
+  }
+}
+/*under 320*/
+@media only screen and (max-width: 320px) {
+  .eclelogo{
+    width: 250px;
+  }
+  .content .seo{
+    padding-top: 50px;
+    font-size: 10px;
+  }
+  .content{
+    position: absolute;
+    top: 55%;
+    left: 12%;
+    width: 77%;
+  }
+  .row{
+    box-shadow: none;
+  }
+  .row h1{
+    font-weight:bolder;
+    font-size: 50px;
+    text-align: center;
+  }
+
+  .section1{
+    min-height: 120vh;
+  }
+  .row .grad{
+    margin: 0 20px 0 20px;
+    border-radius: 35px;
+    border-collapse: collapse;
+    box-shadow: 0 0 15px .1px #000;
+    height: 380px;
+  }
+  .gradText{
+    padding: 0 20px 0 20px;
+  }
+  .transText{
+    padding: 0 20px 0 20px;
+  }
+
+  .button1{
+    width: 120px;
+    height: 35px;
+    font-size: 10px;
+    margin-top: 30px;
+  }
+  .row .trans{
+    margin: 0 20px 0 20px;
+    background: rgba(36, 18, 95, .7);
+    border-radius: 35px;
+    border-collapse: collapse;
+    box-shadow: 0 0 15px .1px #000;
+    margin-top: 30px;
+    padding-top: 0;
+    margin-bottom: 20px;
+    height: 520px;
+  }
+
+  .button2{
+    width: 120px;
+    height: 35px;
+    font-size: 10px;
+    margin-top: 10px;
+    margin-left: 5px
+  }
+  .button4{
+    width: 120px;
+    height: 35px;
+    font-size: 10px;
+    margin-top: 30px;
+  }
+  .box2{
+    margin-top: 0;
+  }
+
+  .row .pic{
+    margin: 50px 0;
+  }
+
+  .row .elogo{
+    height: 400px;
+  }
+
+  .row h4 {
+    font-size: 30%;
+  }
+  
+  .row h1 {
+    font-size: 90%;
+  }
+  
+  .row p {
+    font-size: 15px;
+  }
+
+  .subTitle {
+    width: 80%;
+    margin: auto;
+    font-weight: bolder;
+    font-size: 65%;
+  }
+
+}
+@keyframes nav-load {
+  0%{
+    transform: translateY(-100%);
+  }
+  100%{
+    transform: translateY(0);
+  }
+}
+@keyframes logo-load {
+  from{
+    opacity: 0;
+    transform: rotateX(-10deg);
+  }
+  to{
+    opacity: 1;
+    transform: rotateX(0);
+  }
+}
+@keyframes seo-load {
+  from{
+    opacity: 0;
+    transform: rotateX(-10deg);
+  }
+  to{
+    opacity: 1;
+    transform: rotateX(0);
+  }
+}

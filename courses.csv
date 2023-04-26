@@ -1,0 +1,136 @@
+	ALL COURSES													
+1	Bachelor of Science in Accountancy (BSA)													
+2	Bachelor of Science in Business Administration Major in International Management (BSBAIM)													Please copy the designated course to be inserted on the csv that will be imported.
+3	Bachelor of Science in Business Administration Major in Financial Management (ABM) (BSBAFM-ABM)													
+4	Bachelor of Science in Business Administration Major in Financial Management (Non-ABM) (BSBAFM-NABM)													
+5	Bachelor of Science in Business Administration Major in Management (ABM) (BSBAMGT-ABM)													
+6	Bachelor of Science in Business Administration Major in Management (Non-ABM) (BSBAMGT-NABM)													
+7	Bachelor of Science in Business Administration Major in Marketing Management (ABM) (BSBAMM-ABM)													Fill in apropriately all of the fields in the template provided to import the student's information
+8	Bachelor of Science in Business Administration Major in Marketing Management (Non-ABM) (BSBAMM-NABM)													
+9	Bachelor of Science in Management Accounting (BSMA)													
+10	Doctor of Dental Medicine (STEM) (DMD-STEM)													
+11	Doctor of Dental Medicine (Non-STEM) (DMD-NSTEM)													
+12	Bachelor of Arts in Communication and Media (BACM-A)													Please change the format to YYYY-MM-DD for the birthday in the date settings when importing
+13	Bachelor of Arts in Communication and Media (with 21 Units of Education) (BACM-B)													
+14	Bachelor of Arts in Political Science (BAPS-A)													
+15	Bachelor of Arts in Political Science (with 21 Units of Education) (BAPS-B)													
+16	Associate in Library and Information Science (ALAIS)													
+17	Bachelor of Library and Information Science (BLAIS)													
+18	Bachelor of Early Childhood Education (BECE)													
+19	Bachelor of Special Needs Education (BSNED)													
+20	Bachelor of Special Needs Education Specialization in Early Childhood Education (BSNED-ECE)													
+21	Bachelor of Secondary Education Major in English (BSED-ENG)													
+22	Bachelor of Secondary Education Major in Mathematics (BSED-MATH)													
+23	Bachelor of Secondary Education Major in Science (BSED-SCIENCE)													
+24	Bachelor of Science in Social Work (Specialization in Community Health Care) (BSSW-CHC-A)													
+25	Bachelor of Science in Social Work with (Specialization in Community Health Care) with 21 Units of Education (BSSW-CHC-B)													
+26	Bachelor of Music in Music Education-Brasswind (BMMEB)													
+27	Bachelor of Music in Music Education-Choral Conducting (BMMECC)													
+28	Bachelor of Music in Music Education-Guitar (BMMEG)													
+29	Bachelor of Music in Music Education-Organ (BMMEO)													
+30	Bachelor of Music in Music Education-Percussion (BMMEPER)													
+31	Bachelor of Music in Music Education-Piano (BMMEPI)													
+32	Bachelor of Music in Music Education-Strings (BMMES)													
+33	Bachelor of Music in Music Education-Voice (BMMEV)													
+34	Bachelor of Music in Music Education-Woodwind (BMMEW)													
+35	Bachelor of Music in Music Composition (Specialization in Music Production and Engineering) (BMMC-MPE)													
+36	Bachelor of Music in Music Performance-Brasswind (BMMPB)													
+37	Bachelor of Music in Music Performance-Choral Conducting (BMMPCC)													
+38	Bachelor of Music in Music Performance-Guitar (BMMPG)													
+39	Bachelor of Music in Music Performance-Musical Theater (BMMPMT)													
+40	Bachelor of Music in Music Performance-Organ (BMMPO)													
+41	Bachelor of Music in Music Performance-Percussion (BMMPPER)													
+42	Bachelor of Music in Music Performance-Piano (BMMPPI)													
+43	Bachelor of Music in Music Performance-Strings (BMMPS)													
+44	Bachelor of Music in Music Performance-Voice (BMMPV)													
+45	Bachelor of Music in Music Performance-Woodwind (BMMPW)													
+46	Bachelor of Science in Medical Technology (BSMT)													
+47	Bachelor of Science in Nursing (STEM) (BSN-STEM)													
+48	Bachelor of Science in Nursing (Non-STEM) (BSN-NSTEM)													
+49	Bachelor of Science in International Hospitality Management (Specialization in Cruise and Integrated Resort Operations) ? ABM (BSIHM-CIRO-ABM)													
+50	Bachelor of Science in International Hospitality Management (Specialization in Cruise and Integrated Resort Operations) ? Non-ABM (BSIHM-CIRO-NABM)													
+51	"Bachelor of Science in International Hospitality Management (Specialization in Hotel, Restaurant and Culinary Operations) ? ABM (BSIHM-HRCO-ABM)"													
+52	"Bachelor of Science in International Hospitality Management (Specialization in Hotel, Restaurant and Culinary Operations) ? Non-ABM (BSIHM-HRCO-NABM)"													
+53	Bachelor of Science in International Tourism and Travel Management (ABM) (BSITTM-ABM)													
+54	Bachelor of Science in International Tourism and Travel Management (Non-ABM) (BSITTM-NABM)													
+55	Bachelor of Science in Nutrition and Dietetics (STEM) (BSND-STEM)													
+56	Bachelor of Science in Nutrition and Dietetics (Non-STEM) (BSND-NSTEM)													
+57	Doctor of Optometry (STEM) (OD-STEM)													
+58	Doctor of Optometry (Non-STEM) (OD-NSTEM)													
+59	Bachelor of Science in Pharmacy (BSP)													
+60	Bachelor of Science in Clinical Pharmacy (BSCP)													
+61	Bachelor of Science in Biology (STEM) (BSBIO-STEM)													
+62	Bachelor of Science in Biology (Non-STEM) (BSBIO-NSTEM)													
+63	Bachelor of Science in Biology (Specialization in Microbiology) ? STEM (BSBIOM-STEM)													
+64	Bachelor of Science in Biology (Specialization in Microbiology) - Non-STEM (BSBIOM-NSTEM)													
+65	Bachelor of Science in Computer Engineering (BSCE)													
+66	Bachelor of Science in Computer Science (BSCS)													
+67	Bachelor of Science in Cosmetic Science (STEM) (BSCOSCI-STEM)													
+68	Bachelor of Science in Cosmetic Science (Non-STEM) (BSCOSCI-NSTEM)													
+69	Bachelor of Science in Information Technology (BSIT)													
+70	Bachelor of Science in Psychology (STEM) (BSPSY-A-STEM)													
+71	Bachelor of Science in Psychology (Non-STEM) (BSPSY-A-NSTEM)													
+72	Bachelor of Science in Psychology with 15 Units of Education (STEM) (BSPSY-B-STEM)													
+73	Bachelor of Science in Psychology with 15 Units of Education (Non-STEM) (BSPSY-B-NSTEM)													
+74	Doctor of Medicine (MD)													
+75	Master of Arts in Applied Linguistics													
+76	Master of Arts in Education (Childhood Education)													
+77	Master of Arts in Education (Special Education)													
+78	Master of Arts in Nursing (Leadership and Governance in Nursing)													
+79	Master of Arts (Music Education)													
+80	Master of Arts (Southeast Asian Studies)													
+81	Master of Arts (Teaching)													
+82	Master of Business Administration (Executive Program)													
+83	Master of Business Administration (Financial Analysis)													
+84	Master of Business Administration (Non-Thesis)													
+85	Master of Business Administration (Thesis)													
+86	Master of Business Administration (Total Quality Management)													
+87	Master in Information Technology													
+88	Master in Library and Information Science													
+89	Master of Public Administration													
+90	Master of Science in Biology													
+91	Master of Science in Cosmetic Science													
+92	Master of Science in Dentistry Major in Orthodontics													
+93	Master of Science in Dentistry Major in Periodontics													
+94	Master of Science in Guidance and Counseling													
+95	Master of Science in Health Science Education (Dental Education)													
+96	Master of Science in Health Science Education (Medical Technology Education)													
+97	Master of Science in Health Science Education (Optometry Education)													
+98	Master of Science in Hospitality Management (Hotel and Restaurant Management)													
+99	Master of Science in Hospitality Management (Leisure Management)													
+100	Master of Science in Hospitality Management (Tourism Management)													
+101	Master of Science in Mathematics Education													
+102	Master of Science in Medical Technology													
+103	Master of Science in Nursing (Gerontology)													
+104	Master of Science in Nursing (Maternal and Child Nursing)													
+105	Master of Science in Nursing Medical-Surgical Nursing)													
+106	Master of Science in Nutrition and Dietetics													
+107	Master of Science in Pharmacy													
+108	Master of Science in Psychology													
+109	Master of Science in Science Education													
+110	Master of Science in Social Work (Specialization in Social Work Practice in Health Care)													
+111	Doctor of Education (Curriculum and Supervision)													
+112	Doctor of Education (Educational Management)													
+113	Doctor of Education (Science Education)													
+114	Doctor of Education (Southeast Asian Studies)													
+115	Doctor of Philosophy (Business Management)													
+116	Doctor of Philosophy (Curriculum and Supervision)													
+117	Doctor of Philosophy (Educational Management)													
+118	Doctor of Philosophy (Guidance and Counseling)													
+119	Doctor of Philosophy in Health Science (Optometry)													
+120	Doctor of Philosophy in Higher Education Management													
+121	Doctor of Philosophy in Mathematics Education													
+122	Doctor of Philosophy in Pharmacy													
+123	Doctor of Philosophy in Psychology (with Specialization in Industrial/Organizational Psychology)													
+124	Doctor of Philosophy (Science Education)													
+125	Doctor of Philosophy (Southeast Asian Studies)													
+126	Doctor of Public Administration													
+127	Bachelor of Science in Information Technology													
+128	Bachelor of Science in Biology													
+129	Post Doctoral in Quality Management													
+130	Bachelor of Arts in Political Science													
+131	Bachelor of Science in Legal Management													
+132	Bachelor of Science in Tourism Management													
+133	Bachelor of Science in Tourism													
+134	Bachelor of Science in Psychology													
+135	Master of Science in Social Work													

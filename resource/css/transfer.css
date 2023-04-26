@@ -1,0 +1,87 @@
+*{
+  margin:0;
+  padding:0;
+  font-family: 'Montserrat', "sans-serif";
+}
+
+html{
+  background-color: white;
+  color:#555;
+  font-family: "Montserrat", "sans-serif";
+  font-size: 20px;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+body {
+  animation: fadeInAnimation ease 1.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+header{
+  min-height: 100vh;
+  background-image: linear-gradient(rgba(36, 18, 95, .95),rgba(220, 47, 156, .8)),url("../img/ceubg.jpg");
+  background-position: center;
+  background-size: cover;
+}
+.navbar{
+  width: 100%;
+  background: rgba(28, 28, 28, .6);
+  animation: nav-load var(--nav-load-time) ease-in;
+}
+
+.logo{
+  height: 50px;
+}
+
+.fab{
+  color:#fff;
+}
+
+hr.divider{
+  border-top: 1px solid rgb(220, 218, 218);
+}
+
+.navbar-nav{
+  text-align: right;
+}
+
+.logo2{
+  height: 100px;
+  width: 100%;
+}
+
+.ecleLogo {
+  width: 20%;
+  height: auto;
+}
+select{
+  width: 100%;
+}
+.content{
+  height: 100%;
+  border-radius: 20px;
+  border-collapse: collapse;
+  box-shadow: 0 0 5px .1px #000;
+  background: rgba(33,29,41, .8);
+  color: #fff;
+}
+.button-submit{
+  width: 600px;
+  border-radius: 5px;
+}
+.button-back {
+  width: 600px;
+  border-radius: 5px;
+}

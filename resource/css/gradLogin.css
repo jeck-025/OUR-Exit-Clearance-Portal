@@ -1,0 +1,336 @@
+*{
+  margin:0;
+  padding:0;
+  font-family: 'Montserrat', "sans-serif";
+}
+
+html{
+  background-color: white;
+  color:#555;
+  font-family: "Montserrat", "sans-serif";
+  font-size: 20px;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+header{
+  min-height: 93vh;
+  background: linear-gradient(rgba(36, 18, 95, .95),rgba(220, 47, 156, .8)),url("../img/ceubg.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+body {
+  animation: fadeInAnimation ease 1.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.navbar{
+  width: 100%;
+  background-image: linear-gradient(to right,#24125f,#f04e98);
+}
+
+.logo{
+  height: 50px;
+}
+
+.ecleLogo {
+  width: 60%;
+  height: auto;
+}
+
+.fab{
+  color:#24125f;
+}
+
+.navbar-nav{
+  text-align: right;
+}
+
+.logo3{
+  height:auto;
+  width: 100%;
+}
+
+.button-check {
+  color: white;
+  border-radius: 4px;
+  border: none;
+  width: 70%;
+  height: 38px;
+  font-size: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 50px;
+}
+
+.button-back {
+  color: white;
+  border-radius: 4px;
+  border: none;
+  width: 70%;
+  height: 38px;
+  font-size: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* .button-back {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  color: white;
+  text-decoration: underline;
+}
+.button-back:hover {
+  background-color: transparent;
+} */
+
+.text h2 {
+  color: white;
+  font-size: 50px;
+}
+.text .headText{
+  text-align: center;
+}
+.sample{
+  height: 100%;
+  width: 80%;
+  text-align: center;
+}
+.login-fields .content{
+  height: 100%;
+  padding-top: 20px;
+}
+.login-fields{
+  height: 100%;
+  width: 100%;
+  background: rgba(33,29,41, .8);
+  border-radius: 30px;
+  -webkit-box-shadow:0px 0.5px 15px #000;
+  -moz-box-shadow:0px 0.5px 15px #000;
+   box-shadow:0px 0.5px 15px #000;
+   padding: 50px;
+}
+.login-fields h1{
+  color: #f04e98;
+  font-size: 55px;
+  font-weight: 900;
+  text-align: justify;
+}
+.login-fields h5{
+  color: #fff;
+  font-size: 20px;
+  text-align: justify;
+}
+.inputs .input{
+  font-size: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 20px;
+  width: 70%;
+  height: 40px;
+  text-align: center;
+}
+.sample .login-fields .context{
+  height: 100%;
+  background-color: red;
+
+}
+
+.text{
+  height: calc(90.5vh - 8em);
+  padding: 4em;
+  color: rgba(255,255,255, 0.75);
+}
+
+.line1{
+  position: relative;
+  top: 10%;
+  width: 10em;
+  margin: 0 auto;
+  border-right: 1px solid rgba(255,255,255, 0.75);
+  font-size: 70px;
+  font-weight: normal;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.line2 {
+  position: relative;
+  top: 10%;
+  width: 10em;
+  margin: 0 auto;
+  border-right: 1px solid rgba(255, 255, 255, 0.75);
+  font-size: 35px;
+  font-weight: normal;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+ .anim-typewriter1{
+  animation: typewriter1 3s steps(50) 1s 1 normal both,
+  blinkTextCursor 500ms steps(40) infinite normal;
+}
+ .anim-typewriter2{
+  animation: typewriter2 3s steps(50) 5s 1 normal both,
+  blinkTextCursor 500ms steps(40) infinite normal;
+}
+ .anim-typewriter3{
+  animation: typewriter3 3s steps(50) 9s 1 normal both,
+  blinkTextCursor 500ms steps(40) infinite normal;
+}
+.y{
+  color: #fff;
+}
+.content .ecle{
+  color: #f04e98;
+}
+.content .ceu{
+  color: #f08bb9;
+}
+span{
+  color:#f04e98;
+  font-weight: 900;
+}
+footer{
+  min-height: 7vh;
+  background-color: #1d2b34;
+}
+
+.ft{
+  color: #fff;
+  font-size: 60%;
+  text-align: center;
+}
+
+ @keyframes typewriter1{
+  from{
+    width: 0;
+  }
+  to{
+    width: 10em;
+    /* background: rgba(0,0,0, 0.5); */
+    padding: 0 50px;
+  }
+}
+ @keyframes typewriter2{
+  from{
+    width: 0;
+  }
+  to{
+    width: 20em;
+    /* background: rgba(0,0,0, 0.5); */
+    padding: 0 50px;
+  }
+}
+ @keyframes typewriter3{
+  from{
+    width: 0;
+  }
+  to{
+    width: 10em;
+    /* background: rgba(0,0,0, 0.5); */
+    padding: 0 50px;
+  }
+}
+
+@keyframes blinkTextCursor {
+  from{
+    border-right-color: rgba(255,255,255, 0.75);
+  }
+  to{
+    border-right-color: transparent;
+  }
+}
+
+@media(max-height:715px){
+  .login-fields{
+    height: 100%;
+  }
+  .login-fields .content{
+    padding-top: 10px;
+  }
+}
+@media(max-height:690px){
+  .login-fields{
+    height: 100%;
+  }
+  .login-fields .content{
+    padding-top: 10px;
+  }
+}
+
+
+@media(max-height:575px){
+  .login-fields .context h1{
+    font-size: 40px;
+  }
+  .login-fields .context h5{
+    font-size: 15px;
+  }
+}
+
+@media(max-width:1320px){
+  .line{
+    position: relative;
+    top: 10%;
+    width: 9em;
+    margin: 0 auto;
+    border-right: 1px solid rgba(255,255,255, 0.75);
+    font-size: 50px;
+    font-weight: 900;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+
+@media(max-width:1230px){
+  .line{
+    position: relative;
+    top: 10%;
+    width: 9em;
+    margin: 0 auto;
+    border-right: 1px solid rgba(255,255,255, 0.75);
+    font-size: 50px;
+    font-weight: 900;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+
+@media(max-width:991px) {
+  .row{
+    box-shadow: none;
+  }
+  .text{
+    display: none;
+  }
+  .login-fields{
+    margin:10px;
+    width: auto;
+  }
+  .inputs{
+  width: 100%;
+  }
+  .sample{
+    width: 100%;
+  }
+  .text{
+    background: red;
+  }
+}
