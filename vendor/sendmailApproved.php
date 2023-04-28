@@ -28,7 +28,7 @@ function sendmailApproved($email, $lname, $fname, $mname, $tn){
   <p>Greetings of Peace!</p>
   <p>Your Exit Clearance has been Approved by the University Registrar.</p>
   <p>You may now download your copy of the Exit Clearance Form</p>
-  <p>by visiting the ECLE status checker or click this <a href=https://ceumnlregistrar.com/ecle/formDownload.php?referenceID=$tn> LINK </a></p>
+  <p>by visiting the ECLE status checker or click this <a href='https://ceumnlregistrar.com/ecle/formDownload.php?referenceID=$tn'> LINK </a></p>
   <p><b>This is an auto-generated email. Please do not reply.</b></p>
   <p>Thank you and stay safe.</p>";
   try {
