@@ -101,8 +101,7 @@ $view = new view();
                           $update->updateSchoolyear(); ?>
 
                           <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <strong><i class="fa-solid fa-circle-check"></i> Semester Config Updated</strong><br>
-                            You may now import new set of lists.
+                            <strong><i class="fa-solid fa-circle-check"></i> Semester Config Updated.</strong> You may now import new set of lists.
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                           </div>
                       <?php }?>

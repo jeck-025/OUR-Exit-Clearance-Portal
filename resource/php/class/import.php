@@ -99,8 +99,7 @@ class import extends config{
                         }
                         fclose($csvFile);
                         echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong><i class="fa-solid fa-circle-check"></i> Upload Success! </strong><br>
-                                Please check the database if data were inserted correctly.
+                                <strong><i class="fa-solid fa-circle-check"></i> Upload Success! </strong> Please check the database if data were inserted correctly.
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>';
                     }
