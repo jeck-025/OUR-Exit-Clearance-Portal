@@ -41,7 +41,6 @@ function sendmailAccounts($email, $username, array $arr){
   <p>Thank you and stay safe.</p>";
   try {
     //Server settings
-    //Server settings
      $mail->SMTPDebug = SMTP::DEBUG_SERVER;
      $mail->isSMTP();
      $mail->Host       = $mailerPlatform;     //platform
@@ -65,40 +64,17 @@ function sendmailAccounts($email, $username, array $arr){
   } catch (Exception $e) {
       echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
   }
-
-  //ORIGINAL SETTINGS
-  // try {
-  //   //Server settings
-  //   //Server settings
-  //    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
-  //    $mail->isSMTP();
-  //    $mail->Host       = 'smtp.gmail.com';     //platform
-  //    $mail->SMTPAuth   = true;
-  //    $mail->Username   = 'ceumnlecle@gmail.com';   //email
-  //    $mail->Password   = 'ejgkweqvskernkxs';                                //password
-  //    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-  //    $mail->Port       = 587;
-
-  //    //Recipients
-  //    $mail->setFrom('ceumnlecle@gmail.com');       //sender
-  //    $mail->addAddress($email);
-
-  //    //Content
-  //    $mail->isHTML(true);
-  //    $mail->Subject = 'Pending Exit Clearances';
-  //    $mail->Body    = $body;             //content
-
-  //    $mail->SMTPDebug  = SMTP::DEBUG_OFF;
-  //    $mail->send();
-  // } catch (Exception $e) {
-  //     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-  // }
-
 }
 
 function sendmailAccountsDean($email, $username, array $arr){
 
   $mail = new PHPMailer(true);
+  $view = new view();
+  $mailerData = $view->viewConfigMailer();
+  $mailerUsername = $mailerData[0];
+  $mailerPassword = $mailerData[1];
+  $mailerPlatform = $mailerData[2];
+  $mailerPort = $mailerData[3];
 
   $string;
   $list = "";
@@ -118,27 +94,26 @@ function sendmailAccountsDean($email, $username, array $arr){
   <p>Thank you and stay safe.</p>";
   try {
     //Server settings
-    //Server settings
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
-    $mail->isSMTP();
-    $mail->Host       = 'smtp.gmail.com';     //platform
-    $mail->SMTPAuth   = true;
-    $mail->Username   = 'ceumnlecle@gmail.com';   //email
-     $mail->Password   = 'ejgkweqvskernkxs';                                //password
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-    $mail->Port       = 587;
+     $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+     $mail->isSMTP();
+     $mail->Host       = $mailerPlatform;     //platform
+     $mail->SMTPAuth   = true;
+     $mail->Username   = $mailerUsername;   //email
+     $mail->Password   = $mailerPassword;                                //password
+     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+     $mail->Port       = $mailerPort;
 
-    //Recipients
-    $mail->setFrom('ceumnlecle@gmail.com');       //sender
-    $mail->addAddress($email);
+     //Recipients
+     $mail->setFrom($mailerUsername);       //sender
+     $mail->addAddress($email);
 
-    //Content
-    $mail->isHTML(true);
-    $mail->Subject = 'Pending Exit Clearances';
-    $mail->Body    = $body;             //content
+     //Content
+     $mail->isHTML(true);
+     $mail->Subject = 'Pending Exit Clearances';
+     $mail->Body    = $body;             //content
 
-    $mail->SMTPDebug  = SMTP::DEBUG_OFF;
-    $mail->send();
+     $mail->SMTPDebug  = SMTP::DEBUG_OFF;
+     $mail->send();
   } catch (Exception $e) {
       echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
   }
