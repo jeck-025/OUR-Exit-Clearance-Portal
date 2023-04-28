@@ -89,4 +89,21 @@ class view extends config{
           
         }
 
+        public function viewConfigMailer(){
+          $config = new config;
+          $con = $config->con();
+          
+          $sql = "SELECT * FROM `tbl_mailer_info`";
+          $data = $con-> prepare($sql);
+          $data ->execute();
+          $result = $data->fetchAll(PDO::FETCH_ASSOC);
+
+          $mailer_username = $result[0]['username'];
+          $mailer_password = $result[0]['password'];
+          $mailer_platform = $result[0]['platform'];
+          $mailer_port = $result[0]['port'];
+
+          return array($mailer_username, $mailer_password, $mailer_platform, $mailer_port);
+        }
+
 }
