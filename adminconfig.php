@@ -209,7 +209,7 @@ $view = new view();
                       </div>
                       <div class="col col-md-2">
                         <label for="mailer_info_update" class="form-label">&nbsp;</label>
-                        <button type="submit" id="mailer_info_update" class="btn btn-dark btn-block"><i class="fa-solid fa-floppy-disk"></i> Save </button>
+                        <button type="submit" id="mailer_info_update" class="btn btn-dark btn-block" onClick="btnSaveMailer()"><i class="fa-solid fa-floppy-disk"></i> Save </button>
                       </div>
                     </div>
                     </form>
@@ -268,6 +268,10 @@ $view = new view();
 
       function btnSendMails(){
         sendmails.innerHTML = '<div class="spinner-border text-light spinner-border-sm" role="status"><span class="sr-only">Loading...</span></div> Sending...';
+      }
+
+      function btnSaveMailer(){
+        mailer_info_update.innerHTML = '<div class="spinner-border text-light spinner-border-sm" role="status"><span class="sr-only">Loading...</span></div> Saving...';
       }
 
     </script>
