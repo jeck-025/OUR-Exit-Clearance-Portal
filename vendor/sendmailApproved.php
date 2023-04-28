@@ -48,7 +48,7 @@ function sendmailApproved($email, $lname, $fname, $mname, $tn){
 
      //Content
      $mail->isHTML(true);
-     $mail->Subject = 'Pending Exit Clearances';
+     $mail->Subject = 'Exit Clearance Approved';
      $mail->Body    = $body;             //content
 
      $mail->SMTPDebug  = SMTP::DEBUG_OFF;
