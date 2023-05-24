@@ -29,6 +29,29 @@ class sendMail extends config{
         sendmailAccounts($email, $username, $arr);
     }
 
+    public function sendGuidance(){
+        $config = new config;
+        $con = $config->con();
+        $sql = "SELECT * FROM `ecle_forms` WHERE `guidanceclearance` = 'PENDING'";
+        $data = $con->prepare($sql);
+        $data->execute();
+        $arr = array();
+        $result = $data->fetchAll(PDO::FETCH_ASSOC);
+        foreach($result as $row){
+            $arr[] = $row['lname'].", ".$row['fname']." ".$row['mname'];
+        }
+
+        $sql2 = "SELECT * FROM `tbl_accounts` WHERE `groups` = 5";
+        $data2 = $con->prepare($sql2);
+        $data2->execute();
+        $result2 = $data2->fetchAll(PDO::FETCH_ASSOC);
+        foreach($result2 as $row2){
+            $email = $row2['email'];
+            $username = $row2['username'];
+        }
+        sendmailAccounts($email, $username, $arr);
+    }
+
     public function sendDean(){
         $config = new config;
 

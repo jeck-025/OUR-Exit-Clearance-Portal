@@ -22,9 +22,14 @@ class edit extends config{
         }
     }
 
-    public function approveClearanceDepartment(){
+    public function approveClearanceGuidance($gettype){
         $con = $this->con();
-        $sql = "UPDATE `ecle_forms` SET `departmentclearance` = 'CLEARED', `departmentremarks` = '', `departmentdate` = CURRENT_TIMESTAMP, `dean_asst` = '$this->user' WHERE `id` = '$this->id'";
+        if($gettype == "Graduate"){
+            $sql = "UPDATE `ecle_forms` SET `guidanceclearance` = 'CLEARED', `guidanceremarks` = '', `guidancedate` = CURRENT_TIMESTAMP, `guid_asst` = '$this->user' WHERE `id` = '$this->id'";
+        }else{
+            $sql = "UPDATE `ecle_forms_ug` SET `guidanceclearance` = 'CLEARED', `guidanceremarks` = '', `guidancedate` = CURRENT_TIMESTAMP, `guid_asst` = '$this->user' WHERE `id` = '$this->id'";
+        }
+        
         $data = $con->prepare($sql);
         if($data->execute()){
             return true;
@@ -33,9 +38,29 @@ class edit extends config{
         }
     }
 
-    public function approveClearanceLibrary(){
+    public function approveClearanceDepartment($gettype){
         $con = $this->con();
-        $sql = "UPDATE `ecle_forms` SET `libraryclearance` = 'CLEARED', `libraryremarks` = '', `librarydate` = CURRENT_TIMESTAMP, `lib_asst` = '$this->user' WHERE `id` = '$this->id'";
+        if($gettype == "Graduate"){
+            $sql = "UPDATE `ecle_forms` SET `departmentclearance` = 'CLEARED', `departmentremarks` = '', `departmentdate` = CURRENT_TIMESTAMP, `dean_asst` = '$this->user' WHERE `id` = '$this->id'";
+        }else{
+            $sql = "UPDATE `ecle_forms_ug` SET `departmentclearance` = 'CLEARED', `departmentremarks` = '', `departmentdate` = CURRENT_TIMESTAMP, `dean_asst` = '$this->user' WHERE `id` = '$this->id'";
+        }
+       
+        $data = $con->prepare($sql);
+        if($data->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function approveClearanceLibrary($gettype){
+        $con = $this->con();
+        if($gettype == "Graduate"){
+            $sql = "UPDATE `ecle_forms` SET `libraryclearance` = 'CLEARED', `libraryremarks` = '', `librarydate` = CURRENT_TIMESTAMP, `lib_asst` = '$this->user' WHERE `id` = '$this->id'";
+        }else{
+            $sql = "UPDATE `ecle_forms_ug` SET `libraryclearance` = 'CLEARED', `libraryremarks` = '', `librarydate` = CURRENT_TIMESTAMP, `lib_asst` = '$this->user' WHERE `id` = '$this->id'";
+        }
         $data = $con->prepare($sql);
         if($data->execute()){
             return true;
