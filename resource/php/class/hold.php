@@ -10,10 +10,14 @@ class hold extends config{
         $this->remarks = $remarks;
     }
 
-    public function holdClearanceAccounting(){
+    public function holdClearanceAccounting($gettype){
         $con = $this->con();
 
-        $sql2 = "SELECT * FROM `ecle_forms` WHERE `id` = '$this->id'";
+        if($gettype == "Graduate"){
+            $sql2 = "SELECT * FROM `ecle_forms` WHERE `id` = '$this->id'";
+        }else{
+            $sql2 = "SELECT * FROM `ecle_forms_ug` WHERE `id` = '$this->id'";
+        }
         $data2 = $con->prepare($sql2);
         $data2->execute();
         $result = $data2->fetchAll(PDO::FETCH_ASSOC);
@@ -24,9 +28,14 @@ class hold extends config{
             $mname = $row['mname'];
         }
         $office = "Accounting";
-        sendOnHoldMail($email, $this->remarks, $lname, $fname, $mname, $office);
+        
+        //sendOnHoldMail($email, $this->remarks, $lname, $fname, $mname, $office);
 
-        $sql = "UPDATE `ecle_forms` SET `accountingclearance` = 'ON HOLD', `accountingremarks` = '$this->remarks', `accountingdate` = CURRENT_TIMESTAMP WHERE `id` = '$this->id'";
+        if($gettype == "Graduate"){
+            $sql = "UPDATE `ecle_forms` SET `accountingclearance` = 'ON HOLD', `accountingremarks` = '$this->remarks', `accountingdate` = CURRENT_TIMESTAMP WHERE `id` = '$this->id'";
+        }else{
+            $sql = "UPDATE `ecle_forms_ug` SET `accountingclearance` = 'ON HOLD', `accountingremarks` = '$this->remarks', `accountingdate` = CURRENT_TIMESTAMP WHERE `id` = '$this->id'";
+        }
         $data = $con->prepare($sql);
         if($data->execute()){
             return true;
@@ -35,10 +44,14 @@ class hold extends config{
         }
     }
 
-    public function resetHoldClearanceAccounting(){
+    public function resetHoldClearanceAccounting($gettype){
         $con = $this->con();
 
-        $sql2 = "SELECT * FROM `ecle_forms` WHERE `id` = '$this->id'";
+         if($gettype == "Graduate"){
+            $sql2 = "SELECT * FROM `ecle_forms` WHERE `id` = '$this->id'";
+        }else{
+            $sql2 = "SELECT * FROM `ecle_forms_ug` WHERE `id` = '$this->id'";
+        }
         $data2 = $con->prepare($sql2);
         $data2->execute();
         $result = $data2->fetchAll(PDO::FETCH_ASSOC);
@@ -49,7 +62,11 @@ class hold extends config{
             $mname = $row['mname'];
         }
 
-        $sql = "UPDATE `ecle_forms` SET `accountingclearance` = 'PENDING', `accountingremarks` = NULL, `accountingdate` = NULL WHERE `id` = '$this->id'";
+        if($gettype == "Graduate"){
+            $sql = "UPDATE `ecle_forms` SET `accountingclearance` = 'PENDING', `accountingremarks` = NULL, `accountingdate` = NULL WHERE `id` = '$this->id'";
+        }else{
+            $sql = "UPDATE `ecle_forms_ug` SET `accountingclearance` = 'PENDING', `accountingremarks` = NULL, `accountingdate` = NULL WHERE `id` = '$this->id'";
+        }
         $data = $con->prepare($sql);
         if($data->execute()){
             return true;
@@ -116,7 +133,7 @@ class hold extends config{
         }else{
             $sql = "UPDATE `ecle_forms_ug` SET `guidanceclearance` = 'PENDING', `guidanceremarks` = NULL, `guidancedate` = NULL WHERE `id` = '$this->id'";
         }
-        
+
         $data = $con->prepare($sql);
         if($data->execute()){
             return true;

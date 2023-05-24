@@ -57,7 +57,7 @@ echo"<div class='modal fade' id='acctModal$id' aria-labelledby='modal' aria-hidd
                     }else{}
 
                     echo "<button type='button' class='btn btn-sm btn-danger' data-bs-dismiss='modal'><i class='fa-solid fa-x'></i> Cancel</button>
-                        <a href='accountingApprove.php?edit=$id&landing=$landing&user=$acct_asst_name' class='btn btn-sm my-1 d-block btn-success' data-toggle='tooltip' data-placement='top' title='Approve'><i class='fa-solid fa-check'></i> Yes</a>
+                        <a href='accountingApprove.php?edit=$id&landing=$landing&user=$acct_asst_name&type=$studType' class='btn btn-sm my-1 d-block btn-success' data-toggle='tooltip' data-placement='top' title='Approve'><i class='fa-solid fa-check'></i> Yes</a>
                      </div>
                 </div>
             </div>

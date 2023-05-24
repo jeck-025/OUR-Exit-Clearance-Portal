@@ -777,7 +777,7 @@ public function viewRequestTableAccountingTransfer(){
   echo "<td>
           <button class='btn btn-sm btn-block btn-success d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#acctModal$id' data-id='$id'><i class='fa-solid fa-check'></i> Sign</button>";
   echo   "<button class='btn btn-sm btn-block btn-warning d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#acctHold$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Hold</button>
-          <a href='viewAccounting.php?id=$data[id]' class='btn my-1 btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
+          <a href='viewAccounting.php?id=$data[id]&type=$data[studentType]' class='btn my-1 btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
           include "modals.php";
   echo "</td>";
   echo "</tr>";
@@ -1109,7 +1109,7 @@ public function viewHoldTableAccountingTransfer(){
   $regR = $data["registrarremarks"];
   echo "<td>";
   echo   "<button class='btn btn-sm btn-block btn-warning d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#acctHold$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Clear </button>
-          <a href='viewAccounting.php?id=$data[id]' class='btn my-1 btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
+          <a href='viewAccounting.php?id=$data[id]&type=$data[studentType]' class='btn my-1 btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
           include "modals.php";
   echo "</td>";
   echo "</tr>";
@@ -1295,7 +1295,7 @@ public function viewRequestTableDepartmentTransfer(){
   echo "<td>
           <button class='btn btn-sm btn-block btn-success d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#deanModal$id' data-id='$id'><i class='fa-solid fa-check'></i> Sign</button>";
   echo   "<button class='btn btn-sm btn-block btn-warning d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#deanHold$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Hold</button>
-          <a href='viewDean.php?id=$data[id]&type=$studType' class='btn my-1 btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
+          <a href='viewDean.php?id=$data[id]&type=$data[studentType]' class='btn my-1 btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
           include "modals.php";
   echo "</td>";
   echo "</tr>";
@@ -2359,13 +2359,20 @@ public function viewTotalAccounting(){
   $sql = "SELECT COUNT(*) FROM `ecle_forms` WHERE `accountingclearance` = 'PENDING' AND `expiry` = 'NO'";
   $data= $con->prepare($sql);
   $data->execute();
-  $result = $data->fetchColumn();
-  return $result;
+  $result1 = $data->fetchColumn();
+
+  $sql2 = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE `accountingclearance` = 'PENDING' AND `expiry` = 'NO'";
+  $data2= $con->prepare($sql2);
+  $data2->execute();
+  $result2= $data2->fetchColumn();
+
+  $total = $result1 + $result2;
+  return $total;
 }
 
 public function viewCountPendingAccountingTR(){
   $con = $this->con();
-  $sql = "SELECT COUNT(*) FROM `ecle_forms` WHERE `accountingclearance` = 'PENDING' AND `studentType` = 'Transfer' AND `expiry` = 'NO'";
+  $sql = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE `accountingclearance` = 'PENDING' AND `studentType` = 'Transfer' AND `expiry` = 'NO'";
   $data= $con->prepare($sql);
   $data->execute();
   $result = $data->fetchColumn();
@@ -2456,63 +2463,6 @@ public function viewCountPendingDeanGD(){
   return $result;
 }
 
-// public function viewTransferredSchoolNames() {
-//   $con = $this->con();
-//   $sql = "SELECT transferredSchool, COUNT(transferredSchool) AS quantity FROM ecle_forms WHERE semester = '2' AND sy = '2022-2023' AND transferredSchool != 'NULL' GROUP BY transferredSchool";
-//   $data= $con->prepare($sql);
-//   $data->execute();
-//   $names[] = array();
-//   $result = $data->fetchAll(PDO::FETCH_ASSOC);
-//   foreach($result as $row){
-//     $names[] = $row['transferredSchool'];
-//   }
-//   unset($names[0]);
-//   return $names;
-//   }
-
-// public function viewTransferredSchoolTotal() {
-//   $con = $this->con();
-//   $sql = "SELECT transferredSchool, COUNT(transferredSchool) AS quantity FROM ecle_forms WHERE semester = '2' AND sy = '2022-2023' AND transferredSchool != '' GROUP BY transferredSchool";
-//   $data= $con->prepare($sql);
-//   $data->execute();
-//   $numbers[] = array();
-//   $result = $data->fetchAll(PDO::FETCH_ASSOC);
-//   // var_dump($result);
-//   // die();
-//   foreach($result as $row){
-//     $numbers[] = $row['quantity'];
-//   }
-//   unset($numbers[0]);
-//   return $numbers;
-//   }
-
-// public function viewReasonNames(){
-//   $con = $this->con();
-//   $sql = "SELECT reason, COUNT(reason) AS quantity FROM ecle_forms WHERE semester = '2' AND sy = '2022-2023' AND reason != 'NULL' GROUP BY reason";
-//   $data= $con->prepare($sql);
-//   $data->execute();
-//   $reasons[] = array();
-//   $result = $data->fetchAll(PDO::FETCH_ASSOC);
-//   foreach($result as $row){
-//     $reasons[] = $row['reason'];
-//   }
-//   unset($reasons[0]);
-//   return $reasons;
-//   }
-
-// public function viewReasonTotal(){
-//   $con = $this->con();
-//   $sql = "SELECT reason, COUNT(reason) AS quantity FROM ecle_forms WHERE semester = '2' AND sy = '2022-2023' AND reason != 'NULL' GROUP BY reason";
-//   $data= $con->prepare($sql);
-//   $data->execute();
-//   $total[] = array();
-//   $result = $data->fetchAll(PDO::FETCH_ASSOC);
-//   foreach($result as $row){
-//     $total[] = $row['quantity'];
-//   }
-//   unset($total[0]);
-//   return $total;
-//   }
 public function viewRequestTableGuidanceTransfer(){
   $guid_asst_name = guid_asstName();
   $con = $this->con();
@@ -2876,4 +2826,65 @@ public function viewReportsTransfer(){
   echo "</table>";
 }
 }
+
+
+
+// public function viewTransferredSchoolNames() {
+//   $con = $this->con();
+//   $sql = "SELECT transferredSchool, COUNT(transferredSchool) AS quantity FROM ecle_forms WHERE semester = '2' AND sy = '2022-2023' AND transferredSchool != 'NULL' GROUP BY transferredSchool";
+//   $data= $con->prepare($sql);
+//   $data->execute();
+//   $names[] = array();
+//   $result = $data->fetchAll(PDO::FETCH_ASSOC);
+//   foreach($result as $row){
+//     $names[] = $row['transferredSchool'];
+//   }
+//   unset($names[0]);
+//   return $names;
+//   }
+
+// public function viewTransferredSchoolTotal() {
+//   $con = $this->con();
+//   $sql = "SELECT transferredSchool, COUNT(transferredSchool) AS quantity FROM ecle_forms WHERE semester = '2' AND sy = '2022-2023' AND transferredSchool != '' GROUP BY transferredSchool";
+//   $data= $con->prepare($sql);
+//   $data->execute();
+//   $numbers[] = array();
+//   $result = $data->fetchAll(PDO::FETCH_ASSOC);
+//   // var_dump($result);
+//   // die();
+//   foreach($result as $row){
+//     $numbers[] = $row['quantity'];
+//   }
+//   unset($numbers[0]);
+//   return $numbers;
+//   }
+
+// public function viewReasonNames(){
+//   $con = $this->con();
+//   $sql = "SELECT reason, COUNT(reason) AS quantity FROM ecle_forms WHERE semester = '2' AND sy = '2022-2023' AND reason != 'NULL' GROUP BY reason";
+//   $data= $con->prepare($sql);
+//   $data->execute();
+//   $reasons[] = array();
+//   $result = $data->fetchAll(PDO::FETCH_ASSOC);
+//   foreach($result as $row){
+//     $reasons[] = $row['reason'];
+//   }
+//   unset($reasons[0]);
+//   return $reasons;
+//   }
+
+// public function viewReasonTotal(){
+//   $con = $this->con();
+//   $sql = "SELECT reason, COUNT(reason) AS quantity FROM ecle_forms WHERE semester = '2' AND sy = '2022-2023' AND reason != 'NULL' GROUP BY reason";
+//   $data= $con->prepare($sql);
+//   $data->execute();
+//   $total[] = array();
+//   $result = $data->fetchAll(PDO::FETCH_ASSOC);
+//   foreach($result as $row){
+//     $total[] = $row['quantity'];
+//   }
+//   unset($total[0]);
+//   return $total;
+//   }
 ?>
+

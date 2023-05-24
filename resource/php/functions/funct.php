@@ -300,7 +300,7 @@ function changeP(){
 function approveAccounting(){
     if(!empty($_GET['edit'])){
         $edit = new edit($_GET['edit'], $_GET['user']);
-        if($edit->approveClearanceAccounting()){
+        if($edit->approveClearanceAccounting($_GET['type'])){
         } else{
             echo "Error in approving";
         }
@@ -361,11 +361,11 @@ function holdRegistrar(){
 function holdAccounting(){
     if(isset($_POST['reset'])){
         $hold = new hold($_POST['hold'],$_POST['remarks']);
-        $hold->resetHoldClearanceAccounting();
+        $hold->resetHoldClearanceAccounting($_POST['type']);
     }
     elseif(!empty($_POST['hold']) && !empty($_POST['remarks'])){
         $hold = new hold($_POST['hold'],$_POST['remarks']);
-        $hold->holdClearanceAccounting();
+        $hold->holdClearanceAccounting($_POST['type']);
     }
 }
 
@@ -465,7 +465,7 @@ function isLibrary($user){
 function viewAccounting(){
     if(!empty($_GET['id'])){
         $info = new info($_GET['id']);
-        if($info->infoAccounting()){
+        if($info->infoAccounting($_GET['id'],$_GET['type'])){
         }
     }
 }

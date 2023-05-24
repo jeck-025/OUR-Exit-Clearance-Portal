@@ -11,9 +11,13 @@ class edit extends config{
         $this->user = $user;
     }
 
-    public function approveClearanceAccounting(){
+    public function approveClearanceAccounting($gettype){
         $con = $this->con();
-        $sql = "UPDATE `ecle_forms` SET `accountingclearance` = 'CLEARED', `accountingremarks` = '', `accountingdate` = CURRENT_TIMESTAMP, `acct_asst` = '$this->user' WHERE `id` = '$this->id'";
+        if($gettype == "Graduate"){
+            $sql = "UPDATE `ecle_forms` SET `accountingclearance` = 'CLEARED', `accountingremarks` = '', `accountingdate` = CURRENT_TIMESTAMP, `acct_asst` = '$this->user' WHERE `id` = '$this->id'";
+        }else{
+            $sql = "UPDATE `ecle_forms_ug` SET `accountingclearance` = 'CLEARED', `accountingremarks` = '', `accountingdate` = CURRENT_TIMESTAMP, `acct_asst` = '$this->user' WHERE `id` = '$this->id'";
+        }
         $data = $con->prepare($sql);
         if($data->execute()){
             return true;

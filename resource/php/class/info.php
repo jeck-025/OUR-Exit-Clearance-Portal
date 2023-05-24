@@ -7,9 +7,13 @@ class info extends config{
         $this->id = $id;
     }
 
-    public function infoAccounting(){
+    public function infoAccounting($getid, $gettype){
         $con = $this->con();
-        $sql = "SELECT * FROM `ecle_forms` WHERE `id` = '$this->id'";
+        if($gettype == "Graduate"){
+          $sql = "SELECT * FROM `ecle_forms` WHERE `id` = '$this->id'";
+        }else{
+          $sql = "SELECT * FROM `ecle_forms_ug` WHERE `id` = '$this->id'";
+        }
         $data = $con->prepare($sql);
         $data->execute();
         $result = $data->fetchAll(PDO::FETCH_ASSOC);
@@ -51,6 +55,12 @@ class info extends config{
           $regR = $result[0]["registrarremarks"];
           $rawRegD = $result[0]["registrardate"];
           $acct_asst_name = acct_asstName();
+
+          if($studType == "Transfer"){
+            $guidanceC = $result[0]["guidanceclearance"];
+            $guidanceR = $result[0]["guidanceremarks"];
+            $rawGuidanceD = $result[0]["guidancedate"];
+          }
 
         // DATE CONVERSIONS -------------------------------------------------------------------------------------------------
           if(!empty($rawBday)){                             
@@ -99,6 +109,17 @@ class info extends config{
           }
           else{
             $dispRegD = "";
+          }
+
+          if($studType == "Transfer"){
+            if(!empty($rawGuidanceD)){                             
+              $rawGuidanceD0 = strtr($rawGuidanceD, '-', '-');              
+              $conv_GuidanceD = strtotime($rawGuidanceD0);                     
+              $dispGuidanceD = date('M d, Y', $conv_GuidanceD);
+            }
+            else{
+              $dispGuidanceD = "";
+            }
           }
 
           // STATUS ICONS -------------------------------------------------------------------------------------------------
@@ -154,6 +175,21 @@ class info extends config{
             $iconReg = "<i class='fa-regular fa-circle'></i>";
           }
 
+          if($studType == "Transfer"){
+            if($guidanceC == "CLEARED"){
+              $iconClassG = "staticon-approved";
+              $iconGuidance = "<i class='fa-solid fa-circle-check'></i>";
+            }
+            elseif($guidanceC == "ON HOLD"){
+              $iconClassG = "staticon-hold";
+              $iconGuidance = "<i class='fa-solid fa-triangle-exclamation'></i>";
+            }
+            else{
+              $iconClassG = "staticon-pending";
+              $iconGuidance = "<i class='fa-regular fa-circle'></i>";
+            }
+          }
+
         // HOLD REMARKS -------------------------------------------------------------------------------------------------
         if(!empty($libraryR)){
           $dispLibraryR = "Library Department: <b class='remarks'> $libraryR </b><br>";
@@ -181,6 +217,15 @@ class info extends config{
         }
         else{
           $dispRegR = "<i class='remarks'>No remarks from the Office of the University Registrar</i><br>";
+        }
+        
+        if($studType == "Transfer"){
+          if(!empty($guidanceR)){
+            $dispGuidanceR = "Guidance Department: <b class='remarks'> $guidanceR </b><br>";
+          }
+          else{
+            $dispGuidanceR = "<i class='remarks'>No remarks from Guidance Department </i><br>";
+          }
         }
         
         // URL Redirect -------------------------------------------------------------------------------------------------
@@ -277,6 +322,8 @@ class info extends config{
                 echo "<table class='table table-borderless shadow p-3 mb-5 bg-white rounded' width='100%'>";
                     echo "<th class='stathead'>Dean's Office</th>";
                     echo "<th> </th>";
+                    echo "<th class='stathead'>Guidance Office</th>";
+                    echo "<th> </th>";
                     echo "<th class='stathead'>Library</th>";
                     echo "<th> </th>";
                     echo "<th class='stathead'>Accounting</th>";
@@ -285,6 +332,8 @@ class info extends config{
                     echo "<tr>";
                       echo "<td class='$iconClassD'>$iconDept</td>";
                       echo "<td class='$iconClassD'>∙∙∙</td>";
+                      echo "<td class='$iconClassG'>$iconGuidance</td>";
+                      echo "<td class='$iconClassG'>∙∙∙</td>";
                       echo "<td class='$iconClassL'>$iconLibrary</td>";
                       echo "<td class='$iconClassL'>∙∙∙</td>";
                       echo "<td class='$iconClassA'>$iconAcct</td>";
@@ -293,6 +342,8 @@ class info extends config{
                     echo "</tr>";
                     echo "<tr>";
                       echo "<td class='statcap'>$dispDeptD</td>";
+                      echo "<td></td>";
+                      echo "<td class='statcap'>$dispGuidanceD</td>";
                       echo "<td></td>";
                       echo "<td class='statcap'>$dispLibraryD</td>";
                       echo "<td></td>";
@@ -309,6 +360,8 @@ class info extends config{
                 echo "<table class='table table-borderless shadow p-3 mb-5 bg-white rounded' width='100%'>";
                   echo "<tr>";
                     echo "<td>$dispDeptR</td>";
+                  echo "</tr>";
+                    echo "<td>$dispGuidanceR</td>";
                   echo "</tr>";
                     echo "<td >$dispLibraryR</td>";
                   echo "</tr>";
