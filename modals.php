@@ -64,38 +64,6 @@ echo"<div class='modal fade' id='acctModal$id' aria-labelledby='modal' aria-hidd
         </div>
     </div>";
 
-echo"<div class='modal fade' id='guidModal$id' aria-labelledby='modal' aria-hidden='true'>
-        <div class='modal-dialog modal-md'>
-            <div class='modal-content'>
-                <div class='modal-header'>
-                    <h5 class='modal-title' id='modal'>Confirm</h5>
-                    <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
-                </div>
-
-                <div class='modal-body'>
-                    <div class='input-group col-md-12'>
-                        Sign Clearance?
-                    </div>
-                    <div class='modal-footer mt-3'>";
-
-                    if($guidanceC == "ON HOLD" && $studType == "Graduate"){
-                        $landing = "ghg";
-                    }elseif($guidanceC == "ON HOLD" && $studType == "Transfer"){
-                        $landing = "ght";
-                    }elseif($guidanceC == "PENDING" && $studType == "Graduate"){
-                        $landing = "grg";
-                    }elseif($guidanceC == "PENDING" && $studType == "Transfer"){
-                        $landing = "grt";
-                    }else{}
-
-                    echo "<button type='button' class='btn btn-sm btn-danger' data-bs-dismiss='modal'><i class='fa-solid fa-x'></i> Cancel</button>
-                        <a href='guidanceApprove.php?edit=$id&landing=$landing&user=$guid_asst_name&type=$studType' class='btn btn-sm my-1 d-block btn-success' data-toggle='tooltip' data-placement='top' title='Approve'><i class='fa-solid fa-check'></i> Yes</a>
-                     </div>
-                </div>
-            </div>
-        </div>
-    </div>";
-
 echo"<div class='modal fade' id='librModal$id' aria-labelledby='modal' aria-hidden='true'>
         <div class='modal-dialog modal-md'>
             <div class='modal-content'>
@@ -318,7 +286,8 @@ echo"<div class='modal fade' id='deanHold$id' aria-labelledby='modal' aria-hidde
         </div>
     </div>";
 
-echo"<div class='modal fade' id='guidHold$id' aria-labelledby='modal' aria-hidden='true'>
+if($studType == "Transfer"){
+    echo"<div class='modal fade' id='guidHold$id' aria-labelledby='modal' aria-hidden='true'>
         <div class='modal-dialog modal-lg'>
             <div class='modal-content'>
                 <div class='modal-header'>
@@ -357,5 +326,38 @@ echo"<div class='modal fade' id='guidHold$id' aria-labelledby='modal' aria-hidde
             </div>
         </div>
     </div>";
+
+    echo"<div class='modal fade' id='guidModal$id' aria-labelledby='modal' aria-hidden='true'>
+        <div class='modal-dialog modal-md'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <h5 class='modal-title' id='modal'>Confirm</h5>
+                    <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                </div>
+
+                <div class='modal-body'>
+                    <div class='input-group col-md-12'>
+                        Sign Clearance?
+                    </div>
+                    <div class='modal-footer mt-3'>";
+
+                    if($guidanceC == "ON HOLD" && $studType == "Graduate"){
+                        $landing = "ghg";
+                    }elseif($guidanceC == "ON HOLD" && $studType == "Transfer"){
+                        $landing = "ght";
+                    }elseif($guidanceC == "PENDING" && $studType == "Graduate"){
+                        $landing = "grg";
+                    }elseif($guidanceC == "PENDING" && $studType == "Transfer"){
+                        $landing = "grt";
+                    }else{}
+
+                    echo "<button type='button' class='btn btn-sm btn-danger' data-bs-dismiss='modal'><i class='fa-solid fa-x'></i> Cancel</button>
+                        <a href='guidanceApprove.php?edit=$id&landing=$landing&user=$guid_asst_name&type=$studType' class='btn btn-sm my-1 d-block btn-success' data-toggle='tooltip' data-placement='top' title='Approve'><i class='fa-solid fa-check'></i> Yes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>";
+}
 
 ?>
