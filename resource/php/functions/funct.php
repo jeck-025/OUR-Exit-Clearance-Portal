@@ -464,24 +464,24 @@ function isLibrary($user){
 
 function viewAccounting(){
     if(!empty($_GET['id'])){
-        $info = new info($_GET['id']);
-        if($info->infoAccounting($_GET['id'],$_GET['type'])){
+        $info = new info($_GET['id'], $_GET['type']);
+        if($info->infoAccounting()){
         }
     }
 }
 
 function viewGuidance(){
     if(!empty($_GET['id'])){
-        $info = new info($_GET['id']);
-        if($info->infoGuidance($_GET['id'],$_GET['type'])){
+        $info = new info($_GET['id'], $_GET['type']);
+        if($info->infoGuidance()){
         }
     }
 }
 
 function viewLibrary(){
     if(!empty($_GET['id'])){
-        $info = new info($_GET['id']);
-        if($info->infoLibrary($_GET['id'],$_GET['type'])){
+        $info = new info($_GET['id'], $_GET['type']);
+        if($info->infoLibrary()){
         }
     }
 }
@@ -495,8 +495,8 @@ function viewRegistrar(){
 }
 function viewDean(){
     if(!empty($_GET['id'])){
-        $info = new info($_GET['id']);
-        if($info->infoDean($_GET['id'],$_GET['type'])){
+        $info = new info($_GET['id'], $_GET['type']);
+        if($info->infoDean()){
         }
     }
 }

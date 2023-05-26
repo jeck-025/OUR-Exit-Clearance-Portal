@@ -124,46 +124,46 @@ public function viewRequestTableRegistrarTransfer(){
   $temp_mname2 = utf8_decode($data2['mname']);
   $mname2 = str_replace('?', 'Ñ', $temp_mname2);
 
-  echo "<td>$data[studentID]</td>";
+  echo "<td>$data2[studentID]</td>";
 	echo "<td>$fname2 $mname2 $lname2</td>";
   echo "<td>$data2[course]</td>";
   echo "<td>$data2[dateReq]</td>";
   echo "<td>$data2[studentType]</td>";
   echo "<td>$data2[referenceID]</td>";
-  if($data["departmentclearance"] === "PENDING"){
-    echo "<td class='text-center'><span class='badge bg-secondary'>$data[departmentclearance]</span></td>";
-  }elseif($data["departmentclearance"] === "ON HOLD"){
-    echo "<td class='text-center'><span class='badge bg-warning'>$data[departmentclearance]</span></td>";
+  if($data2["departmentclearance"] === "PENDING"){
+    echo "<td class='text-center'><span class='badge bg-secondary'>$data2[departmentclearance]</span></td>";
+  }elseif($data2["departmentclearance"] === "ON HOLD"){
+    echo "<td class='text-center'><span class='badge bg-warning'>$data2[departmentclearance]</span></td>";
   }else {
-    echo "<td class='text-center'><span class='badge bg-success'>$data[departmentclearance]</span></td>";
+    echo "<td class='text-center'><span class='badge bg-success'>$data2[departmentclearance]</span></td>";
   }
-  if($data["guidanceclearance"] === "PENDING"){
-    echo "<td class='text-center'><span class='badge bg-secondary'>$data[guidanceclearance]</span></td>";
-  }elseif($data["guidanceclearance"] === "ON HOLD"){
-    echo "<td class='text-center'><span class='badge bg-warning'>$data[guidanceclearance]</span></td>";
+  if($data2["guidanceclearance"] === "PENDING"){
+    echo "<td class='text-center'><span class='badge bg-secondary'>$data2[guidanceclearance]</span></td>";
+  }elseif($data2["guidanceclearance"] === "ON HOLD"){
+    echo "<td class='text-center'><span class='badge bg-warning'>$data2[guidanceclearance]</span></td>";
   }else {
-    echo "<td class='text-center'><span class='badge bg-success'>$data[guidanceclearance]</span></td>";
+    echo "<td class='text-center'><span class='badge bg-success'>$data2[guidanceclearance]</span></td>";
   }
-  if($data["libraryclearance"] === "PENDING"){
-    echo "<td class='text-center'><span class='badge bg-secondary'>$data[libraryclearance]</span></td>";
-  }elseif($data["libraryclearance"] === "ON HOLD"){
-    echo "<td class='text-center'><span class='badge bg-warning'>$data[libraryclearance]</span></td>";
+  if($data2["libraryclearance"] === "PENDING"){
+    echo "<td class='text-center'><span class='badge bg-secondary'>$data2[libraryclearance]</span></td>";
+  }elseif($data2["libraryclearance"] === "ON HOLD"){
+    echo "<td class='text-center'><span class='badge bg-warning'>$data2[libraryclearance]</span></td>";
   }else {
-    echo "<td class='text-center'><span class='badge bg-success'>$data[libraryclearance]</span></td>";
+    echo "<td class='text-center'><span class='badge bg-success'>$data2[libraryclearance]</span></td>";
   }
-  if($data["accountingclearance"] === "PENDING"){
-    echo "<td class='text-center'><span class='badge bg-secondary'>$data[accountingclearance]</span></td>";
-  }elseif($data["accountingclearance"] === "ON HOLD"){
-    echo "<td class='text-center'><span class='badge bg-warning'>$data[accountingclearance]</span></td>";
+  if($data2["accountingclearance"] === "PENDING"){
+    echo "<td class='text-center'><span class='badge bg-secondary'>$data2[accountingclearance]</span></td>";
+  }elseif($data2["accountingclearance"] === "ON HOLD"){
+    echo "<td class='text-center'><span class='badge bg-warning'>$data2[accountingclearance]</span></td>";
   }else {
-    echo "<td class='text-center'><span class='badge bg-success'>$data[accountingclearance]</span></td>";
+    echo "<td class='text-center'><span class='badge bg-success'>$data2[accountingclearance]</span></td>";
   }
-  if($data["registrarclearance"] === "PENDING"){
-    echo "<td class='text-center'><span class='badge bg-secondary'>$data[registrarclearance]</span></td>";
-  }elseif($data["registrarclearance"] === "ON HOLD"){
-    echo "<td class='text-center'><span class='badge bg-warning'>$data[registrarclearance]</span></td>";
+  if($data2["registrarclearance"] === "PENDING"){
+    echo "<td class='text-center'><span class='badge bg-secondary'>$data2[registrarclearance]</span></td>";
+  }elseif($data2["registrarclearance"] === "ON HOLD"){
+    echo "<td class='text-center'><span class='badge bg-warning'>$data2[registrarclearance]</span></td>";
   }else {
-    echo "<td class='text-center'><span class='badge bg-success'>$data[registrarclearance]</span></td>";
+    echo "<td class='text-center'><span class='badge bg-success'>$data2[registrarclearance]</span></td>";
   }
 
   $id2 = $data2["id"];

@@ -318,7 +318,7 @@ class info extends config{
           echo "</div>";
 
           echo "<div class='row'>";
-            echo "<div class='col col-6'>";
+            echo "<div class='col col-7'>";
               echo "<p class=caption>Clearance Status</p>";
                 echo "<table class='table table-borderless shadow p-3 mb-5 bg-white rounded' width='100%'>";
                     echo "<th class='stathead'>Dean's Office</th>";
@@ -356,7 +356,7 @@ class info extends config{
 
             echo "</div>";
 
-            echo "<div class='col col-6'>";
+            echo "<div class='col col-5'>";
               echo "<p class=caption>Remarks</p>";
                 echo "<table class='table table-borderless shadow p-3 mb-5 bg-white rounded' width='100%'>";
                   echo "<tr>";
@@ -674,12 +674,12 @@ class info extends config{
         echo "</div>";
 
         echo "<div class='row'>";
-            echo "<div class='col col-6'>";
+            echo "<div class='col col-7'>";
               echo "<p class=caption>Clearance Status</p>";
                 echo "<table class='table table-borderless shadow p-3 mb-5 bg-white rounded' width='100%'>";
-                    echo "<th class='stathead'>Dean's Office</th>";
+                    echo "<th class='stathead'>Dean's Ofc.</th>";
                     echo "<th> </th>";
-                    echo "<th class='stathead'>Guidance Office</th>";
+                    echo "<th class='stathead'>Guidance Ofc.</th>";
                     echo "<th> </th>";
                     echo "<th class='stathead'>Library</th>";
                     echo "<th> </th>";
@@ -712,7 +712,7 @@ class info extends config{
 
             echo "</div>";
 
-            echo "<div class='col col-6'>";
+            echo "<div class='col col-5'>";
               echo "<p class=caption>Remarks</p>";
                 echo "<table class='table table-borderless shadow p-3 mb-5 bg-white rounded' width='100%'>";
                   echo "<tr>";
@@ -1039,12 +1039,12 @@ class info extends config{
           echo "</div>";
 
           echo "<div class='row'>";
-            echo "<div class='col col-6'>";
+            echo "<div class='col col-7'>";
               echo "<p class=caption>Clearance Status</p>";
                 echo "<table class='table table-borderless shadow p-3 mb-5 bg-white rounded' width='100%'>";
-                    echo "<th class='stathead'>Dean's Office</th>";
+                    echo "<th class='stathead'>Dean's Ofc.</th>";
                     echo "<th> </th>";
-                    echo "<th class='stathead'>Guidance Office</th>";
+                    echo "<th class='stathead'>Guidance Ofc.</th>";
                     echo "<th> </th>";
                     echo "<th class='stathead'>Library</th>";
                     echo "<th> </th>";
@@ -1077,7 +1077,7 @@ class info extends config{
 
             echo "</div>";
 
-            echo "<div class='col col-6'>";
+            echo "<div class='col col-5'>";
               echo "<p class=caption>Remarks</p>";
                 echo "<table class='table table-borderless shadow p-3 mb-5 bg-white rounded' width='100%'>";
                   echo "<tr>";
@@ -1417,12 +1417,12 @@ class info extends config{
           echo "</div>";
 
           echo "<div class='row'>";
-            echo "<div class='col col-6'>";
+            echo "<div class='col col-7'>";
               echo "<p class=caption>Clearance Status</p>";
                 echo "<table class='table table-borderless shadow p-3 mb-5 bg-white rounded' width='100%'>";
-                    echo "<th class='stathead'>Dean's Office</th>";
+                    echo "<th class='stathead'>Dean's Ofc.</th>";
                     echo "<th> </th>";
-                    echo "<th class='stathead'>Guidance Office</th>";
+                    echo "<th class='stathead'>Guidance Ofc.</th>";
                     echo "<th> </th>";
                     echo "<th class='stathead'>Library</th>";
                     echo "<th> </th>";
@@ -1455,7 +1455,7 @@ class info extends config{
 
             echo "</div>";
 
-            echo "<div class='col col-6'>";
+            echo "<div class='col col-5'>";
               echo "<p class=caption>Remarks</p>";
                 echo "<table class='table table-borderless shadow p-3 mb-5 bg-white rounded' width='100%'>";
                   echo "<tr>";
@@ -1784,12 +1784,12 @@ class info extends config{
           echo "</div>";
 
           echo "<div class='row'>";
-            echo "<div class='col col-6'>";
+            echo "<div class='col col-7'>";
               echo "<p class=caption>Clearance Status</p>";
                 echo "<table class='table table-borderless shadow p-3 mb-5 bg-white rounded' width='100%'>";
-                    echo "<th class='stathead'>Dean's Office</th>";
+                    echo "<th class='stathead'>Dean's Ofc.</th>";
                     echo "<th> </th>";
-                    echo "<th class='stathead'>Guidance Office</th>";
+                    echo "<th class='stathead'>Guidance Ofc.</th>";
                     echo "<th> </th>";
                     echo "<th class='stathead'>Library</th>";
                     echo "<th> </th>";
@@ -1822,7 +1822,7 @@ class info extends config{
 
             echo "</div>";
 
-            echo "<div class='col col-6'>";
+            echo "<div class='col col-5'>";
               echo "<p class=caption>Remarks</p>";
                 echo "<table class='table table-borderless shadow p-3 mb-5 bg-white rounded' width='100%'>";
                   echo "<tr>";
