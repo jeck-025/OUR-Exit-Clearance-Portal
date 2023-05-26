@@ -13,28 +13,56 @@ $con = $config->con();
 header('Content-Type: text/csv; charset=utf-8');
 header('Content-Disposition: attachment; filename=Reports.csv');
 
-if(!empty($_GET['r_semester']) && !empty($_GET['r_sy']))
-{
-    // download specific semester
-    $sql = "SELECT * FROM `ecle_forms` WHERE `sy` = '$_GET[r_sy]' AND `semester` = '$_GET[r_semester]' ";
-    $data1 = $con->prepare($sql);
-    $data1->execute();
-    $rows1 = $data1->fetchAll(PDO::FETCH_ASSOC);
+if(isset($_GET['g_submit'])){
+    if(!empty($_GET['r_semester']) && !empty($_GET['r_sy']))
+    {
+        // download specific semester
+        $sql = "SELECT * FROM `ecle_forms` WHERE `sy` = '$_GET[r_sy]' AND `semester` = '$_GET[r_semester]' ";
+        $data1 = $con->prepare($sql);
+        $data1->execute();
+        $rows1 = $data1->fetchAll(PDO::FETCH_ASSOC);
+
+    }else{
+        // download all
+        $sql = "SELECT * FROM `ecle_forms`";
+        $data1 = $con->prepare($sql);
+        $data1->execute();
+        $rows1 = $data1->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    $sql2 = "SHOW COLUMNS FROM `ecle_forms`";
+    $data2 = $con-> prepare($sql2);
+    $data2->execute();
+    $rows2 = $data2->fetchAll(PDO::FETCH_ASSOC);
+    $heads[] = array();
+
+}elseif(isset($_GET['u_submit'])){
+    if(!empty($_GET['r_semester']) && !empty($_GET['r_sy']))
+    {
+        // download specific semester
+        $sql = "SELECT * FROM `ecle_forms_ug` WHERE `sy` = '$_GET[r_sy]' AND `semester` = '$_GET[r_semester]' ";
+        $data1 = $con->prepare($sql);
+        $data1->execute();
+        $rows1 = $data1->fetchAll(PDO::FETCH_ASSOC);
+
+    }else{
+        // download all
+        $sql = "SELECT * FROM `ecle_forms_ug`";
+        $data1 = $con->prepare($sql);
+        $data1->execute();
+        $rows1 = $data1->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    $sql2 = "SHOW COLUMNS FROM `ecle_forms_ug`";
+    $data2 = $con-> prepare($sql2);
+    $data2->execute();
+    $rows2 = $data2->fetchAll(PDO::FETCH_ASSOC);
+    $heads[] = array();
 
 }else{
-    // download all
-    $sql = "SELECT * FROM `ecle_forms`";
-    $data1 = $con->prepare($sql);
-    $data1->execute();
-    $rows1 = $data1->fetchAll(PDO::FETCH_ASSOC);
+    echo "Error";
+    die();
 }
-
-
-$sql2 = "SHOW COLUMNS FROM `ecle_forms`";
-$data2 = $con-> prepare($sql2);
-$data2->execute();
-$rows2 = $data2->fetchAll(PDO::FETCH_ASSOC);
-$heads[] = array();
 
 $output = fopen('php://output', 'w');
 
