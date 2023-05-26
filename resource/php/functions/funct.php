@@ -488,7 +488,7 @@ function viewLibrary(){
 
 function viewRegistrar(){
     if(!empty($_GET['id'])){
-        $info = new info($_GET['id'],$_GET['type']);
+        $info = new info($_GET['id'], $_GET['type']);
         if($info->infoRegistrar()){
         }
     }
