@@ -20,7 +20,6 @@ public function viewRequestTableRegistrarTransfer(){
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
-  echo "<th>Student Type</th>";
   echo "<th>Reference ID</th>";
   echo "<th>Dean's Ofc.</th>";
   echo "<th>Guidance</th>";
@@ -43,7 +42,6 @@ public function viewRequestTableRegistrarTransfer(){
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
-  echo "<td>$data[studentType]</td>";
   echo "<td>$data[referenceID]</td>";
 
   if($data["departmentclearance"] === "PENDING"){
@@ -82,7 +80,6 @@ public function viewRequestTableRegistrarTransfer(){
     echo "<td class='text-center'><span class='badge bg-success'>$data[registrarclearance]</span></td>";
   }
   $id = $data["id"];
-  $studType = $data["studentType"];
   $libraryC = $data["libraryclearance"];
   $libraryR = $data["libraryremarks"];
   $guidanceC = $data["guidanceclearance"];
@@ -128,7 +125,6 @@ public function viewRequestTableRegistrarTransfer(){
 	echo "<td>$fname2 $mname2 $lname2</td>";
   echo "<td>$data2[course]</td>";
   echo "<td>$data2[dateReq]</td>";
-  echo "<td>$data2[studentType]</td>";
   echo "<td>$data2[referenceID]</td>";
   if($data2["departmentclearance"] === "PENDING"){
     echo "<td class='text-center'><span class='badge bg-secondary'>$data2[departmentclearance]</span></td>";
@@ -208,7 +204,6 @@ public function viewRequestTableRegistrarGraduate(){
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
-  echo "<th>Student Type</th>";
   echo "<th>Reference ID</th>";
   echo "<th>Library</th>";
   echo "<th>Dean's Ofc.</th>";
@@ -231,7 +226,6 @@ public function viewRequestTableRegistrarGraduate(){
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
-  echo "<td>$data[studentType]</td>";
   echo "<td>$data[referenceID]</td>";
   if($data["libraryclearance"] === "PENDING"){
     echo "<td class='text-center'><span class='badge bg-secondary'>$data[libraryclearance]</span></td>";
@@ -308,7 +302,6 @@ public function viewRequestTableRegistrarGraduate(){
   echo "<td>$fname2 $mname2 $lname2</td>";
   echo "<td>$data2[course]</td>";
   echo "<td>$data2[dateReq]</td>";
-  echo "<td>$data2[studentType]</td>";
   echo "<td>$data2[referenceID]</td>";
   if($data2["libraryclearance"] === "PENDING"){
     echo "<td class='text-center'><span class='badge bg-secondary'>$data2[libraryclearance]</span></td>";
@@ -378,7 +371,6 @@ public function viewApproveTableRegistrarTransfer(){
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
-  echo "<th>Student Type</th>";
   echo "<th>Reference ID</th>";
   echo "<th>Dean's Ofc.</th>";
   echo "<th>Guidance</th>";
@@ -400,7 +392,6 @@ public function viewApproveTableRegistrarTransfer(){
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
-  echo "<td>$data[studentType]</td>";
   echo "<td>$data[referenceID]</td>";
 
   if($data["departmentclearance"] === "PENDING"){
@@ -460,7 +451,6 @@ public function viewApproveTableRegistrarGraduate(){
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
-  echo "<th>Student Type</th>";
   echo "<th>Reference ID</th>";
   echo "<th>Library</th>";
   echo "<th>Dean's Ofc.</th>";
@@ -482,7 +472,6 @@ public function viewApproveTableRegistrarGraduate(){
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
-  echo "<td>$data[studentType]</td>";
   echo "<td>$data[referenceID]</td>";
   if($data["libraryclearance"] === "PENDING"){
     echo "<td class='text-center'><span class='badge bg-secondary'>$data[libraryclearance]</span></td>";
@@ -534,7 +523,6 @@ public function viewHoldTableRegistrarTransfer(){
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
-  echo "<th>Student Type</th>";
   echo "<th>Reference ID</th>";
   echo "<th>Dean's Ofc.</th>";
   echo "<th>Guidance</th>";
@@ -557,7 +545,6 @@ public function viewHoldTableRegistrarTransfer(){
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
-  echo "<td>$data[studentType]</td>";
   echo "<td>$data[referenceID]</td>";
 
   if($data["departmentclearance"] === "PENDING"){
@@ -634,7 +621,6 @@ public function viewHoldTableRegistrarGraduate(){
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
-  echo "<th>Student Type</th>";
   echo "<th>Reference ID</th>";
   echo "<th>Library</th>";
   echo "<th>Dean's Ofc.</th>";
@@ -656,7 +642,6 @@ public function viewHoldTableRegistrarGraduate(){
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
-  echo "<td>$data[studentType]</td>";
   echo "<td>$data[referenceID]</td>";
   if($data["libraryclearance"] === "PENDING"){
     echo "<td class='text-center'><span class='badge bg-secondary'>$data[libraryclearance]</span></td>";
@@ -722,7 +707,6 @@ public function viewRequestTableAccountingTransfer(){
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
-  echo "<th>Student Type</th>";
   echo "<th>Reference ID</th>";
   echo "<th>Dean's Ofc.</th>";
   echo "<th>Guidance</th>";
@@ -745,7 +729,6 @@ public function viewRequestTableAccountingTransfer(){
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
-  echo "<td>$data[studentType]</td>";
   echo "<td>$data[referenceID]</td>";
 
   if($data["departmentclearance"] === "PENDING"){
@@ -821,7 +804,6 @@ public function viewRequestTableAccountingGraduate(){
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
-  echo "<th>Student Type</th>";
   echo "<th>Reference ID</th>";
   echo "<th>Dean's Ofc.</th>";
   echo "<th>Library</th>";
@@ -843,7 +825,6 @@ public function viewRequestTableAccountingGraduate(){
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
-  echo "<td>$data[studentType]</td>";
   echo "<td>$data[referenceID]</td>";
   if($data["departmentclearance"] === "PENDING"){
     echo "<td class='text-center'><span class='badge bg-secondary'>$data[departmentclearance]</span></td>";
@@ -910,7 +891,6 @@ public function viewApproveTableAccountingTransfer(){
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
-  echo "<th>Student Type</th>";
   echo "<th>Reference ID</th>";
   echo "<th>Dean's Ofc.</th>";
   echo "<th>Guidance</th>";
@@ -932,7 +912,6 @@ public function viewApproveTableAccountingTransfer(){
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
-  echo "<td>$data[studentType]</td>";
   echo "<td>$data[referenceID]</td>";
 
   if($data["departmentclearance"] === "PENDING"){
@@ -989,7 +968,6 @@ public function viewApproveTableAccountingGraduate(){
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
-  echo "<th>Student Type</th>";
   echo "<th>Reference ID</th>";
   echo "<th>Library</th>";
   echo "<th>Dean's Ofc.</th>";
@@ -1011,7 +989,6 @@ public function viewApproveTableAccountingGraduate(){
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
-  echo "<td>$data[studentType]</td>";
   echo "<td>$data[referenceID]</td>";
   if($data["libraryclearance"] === "PENDING"){
     echo "<td class='text-center'><span class='badge bg-secondary'>$data[libraryclearance]</span></td>";
@@ -1060,7 +1037,6 @@ public function viewHoldTableAccountingTransfer(){
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
-  echo "<th>Student Type</th>";
   echo "<th>Reference ID</th>";
   echo "<th>Dean's Ofc.</th>";
   echo "<th>Guidance</th>";
@@ -1083,7 +1059,6 @@ public function viewHoldTableAccountingTransfer(){
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
-  echo "<td>$data[studentType]</td>";
   echo "<td>$data[referenceID]</td>";
 
   if($data["departmentclearance"] === "PENDING"){
@@ -1157,7 +1132,6 @@ public function viewHoldTableAccountingGraduate(){
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
-  echo "<th>Student Type</th>";
   echo "<th>Reference ID</th>";
   echo "<th>Library</th>";
   echo "<th>Dean's Ofc.</th>";
@@ -1179,7 +1153,6 @@ public function viewHoldTableAccountingGraduate(){
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
-  echo "<td>$data[studentType]</td>";
   echo "<td>$data[referenceID]</td>";
   if($data["libraryclearance"] === "PENDING"){
     echo "<td class='text-center'><span class='badge bg-secondary'>$data[libraryclearance]</span></td>";
@@ -1247,7 +1220,6 @@ public function viewRequestTableDepartmentTransfer(){
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
-  echo "<th>Student Type</th>";
   echo "<th>Reference ID</th>";
   echo "<th>Dean's Ofc.</th>";
   echo "<th>Guidance</th>";
@@ -1270,7 +1242,6 @@ public function viewRequestTableDepartmentTransfer(){
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
-  echo "<td>$data[studentType]</td>";
   echo "<td>$data[referenceID]</td>";
 
   if($data["departmentclearance"] === "PENDING"){
@@ -1348,7 +1319,6 @@ public function viewRequestTableDepartmentGraduate(){
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
-  echo "<th>Student Type</th>";
   echo "<th>Reference ID</th>";
   echo "<th>Library</th>";
   echo "<th>Dean's Ofc.</th>";
@@ -1370,7 +1340,6 @@ public function viewRequestTableDepartmentGraduate(){
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
-  echo "<td>$data[studentType]</td>";
   echo "<td>$data[referenceID]</td>";
   if($data["libraryclearance"] === "PENDING"){
     echo "<td class='text-center'><span class='badge bg-secondary'>$data[libraryclearance]</span></td>";
@@ -1438,7 +1407,6 @@ public function viewApproveTableDepartmentTransfer(){
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
-  echo "<th>Student Type</th>";
   echo "<th>Reference ID</th>";
   echo "<th>Dean's Ofc.</th>";
   echo "<th>Guidance</th>";
@@ -1460,7 +1428,6 @@ public function viewApproveTableDepartmentTransfer(){
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
-  echo "<td>$data[studentType]</td>";
   echo "<td>$data[referenceID]</td>";
 
   if($data["departmentclearance"] === "PENDING"){
@@ -1519,7 +1486,6 @@ public function viewApproveTableDepartmentGraduate(){
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
-  echo "<th>Student Type</th>";
   echo "<th>Reference ID</th>";
   echo "<th>Library</th>";
   echo "<th>Dean's Ofc.</th>";
@@ -1540,7 +1506,6 @@ public function viewApproveTableDepartmentGraduate(){
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
-  echo "<td>$data[studentType]</td>";
   echo "<td>$data[referenceID]</td>";
   if($data["libraryclearance"] === "PENDING"){
     echo "<td class='text-center'><span class='badge bg-secondary'>$data[libraryclearance]</span></td>";
@@ -1591,7 +1556,6 @@ public function viewHoldTableDepartmentTransfer(){
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
-  echo "<th>Student Type</th>";
   echo "<th>Reference ID</th>";
   echo "<th>Dean's Ofc.</th>";
   echo "<th>Guidance</th>";
@@ -1614,7 +1578,6 @@ public function viewHoldTableDepartmentTransfer(){
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
-  echo "<td>$data[studentType]</td>";
   echo "<td>$data[referenceID]</td>";
 
   if($data["departmentclearance"] === "PENDING"){
@@ -1690,7 +1653,6 @@ public function viewHoldTableDepartmentGraduate(){
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
-  echo "<th>Student Type</th>";
   echo "<th>Reference ID</th>";
   echo "<th>Library</th>";
   echo "<th>Dean's Ofc.</th>";
@@ -1712,7 +1674,6 @@ public function viewHoldTableDepartmentGraduate(){
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
-  echo "<td>$data[studentType]</td>";
   echo "<td>$data[referenceID]</td>";
   if($data["libraryclearance"] === "PENDING"){
     echo "<td class='text-center'><span class='badge bg-secondary'>$data[libraryclearance]</span></td>";
@@ -1778,7 +1739,6 @@ public function viewRequestTableLibraryTransfer(){
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
-  echo "<th>Student Type</th>";
   echo "<th>Reference ID</th>";
   echo "<th>Dean's Ofc.</th>";
   echo "<th>Guidance</th>";
@@ -1801,7 +1761,6 @@ public function viewRequestTableLibraryTransfer(){
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
-  echo "<td>$data[studentType]</td>";
   echo "<td>$data[referenceID]</td>";
 
   if($data["departmentclearance"] === "PENDING"){
@@ -1877,7 +1836,6 @@ public function viewRequestTableLibraryGraduate(){
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
-  echo "<th>Student Type</th>";
   echo "<th>Reference ID</th>";
   echo "<th>Library</th>";
   echo "<th>Dean's Ofc.</th>";
@@ -1899,7 +1857,6 @@ public function viewRequestTableLibraryGraduate(){
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
-  echo "<td>$data[studentType]</td>";
   echo "<td>$data[referenceID]</td>";
   if($data["libraryclearance"] === "PENDING"){
     echo "<td class='text-center'><span class='badge bg-secondary'>$data[libraryclearance]</span></td>";
@@ -1964,7 +1921,6 @@ public function viewApproveTableLibraryTransfer(){
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
-  echo "<th>Student Type</th>";
   echo "<th>Reference ID</th>";
   echo "<th>Dean's Ofc.</th>";
   echo "<th>Guidance</th>";
@@ -1986,7 +1942,6 @@ public function viewApproveTableLibraryTransfer(){
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
-  echo "<td>$data[studentType]</td>";
   echo "<td>$data[referenceID]</td>";
 
   if($data["departmentclearance"] === "PENDING"){
@@ -2043,7 +1998,6 @@ public function viewApproveTableLibraryGraduate(){
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
-  echo "<th>Student Type</th>";
   echo "<th>Reference ID</th>";
   echo "<th>Library</th>";
   echo "<th>Dean's Ofc.</th>";
@@ -2064,7 +2018,6 @@ public function viewApproveTableLibraryGraduate(){
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
-  echo "<td>$data[studentType]</td>";
   echo "<td>$data[referenceID]</td>";
   if($data["libraryclearance"] === "PENDING"){
     echo "<td class='text-center'><span class='badge bg-secondary'>$data[libraryclearance]</span></td>";
@@ -2113,7 +2066,6 @@ public function viewHoldTableLibraryTransfer(){
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
-  echo "<th>Student Type</th>";
   echo "<th>Reference ID</th>";
   echo "<th>Dean's Ofc.</th>";
   echo "<th>Guidance</th>";
@@ -2136,7 +2088,6 @@ public function viewHoldTableLibraryTransfer(){
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
-  echo "<td>$data[studentType]</td>";
   echo "<td>$data[referenceID]</td>";
 
   if($data["departmentclearance"] === "PENDING"){
@@ -2210,7 +2161,6 @@ public function viewHoldTableLibraryGraduate(){
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
-  echo "<th>Student Type</th>";
   echo "<th>Reference ID</th>";
   echo "<th>Library</th>";
   echo "<th>Dean's Ofc.</th>";
@@ -2232,7 +2182,6 @@ public function viewHoldTableLibraryGraduate(){
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
-  echo "<td>$data[studentType]</td>";
   echo "<td>$data[referenceID]</td>";
  if($data["libraryclearance"] === "PENDING"){
     echo "<td class='text-center'><span class='badge bg-secondary'>$data[libraryclearance]</span></td>";
@@ -2298,7 +2247,6 @@ public function viewRequestTableGuidanceTransfer(){
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
-  echo "<th>Student Type</th>";
   echo "<th>Reference ID</th>";
   echo "<th>Dean's Ofc.</th>";
   echo "<th>Guidance</th>";
@@ -2321,7 +2269,6 @@ public function viewRequestTableGuidanceTransfer(){
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
-  echo "<td>$data[studentType]</td>";
   echo "<td>$data[referenceID]</td>";
 
   if($data["departmentclearance"] === "PENDING"){
@@ -2397,7 +2344,6 @@ public function viewHoldTableGuidanceTransfer(){
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
-  echo "<th>Student Type</th>";
   echo "<th>Reference ID</th>";
   echo "<th>Dean's Ofc.</th>";
   echo "<th>Guidance</th>";
@@ -2420,7 +2366,6 @@ public function viewHoldTableGuidanceTransfer(){
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
-  echo "<td>$data[studentType]</td>";
   echo "<td>$data[referenceID]</td>";
   
   if($data["departmentclearance"] === "PENDING"){
@@ -2495,7 +2440,6 @@ public function viewApproveTableGuidanceTransfer(){
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
-  echo "<th>Student Type</th>";
   echo "<th>Reference ID</th>";
   echo "<th>Dean's Ofc.</th>";
   echo "<th>Guidance</th>";
@@ -2517,7 +2461,6 @@ public function viewApproveTableGuidanceTransfer(){
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
-  echo "<td>$data[studentType]</td>";
   echo "<td>$data[referenceID]</td>";
   
   if($data["departmentclearance"] === "PENDING"){
