@@ -121,7 +121,7 @@ echo"<div class='modal fade' id='regsModal$id' aria-labelledby='modal' aria-hidd
                     }else{}
 
                     echo "<button type='button' class='btn btn-sm btn-danger' data-bs-dismiss='modal'><i class='fa-solid fa-x'></i> Cancel</button>
-                        <a href='registrarApprove.php?edit=$id&landing=$landing&user=$evaluator_name' class='btn btn-sm my-1 d-block btn-success' data-toggle='tooltip' data-placement='top' title='Approve'><i class='fa-solid fa-check'></i> Yes</a>
+                        <a href='registrarApprove.php?edit=$id&landing=$landing&user=$evaluator_name&type=$studType' class='btn btn-sm my-1 d-block btn-success' data-toggle='tooltip' data-placement='top' title='Approve'><i class='fa-solid fa-check'></i> Yes</a>
                      </div>
                 </div>
             </div>
@@ -156,6 +156,7 @@ echo"<div class='modal fade' id='regsHold$id' aria-labelledby='modal' aria-hidde
                     }else{}
 
                     echo "<input type='hidden' name='landing' value='$landing'>";
+                    echo "<input type='hidden' name='type' value='$studType'>";
                     echo "<input type='hidden' name='hold' value='$id'>";
                     echo "<button type='button' class='btn btn-sm btn-danger' data-bs-dismiss='modal'><i class='fa-solid fa-x'></i> Cancel</button>
                           <input type='submit' class='btn btn-sm btn-info' value='Clear Remarks' name='reset'>

@@ -6,6 +6,7 @@ class viewtable extends config{
 
 public function viewRequestTableRegistrarTransfer(){
   $evaluator = evaluatorAssignment();
+  $evaluator_name = evaluatorName();
   $con = $this->con();
   $sql = "SELECT * FROM `ecle_forms_ug` WHERE `registrarclearance` = 'PENDING' AND `libraryclearance` = 'CLEARED' AND `departmentclearance` = 'CLEARED' AND `accountingclearance` = 'CLEARED' AND `registrarclearance` = 'PENDING' AND `studentType` = 'Transfer' AND `expiry` = 'NO' $evaluator ORDER BY `dateReq` ASC";
   $data= $con->prepare($sql);
@@ -15,6 +16,7 @@ public function viewRequestTableRegistrarTransfer(){
   echo "<div class='table-responsive'>";
   echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
+  echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
@@ -36,7 +38,8 @@ public function viewRequestTableRegistrarTransfer(){
   $fname = str_replace('?', 'Ñ', $temp_fname);
   $temp_mname = utf8_decode($data['mname']);
   $mname = str_replace('?', 'Ñ', $temp_mname);
-          
+
+  echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
@@ -93,7 +96,7 @@ public function viewRequestTableRegistrarTransfer(){
   echo "<td>
           <button class='btn btn-sm btn-block btn-success d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsModal$id' data-id='$id'><i class='fa-solid fa-check'></i> Sign</button>";
   echo   "<button class='btn btn-sm btn-block btn-warning d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsHold$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Hold</button>
-          <a href='viewRegistrar.php?id=$data[id]' class='btn my-1 btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
+          <a href='viewRegistrar.php?id=$data[id]&type=$data[studentType]' class='btn my-1 btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
           include "modals.php";
   echo "</td>";
 
@@ -121,6 +124,7 @@ public function viewRequestTableRegistrarTransfer(){
   $temp_mname2 = utf8_decode($data2['mname']);
   $mname2 = str_replace('?', 'Ñ', $temp_mname2);
 
+  echo "<td>$data[studentID]</td>";
 	echo "<td>$fname2 $mname2 $lname2</td>";
   echo "<td>$data2[course]</td>";
   echo "<td>$data2[dateReq]</td>";
@@ -200,6 +204,7 @@ public function viewRequestTableRegistrarGraduate(){
   echo "<div class='table-responsive'>";
   echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
+  echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
@@ -222,6 +227,7 @@ public function viewRequestTableRegistrarGraduate(){
   $temp_mname = utf8_decode($data['mname']);
   $mname = str_replace('?', 'Ñ', $temp_mname);
 
+  echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
@@ -298,6 +304,7 @@ public function viewRequestTableRegistrarGraduate(){
   $temp_mname2 = utf8_decode($data2['mname']);
   $mname2 = str_replace('?', 'Ñ', $temp_mname2);
 
+  echo "<td>$data2[studentID]</td>";
   echo "<td>$fname2 $mname2 $lname2</td>";
   echo "<td>$data2[course]</td>";
   echo "<td>$data2[dateReq]</td>";
@@ -357,6 +364,7 @@ public function viewRequestTableRegistrarGraduate(){
 
 public function viewApproveTableRegistrarTransfer(){
   $evaluator = evaluatorAssignment();
+  $evaluator_name = evaluatorName();
   $con = $this->con();
   $sql = "SELECT * FROM `ecle_forms_ug` WHERE `registrarclearance`='CLEARED' AND `studentType` = 'Transfer' AND `expiry` = 'NO' $evaluator ORDER BY `dateReq` ASC";
   $data= $con->prepare($sql);
@@ -366,6 +374,7 @@ public function viewApproveTableRegistrarTransfer(){
   echo "<div class='table-responsive'>";
   echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
+  echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
@@ -386,7 +395,8 @@ public function viewApproveTableRegistrarTransfer(){
   $fname = str_replace('?', 'Ñ', $temp_fname);
   $temp_mname = utf8_decode($data['mname']);
   $mname = str_replace('?', 'Ñ', $temp_mname);
-          
+  
+  echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
@@ -435,6 +445,7 @@ public function viewApproveTableRegistrarTransfer(){
 
 public function viewApproveTableRegistrarGraduate(){
   $evaluator = evaluatorAssignment();
+  $evaluator_name = evaluatorName();
   $con = $this->con();
   $sql = "SELECT * FROM `ecle_forms` WHERE `registrarclearance`='CLEARED' AND `studentType` = 'Graduate' AND `expiry` = 'NO' $evaluator ORDER BY `dateReq` ASC";
   $data= $con->prepare($sql);
@@ -444,6 +455,7 @@ public function viewApproveTableRegistrarGraduate(){
   echo "<div class='table-responsive'>";
   echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
+  echo "<th>Student Number</th>";
   echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
@@ -466,6 +478,7 @@ public function viewApproveTableRegistrarGraduate(){
   $temp_mname = utf8_decode($data['mname']);
   $mname = str_replace('?', 'Ñ', $temp_mname);
 
+  echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
@@ -507,6 +520,7 @@ public function viewApproveTableRegistrarGraduate(){
 
 public function viewHoldTableRegistrarTransfer(){
   $evaluator = evaluatorAssignment();
+  $evaluator_name = evaluatorName();
   $con = $this->con();
   $sql = "SELECT * FROM `ecle_forms_ug` WHERE `registrarclearance`='ON HOLD' AND `studentType` = 'Transfer' AND `expiry` = 'NO' $evaluator ORDER BY `dateReq` ASC";
   $data= $con->prepare($sql);
@@ -516,6 +530,7 @@ public function viewHoldTableRegistrarTransfer(){
   echo "<div class='table-responsive'>";
   echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
+  echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
@@ -538,6 +553,7 @@ public function viewHoldTableRegistrarTransfer(){
   $temp_mname = utf8_decode($data['mname']);
   $mname = str_replace('?', 'Ñ', $temp_mname);
           
+  echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
@@ -593,7 +609,7 @@ public function viewHoldTableRegistrarTransfer(){
   $regR = $data["registrarremarks"];
   echo "<td>";
   echo   "<button class='btn btn-sm btn-block btn-warning d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsHold$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Clear </button>
-          <a href='viewRegistrar.php?id=$data[id]' class='btn my-1 btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
+          <a href='viewRegistrar.php?id=$data[id]&type=$data[studentType]' class='btn my-1 btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
           include "modals.php";
   echo "</td>";
 
@@ -604,6 +620,7 @@ public function viewHoldTableRegistrarTransfer(){
 
 public function viewHoldTableRegistrarGraduate(){
   $evaluator = evaluatorAssignment();
+  $evaluator_name = evaluatorName();
   $con = $this->con();
   $sql = "SELECT * FROM `ecle_forms` WHERE `registrarclearance`='ON HOLD' AND `studentType` = 'Graduate' AND `expiry` = 'NO' $evaluator ORDER BY `dateReq` ASC";
   $data= $con->prepare($sql);
@@ -613,6 +630,7 @@ public function viewHoldTableRegistrarGraduate(){
   echo "<div class='table-responsive'>";
   echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
+  echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
@@ -634,6 +652,7 @@ public function viewHoldTableRegistrarGraduate(){
   $temp_mname = utf8_decode($data['mname']);
   $mname = str_replace('?', 'Ñ', $temp_mname);
 
+  echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
@@ -699,6 +718,7 @@ public function viewRequestTableAccountingTransfer(){
   echo "<div class='table-responsive'>";
   echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
+  echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
@@ -721,6 +741,7 @@ public function viewRequestTableAccountingTransfer(){
   $temp_mname = utf8_decode($data['mname']);
   $mname = str_replace('?', 'Ñ', $temp_mname);
           
+  echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
@@ -885,6 +906,7 @@ public function viewApproveTableAccountingTransfer(){
   echo "<div class='table-responsive'>";
   echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
+  echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
@@ -905,7 +927,8 @@ public function viewApproveTableAccountingTransfer(){
   $fname = str_replace('?', 'Ñ', $temp_fname);
   $temp_mname = utf8_decode($data['mname']);
   $mname = str_replace('?', 'Ñ', $temp_mname);
-          
+  
+  echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
@@ -975,7 +998,7 @@ public function viewApproveTableAccountingGraduate(){
   echo "</thead>";
   foreach ($result as $data) {
   echo "<tr style='font-size: 13px'>";
-  echo "<td>$data[studentID]</td>";
+  
   
   $temp_lname = utf8_decode($data['lname']);
   $lname = str_replace('?', 'Ñ', $temp_lname);
@@ -983,7 +1006,8 @@ public function viewApproveTableAccountingGraduate(){
   $fname = str_replace('?', 'Ñ', $temp_fname);
   $temp_mname = utf8_decode($data['mname']);
   $mname = str_replace('?', 'Ñ', $temp_mname);
-
+  
+  echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
@@ -1032,6 +1056,7 @@ public function viewHoldTableAccountingTransfer(){
   echo "<div class='table-responsive'>";
   echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
+  echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
@@ -1054,6 +1079,7 @@ public function viewHoldTableAccountingTransfer(){
   $temp_mname = utf8_decode($data['mname']);
   $mname = str_replace('?', 'Ñ', $temp_mname);
           
+  echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
@@ -1127,6 +1153,7 @@ public function viewHoldTableAccountingGraduate(){
   echo "<div class='table-responsive'>";
   echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
+  echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
@@ -1148,6 +1175,7 @@ public function viewHoldTableAccountingGraduate(){
   $temp_mname = utf8_decode($data['mname']);
   $mname = str_replace('?', 'Ñ', $temp_mname);
 
+  echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
@@ -1500,15 +1528,15 @@ public function viewApproveTableDepartmentGraduate(){
   echo "</thead>";
   foreach ($result as $data) {
   echo "<tr style='font-size: 12px'>";
-  echo "<td>$data[studentID]</td>";
-
+  
   $temp_lname = utf8_decode($data['lname']);
   $lname = str_replace('?', 'Ñ', $temp_lname);
   $temp_fname = utf8_decode($data['fname']);
   $fname = str_replace('?', 'Ñ', $temp_fname);
   $temp_mname = utf8_decode($data['mname']);
   $mname = str_replace('?', 'Ñ', $temp_mname);
-
+  
+  echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$data[dateReq]</td>";
@@ -2255,214 +2283,6 @@ public function viewHoldTableLibraryGraduate(){
   echo "</table>";
 }
 
-public function viewReports(){
-
-  echo "<h3 class='text-center'>Reports of all Students</h3>";
-  echo "<div class='table-responsive'>";
-  echo "<table id='reports' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 16px'>";
-  echo "<thead class='thead-dark'>";
-  echo "<a href='reportsDownload.php' style='font-size: 19px; color:blue'>Export table</a>";
-
-  $con = $this->con();
-  $sql = "SELECT * FROM `ecle_forms`";
-  $data= $con->prepare($sql);
-  $data->execute();
-  $result = $data->fetchAll(PDO::FETCH_ASSOC);
-
-  $sql2 = "SHOW columns FROM `ecle_forms`";
-  $data2 = $con->prepare($sql2);
-  $data2->execute();
-  $header = $data2->fetchAll(PDO::FETCH_ASSOC);
-  
-  foreach($header as $head){
-    echo "<th>$head[Field]</th>";
-  }
-  echo "</thead>";
-
-  foreach($result as $data){
-    echo "<tr style='font-size: 12px'>";
-    echo "<td>$data[id]</td>";
-    echo "<td>$data[lname]</td>";
-    echo "<td>$data[fname]</td>";
-    echo "<td>$data[mname]</td>";
-    echo "<td>$data[semester]</td>";
-    echo "<td>$data[sy]</td>";
-    echo "<td>$data[dateReq]</td>";
-    echo "<td>$data[school]</td>";
-    echo "<td>$data[schoolABBR]</td>";
-    echo "<td>$data[studentID]</td>";
-    echo "<td>$data[email]</td>";
-    echo "<td>$data[contact]</td>";
-    echo "<td>$data[bday]</td>";
-    echo "<td>$data[course]</td>";
-    echo "<td>$data[courseABBR]</td>";
-    echo "<td>$data[year]</td>";
-    echo "<td>$data[transferredSchool]</td>";
-    echo "<td>$data[reason]</td>";
-    echo "<td>$data[studentType]</td>";
-    echo "<td>$data[schoolType]</td>";
-    echo "<td>$data[referenceID]</td>";
-    echo "<td>$data[libraryclearance]</td>";
-    echo "<td>$data[libraryremarks]</td>";
-    echo "<td>$data[librarydate]</td>";
-    echo "<td>$data[guidanceclearance]</td>";
-    echo "<td>$data[departmentclearance]</td>";
-    echo "<td>$data[departmentremarks]</td>";
-    echo "<td>$data[departmentdate]</td>";
-    echo "<td>$data[accountingclearance]</td>";
-    echo "<td>$data[accountingremarks]</td>";
-    echo "<td>$data[accountingdate]</td>";
-    echo "<td>$data[registrarclearance]</td>";
-    echo "<td>$data[registrarremarks]</td>";
-    echo "<td>$data[registrardate]</td>";
-    echo "<td>$data[expiry]</td>";
-    echo "</tr>";
-  }
-  echo "</table>";
-}
-
-public function viewTotalRegistrar(){
-  evaluatorAssignment();
-  $evaluator = evaluatorAssignment();
-  $con = $this->con();
-  $sql = "SELECT COUNT(*) FROM `ecle_forms` WHERE `registrarclearance` = 'PENDING' AND `accountingclearance` = 'CLEARED' AND `libraryclearance` = 'CLEARED' AND `departmentclearance` = 'CLEARED' AND `expiry` = 'NO' $evaluator";
-  $data= $con->prepare($sql);
-  $data->execute();
-  $result = $data->fetchColumn();
-  return $result;
-}
-
-public function viewCountPendingRegistrarTR(){
-  evaluatorAssignment();
-  $evaluator = evaluatorAssignment();
-  $con = $this->con();
-  $sql = "SELECT COUNT(*) FROM `ecle_forms` WHERE `registrarclearance` = 'PENDING' AND `accountingclearance` = 'CLEARED' AND `libraryclearance` = 'CLEARED' AND `departmentclearance` = 'CLEARED' AND `expiry` = 'NO' AND `studentType` = 'Transfer' $evaluator";
-  $data= $con->prepare($sql);
-  $data->execute();
-  $result = $data->fetchColumn();
-  return $result;
-}
-
-public function viewCountPendingRegistrarGD(){
-  evaluatorAssignment();
-  $evaluator = evaluatorAssignment();
-  $con = $this->con();
-  $sql = "SELECT COUNT(*) FROM `ecle_forms` WHERE `registrarclearance` = 'PENDING' AND `accountingclearance` = 'CLEARED' AND `libraryclearance` = 'CLEARED' AND `departmentclearance` = 'CLEARED' AND `expiry` = 'NO' AND `studentType` = 'Graduate' $evaluator";
-  $data= $con->prepare($sql);
-  $data->execute();
-  $result = $data->fetchColumn();
-  return $result;
-}
-
-public function viewTotalAccounting(){
-  $con = $this->con();
-  $sql = "SELECT COUNT(*) FROM `ecle_forms` WHERE `accountingclearance` = 'PENDING' AND `expiry` = 'NO'";
-  $data= $con->prepare($sql);
-  $data->execute();
-  $result1 = $data->fetchColumn();
-
-  $sql2 = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE `accountingclearance` = 'PENDING' AND `expiry` = 'NO'";
-  $data2= $con->prepare($sql2);
-  $data2->execute();
-  $result2= $data2->fetchColumn();
-
-  $total = $result1 + $result2;
-  return $total;
-}
-
-public function viewCountPendingAccountingTR(){
-  $con = $this->con();
-  $sql = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE `accountingclearance` = 'PENDING' AND `studentType` = 'Transfer' AND `expiry` = 'NO'";
-  $data= $con->prepare($sql);
-  $data->execute();
-  $result = $data->fetchColumn();
-  return $result;
-}
-
-public function viewCountPendingAccountingGD(){
-  $con = $this->con();
-  $sql = "SELECT COUNT(*) FROM `ecle_forms` WHERE `accountingclearance` = 'PENDING' AND `studentType` = 'Graduate' AND `expiry` = 'NO'";
-  $data= $con->prepare($sql);
-  $data->execute();
-  $result = $data->fetchColumn();
-  return $result;
-}
-
-public function viewTotalLibrary(){
-  $con = $this->con();
-  $sql = "SELECT COUNT(*) FROM `ecle_forms` WHERE `libraryclearance` = 'PENDING' AND `expiry` = 'NO'";
-  $data= $con->prepare($sql);
-  $data->execute();
-  $result1 = $data->fetchColumn();
-
-  $sql2 = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE `libraryclearance` = 'PENDING' AND `expiry` = 'NO'";
-  $data2= $con->prepare($sql2);
-  $data2->execute();
-  $result2 = $data2->fetchColumn();
-
-  $total = $result1 + $result2;
-  return $total;
-}
-
-public function viewCountPendingLibraryTR(){
-  $con = $this->con();
-  $sql = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE `libraryclearance` = 'PENDING' AND `studentType` = 'Transfer' AND `expiry` = 'NO'";
-  $data= $con->prepare($sql);
-  $data->execute();
-  $result = $data->fetchColumn();
-  return $result;
-}
-
-public function viewCountPendingLibraryGD(){
-  $con = $this->con();
-  $sql = "SELECT COUNT(*) FROM `ecle_forms` WHERE `libraryclearance` = 'PENDING' AND `studentType` = 'Graduate' AND `expiry` = 'NO'";
-  $data= $con->prepare($sql);
-  $data->execute();
-  $result = $data->fetchColumn();
-  return $result;
-}
-
-public function viewTotalDean(){
-  $con = $this->con();
-  $user = new user();
-  $department = $user->data()->username;
-  $sql = "SELECT COUNT(*) FROM `ecle_forms` WHERE `departmentclearance` = 'PENDING' AND `schoolABBR` = '$department' AND `expiry` = 'NO'";
-  $data= $con->prepare($sql);
-  $data->execute();
-  $result1 = $data->fetchColumn();
-
-  $sql2 = "SELECT COUNT(*) FROM `ecle_forms_UG` WHERE `departmentclearance` = 'PENDING' AND `schoolABBR` = '$department' AND `expiry` = 'NO'";
-  $data2= $con->prepare($sql2);
-  $data2->execute();
-  $result2 = $data2->fetchColumn();
-
-  $total = $result1 + $result2;
-
-  return $total;
-}
-
-public function viewCountPendingDeanTR(){
-  $con = $this->con();
-  $user = new user();
-  $department = $user->data()->username;
-  $sql = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE `departmentclearance` = 'PENDING' AND `schoolABBR` = '$department' AND `studentType` = 'Transfer' AND `expiry` = 'NO'";
-  $data= $con->prepare($sql);
-  $data->execute();
-  $result = $data->fetchColumn();
-  return $result;
-}
-
-public function viewCountPendingDeanGD(){
-  $con = $this->con();
-  $user = new user();
-  $department = $user->data()->username;
-  $sql = "SELECT COUNT(*) FROM `ecle_forms` WHERE `departmentclearance` = 'PENDING' AND `schoolABBR` = '$department' AND `studentType` = 'Graduate' AND `expiry` = 'NO'";
-  $data= $con->prepare($sql);
-  $data->execute();
-  $result = $data->fetchColumn();
-  return $result;
-}
-
 public function viewRequestTableGuidanceTransfer(){
   $guid_asst_name = guid_asstName();
   $con = $this->con();
@@ -2752,6 +2572,221 @@ public function viewCountPendingGuidanceTR(){
 public function viewTotalGuidance(){
   $con = $this->con();
   $sql = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE `guidanceclearance` = 'PENDING' AND `expiry` = 'NO'";
+  $data= $con->prepare($sql);
+  $data->execute();
+  $result = $data->fetchColumn();
+  return $result;
+}
+
+public function viewReports(){
+
+  echo "<h3 class='text-center'>Reports of all Students</h3>";
+  echo "<div class='table-responsive'>";
+  echo "<table id='reports' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 16px'>";
+  echo "<thead class='thead-dark'>";
+  echo "<a href='reportsDownload.php' style='font-size: 19px; color:blue'>Export table</a>";
+
+  $con = $this->con();
+  $sql = "SELECT * FROM `ecle_forms`";
+  $data= $con->prepare($sql);
+  $data->execute();
+  $result = $data->fetchAll(PDO::FETCH_ASSOC);
+
+  $sql2 = "SHOW columns FROM `ecle_forms`";
+  $data2 = $con->prepare($sql2);
+  $data2->execute();
+  $header = $data2->fetchAll(PDO::FETCH_ASSOC);
+  
+  foreach($header as $head){
+    echo "<th>$head[Field]</th>";
+  }
+  echo "</thead>";
+
+  foreach($result as $data){
+    echo "<tr style='font-size: 12px'>";
+    echo "<td>$data[id]</td>";
+    echo "<td>$data[lname]</td>";
+    echo "<td>$data[fname]</td>";
+    echo "<td>$data[mname]</td>";
+    echo "<td>$data[semester]</td>";
+    echo "<td>$data[sy]</td>";
+    echo "<td>$data[dateReq]</td>";
+    echo "<td>$data[school]</td>";
+    echo "<td>$data[schoolABBR]</td>";
+    echo "<td>$data[studentID]</td>";
+    echo "<td>$data[email]</td>";
+    echo "<td>$data[contact]</td>";
+    echo "<td>$data[bday]</td>";
+    echo "<td>$data[course]</td>";
+    echo "<td>$data[courseABBR]</td>";
+    echo "<td>$data[year]</td>";
+    echo "<td>$data[transferredSchool]</td>";
+    echo "<td>$data[reason]</td>";
+    echo "<td>$data[studentType]</td>";
+    echo "<td>$data[schoolType]</td>";
+    echo "<td>$data[referenceID]</td>";
+    echo "<td>$data[libraryclearance]</td>";
+    echo "<td>$data[libraryremarks]</td>";
+    echo "<td>$data[librarydate]</td>";
+    echo "<td>$data[guidanceclearance]</td>";
+    echo "<td>$data[departmentclearance]</td>";
+    echo "<td>$data[departmentremarks]</td>";
+    echo "<td>$data[departmentdate]</td>";
+    echo "<td>$data[accountingclearance]</td>";
+    echo "<td>$data[accountingremarks]</td>";
+    echo "<td>$data[accountingdate]</td>";
+    echo "<td>$data[registrarclearance]</td>";
+    echo "<td>$data[registrarremarks]</td>";
+    echo "<td>$data[registrardate]</td>";
+    echo "<td>$data[expiry]</td>";
+    echo "</tr>";
+  }
+  echo "</table>";
+}
+
+public function viewTotalRegistrar(){
+  evaluatorAssignment();
+  $evaluator = evaluatorAssignment();
+  $con = $this->con();
+  $sql = "SELECT COUNT(*) FROM `ecle_forms` WHERE `registrarclearance` = 'PENDING' AND `accountingclearance` = 'CLEARED' AND `libraryclearance` = 'CLEARED' AND `departmentclearance` = 'CLEARED' AND `expiry` = 'NO' $evaluator";
+  $data= $con->prepare($sql);
+  $data->execute();
+  $result1 = $data->fetchColumn();
+
+  $sql2 = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE `registrarclearance` = 'PENDING' AND `accountingclearance` = 'CLEARED' AND `libraryclearance` = 'CLEARED' AND `departmentclearance` = 'CLEARED' AND `expiry` = 'NO' $evaluator";
+  $data2= $con->prepare($sql2);
+  $data2->execute();
+  $result2 = $data2->fetchColumn();
+
+  $total = $result1 + $result2;
+  return $total;
+}
+
+public function viewCountPendingRegistrarTR(){
+  evaluatorAssignment();
+  $evaluator = evaluatorAssignment();
+  $con = $this->con();
+  $sql = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE `registrarclearance` = 'PENDING' AND `accountingclearance` = 'CLEARED' AND `libraryclearance` = 'CLEARED' AND `departmentclearance` = 'CLEARED' AND `expiry` = 'NO' AND `studentType` = 'Transfer' $evaluator";
+  $data= $con->prepare($sql);
+  $data->execute();
+  $result = $data->fetchColumn();
+  return $result;
+}
+
+public function viewCountPendingRegistrarGD(){
+  evaluatorAssignment();
+  $evaluator = evaluatorAssignment();
+  $con = $this->con();
+  $sql = "SELECT COUNT(*) FROM `ecle_forms` WHERE `registrarclearance` = 'PENDING' AND `accountingclearance` = 'CLEARED' AND `libraryclearance` = 'CLEARED' AND `departmentclearance` = 'CLEARED' AND `expiry` = 'NO' AND `studentType` = 'Graduate' $evaluator";
+  $data= $con->prepare($sql);
+  $data->execute();
+  $result = $data->fetchColumn();
+  return $result;
+}
+
+public function viewTotalAccounting(){
+  $con = $this->con();
+  $sql = "SELECT COUNT(*) FROM `ecle_forms` WHERE `accountingclearance` = 'PENDING' AND `expiry` = 'NO'";
+  $data= $con->prepare($sql);
+  $data->execute();
+  $result1 = $data->fetchColumn();
+
+  $sql2 = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE `accountingclearance` = 'PENDING' AND `expiry` = 'NO'";
+  $data2= $con->prepare($sql2);
+  $data2->execute();
+  $result2= $data2->fetchColumn();
+
+  $total = $result1 + $result2;
+  return $total;
+}
+
+public function viewCountPendingAccountingTR(){
+  $con = $this->con();
+  $sql = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE `accountingclearance` = 'PENDING' AND `studentType` = 'Transfer' AND `expiry` = 'NO'";
+  $data= $con->prepare($sql);
+  $data->execute();
+  $result = $data->fetchColumn();
+  return $result;
+}
+
+public function viewCountPendingAccountingGD(){
+  $con = $this->con();
+  $sql = "SELECT COUNT(*) FROM `ecle_forms` WHERE `accountingclearance` = 'PENDING' AND `studentType` = 'Graduate' AND `expiry` = 'NO'";
+  $data= $con->prepare($sql);
+  $data->execute();
+  $result = $data->fetchColumn();
+  return $result;
+}
+
+public function viewTotalLibrary(){
+  $con = $this->con();
+  $sql = "SELECT COUNT(*) FROM `ecle_forms` WHERE `libraryclearance` = 'PENDING' AND `expiry` = 'NO'";
+  $data= $con->prepare($sql);
+  $data->execute();
+  $result1 = $data->fetchColumn();
+
+  $sql2 = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE `libraryclearance` = 'PENDING' AND `expiry` = 'NO'";
+  $data2= $con->prepare($sql2);
+  $data2->execute();
+  $result2 = $data2->fetchColumn();
+
+  $total = $result1 + $result2;
+  return $total;
+}
+
+public function viewCountPendingLibraryTR(){
+  $con = $this->con();
+  $sql = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE `libraryclearance` = 'PENDING' AND `studentType` = 'Transfer' AND `expiry` = 'NO'";
+  $data= $con->prepare($sql);
+  $data->execute();
+  $result = $data->fetchColumn();
+  return $result;
+}
+
+public function viewCountPendingLibraryGD(){
+  $con = $this->con();
+  $sql = "SELECT COUNT(*) FROM `ecle_forms` WHERE `libraryclearance` = 'PENDING' AND `studentType` = 'Graduate' AND `expiry` = 'NO'";
+  $data= $con->prepare($sql);
+  $data->execute();
+  $result = $data->fetchColumn();
+  return $result;
+}
+
+public function viewTotalDean(){
+  $con = $this->con();
+  $user = new user();
+  $department = $user->data()->username;
+  $sql = "SELECT COUNT(*) FROM `ecle_forms` WHERE `departmentclearance` = 'PENDING' AND `schoolABBR` = '$department' AND `expiry` = 'NO'";
+  $data= $con->prepare($sql);
+  $data->execute();
+  $result1 = $data->fetchColumn();
+
+  $sql2 = "SELECT COUNT(*) FROM `ecle_forms_UG` WHERE `departmentclearance` = 'PENDING' AND `schoolABBR` = '$department' AND `expiry` = 'NO'";
+  $data2= $con->prepare($sql2);
+  $data2->execute();
+  $result2 = $data2->fetchColumn();
+
+  $total = $result1 + $result2;
+
+  return $total;
+}
+
+public function viewCountPendingDeanTR(){
+  $con = $this->con();
+  $user = new user();
+  $department = $user->data()->username;
+  $sql = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE `departmentclearance` = 'PENDING' AND `schoolABBR` = '$department' AND `studentType` = 'Transfer' AND `expiry` = 'NO'";
+  $data= $con->prepare($sql);
+  $data->execute();
+  $result = $data->fetchColumn();
+  return $result;
+}
+
+public function viewCountPendingDeanGD(){
+  $con = $this->con();
+  $user = new user();
+  $department = $user->data()->username;
+  $sql = "SELECT COUNT(*) FROM `ecle_forms` WHERE `departmentclearance` = 'PENDING' AND `schoolABBR` = '$department' AND `studentType` = 'Graduate' AND `expiry` = 'NO'";
   $data= $con->prepare($sql);
   $data->execute();
   $result = $data->fetchColumn();

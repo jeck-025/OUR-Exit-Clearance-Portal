@@ -299,8 +299,8 @@ function changeP(){
 
 function approveAccounting(){
     if(!empty($_GET['edit'])){
-        $edit = new edit($_GET['edit'], $_GET['user']);
-        if($edit->approveClearanceAccounting($_GET['type'])){
+        $edit = new edit($_GET['edit'], $_GET['user'], $_GET['type']);
+        if($edit->approveClearanceAccounting()){
         } else{
             echo "Error in approving";
         }
@@ -309,8 +309,8 @@ function approveAccounting(){
 
 function approveGuidance(){
     if(!empty($_GET['edit'])){
-        $edit = new edit($_GET['edit'], $_GET['user']);
-        if($edit->approveClearanceGuidance($_GET['type'])){
+        $edit = new edit($_GET['edit'], $_GET['user'], $_GET['type']);
+        if($edit->approveClearanceGuidance()){
         } else{
             echo "Error in approving";
         }
@@ -319,8 +319,8 @@ function approveGuidance(){
 
 function approveDepartment(){
     if(!empty($_GET['edit'])){
-        $edit = new edit($_GET['edit'], $_GET['user']);
-        if($edit->approveClearanceDepartment($_GET['type'])){
+        $edit = new edit($_GET['edit'], $_GET['user'], $_GET['type']);
+        if($edit->approveClearanceDepartment()){
         } else{
             echo "Error in approving";
         }
@@ -329,8 +329,8 @@ function approveDepartment(){
 
 function approveLibrary(){
     if(!empty($_GET['edit'])){
-        $edit = new edit($_GET['edit'], $_GET['user']);
-        if($edit->approveClearanceLibrary($_GET['type'])){
+        $edit = new edit($_GET['edit'], $_GET['user'], $_GET['type']);
+        if($edit->approveClearanceLibrary()){
         } else{
             echo "Error in approving";
         }
@@ -339,7 +339,7 @@ function approveLibrary(){
 
 function approveRegistrar(){
     if(!empty($_GET['edit'])){
-        $edit = new edit($_GET['edit'], $_GET['user']);
+        $edit = new edit($_GET['edit'], $_GET['user'],$_GET['type']);
         if($edit->approveClearanceRegistrar()){
         } else{
             echo "Error in approving";
@@ -349,56 +349,56 @@ function approveRegistrar(){
 
 function holdRegistrar(){
     if(isset($_POST['reset'])){
-        $hold = new hold($_POST['hold'],$_POST['remarks']);
+        $hold = new hold($_POST['hold'],$_POST['remarks'],$_POST['type']);
         $hold->resetHoldClearanceRegistrar();
     }
     elseif(!empty($_POST['hold']) && !empty($_POST['remarks'])){
-        $hold = new hold($_POST['hold'],$_POST['remarks']);
+        $hold = new hold($_POST['hold'],$_POST['remarks'],$_POST['type']);
         $hold->holdClearanceRegistrar();
     }
 }
 
 function holdAccounting(){
     if(isset($_POST['reset'])){
-        $hold = new hold($_POST['hold'],$_POST['remarks']);
-        $hold->resetHoldClearanceAccounting($_POST['type']);
+        $hold = new hold($_POST['hold'],$_POST['remarks'], $_POST['type']);
+        $hold->resetHoldClearanceAccounting();
     }
     elseif(!empty($_POST['hold']) && !empty($_POST['remarks'])){
-        $hold = new hold($_POST['hold'],$_POST['remarks']);
-        $hold->holdClearanceAccounting($_POST['type']);
+        $hold = new hold($_POST['hold'],$_POST['remarks'], $_POST['type']);
+        $hold->holdClearanceAccounting();
     }
 }
 
 function holdGuidance(){
     if(isset($_POST['reset'])){
-        $hold = new hold($_POST['hold'],$_POST['remarks']);
-        $hold->resetHoldClearanceGuidance($_POST['type']);
+        $hold = new hold($_POST['hold'],$_POST['remarks'], $_POST['type']);
+        $hold->resetHoldClearanceGuidance();
     }
     elseif(!empty($_POST['hold']) && !empty($_POST['remarks'])){
-        $hold = new hold($_POST['hold'],$_POST['remarks']);
-        $hold->holdClearanceGuidance($_POST['type']);
+        $hold = new hold($_POST['hold'],$_POST['remarks'], $_POST['type']);
+        $hold->holdClearanceGuidance();
     }
 }
 
 function holdDepartment(){
     if(isset($_POST['reset'])){
-        $hold = new hold($_POST['hold'],$_POST['remarks']);
-        $hold->resetHoldClearanceDepartment($_POST['type']);
+        $hold = new hold($_POST['hold'],$_POST['remarks'], $_POST['type']);
+        $hold->resetHoldClearanceDepartment();
     }
     elseif(!empty($_POST['hold']) && !empty($_POST['remarks'])){
-        $hold = new hold($_POST['hold'],$_POST['remarks']);
-        $hold->holdClearanceDepartment($_POST['type']);
+        $hold = new hold($_POST['hold'],$_POST['remarks'], $_POST['type']);
+        $hold->holdClearanceDepartment();
     }
 }
 
 function holdLibrary(){
     if(isset($_POST['reset'])){
-        $hold = new hold($_POST['hold'],$_POST['remarks']);
-        $hold->resetHoldClearanceLibrary($_POST['type']);
+        $hold = new hold($_POST['hold'],$_POST['remarks'], $_POST['type']);
+        $hold->resetHoldClearanceLibrary();
     }
     elseif(!empty($_POST['hold']) && !empty($_POST['remarks'])){
-        $hold = new hold($_POST['hold'],$_POST['remarks']);
-        $hold->holdClearanceLibrary($_POST['type']);
+        $hold = new hold($_POST['hold'],$_POST['remarks'], $_POST['type']);
+        $hold->holdClearanceLibrary();
     }
 }
 
@@ -488,7 +488,7 @@ function viewLibrary(){
 
 function viewRegistrar(){
     if(!empty($_GET['id'])){
-        $info = new info($_GET['id']);
+        $info = new info($_GET['id'],$_GET['type']);
         if($info->infoRegistrar()){
         }
     }
