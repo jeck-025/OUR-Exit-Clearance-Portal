@@ -12,6 +12,8 @@ $view = new view();
     <link rel="stylesheet" href="resource/css/transfer.css" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     
+
+    
   
     <title>ECLE Transfer Form</title>
     <link rel="icon" type="image/x-icon" href="resource/img/icon.ico" />
@@ -128,12 +130,32 @@ $view = new view();
                 </select>
               </div>
             </div>
+
+            <hr class="divider">
+            <div class="row mt-3 g-3">
+              <div class="col col-md-12 text-center">
+                <p class="fupload_head">Required Documents</p>
+                <p class="fupload_head_cap">Please upload the following documents in PDF Format</p>
+              </div>
+            </div>
+
+            <div class="row g-3">
+              <div class="col-md-6 fupload">
+                <label for="validID" class="form-label">Valid ID of Parent or Guardian</label><br>
+                <input id="validID" class="" accept=".pdf" type="file" name="validID">
+              </div>
+              <div class="col-md-6 fupload">
+                <label for="file_letter" class="form-label">Letter of Intent for Exit</label><br>
+                <input id="file_letter" class="" accept=".pdf" type="file" name="file_letter">
+              </div>
+            </div>
+
               <div class="col-md my-5 text-center">
                 <div>
-                  <button type="submit" class="btn button-submit btn-info">Submit</button>
+                  <button type="submit" class="btn btn-sm button-submit btn-info">Submit</button>
                 </div>
                 <div>
-                  <button onclick="location.href='index.php'" class="btn btn-outline-light mt-2 button-back">Back</button>
+                  <button onclick="location.href='index.php'" class="btn btn-sm btn-outline-light mt-2 button-back">Back</button>
                 </div>
               </div>
             </div>
@@ -144,10 +166,13 @@ $view = new view();
   </div>
 </header>
 
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script> -->
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     

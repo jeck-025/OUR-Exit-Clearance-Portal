@@ -13,7 +13,6 @@ class view extends config{
             $rows =$data-> fetchAll(PDO::FETCH_OBJ);
                 foreach ($rows as $row) {
                   echo '<option data-tokens=".'.$row->college_school.'." value="'.$row->college_school.'">'.$row->college_school.'</option>';
-                  echo 'success';
                 }
         }
 
@@ -26,7 +25,7 @@ class view extends config{
             $rows =$data-> fetchAll(PDO::FETCH_OBJ);
                 foreach ($rows as $row) {
                   echo '<option data-tokens=".'.$row->course.'." value="'.$row->course.'">'.$row->course.'</option>';
-                  echo 'success';
+                  // echo 'success';
                 }
         }
 
@@ -46,7 +45,7 @@ class view extends config{
           $rows =$data-> fetchAll(PDO::FETCH_OBJ);
               foreach ($rows as $row) {
                 echo '<option data-tokens=".'.$row->university.'." value="'.$row->university.'">'.$row->university.'</option>';
-                echo 'success';
+                // echo 'success';
               }
       }
 
