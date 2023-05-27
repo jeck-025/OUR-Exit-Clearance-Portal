@@ -4,9 +4,9 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/ecle/vendor/sendmailTransfer.php';
 
 class insert extends config{
 
-    public $fname,$lname,$mname,$studID,$email,$contact,$course,$year;
+    public $fname,$lname,$mname,$studID,$email,$contact,$course,$year,$university,$reason, $validID, $file_letter;
     
-    function __construct($fname=null,$lname=null,$mname=null,$studID=null,$email=null,$contact=null,$course=null,$bday=null,$year=null, $university=null, $reason=null){
+    function __construct($fname=null,$lname=null,$mname=null,$studID=null,$email=null,$contact=null,$course=null,$bday=null,$year=null, $university=null, $reason=null, $validID=null, $file_letter=null){
 
     $this->fname =$fname;
     $this->lname =$lname;
@@ -15,13 +15,52 @@ class insert extends config{
     $this->email =$email;
     $this->contact =$contact;
     $this->course =$course;
-    $this->year =$year;
     $this->bday =$bday;
+    $this->year =$year;
     $this->university = $university;
     $this->reason = $reason;
+
+    $this->valid_ID = $validID;
+    //$vID = strtolower(pathinfo($this->valid_ID['name'], PATHINFO_EXTENSION));
+
+    $this->file_Letter = $file_letter;
+    //$vLtr = strtolower(pathinfo($this->file_Letter['name'], PATHINFO_EXTENSION));
+
+    //echo vLtr;
+    die();
+
+        if($vLtr !== "pdf" || $vLtr == ""){
+        echo "<div class='alert alert-danger' role='alert'>
+                Valid ID: File must be PDF.
+            </div>";
+        }else 
+        if($vID !== "pdf" || $vID == ""){
+            echo "<div class='alert alert-danger' role='alert'>
+                    Letter of Intent: File must be PDF.
+                </div>";
+        }else{
+            $ext = strtolower(pathinfo($this->file_letter['name'], PATHINFO_EXTENSION));
+            $this->file_letter['name'] = $studID."_".$this->lname."_letter.".$ext;
+            $storage = "resource/uploads";
+            $this->ltrfile = $storage . $this->file_letter['name'];
+            move_uploaded_file($this->file_letter['tmp_name'], $this->ltrfile);
+
+            $form = strtolower(pathinfo($this->validID['name'], PATHINFO_EXTENSION));
+            $this->validID['name'] = $this->studID."_".$this->lname."_id.".$form;
+            $storage = "resource/uploads";
+            $this->idFile = $storage . $this->validID['name'];
+            move_uploaded_file($this->validID['tmp_name'], $this->idFile);
+        }
+
+        die();
+    
     }
 
     public function insertApplication(){
+
+
+        die();
+
         $transnumber = uniqid('Transfer');
         $studentType = "Transfer";
         $config = new config;
