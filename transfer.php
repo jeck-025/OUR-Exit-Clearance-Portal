@@ -7,7 +7,7 @@ $view = new view();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script src="https://kit.fontawesome.com/ee4d206cc2.js"></script>
+    <script src="https://kit.fontawesome.com/03ca298d2d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="resource/css/transfer.css" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
@@ -50,7 +50,7 @@ $view = new view();
           }
           ?>
 
-          <form method="POST">
+          <form method="POST" enctype="multipart/form-data">
             <div class="row mt-3 g-3">
               <!---Firstname--->
               <div class="col-md-4">

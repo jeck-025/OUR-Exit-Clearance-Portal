@@ -21,35 +21,45 @@ class insert extends config{
     $this->reason = $reason;
 
     $this->valid_ID = $validID;
-    //$vID = strtolower(pathinfo($this->valid_ID['name'], PATHINFO_EXTENSION));
+    $vID = strtolower(pathinfo($this->valid_ID['name'], PATHINFO_EXTENSION));
 
     $this->file_Letter = $file_letter;
-    //$vLtr = strtolower(pathinfo($this->file_Letter['name'], PATHINFO_EXTENSION));
+    $vLtr = strtolower(pathinfo($this->file_Letter['name'], PATHINFO_EXTENSION));
 
-    //echo vLtr;
-    die();
+    $error = 0;
+
+    // echo $vID;
+    // echo $vLtr;
 
         if($vLtr !== "pdf" || $vLtr == ""){
-        echo "<div class='alert alert-danger' role='alert'>
-                Valid ID: File must be PDF.
-            </div>";
+            echo "<div class='alert alert-danger' role='alert'>
+                    <i class='fa-solid fa-triangle-exclamation'></i> Error: Valid ID: File must be PDF.
+                </div>";
+            $error = $error + 1;
         }else 
         if($vID !== "pdf" || $vID == ""){
             echo "<div class='alert alert-danger' role='alert'>
-                    Letter of Intent: File must be PDF.
+                    <i class='fa-solid fa-triangle-exclamation'></i> Error: Letter of Intent: File must be PDF.
                 </div>";
+            $error = $error + 1;
         }else{
-            $ext = strtolower(pathinfo($this->file_letter['name'], PATHINFO_EXTENSION));
-            $this->file_letter['name'] = $studID."_".$this->lname."_letter.".$ext;
-            $storage = "resource/uploads";
-            $this->ltrfile = $storage . $this->file_letter['name'];
-            move_uploaded_file($this->file_letter['tmp_name'], $this->ltrfile);
+            // $ext = strtolower(pathinfo($this->file_letter['name'], PATHINFO_EXTENSION));
+            // $this->file_letter['name'] = $studID."_".$this->lname."_letter.".$ext;
+            // $storage = "resource/uploads";
+            // $this->ltrfile = $storage . $this->file_letter['name'];
+            // move_uploaded_file($this->file_letter['tmp_name'], $this->ltrfile);
 
-            $form = strtolower(pathinfo($this->validID['name'], PATHINFO_EXTENSION));
-            $this->validID['name'] = $this->studID."_".$this->lname."_id.".$form;
-            $storage = "resource/uploads";
-            $this->idFile = $storage . $this->validID['name'];
-            move_uploaded_file($this->validID['tmp_name'], $this->idFile);
+            // $form = strtolower(pathinfo($this->validID['name'], PATHINFO_EXTENSION));
+            // $this->validID['name'] = $this->studID."_".$this->lname."_id.".$form;
+            // $storage = "resource/uploads";
+            // $this->idFile = $storage . $this->validID['name'];
+            // move_uploaded_file($this->validID['tmp_name'], $this->idFile);
+        }
+
+        if($error > 0){
+            echo "<div class='text-center pb-5'>
+                <button onclick='history.back()' class='btn btn-sm btn-outline-light mt-2 button-back'>Go Back</button>
+            </div>";
         }
 
         die();
