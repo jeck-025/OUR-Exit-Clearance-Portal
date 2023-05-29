@@ -36,7 +36,7 @@ $view = new view();
 
       <div class="container mt-5">
         <div class="row">
-          <div class="content px-4 m-auto justify-content-center">
+          <div class="content px-4 m-auto justify-content-center responsive">
             <div class="col-md pt-3 text-center">
               <!-- <img class="ecleLogo" src="resource/img/ecle-logo-new.png"> -->
               <h2 class="head-text"><img class="ecleLogo" src="resource/img/ecle-logo-new.png">Transfer Form</h2>
