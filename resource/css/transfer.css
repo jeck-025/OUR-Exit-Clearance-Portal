@@ -8,7 +8,7 @@ html{
   background-color: white;
   color:#555;
   font-family: "Montserrat", "sans-serif";
-  font-size: 15px;
+  font-size: 13px;
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
 }
@@ -99,4 +99,9 @@ select{
   font-weight: bold;
   color:red;
   padding-bottom: 15px;
+}
+.fupload_captcha{
+  font-weight: bold;
+  color: yellow;
+  padding-bottom: 10px;
 }

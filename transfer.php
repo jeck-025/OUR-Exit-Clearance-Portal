@@ -38,15 +38,19 @@ $view = new view();
         <div class="row">
           <div class="content px-4 m-auto justify-content-center">
             <div class="col-md pt-3 text-center">
-              <img class="ecleLogo" src="resource/img/ecle-logo-new.png">
-              <h2 class="head-text">Transfer Form</h2>
+              <!-- <img class="ecleLogo" src="resource/img/ecle-logo-new.png"> -->
+              <h2 class="head-text"><img class="ecleLogo" src="resource/img/ecle-logo-new.png">Transfer Form</h2>
               <hr class="divider">
             </div>
 
           <?php
           if(!empty($_POST)){
-            $insert= new insert($_POST['fname'], $_POST['lname'], $_POST['mname'], $_POST['studID'], $_POST['email'], $_POST['contact'], $_POST['course'], $_POST['bday'], $_POST['year'], $_POST['university'], $_POST['reason'], $_FILES['validID'], $_FILES['file_letter']);
-            //$insert->insertApplication();
+            $insert= new insert($_POST['fname'], $_POST['lname'], $_POST['mname'], $_POST['studID'], 
+                                $_POST['email'], $_POST['contact'], $_POST['course'], $_POST['bday'], 
+                                $_POST['year'], $_POST['university'], $_POST['reason'], 
+                                $_FILES['validID'],$_FILES['validID']['tmp_name'], 
+                                $_FILES['file_letter'],$_FILES['file_letter']['tmp_name']);
+            $insert->insertApplication();
           }
           ?>
 
@@ -139,15 +143,27 @@ $view = new view();
             <div class="row g-3">
               <div class="col-md-6 fupload">
                 <label for="validID" class="form-label">Valid ID of Parent or Guardian</label><br>
-                <input id="validID" class="form-control-file form-control" accept=".pdf" type="file" name="validID">
+                <input id="validID" class="form-control-file " accept=".pdf" type="file" name="validID">
               </div>
               <div class="col-md-6 fupload">
                 <label for="file_letter" class="form-label">Letter of Intent for Exit</label><br>
-                <input id="file_letter" class="form-control-file form-control" accept=".pdf" type="file" name="file_letter">
+                <input id="file_letter" class="form-control-file " accept=".pdf" type="file" name="file_letter">
               </div>
             </div>
 
-              <div class="col-md my-5 text-center">
+            <div class="row mt-4 g-3">
+              <div class="col col-md-12 text-center">
+                <!-- <div class="form-group col-md-5 justify-content-center"> -->
+                  <p class="fupload_captcha">Please complete the captcha below before submitting.</p>
+                  <p><img src="captcha.php" width="120" height="30" alt="CAPTCHA"></p>
+                  <p><input type="text" size="6" maxlength="5" name="captcha" value="">
+                  <small>Copy the digits from the image into this box</small></p>
+                  <label>&nbsp;</label>
+                <!-- </div> -->
+              </div>
+            </div>
+
+              <div class="col-md pb-5 text-center">
                 <div>
                   <button type="submit" class="btn btn-sm button-submit btn-info">Submit</button>
                 </div>
