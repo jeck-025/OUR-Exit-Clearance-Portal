@@ -151,6 +151,7 @@ $view = new view();
               </div>
             </div>
 
+            <hr class="divider">
             <div class="row mt-4 g-3">
               <div class="col col-md-12 text-center">
                 <!-- <div class="form-group col-md-5 justify-content-center"> -->
