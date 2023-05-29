@@ -126,7 +126,7 @@ select{
 /*under 750*/
 @media only screen and (max-width: 767px) {
   .content {
-      max-width: 50% !important;
+      max-width: 75% !important;
       margin-left: 0;
     }
   
@@ -226,3 +226,20 @@ select{
       border-radius: 5px;
     }
  }
+
+ @media only screen and (min-width: 600px){
+    .content {
+        max-width: 75% !important;
+        margin-left: 0;
+      }
+    
+      .button-submit {
+        width: 100%;
+        border-radius: 5px;
+      }
+    
+      .button-back {
+        width: 100%;
+        border-radius: 5px;
+      }
+    }
