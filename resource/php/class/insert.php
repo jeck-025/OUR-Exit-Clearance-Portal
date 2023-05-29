@@ -8,69 +8,64 @@ class insert extends config{
     
     function __construct($fname=null,$lname=null,$mname=null,$studID=null,$email=null,$contact=null,$course=null,$bday=null,$year=null, $university=null, $reason=null, $validID=null, $validID_tmp=null, $file_letter=null, $file_letter_tmp = null){
 
-    $this->fname =$fname;
-    $this->lname =$lname;
-    $this->mname =$mname;
-    $this->studID =$studID;
-    $this->email =$email;
-    $this->contact =$contact;
-    $this->course =$course;
-    $this->bday =$bday;
-    $this->year =$year;
-    $this->university = $university;
-    $this->reason = $reason;
-    $this->valid_ID = $validID;
-    $this->file_Letter = $file_letter;
+        $this->fname =$fname;
+        $this->lname =$lname;
+        $this->mname =$mname;
+        $this->studID =$studID;
+        $this->email =$email;
+        $this->contact =$contact;
+        $this->course =$course;
+        $this->bday =$bday;
+        $this->year =$year;
+        $this->university = $university;
+        $this->reason = $reason;
+        $this->valid_ID = $validID;
+        $this->file_Letter = $file_letter;
+        
+        //Get Filename Extensions
+        $vID = strtolower(pathinfo($this->valid_ID['name'], PATHINFO_EXTENSION));
+        $vLtr = strtolower(pathinfo($this->file_Letter['name'], PATHINFO_EXTENSION));
+
+        //Get Temporary Filenames from Temporary Folder
+        $this->file_letter_tmp = $file_letter_tmp;
+        $this->validID_tmp = $validID_tmp;
+        
+        //Error counter
+        $error = 0;
+
+        if($vLtr !== "pdf" || $vLtr == ""){
+            echo "<div class='alert alert-danger' role='alert'>
+                    <i class='fa-solid fa-triangle-exclamation'></i> Error: Valid ID: File must be PDF.
+                </div>";
+            $error = $error + 1;
+        }
     
-    //Files
-    // //Get Filenames
-    // $filenameVID = $this->validID['name'];
-    // $filenameLTR = $this->file_letter['name'];
-
-    //Get Filename Extensions
-    $vID = strtolower(pathinfo($this->valid_ID['name'], PATHINFO_EXTENSION));
-    $vLtr = strtolower(pathinfo($this->file_Letter['name'], PATHINFO_EXTENSION));
-
-    //Get Temporary Filenames from Temporary Folder
-    $this->file_letter_tmp = $file_letter_tmp;
-    $this->validID_tmp = $validID_tmp;
-    
-
-    $error = 0;
-
-    if($vLtr !== "pdf" || $vLtr == ""){
-        echo "<div class='alert alert-danger' role='alert'>
-                <i class='fa-solid fa-triangle-exclamation'></i> Error: Valid ID: File must be PDF.
-            </div>";
-        $error = $error + 1;
-    }elseif($vID !== "pdf" || $vID == ""){
-        echo "<div class='alert alert-danger' role='alert'>
-                <i class='fa-solid fa-triangle-exclamation'></i> Error: Letter of Intent: File must be PDF.
-            </div>";
-        $error = $error + 1;
-    }else{
-        $this->valid_ID['name'] = $this->studID."_".$this->lname."_".$this->fname."_id.".$vID;
-        $storage2 = "resource/uploads/ids/";
-        $this->idFile = $storage2 . $this->valid_ID['name'];
-        move_uploaded_file($this->validID_tmp, $this->idFile);
-
-        $this->file_letter['name'] = $studID."_".$this->lname."_".$this->fname."_letter.".$vLtr;
-        $storage = "resource/uploads/letters/";
-        $this->ltrfile = $storage . $this->file_letter['name'];
-        move_uploaded_file($this->file_letter_tmp, $this->ltrfile);
-
-        //TESTER:
-        // echo "File Extension: ".$vID."<br>";
-        // echo "Filename: ".$this->valid_ID['name']."<br>";
-        // echo "File Upload Folder: ".$storage2."<br>";
-        // echo "Complete URL: ".$this->idFile;
+        if($vID !== "pdf" || $vID == ""){
+            echo "<div class='alert alert-danger' role='alert'>
+                    <i class='fa-solid fa-triangle-exclamation'></i> Error: Letter of Intent: File must be PDF.
+                </div>";
+            $error = $error + 1;
         }
 
-        if($error > 0){
-            echo "<div class='text-center pb-5'>
-                <button onclick='history.back()' class='btn btn-sm btn-outline-light mt-2 button-back'>Go Back</button>
-            </div>";
-        }    
+        if($error == 0){
+            $this->valid_ID['name'] = $this->studID."_".$this->lname."_".$this->fname."_id.".$vID;
+            $storage2 = "resource/uploads/ids/";
+            $this->idFile = $storage2 . $this->valid_ID['name'];
+            move_uploaded_file($this->validID_tmp, $this->idFile);
+
+            $this->file_letter['name'] = $studID."_".$this->lname."_".$this->fname."_letter.".$vLtr;
+            $storage = "resource/uploads/letters/";
+            $this->ltrfile = $storage . $this->file_letter['name'];
+            move_uploaded_file($this->file_letter_tmp, $this->ltrfile);
+
+            //TESTER:
+            // echo "File Extension: ".$vID."<br>";
+            // echo "Filename: ".$this->valid_ID['name']."<br>";
+            // echo "File Upload Folder: ".$storage2."<br>";
+            // echo "Complete URL: ".$this->idFile;
+
+            $this->insertApplication();
+        }
     }
 
     public function insertApplication(){

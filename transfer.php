@@ -39,7 +39,8 @@ $view = new view();
           <div class="content px-4 m-auto justify-content-center responsive">
             <div class="col-md pt-3 text-center">
               <!-- <img class="ecleLogo" src="resource/img/ecle-logo-new.png"> -->
-              <h2 class="head-text"><img class="ecleLogo" src="resource/img/ecle-logo-new.png">Transfer Form</h2>
+              <h2 class="head-text"><img class="ecleLogo" src="resource/img/ecle-logo-new.png">Exit Clearance Form for Undergraduates</h2>
+              
               <hr class="divider">
             </div>
 
@@ -50,7 +51,7 @@ $view = new view();
                                 $_POST['year'], $_POST['university'], $_POST['reason'], 
                                 $_FILES['validID'],$_FILES['validID']['tmp_name'], 
                                 $_FILES['file_letter'],$_FILES['file_letter']['tmp_name']);
-            $insert->insertApplication();
+            //$insert->insertApplication();
           }
           ?>
 
@@ -136,18 +137,18 @@ $view = new view();
             <div class="row mt-3 g-3">
               <div class="col col-md-12 text-center">
                 <p class="fupload_head">Required Documents</p>
-                <p class="fupload_head_cap">Please upload the following documents in PDF Format</p>
+                <p class="fupload_head_cap">Please attach the following documents in PDF Format</p>
               </div>
             </div>
 
             <div class="row g-3">
               <div class="col-md-6 fupload">
-                <label for="validID" class="form-label">Valid ID of Parent or Guardian</label><br>
-                <input id="validID" class="form-control-file " accept=".pdf" type="file" name="validID">
+                <label for="validID" class="form-label"><b>Valid ID of Parent or Guardian</b></label><br>
+                <input id="validID" class="form-control-file " accept=".pdf" type="file" name="validID" required>
               </div>
               <div class="col-md-6 fupload">
-                <label for="file_letter" class="form-label">Letter of Intent for Exit</label><br>
-                <input id="file_letter" class="form-control-file " accept=".pdf" type="file" name="file_letter">
+                <label for="file_letter" class="form-label"><b>Letter of Intent for Exit</b></label><br>
+                <input id="file_letter" class="form-control-file " accept=".pdf" type="file" name="file_letter" required>
               </div>
             </div>
 
@@ -169,7 +170,8 @@ $view = new view();
                   <button type="submit" class="btn btn-sm button-submit btn-info">Submit</button>
                 </div>
                 <div>
-                  <button onclick="location.href='index.php'" class="btn btn-sm btn-outline-light mt-2 button-back">Back</button>
+                  <!-- <button onclick="location.href='index.php'" class="btn btn-sm btn-outline-light mt-2 button-back">Back</button> -->
+                  <button onclick="history.back()" class="btn btn-sm btn-outline-light mt-2 button-back">Back</button>
                 </div>
               </div>
             </div>

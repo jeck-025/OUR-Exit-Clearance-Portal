@@ -61,6 +61,8 @@ class info extends config{
             $guidanceC = $result[0]["guidanceclearance"];
             $guidanceR = $result[0]["guidanceremarks"];
             $rawGuidanceD = $result[0]["guidancedate"];
+            $attachedID = $result[0]["file_validID"];
+            $attachedLTR = $result[0]["file_letter"];
           }
 
         // DATE CONVERSIONS -------------------------------------------------------------------------------------------------
@@ -253,7 +255,7 @@ class info extends config{
           //do nothing
         }
           
-        echo "<h3 class='text-center'> Student Information </h3>";
+        echo "<h3 class='text-center'><i class='fas fa-user-circle'></i> <u> Student Information </u> </h3>";
           
         echo "<div class='table-responsive pt-4 col-12'>";
           echo "<div class='row pb-2 shadow p-3 mb-5 bg-white rounded'>";
@@ -309,8 +311,13 @@ class info extends config{
                   }else{
                     echo"<button class='btn btn-sm btn-block btn-warning d-block' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#acctHold$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Hold Clearance</button>";
                   }
+
+                  if($studType == "Transfer"){
+                    echo "<a href='resource/uploads/ids/$attachedID' class='btn btn-primary btn-sm btn-block d-block' target='_blank'><i class='fa-solid fa-id-card'></i> View Attached ID</a>";
+                    echo "<a href='resource/uploads/letters/$attachedLTR' class='btn btn-primary btn-sm btn-block d-block' target='_blank'><i class='fa-solid fa-envelope'></i> View Attached Letter</a>";
+                  }
                           
-                  echo "<a href='acct-$urlA-$urlB.php' class='btn btn-info btn-sm my-1 d-block ' data-toggle='tooltip' data-placement='top' title='Back'><i class='fa-solid fa-arrow-left'></i> Back </a>";
+                  echo "<a href='acct-$urlA-$urlB.php' class='btn btn-info btn-sm my-2 d-block ' data-toggle='tooltip' data-placement='top' title='Back'><i class='fa-solid fa-arrow-left'></i> Back </a>";
                         include "modals.php";
                   echo "</tr></td>";
                 echo "</table>";
@@ -323,8 +330,12 @@ class info extends config{
                 echo "<table class='table table-borderless shadow p-3 mb-5 bg-white rounded' width='100%'>";
                     echo "<th class='stathead'>Dean's Office</th>";
                     echo "<th> </th>";
-                    echo "<th class='stathead'>Guidance Office</th>";
-                    echo "<th> </th>";
+
+                    if($studType == "Transfer"){
+                      echo "<th class='stathead'>Guidance Office</th>";
+                      echo "<th> </th>";
+                    }
+
                     echo "<th class='stathead'>Library</th>";
                     echo "<th> </th>";
                     echo "<th class='stathead'>Accounting</th>";
@@ -333,8 +344,12 @@ class info extends config{
                     echo "<tr>";
                       echo "<td class='$iconClassD'>$iconDept</td>";
                       echo "<td class='$iconClassD'>∙∙∙</td>";
-                      echo "<td class='$iconClassG'>$iconGuidance</td>";
-                      echo "<td class='$iconClassG'>∙∙∙</td>";
+
+                      if($studType == "Transfer"){
+                        echo "<td class='$iconClassG'>$iconGuidance</td>";
+                        echo "<td class='$iconClassG'>∙∙∙</td>";
+                      }
+
                       echo "<td class='$iconClassL'>$iconLibrary</td>";
                       echo "<td class='$iconClassL'>∙∙∙</td>";
                       echo "<td class='$iconClassA'>$iconAcct</td>";
@@ -344,8 +359,12 @@ class info extends config{
                     echo "<tr>";
                       echo "<td class='statcap'>$dispDeptD</td>";
                       echo "<td></td>";
-                      echo "<td class='statcap'>$dispGuidanceD</td>";
-                      echo "<td></td>";
+
+                      if($studType == "Transfer"){
+                        echo "<td class='statcap'>$dispGuidanceD</td>";
+                        echo "<td></td>";
+
+                      }
                       echo "<td class='statcap'>$dispLibraryD</td>";
                       echo "<td></td>";
                       echo "<td class='statcap'>$dispAcctD</td>";
@@ -362,8 +381,12 @@ class info extends config{
                   echo "<tr>";
                     echo "<td>$dispDeptR</td>";
                   echo "</tr>";
-                    echo "<td>$dispGuidanceR</td>";
-                  echo "</tr>";
+
+                      if($studType == "Transfer"){
+                          echo "<td>$dispGuidanceR</td>";
+                        echo "</tr>";
+                      }
+
                     echo "<td >$dispLibraryR</td>";
                   echo "</tr>";
                     echo "<td>$dispAcctR</td>";
@@ -424,6 +447,9 @@ class info extends config{
         $regR = $result[0]["registrarremarks"];
         $rawRegD = $result[0]["registrardate"];
         $guid_asst_name = guid_asstName();
+
+        $attachedID = $result[0]["file_validID"];
+        $attachedLTR = $result[0]["file_letter"];
 
       // DATE CONVERSIONS -------------------------------------------------------------------------------------------------
         if(!empty($rawBday)){                             
@@ -609,7 +635,7 @@ class info extends config{
         //do nothing
       // }
         
-      echo "<h3 class='text-center'> Student Information </h3>";
+      echo "<h3 class='text-center'><i class='fas fa-user-circle'></i> <u> Student Information </u> </h3>";
         
       echo "<div class='table-responsive pt-4 col-12'>";
         echo "<div class='row pb-2 shadow p-3 mb-5 bg-white rounded'>";
@@ -665,8 +691,13 @@ class info extends config{
                 }else{
                   echo"<button class='btn btn-sm btn-block btn-warning d-block' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#guidHold$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Hold Clearance</button>";
                 }
-                        
-                echo "<a href='guid-$urlA-$urlB.php' class='btn btn-info btn-sm my-1 d-block ' data-toggle='tooltip' data-placement='top' title='Back'><i class='fa-solid fa-arrow-left'></i> Back </a>";
+                
+                if($studType == "Transfer"){
+                    echo "<a href='resource/uploads/ids/$attachedID' class='btn btn-primary btn-sm btn-block d-block' target='_blank'><i class='fa-solid fa-id-card'></i> View Attached ID</a>";
+                    echo "<a href='resource/uploads/letters/$attachedLTR' class='btn btn-primary btn-sm btn-block d-block' target='_blank'><i class='fa-solid fa-envelope'></i> View Attached Letter</a>";
+                  }
+
+                echo "<a href='guid-$urlA-$urlB.php' class='btn btn-info btn-sm my-2 d-block ' data-toggle='tooltip' data-placement='top' title='Back'><i class='fa-solid fa-arrow-left'></i> Back </a>";
                       include "modals.php";
                 echo "</tr></td>";
               echo "</table>";
@@ -783,6 +814,8 @@ class info extends config{
             $guidanceC = $result[0]["guidanceclearance"];
             $guidanceR = $result[0]["guidanceremarks"];
             $rawGuidanceD = $result[0]["guidancedate"];
+            $attachedID = $result[0]["file_validID"];
+            $attachedLTR = $result[0]["file_letter"];
           }
 
         // DATE CONVERSIONS -------------------------------------------------------------------------------------------------
@@ -975,7 +1008,7 @@ class info extends config{
           //do nothing
         }
           
-        echo "<h3 class='text-center'> Student Information </h3>";
+        echo "<h3 class='text-center'><i class='fas fa-user-circle'></i> <u> Student Information </u> </h3>";
           
         echo "<div class='table-responsive pt-4 col-12'>";
           echo "<div class='row pb-2 shadow p-3 mb-5 bg-white rounded'>";
@@ -1031,7 +1064,12 @@ class info extends config{
                     echo"<button class='btn btn-sm btn-block btn-warning d-block' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#librHold$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Hold Clearance</button>";
                   }
                           
-                  echo "<a href='libr-$urlA-$urlB.php' class='btn btn-info btn-sm my-1 d-block ' data-toggle='tooltip' data-placement='top' title='Back'><i class='fa-solid fa-arrow-left'></i> Back </a>";
+                  if($studType == "Transfer"){
+                    echo "<a href='resource/uploads/ids/$attachedID' class='btn btn-primary btn-sm btn-block d-block' target='_blank'><i class='fa-solid fa-id-card'></i> View Attached ID</a>";
+                    echo "<a href='resource/uploads/letters/$attachedLTR' class='btn btn-primary btn-sm btn-block d-block' target='_blank'><i class='fa-solid fa-envelope'></i> View Attached Letter</a>";
+                  }
+
+                  echo "<a href='libr-$urlA-$urlB.php' class='btn btn-info btn-sm my-2 d-block ' data-toggle='tooltip' data-placement='top' title='Back'><i class='fa-solid fa-arrow-left'></i> Back </a>";
                         include "modals.php";
                   echo "</tr></td>";
                 echo "</table>";
@@ -1044,8 +1082,12 @@ class info extends config{
                 echo "<table class='table table-borderless shadow p-3 mb-5 bg-white rounded' width='100%'>";
                     echo "<th class='stathead'>Dean's Ofc.</th>";
                     echo "<th> </th>";
-                    echo "<th class='stathead'>Guidance Ofc.</th>";
-                    echo "<th> </th>";
+
+                    if($studType == "Transfer"){
+                      echo "<th class='stathead'>Guidance Ofc.</th>";
+                      echo "<th> </th>";
+                    }
+
                     echo "<th class='stathead'>Library</th>";
                     echo "<th> </th>";
                     echo "<th class='stathead'>Accounting</th>";
@@ -1054,8 +1096,12 @@ class info extends config{
                     echo "<tr>";
                       echo "<td class='$iconClassD'>$iconDept</td>";
                       echo "<td class='$iconClassD'>∙∙∙</td>";
-                      echo "<td class='$iconClassG'>$iconGuidance</td>";
-                      echo "<td class='$iconClassG'>∙∙∙</td>";
+
+                      if($studType == "Transfer"){
+                        echo "<td class='$iconClassG'>$iconGuidance</td>";
+                        echo "<td class='$iconClassG'>∙∙∙</td>";
+                      }
+
                       echo "<td class='$iconClassL'>$iconLibrary</td>";
                       echo "<td class='$iconClassL'>∙∙∙</td>";
                       echo "<td class='$iconClassA'>$iconAcct</td>";
@@ -1065,8 +1111,12 @@ class info extends config{
                     echo "<tr>";
                       echo "<td class='statcap'>$dispDeptD</td>";
                       echo "<td></td>";
-                      echo "<td class='statcap'>$dispGuidanceD</td>";
-                      echo "<td></td>";
+
+                      if($studType == "Transfer"){
+                        echo "<td class='statcap'>$dispGuidanceD</td>";
+                        echo "<td></td>";
+                      }
+
                       echo "<td class='statcap'>$dispLibraryD</td>";
                       echo "<td></td>";
                       echo "<td class='statcap'>$dispAcctD</td>";
@@ -1083,8 +1133,12 @@ class info extends config{
                   echo "<tr>";
                     echo "<td>$dispDeptR</td>";
                   echo "</tr>";
-                    echo "<td>$dispGuidanceR</td>";
-                  echo "</tr>";
+
+                      if($studType == "Transfer"){
+                          echo "<td>$dispGuidanceR</td>";
+                        echo "</tr>";
+                      }
+
                     echo "<td >$dispLibraryR</td>";
                   echo "</tr>";
                     echo "<td>$dispAcctR</td>";
@@ -1098,7 +1152,7 @@ class info extends config{
 
     public function infoRegistrar(){
         $con = $this->con();
-        echo $this->type;
+        //echo $this->type;
         if($this->type == "Graduate"){
           $sql = "SELECT * FROM `ecle_forms` WHERE `id` = '$this->id'";
         }else{
@@ -1150,6 +1204,8 @@ class info extends config{
             $guidanceC = $result[0]["guidanceclearance"];
             $guidanceR = $result[0]["guidanceremarks"];
             $rawGuidanceD = $result[0]["guidancedate"];
+            $attachedID = $result[0]["file_validID"];
+            $attachedLTR = $result[0]["file_letter"];
           }
 
         // DATE CONVERSIONS -------------------------------------------------------------------------------------------------
@@ -1353,7 +1409,7 @@ class info extends config{
           $btncolor_hold = "btn-secondary";
         }
           
-        echo "<h3 class='text-center'> Student Information </h3>";
+        echo "<h3 class='text-center'><i class='fas fa-user-circle'></i> <u> Student Information </u> </h3>";
      
         echo "<div class='table-responsive pt-4 col-12'>";
           echo "<div class='row pb-2 shadow p-3 mb-5 bg-white rounded'>";
@@ -1408,8 +1464,13 @@ class info extends config{
                   }else{
                     echo"<button class='btn btn-sm btn-block $btnlock $btncolor_hold d-block' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsHold$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Hold Clearance</button>";
                   }
-                          
-                  echo "<a href='regs-$urlA-$urlB.php' class='btn btn-info btn-sm my-1 d-block ' data-toggle='tooltip' data-placement='top' title='Back'><i class='fa-solid fa-arrow-left'></i> Back </a>";
+                  
+                  if($studType == "Transfer"){
+                    echo "<a href='resource/uploads/ids/$attachedID' class='btn btn-primary btn-sm btn-block d-block' target='_blank'><i class='fa-solid fa-id-card'></i> View Attached ID</a>";
+                    echo "<a href='resource/uploads/letters/$attachedLTR' class='btn btn-primary btn-sm btn-block d-block' target='_blank'><i class='fa-solid fa-envelope'></i> View Attached Letter</a>";
+                  }
+
+                  echo "<a href='regs-$urlA-$urlB.php' class='btn btn-info btn-sm my-2 d-block ' data-toggle='tooltip' data-placement='top' title='Back'><i class='fa-solid fa-arrow-left'></i> Back </a>";
                         include "modals.php";
                   echo "</tr></td>";
                 echo "</table>";
@@ -1422,8 +1483,12 @@ class info extends config{
                 echo "<table class='table table-borderless shadow p-3 mb-5 bg-white rounded' width='100%'>";
                     echo "<th class='stathead'>Dean's Ofc.</th>";
                     echo "<th> </th>";
-                    echo "<th class='stathead'>Guidance Ofc.</th>";
-                    echo "<th> </th>";
+                    
+                    if($studType == "Transfer"){
+                      echo "<th class='stathead'>Guidance Ofc.</th>";
+                      echo "<th> </th>";
+                    }
+
                     echo "<th class='stathead'>Library</th>";
                     echo "<th> </th>";
                     echo "<th class='stathead'>Accounting</th>";
@@ -1432,8 +1497,12 @@ class info extends config{
                     echo "<tr>";
                       echo "<td class='$iconClassD'>$iconDept</td>";
                       echo "<td class='$iconClassD'>∙∙∙</td>";
-                      echo "<td class='$iconClassG'>$iconGuidance</td>";
-                      echo "<td class='$iconClassG'>∙∙∙</td>";
+                      
+                      if($studType == "Transfer"){
+                        echo "<td class='$iconClassG'>$iconGuidance</td>";
+                        echo "<td class='$iconClassG'>∙∙∙</td>";
+                      }
+
                       echo "<td class='$iconClassL'>$iconLibrary</td>";
                       echo "<td class='$iconClassL'>∙∙∙</td>";
                       echo "<td class='$iconClassA'>$iconAcct</td>";
@@ -1443,8 +1512,12 @@ class info extends config{
                     echo "<tr>";
                       echo "<td class='statcap'>$dispDeptD</td>";
                       echo "<td></td>";
-                      echo "<td class='statcap'>$dispGuidanceD</td>";
-                      echo "<td></td>";
+
+                      if($studType == "Transfer"){
+                        echo "<td class='statcap'>$dispGuidanceD</td>";
+                        echo "<td></td>";
+                      }
+
                       echo "<td class='statcap'>$dispLibraryD</td>";
                       echo "<td></td>";
                       echo "<td class='statcap'>$dispAcctD</td>";
@@ -1461,8 +1534,12 @@ class info extends config{
                   echo "<tr>";
                     echo "<td>$dispDeptR</td>";
                   echo "</tr>";
-                    echo "<td>$dispGuidanceR</td>";
-                  echo "</tr>";
+
+                      if($studType == "Transfer"){
+                          echo "<td>$dispGuidanceR</td>";
+                        echo "</tr>";
+                      }
+
                     echo "<td >$dispLibraryR</td>";
                   echo "</tr>";
                     echo "<td>$dispAcctR</td>";
@@ -1527,6 +1604,8 @@ class info extends config{
             $guidanceC = $result[0]["guidanceclearance"];
             $guidanceR = $result[0]["guidanceremarks"];
             $rawGuidanceD = $result[0]["guidancedate"];
+            $attachedID = $result[0]["file_validID"];
+            $attachedLTR = $result[0]["file_letter"];
           }
 
         // DATE CONVERSIONS -------------------------------------------------------------------------------------------------
@@ -1720,7 +1799,7 @@ class info extends config{
           //do nothing
         }
           
-        echo "<h3 class='text-center'> Student Information </h3>";
+        echo "<h3 class='text-center'><i class='fas fa-user-circle'></i> <u> Student Information </u> </h3>";
           
         echo "<div class='table-responsive pt-4 col-12'>";
           echo "<div class='row pb-2 shadow p-3 mb-5 bg-white rounded'>";
@@ -1775,8 +1854,13 @@ class info extends config{
                   }else{
                     echo"<button class='btn btn-sm btn-block btn-warning d-block' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#deanHold$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Hold Clearance</button>";
                   }
+
+                  if($studType == "Transfer"){
+                    echo "<a href='resource/uploads/ids/$attachedID' class='btn btn-primary btn-sm btn-block d-block' target='_blank'><i class='fa-solid fa-id-card'></i> View Attached ID</a>";
+                    echo "<a href='resource/uploads/letters/$attachedLTR' class='btn btn-primary btn-sm btn-block d-block' target='_blank'><i class='fa-solid fa-envelope'></i> View Attached Letter</a>";
+                  }
                           
-                  echo "<a href='dean-$urlA-$urlB.php' class='btn btn-info btn-sm my-1 d-block ' data-toggle='tooltip' data-placement='top' title='Back'><i class='fa-solid fa-arrow-left'></i> Back </a>";
+                  echo "<a href='dean-$urlA-$urlB.php' class='btn btn-info btn-sm my-2 d-block ' data-toggle='tooltip' data-placement='top' title='Back'><i class='fa-solid fa-arrow-left'></i> Back </a>";
                         include "modals.php";
                   echo "</tr></td>";
                 echo "</table>";
@@ -1789,8 +1873,12 @@ class info extends config{
                 echo "<table class='table table-borderless shadow p-3 mb-5 bg-white rounded' width='100%'>";
                     echo "<th class='stathead'>Dean's Ofc.</th>";
                     echo "<th> </th>";
-                    echo "<th class='stathead'>Guidance Ofc.</th>";
-                    echo "<th> </th>";
+
+                    if($studType == "Transfer"){
+                      echo "<th class='stathead'>Guidance Ofc.</th>";
+                      echo "<th> </th>";
+                    }
+
                     echo "<th class='stathead'>Library</th>";
                     echo "<th> </th>";
                     echo "<th class='stathead'>Accounting</th>";
@@ -1799,8 +1887,12 @@ class info extends config{
                     echo "<tr>";
                       echo "<td class='$iconClassD'>$iconDept</td>";
                       echo "<td class='$iconClassD'>∙∙∙</td>";
-                      echo "<td class='$iconClassG'>$iconGuidance</td>";
-                      echo "<td class='$iconClassG'>∙∙∙</td>";
+
+                      if($studType == "Transfer"){
+                        echo "<td class='$iconClassG'>$iconGuidance</td>";
+                        echo "<td class='$iconClassG'>∙∙∙</td>";
+                      }
+
                       echo "<td class='$iconClassL'>$iconLibrary</td>";
                       echo "<td class='$iconClassL'>∙∙∙</td>";
                       echo "<td class='$iconClassA'>$iconAcct</td>";
@@ -1810,8 +1902,12 @@ class info extends config{
                     echo "<tr>";
                       echo "<td class='statcap'>$dispDeptD</td>";
                       echo "<td></td>";
-                      echo "<td class='statcap'>$dispGuidanceD</td>";
-                      echo "<td></td>";
+
+                      if($studType == "Transfer"){
+                        echo "<td class='statcap'>$dispGuidanceD</td>";
+                        echo "<td></td>";
+                      }
+
                       echo "<td class='statcap'>$dispLibraryD</td>";
                       echo "<td></td>";
                       echo "<td class='statcap'>$dispAcctD</td>";
@@ -1828,8 +1924,12 @@ class info extends config{
                   echo "<tr>";
                     echo "<td>$dispDeptR</td>";
                   echo "</tr>";
-                    echo "<td>$dispGuidanceR</td>";
-                  echo "</tr>";
+
+                      if($studType == "Transfer"){
+                          echo "<td>$dispGuidanceR</td>";
+                        echo "</tr>";
+                      }
+
                     echo "<td >$dispLibraryR</td>";
                   echo "</tr>";
                     echo "<td>$dispAcctR</td>";
