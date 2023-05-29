@@ -267,6 +267,7 @@ footer{
     margin-top: 20px;
     margin-left: 5px
   }
+}
 @media only screen and (max-width: 1025px) {
   .row .grad{
     height: 550px;
@@ -296,6 +297,7 @@ footer{
     margin-top: 20px;
     margin-left: 5px
   }
+}
 @media only screen and (max-width: 991px) {
   .row .grad{
     height: 600px;
@@ -324,10 +326,12 @@ footer{
     margin-top: 20px;
     margin-left: 5px
   }
+}
 @media only screen and (max-width: 961px) {
   .content{
     top: 10%;
   }
+}
 /*under 750*/
 @media only screen and (max-width: 767px) {
   .eclelogo{

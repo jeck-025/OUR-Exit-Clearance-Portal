@@ -105,3 +105,16 @@ select{
   color: yellow;
   padding-bottom: 10px;
 }
+
+@media only screen and (max-width: 961px) {
+  .content {
+    display: inline-block;
+  }
+}
+
+/*under 750*/
+@media only screen and (max-width: 767px) {
+  .content {
+    display: inline-block;
+  }
+}
