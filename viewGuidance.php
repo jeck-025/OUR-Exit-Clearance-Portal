@@ -37,18 +37,18 @@ isGuidance($user->data()->groups);
             
             <!-- requests -->
             <div class="item">
-              <a class="sub-btn"><i class="fa-solid fa-tag"></i>Requests<i class="fas fa-chevron-right dropdown"></i></a>
+              <a class="sub-btn"><i class="fa-solid fa-tag"></i>Pending<i class="fas fa-chevron-right dropdown"></i></a>
               <div class="sub-menu">
                 <a href="guid-req-tr.php" name="Rtransfer" class="sub-item border-bottom" value="Transfer">
-                  Transfer <?php echo '<span class="badge badge-danger">'.$viewtable->viewCountPendingGuidanceTR(). '</span>';?> </a>  
+                  <small>Exit Interview</small> <?php echo '<span class="badge badge-danger">'.$viewtable->viewCountPendingGuidanceTR(). '</span>';?> </a>  
               </div>
             </div>
 
             <!-- approved -->
             <div class="item">
-              <a class="sub-btn"><i class="fa-solid fa-thumbs-up"></i>Approved<i class="fas fa-chevron-right dropdown"></i></a>
+              <a class="sub-btn"><i class="fa-solid fa-thumbs-up"></i>Completed<i class="fas fa-chevron-right dropdown"></i></a>
               <div class="sub-menu">
-                <a href="guid-app-tr.php" name="Atransfer" class="sub-item" value="Transfer">Transfer</a>
+                <a href="guid-app-tr.php" name="Atransfer" class="sub-item" value="Transfer"><small>Exit Interview</small></a>
               </div>
             </div>
 
@@ -56,7 +56,7 @@ isGuidance($user->data()->groups);
             <div class="item pb-3 border-bottom">
               <a class="sub-btn"><i class="fa-sharp fa-solid fa-pause"></i>On Hold<i class="fas fa-chevron-right dropdown"></i></a>
               <div class="sub-menu">
-                <a href="guid-hld-tr.php" name="Atransfer" class="sub-item" value="Transfer">Transfer</a>
+                <a href="guid-hld-tr.php" name="Atransfer" class="sub-item" value="Transfer"><small>Exit Interview</small></a>
               </div>
             </div>
 

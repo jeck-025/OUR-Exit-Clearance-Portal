@@ -95,46 +95,83 @@ class insert extends config{
         $filenameLTR = $this->file_letter['name'];
 
 
-        if ($schoolType === "Science"){
-            $sql1 = "INSERT INTO `ecle_forms_ug`(`lname`, `fname`, `mname`, `semester`, `sy`, `school`, `schoolABBR`, `studentID`, `email`, `contact`, `bday`, `course`, `courseABBR`, `year`, `transferredSchool`, `reason`, `studentType`, `schoolType`, `referenceID`, `file_validID`, `file_letter`) VALUES ('$this->lname', '$this->fname', '$this->mname', '$semester', '$schoolYear', '$school', '$schoolABBR', '$this->studID', '$this->email', '$this->contact', '$this->bday', '$this->course', '$courseABBR', '$this->year', '$this->university', '$this->reason', '$studentType', '$schoolType', '$transnumber', '$filenameVID', '$filenameLTR')";
-            $data1 = $con->prepare($sql1);
-            if($data1->execute()){
+        //check for duplicates
+        $sqlcheck = "SELECT COUNT(`studentID`) as `match` from `ecle_forms_ug` WHERE `studentID` LIKE '$this->studID'";
+        $datacheck = $con->prepare($sqlcheck);
+        $datacheck ->execute();
+        $checkrslt = $datacheck->fetchAll(PDO::FETCH_ASSOC);
+        $match = $checkrslt[0]['match'];
+
+        if($match = 0){
+            if ($schoolType === "Science"){
+                $sql1 = "INSERT INTO `ecle_forms_ug`(`lname`, `fname`, `mname`, `semester`, `sy`, `school`, `schoolABBR`, `studentID`, `email`, `contact`, `bday`, `course`, `courseABBR`, `year`, `transferredSchool`, `reason`, `studentType`, `schoolType`, `referenceID`, `file_validID`, `file_letter`) VALUES ('$this->lname', '$this->fname', '$this->mname', '$semester', '$schoolYear', '$school', '$schoolABBR', '$this->studID', '$this->email', '$this->contact', '$this->bday', '$this->course', '$courseABBR', '$this->year', '$this->university', '$this->reason', '$studentType', '$schoolType', '$transnumber', '$filenameVID', '$filenameLTR')";
+                $data1 = $con->prepare($sql1);
+                $data1->execute();
                 sendReferenceMail($this->lname, $this->fname, $this->mname, $transnumber, $this->email);
                 echo '<div class="alert alert-success alert-dismissible fade show col-12" role="alert">
-                <b>Congratulations!</b> Your clearance request has been successfully submitted! Your Reference Number is: <b>'.$transnumber.'</b>.
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-                </div>';
-            } else {
-                echo '<div class="alert alert-danger alert-dismissible fade show col-12" role="alert">
-                <b>Error!</b> Your request could not be submitted due to wrong information or repeated input!
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>';
-            }
-        } else {
-            $sql1 = "INSERT INTO `ecle_forms_ug`(`lname`, `fname`, `mname`, `semester`, `sy`, `school`, `schoolABBR`, `studentID`, `email`, `contact`, `bday`, `course`, `courseABBR`, `year`, `transferredSchool`, `reason`, `studentType`, `schoolType`, `referenceID`, `file_validID`, `file_letter`) VALUES ('$this->lname', '$this->fname', '$this->mname', '$semester', '$schoolYear', '$school', '$schoolABBR', '$this->studID', '$this->email', '$this->contact', '$this->bday', '$this->course', '$courseABBR', '$this->year', '$this->university', '$this->reason', '$studentType', '$schoolType', '$transnumber', '$filenameVID', '$filenameLTR')";
-            $data1 = $con->prepare($sql1);
-            if($data1->execute()){
+                        <b>Congratulations!</b> Your clearance request has been successfully submitted! Your Reference Number is: <b>'.$transnumber.'</b>.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>';
+            }else{
+                $sql1 = "INSERT INTO `ecle_forms_ug`(`lname`, `fname`, `mname`, `semester`, `sy`, `school`, `schoolABBR`, `studentID`, `email`, `contact`, `bday`, `course`, `courseABBR`, `year`, `transferredSchool`, `reason`, `studentType`, `schoolType`, `referenceID`, `file_validID`, `file_letter`) VALUES ('$this->lname', '$this->fname', '$this->mname', '$semester', '$schoolYear', '$school', '$schoolABBR', '$this->studID', '$this->email', '$this->contact', '$this->bday', '$this->course', '$courseABBR', '$this->year', '$this->university', '$this->reason', '$studentType', '$schoolType', '$transnumber', '$filenameVID', '$filenameLTR')";
+                $data1 = $con->prepare($sql1);
+                $data1->execute();
                 sendReferenceMail($this->lname, $this->fname, $this->mname, $transnumber, $this->email);
                 echo '<div class="alert alert-success alert-dismissible fade show col-12" role="alert">
-                <b>Congratulations!</b> Your clearance request has been successfully submitted! Your Reference Number is: <b>'.$transnumber.'</b>.
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-                </div>';
-            } else {
-                echo '<div class="alert alert-danger alert-dismissible fade show col-12" role="alert">
-                <b>Error!</b> Your request could not be submitted due to wrong information or repeated input!
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>';
+                        <b>Congratulations!</b> Your clearance request has been successfully submitted! Your Reference Number is: <b>'.$transnumber.'</b>.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>';
             }
+        }else{
+            echo '<div class="alert alert-danger alert-dismissible fade show col-12" role="alert">
+                     <b>Error!</b> Your request could not be submitted. Student Number entered already has requested Exit Clearance or Information has invalid input.
+                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                     </button>
+                 </div>';
         }
     }
 
 }
+
+
+            //     if($data1->execute()){
+            //         sendReferenceMail($this->lname, $this->fname, $this->mname, $transnumber, $this->email);
+            //         echo '<div class="alert alert-success alert-dismissible fade show col-12" role="alert">
+            //         <b>Congratulations!</b> Your clearance request has been successfully submitted! Your Reference Number is: <b>'.$transnumber.'</b>.
+            //         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            //         <span aria-hidden="true">&times;</span>
+            //         </button>
+            //         </div>';
+            //     }else{
+            //         echo '<div class="alert alert-danger alert-dismissible fade show col-12" role="alert">
+            //         <b>Error!</b> Your request could not be submitted due to wrong information or repeated input!
+            //         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            //         <span aria-hidden="true">&times;</span>
+            //         </button>
+            //     </div>';
+            //     }
+            // } else {
+            //     $sql1 = "INSERT INTO `ecle_forms_ug`(`lname`, `fname`, `mname`, `semester`, `sy`, `school`, `schoolABBR`, `studentID`, `email`, `contact`, `bday`, `course`, `courseABBR`, `year`, `transferredSchool`, `reason`, `studentType`, `schoolType`, `referenceID`, `file_validID`, `file_letter`) VALUES ('$this->lname', '$this->fname', '$this->mname', '$semester', '$schoolYear', '$school', '$schoolABBR', '$this->studID', '$this->email', '$this->contact', '$this->bday', '$this->course', '$courseABBR', '$this->year', '$this->university', '$this->reason', '$studentType', '$schoolType', '$transnumber', '$filenameVID', '$filenameLTR')";
+            //     $data1 = $con->prepare($sql1);
+            //     if($data1->execute()){
+            //         sendReferenceMail($this->lname, $this->fname, $this->mname, $transnumber, $this->email);
+            //         echo '<div class="alert alert-success alert-dismissible fade show col-12" role="alert">
+            //         <b>Congratulations!</b> Your clearance request has been successfully submitted! Your Reference Number is: <b>'.$transnumber.'</b>.
+            //         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            //         <span aria-hidden="true">&times;</span>
+            //         </button>
+            //         </div>';
+            //     }else{
+            //         echo '<div class="alert alert-danger alert-dismissible fade show col-12" role="alert">
+            //         <b>Error!</b> Your request could not be submitted due to wrong information or repeated input!
+            //         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            //         <span aria-hidden="true">&times;</span>
+            //         </button>
+            //     </div>';
+            //     }
 ?>

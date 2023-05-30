@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 echo"<div class='modal fade' id='deanModal$id' aria-labelledby='modal' aria-hidden='true'>
         <div class='modal-dialog modal-md'>
@@ -298,7 +298,7 @@ if($studType == "Transfer"){
                 <form action='remarksGuidance.php' method='post'>
                 <div class='modal-body'>
                     <div class='input-group col-md-12'>
-                            Please state below the reason why the clearance will be on-hold.
+                            Please state below the reason why this student will be on-hold.
                     </div>
                     <div class='input-group col-md-12'>
                         <textarea class='form-control' id='remarks' rows='10' name='remarks' required>$guidanceR</textarea>
@@ -338,7 +338,7 @@ if($studType == "Transfer"){
 
                 <div class='modal-body'>
                     <div class='input-group col-md-12'>
-                        Sign Clearance?
+                        Did the student completed the Exit Interview? Kindly confirm to proceed.
                     </div>
                     <div class='modal-footer mt-3'>";
 

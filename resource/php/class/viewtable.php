@@ -90,10 +90,10 @@ public function viewRequestTableRegistrarTransfer(){
   $acctR = $data["accountingremarks"];
   $regC = $data["registrarclearance"];
   $regR = $data["registrarremarks"];
-  echo "<td>
-          <button class='btn btn-sm btn-block btn-success d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsModal$id' data-id='$id'><i class='fa-solid fa-check'></i> Sign</button>";
-  echo   "<button class='btn btn-sm btn-block btn-warning d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsHold$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Hold</button>
-          <a href='viewRegistrar.php?id=$data[id]&type=$data[studentType]' class='btn my-1 btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
+  echo "<td>";
+  // echo "<button class='btn btn-sm btn-block btn-success d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsModal$id' data-id='$id'><i class='fa-solid fa-check'></i> Sign</button>";
+  // echo "<button class='btn btn-sm btn-block btn-warning d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsHold$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Hold</button>";
+  echo "<a href='viewRegistrar.php?id=$data[id]&type=$data[studentType]' class='btn btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
           include "modals.php";
   echo "</td>";
 
@@ -175,12 +175,12 @@ public function viewRequestTableRegistrarTransfer(){
   $regC2 = $data2["registrarclearance"];
   $regR2 = $data2["registrarremarks"];
 
-  echo "<td>
-          <span class 'd-inline-block' tabindex='0' data-bs-toggle='tooltip' title='Not Yet Cleared for Registrar'>
-          <button class='btn btn-sm btn-block btn-secondary d-block actions disabled' id='btn' type='button'><i class='fa-solid fa-check'></i> Sign</button>";
-  echo   "<button class='btn btn-sm btn-block btn-secondary d-block actions disabled' id='btn' type='button'><i class='fa-solid fa-triangle-exclamation'></i> Hold</button>
-          </span>  
-          <a href='viewRegistrar.php?id=$data2[id]&type=$data2[studentType]' class='btn my-1 btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
+  echo "<td>";
+  echo "<span class 'd-inline-block' tabindex='0' data-bs-toggle='tooltip' title='Not Yet Cleared for Registrar'>";
+  // echo "<button class='btn btn-sm btn-block btn-secondary d-block actions disabled' id='btn' type='button'><i class='fa-solid fa-check'></i> Sign</button>";
+  // echo "<button class='btn btn-sm btn-block btn-secondary d-block actions disabled' id='btn' type='button'><i class='fa-solid fa-triangle-exclamation'></i> Hold</button>";
+  echo "</span>";
+  echo "<a href='viewRegistrar.php?id=$data2[id]&type=$data2[studentType]' class='btn btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
   echo "</td>";
   echo "</tr>";
   }
@@ -267,13 +267,12 @@ public function viewRequestTableRegistrarGraduate(){
   $regC = $data["registrarclearance"];
   $regR = $data["registrarremarks"];
 
-  echo "<td>
-          <button class='btn btn-sm btn-block btn-success d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsModal$id' data-id='$id'><i class='fa-solid fa-check'></i> Sign</button>";
-  echo   "<button class='btn btn-sm btn-block btn-warning d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsHold$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Hold</button>
-          <a href='viewRegistrar.php?id=$data[id]&type=$data[studentType]' class='btn my-1 btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
+  echo "<td>";
+  // echo "<button class='btn btn-sm btn-block btn-success d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsModal$id' data-id='$id'><i class='fa-solid fa-check'></i> Sign</button>";
+  // echo "<button class='btn btn-sm btn-block btn-warning d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsHold$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Hold</button>";
+  echo "<a href='viewRegistrar.php?id=$data[id]&type=$data[studentType]' class='btn btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
           include "modals.php";
   echo "</td>";
-
   echo "</tr>";
   }
 
@@ -343,12 +342,12 @@ public function viewRequestTableRegistrarGraduate(){
   $regC2 = $data2["registrarclearance"];
   $regR2 = $data2["registrarremarks"];
 
-  echo "<td>
-          <span class 'd-inline-block' tabindex='0' data-bs-toggle='tooltip' title='Not Yet Cleared for Registrar'>
-          <button class='btn btn-sm btn-block btn-secondary d-block actions disabled' id='btn' type='button'><i class='fa-solid fa-check'></i> Sign</button>";
-  echo   "<button class='btn btn-sm btn-block btn-secondary d-block actions disabled' id='btn' type='button'><i class='fa-solid fa-triangle-exclamation'></i> Hold</button>
-          </span>  
-          <a href='viewRegistrar.php?id=$data2[id]&type=$data[studentType]' class='btn my-1 btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
+  echo "<td>";
+  echo "<span class 'd-inline-block' tabindex='0' data-bs-toggle='tooltip' title='Not Yet Cleared for Registrar'>";
+  // echo "<button class='btn btn-sm btn-block btn-secondary d-block actions disabled' id='btn' type='button'><i class='fa-solid fa-check'></i> Sign</button>";
+  // echo "<button class='btn btn-sm btn-block btn-secondary d-block actions disabled' id='btn' type='button'><i class='fa-solid fa-triangle-exclamation'></i> Hold</button>";
+  echo "</span>";
+  echo "<a href='viewRegistrar.php?id=$data2[id]&type=$data[studentType]' class='btn btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
   echo "</td>";
   echo "</tr>";
   }
@@ -595,8 +594,8 @@ public function viewHoldTableRegistrarTransfer(){
   $regC = $data["registrarclearance"];
   $regR = $data["registrarremarks"];
   echo "<td>";
-  echo   "<button class='btn btn-sm btn-block btn-warning d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsHold$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Clear </button>
-          <a href='viewRegistrar.php?id=$data[id]&type=$data[studentType]' class='btn my-1 btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
+  // echo "<button class='btn btn-sm btn-block btn-warning d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsHold$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Clear </button>";
+  echo "<a href='viewRegistrar.php?id=$data[id]&type=$data[studentType]' class='btn my-1 btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
           include "modals.php";
   echo "</td>";
 
@@ -683,8 +682,8 @@ public function viewHoldTableRegistrarGraduate(){
   $regC = $data["registrarclearance"];
   $regR = $data["registrarremarks"];
   echo "<td>";
-  echo   "<button class='btn btn-sm btn-block btn-warning d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsHold$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Clear</button>
-          <a href='viewRegistrar.php?id=$data[id]' class='btn my-1 btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
+  // echo "<button class='btn btn-sm btn-block btn-warning d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsHold$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Clear</button>";
+  echo "<a href='viewRegistrar.php?id=$data[id]&type=$data[studentType]' class='btn btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
           include "modals.php";
   echo "</td>";
   echo "</tr>";
@@ -778,10 +777,10 @@ public function viewRequestTableAccountingTransfer(){
   $acctR = $data["accountingremarks"];
   $regC = $data["registrarclearance"];
   $regR = $data["registrarremarks"];
-  echo "<td>
-          <button class='btn btn-sm btn-block btn-success d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#acctModal$id' data-id='$id'><i class='fa-solid fa-check'></i> Sign</button>";
-  echo   "<button class='btn btn-sm btn-block btn-warning d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#acctHold$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Hold</button>
-          <a href='viewAccounting.php?id=$data[id]&type=$data[studentType]' class='btn my-1 btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
+  echo "<td>";
+  // echo "<button class='btn btn-sm btn-block btn-success d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#acctModal$id' data-id='$id'><i class='fa-solid fa-check'></i> Sign</button>";
+  // echo "<button class='btn btn-sm btn-block btn-warning d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#acctHold$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Hold</button>";
+  echo "<a href='viewAccounting.php?id=$data[id]&type=$data[studentType]' class='btn btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</i>";
           include "modals.php";
   echo "</td>";
   echo "</tr>";
@@ -866,10 +865,10 @@ public function viewRequestTableAccountingGraduate(){
   $regC = $data["registrarclearance"];
   $regR = $data["registrarremarks"];
 
-  echo "<td>
-          <button class='btn btn-sm btn-block btn-success d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#acctModal$id' data-id='$id'><i class='fa-solid fa-check'></i> Sign</button>";
-  echo   "<button class='btn btn-sm btn-block btn-warning d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#acctHold$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Hold</button>
-          <a href='viewAccounting.php?id=$data[id]&type=$data[studentType]' class='btn my-1 btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
+  echo "<td>";
+  echo "<button class='btn btn-sm btn-block btn-success d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#acctModal$id' data-id='$id'><i class='fa-solid fa-check'></i> Sign</button>";
+  echo "<button class='btn btn-sm btn-block btn-warning d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#acctHold$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Hold</button>";
+  echo "<a href='viewAccounting.php?id=$data[id]&type=$data[studentType]' class='btn my-1 btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
           include "modals.php";
   echo "</td>";
   echo "</tr>";
@@ -2239,7 +2238,7 @@ public function viewRequestTableGuidanceTransfer(){
   $data= $con->prepare($sql);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
-  echo "<h3 class='text-center'> Pending for Guidance (Transfers)</h3>";
+  echo "<h3 class='text-center'> Pending for Exit Interview </h3>";
   echo "<div class='table-responsive'>";
   echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
@@ -2319,10 +2318,10 @@ public function viewRequestTableGuidanceTransfer(){
   $acctR = $data["accountingremarks"];
   $regC = $data["registrarclearance"];
   $regR = $data["registrarremarks"];
-  echo "<td>
-          <button class='btn btn-sm btn-block btn-success d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#guidModal$id' data-id='$id'><i class='fa-solid fa-check'></i> Sign</button>";
-  echo   "<button class='btn btn-sm btn-block btn-warning d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#guidHold$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Hold</button>
-          <a href='viewGuidance.php?id=$data[id]&type=$studType' class='btn my-1 btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
+  echo "<td>";
+  // echo "<button class='btn btn-sm btn-block btn-success d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#guidModal$id' data-id='$id'><i class='fa-solid fa-check'></i> Sign</button>";
+  // echo "<button class='btn btn-sm btn-block btn-warning d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#guidHold$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Hold</button>";
+  echo "<a href='viewGuidance.php?id=$data[id]&type=$studType' class='btn btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Proceed</a>";
           include "modals.php";
   echo "</td>";
   echo "</tr>";
@@ -2336,7 +2335,7 @@ public function viewHoldTableGuidanceTransfer(){
   $data= $con->prepare($sql);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
-  echo "<h3 class='text-center'> On-Hold by Guidance (Transfers)</h3>";
+  echo "<h3 class='text-center'> On-Hold </h3>";
   echo "<div class='table-responsive'>";
   echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
@@ -2417,8 +2416,8 @@ public function viewHoldTableGuidanceTransfer(){
   $regC = $data["registrarclearance"];
   $regR = $data["registrarremarks"];
   echo "<td>";
-  echo   "<button class='btn btn-sm btn-block btn-warning d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#guidHold$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Clear </button>
-          <a href='viewGuidance.php?id=$data[id]&type=$studType' class='btn my-1 btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
+  // echo "<button class='btn btn-sm btn-block btn-warning d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#guidHold$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Clear </button>";
+  echo "<a href='viewGuidance.php?id=$data[id]&type=$studType' class='btn btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Proceed</a>";
           include "modals.php";
   echo "</td>";
   echo "</tr>";
@@ -2432,7 +2431,7 @@ public function viewApproveTableGuidanceTransfer(){
   $data= $con->prepare($sql);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
-  echo "<h3 class='text-center'> Cleared by Guidance (Transfers)</h3>";
+  echo "<h3 class='text-center'> Completed Exit Interview </h3>";
   echo "<div class='table-responsive'>";
   echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";

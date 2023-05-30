@@ -314,7 +314,7 @@ class info extends config{
 
                   if($studType == "Transfer"){
                     echo "<a href='resource/uploads/ids/$attachedID' class='btn btn-primary btn-sm btn-block d-block' target='_blank'><i class='fa-solid fa-id-card'></i> View Attached ID</a>";
-                    echo "<a href='resource/uploads/letters/$attachedLTR' class='btn btn-primary btn-sm btn-block d-block' target='_blank'><i class='fa-solid fa-envelope'></i> View Attached Letter</a>";
+                    echo "<a href='resource/uploads/letters/$attachedLTR' class='btn btn-primary btn-sm btn-block d-block' target='_blank'><i class='fa-solid fa-envelope'></i> View Letter of Intent for Exit</a>";
                   }
                           
                   echo "<a href='acct-$urlA-$urlB.php' class='btn btn-info btn-sm my-2 d-block ' data-toggle='tooltip' data-placement='top' title='Back'><i class='fa-solid fa-arrow-left'></i> Back </a>";
@@ -683,18 +683,18 @@ class info extends config{
                 echo "<tr><td>";
                 
                 if($guidanceC == "PENDING"){
-                  echo "<button class='btn btn-sm btn-block btn-success d-block' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#guidModal$id' data-id='$id'><i class='fa-solid fa-check'></i> Sign</button>";
+                  echo "<button class='btn btn-sm btn-block btn-success d-block' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#guidModal$id' data-id='$id'><i class='fa-solid fa-check'></i> Exit Interview Completed</button>";
                 }
 
                 if($guidanceC == "ON HOLD"){
                   echo"<button class='btn btn-sm btn-block btn-warning d-block' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#guidHold$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Clear</button>";
                 }else{
-                  echo"<button class='btn btn-sm btn-block btn-warning d-block' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#guidHold$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Hold Clearance</button>";
+                  echo"<button class='btn btn-sm btn-block btn-warning d-block' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#guidHold$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Set On-Hold </button>";
                 }
                 
                 if($studType == "Transfer"){
                     echo "<a href='resource/uploads/ids/$attachedID' class='btn btn-primary btn-sm btn-block d-block' target='_blank'><i class='fa-solid fa-id-card'></i> View Attached ID</a>";
-                    echo "<a href='resource/uploads/letters/$attachedLTR' class='btn btn-primary btn-sm btn-block d-block' target='_blank'><i class='fa-solid fa-envelope'></i> View Attached Letter</a>";
+                    echo "<a href='resource/uploads/letters/$attachedLTR' class='btn btn-primary btn-sm btn-block d-block' target='_blank'><i class='fa-solid fa-envelope'></i> View Letter of Intent for Exit</a>";
                   }
 
                 echo "<a href='guid-$urlA-$urlB.php' class='btn btn-info btn-sm my-2 d-block ' data-toggle='tooltip' data-placement='top' title='Back'><i class='fa-solid fa-arrow-left'></i> Back </a>";
@@ -1066,7 +1066,7 @@ class info extends config{
                           
                   if($studType == "Transfer"){
                     echo "<a href='resource/uploads/ids/$attachedID' class='btn btn-primary btn-sm btn-block d-block' target='_blank'><i class='fa-solid fa-id-card'></i> View Attached ID</a>";
-                    echo "<a href='resource/uploads/letters/$attachedLTR' class='btn btn-primary btn-sm btn-block d-block' target='_blank'><i class='fa-solid fa-envelope'></i> View Attached Letter</a>";
+                    echo "<a href='resource/uploads/letters/$attachedLTR' class='btn btn-primary btn-sm btn-block d-block' target='_blank'><i class='fa-solid fa-envelope'></i> View Letter of Intent for Exit</a>";
                   }
 
                   echo "<a href='libr-$urlA-$urlB.php' class='btn btn-info btn-sm my-2 d-block ' data-toggle='tooltip' data-placement='top' title='Back'><i class='fa-solid fa-arrow-left'></i> Back </a>";
@@ -1467,7 +1467,7 @@ class info extends config{
                   
                   if($studType == "Transfer"){
                     echo "<a href='resource/uploads/ids/$attachedID' class='btn btn-primary btn-sm btn-block d-block' target='_blank'><i class='fa-solid fa-id-card'></i> View Attached ID</a>";
-                    echo "<a href='resource/uploads/letters/$attachedLTR' class='btn btn-primary btn-sm btn-block d-block' target='_blank'><i class='fa-solid fa-envelope'></i> View Attached Letter</a>";
+                    echo "<a href='resource/uploads/letters/$attachedLTR' class='btn btn-primary btn-sm btn-block d-block' target='_blank'><i class='fa-solid fa-envelope'></i> View Letter of Intent for Exit</a>";
                   }
 
                   echo "<a href='regs-$urlA-$urlB.php' class='btn btn-info btn-sm my-2 d-block ' data-toggle='tooltip' data-placement='top' title='Back'><i class='fa-solid fa-arrow-left'></i> Back </a>";
@@ -1857,7 +1857,7 @@ class info extends config{
 
                   if($studType == "Transfer"){
                     echo "<a href='resource/uploads/ids/$attachedID' class='btn btn-primary btn-sm btn-block d-block' target='_blank'><i class='fa-solid fa-id-card'></i> View Attached ID</a>";
-                    echo "<a href='resource/uploads/letters/$attachedLTR' class='btn btn-primary btn-sm btn-block d-block' target='_blank'><i class='fa-solid fa-envelope'></i> View Attached Letter</a>";
+                    echo "<a href='resource/uploads/letters/$attachedLTR' class='btn btn-primary btn-sm btn-block d-block' target='_blank'><i class='fa-solid fa-envelope'></i> View Letter of Intent for Exit</a>";
                   }
                           
                   echo "<a href='dean-$urlA-$urlB.php' class='btn btn-info btn-sm my-2 d-block ' data-toggle='tooltip' data-placement='top' title='Back'><i class='fa-solid fa-arrow-left'></i> Back </a>";
