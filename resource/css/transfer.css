@@ -78,32 +78,36 @@ select{
   color: #fff;
 }
 .button-submit{
-  width: 600px;
+  width: 50%;
   border-radius: 5px;
 }
 .button-back {
-  width: 600px;
+  width: 50%;
   border-radius: 5px;
 }
 
 .fupload{
-  padding-left:13%;
+  padding-left:4%;
 }
 
 .fupload_head{
-  /* font-weight: bold; */
   font-size:2em;
   margin-bottom: 0;
 }
+
 .fupload_head_cap{
   font-weight: bold;
   color:red;
-  padding-bottom: 15px;
+  padding-bottom: 10px;
 }
+
+.wBorder{
+  border-right: 1px solid rgb(220, 218, 218);
+}
+
 .fupload_captcha{
   font-weight: bold;
   color: yellow;
-  padding-bottom: 10px;
 }
 
 @media only screen and (max-width: 961px) {

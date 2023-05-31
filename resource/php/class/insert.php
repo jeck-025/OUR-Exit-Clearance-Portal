@@ -102,7 +102,7 @@ class insert extends config{
         $checkrslt = $datacheck->fetchAll(PDO::FETCH_ASSOC);
         $match = $checkrslt[0]['match'];
 
-        if($match = 0){
+        if($match == 0){
             if ($schoolType === "Science"){
                 $sql1 = "INSERT INTO `ecle_forms_ug`(`lname`, `fname`, `mname`, `semester`, `sy`, `school`, `schoolABBR`, `studentID`, `email`, `contact`, `bday`, `course`, `courseABBR`, `year`, `transferredSchool`, `reason`, `studentType`, `schoolType`, `referenceID`, `file_validID`, `file_letter`) VALUES ('$this->lname', '$this->fname', '$this->mname', '$semester', '$schoolYear', '$school', '$schoolABBR', '$this->studID', '$this->email', '$this->contact', '$this->bday', '$this->course', '$courseABBR', '$this->year', '$this->university', '$this->reason', '$studentType', '$schoolType', '$transnumber', '$filenameVID', '$filenameLTR')";
                 $data1 = $con->prepare($sql1);

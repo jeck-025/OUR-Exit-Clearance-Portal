@@ -46,12 +46,20 @@ $view = new view();
 
           <?php
           if(!empty($_POST)){
-            $insert= new insert($_POST['fname'], $_POST['lname'], $_POST['mname'], $_POST['studID'], 
+              if($_POST['captcha'] != $_SESSION['digit']){
+                echo '<div class="alert alert-danger alert-dismissible fade show col-12" role="alert">
+                        <b>Captcha Error: </b>Digits did not match.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>';
+              }else{
+              $insert= new insert($_POST['fname'], $_POST['lname'], $_POST['mname'], $_POST['studID'], 
                                 $_POST['email'], $_POST['contact'], $_POST['course'], $_POST['bday'], 
                                 $_POST['year'], $_POST['university'], $_POST['reason'], 
-                                $_FILES['validID'],$_FILES['validID']['tmp_name'], 
+                                $_FILES['validID'],$_FILES['validID']['tmp_name'],
                                 $_FILES['file_letter'],$_FILES['file_letter']['tmp_name']);
-            //$insert->insertApplication();
+              }
           }
           ?>
 
@@ -111,13 +119,13 @@ $view = new view();
             </div>
             <div class="row mt-3 g-3">
               <!---Year Level--->
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <label for="yearLevel" class="form-label">Year Last Enrolled</label>
                 <input type="text" name="year" class="form-control" pattern="20[0-9]{2}" oninvalid="this.setCustomValidity('Please follow the pattern 20XX')" oninput="this.setCustomValidity('')" id="yearLevel" required>
               </div>
 
               <!---Transfer School--->
-              <div class="col-md-4">
+              <div class="col-md-5">
                 <label for="university" class="form-label">Transferring School</label>
                 <select id="university" name="university" class="form-select form-control" data-live-search="true" required>
                 <?php $view->university();?>
@@ -135,36 +143,35 @@ $view = new view();
 
             <hr class="divider">
             <div class="row mt-3 g-3">
-              <div class="col col-md-12 text-center">
+              <div class="col col-md-6 text-center wBorder">
                 <p class="fupload_head">Required Documents</p>
                 <p class="fupload_head_cap">Please attach the following documents in PDF Format</p>
+              </div>
+              <div class="col col-md-6 text-center">
+                <p class="fupload_head">Captcha</p>
+                <p class="fupload_captcha">Please complete the captcha below before submitting.</p>
               </div>
             </div>
 
             <div class="row g-3">
-              <div class="col-md-6 fupload">
+              <div class="col-md-3 fupload wBorder">
                 <label for="validID" class="form-label"><b>Valid ID of Parent or Guardian</b></label><br>
                 <input id="validID" class="form-control-file " accept=".pdf" type="file" name="validID" required>
               </div>
-              <div class="col-md-6 fupload">
+              <div class="col-md-3 fupload wBorder">
                 <label for="file_letter" class="form-label"><b>Letter of Intent for Exit</b></label><br>
                 <input id="file_letter" class="form-control-file " accept=".pdf" type="file" name="file_letter" required>
               </div>
-            </div>
-
-            <hr class="divider">
-            <div class="row mt-4 g-3">
-              <div class="col col-md-12 text-center">
+              <div class="col col-md-6 text-center">
                 <!-- <div class="form-group col-md-5 justify-content-center"> -->
-                  <p class="fupload_captcha">Please complete the captcha below before submitting.</p>
                   <p><img src="captcha.php" width="120" height="30" alt="CAPTCHA"></p>
                   <p><input type="text" size="6" maxlength="5" name="captcha" value="">
                   <small>Copy the digits from the image into this box</small></p>
-                  <label>&nbsp;</label>
                 <!-- </div> -->
               </div>
             </div>
 
+            <hr class="divider">
               <div class="col-md pb-5 text-center">
                 <div>
                   <button type="submit" class="btn btn-sm button-submit btn-info">Submit</button>
@@ -174,6 +181,7 @@ $view = new view();
                   <button onclick="history.back()" class="btn btn-sm btn-outline-light mt-2 button-back">Back</button>
                 </div>
               </div>
+              
             </div>
           </form>
         </div>
