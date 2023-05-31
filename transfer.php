@@ -34,7 +34,7 @@ $view = new view();
           </div>
         </nav>
 
-      <div class="container-fluid mt-5 responsive">
+      <div class="container mt-5 responsive">
         <div class="row">
           <div class="content px-4 m-auto justify-content-center responsive">
             <div class="col-md pt-3 text-center">
