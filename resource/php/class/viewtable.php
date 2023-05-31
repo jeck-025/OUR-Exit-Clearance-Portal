@@ -347,7 +347,7 @@ public function viewRequestTableRegistrarGraduate(){
   // echo "<button class='btn btn-sm btn-block btn-secondary d-block actions disabled' id='btn' type='button'><i class='fa-solid fa-check'></i> Sign</button>";
   // echo "<button class='btn btn-sm btn-block btn-secondary d-block actions disabled' id='btn' type='button'><i class='fa-solid fa-triangle-exclamation'></i> Hold</button>";
   echo "</span>";
-  echo "<a href='viewRegistrar.php?id=$data2[id]&type=$data[studentType]' class='btn btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
+  echo "<a href='viewRegistrar.php?id=$data2[id]&type=$data2[studentType]' class='btn btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
   echo "</td>";
   echo "</tr>";
   }
