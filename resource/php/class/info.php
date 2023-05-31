@@ -1472,7 +1472,7 @@ class info extends config{
                       echo "<a href='resource/uploads/ids/$attachedID' class='btn btn-primary btn-sm btn-block d-block' target='_blank'><i class='fa-solid fa-id-card'></i> View Attached ID</a>";
                     }
                     if(empty($attachedLTR)){
-                      echo "<a href='resource/uploads/letters/$attachedLTR' class='btn btn-primary btn-sm btn-block d-block' target='_blank'><i class='fa-solid fa-envelope'></i> View Letter of Intent for Exit</a>";
+                      echo "<a href='#' class='btn btn-primary btn-sm btn-block d-block disabled' target='_blank'><i class='fa-solid fa-envelope'></i> No Letter of Intent for Exit</a>";
                     }else{
                       echo "<a href='resource/uploads/letters/$attachedLTR' class='btn btn-primary btn-sm btn-block d-block' target='_blank'><i class='fa-solid fa-envelope'></i> View Letter of Intent for Exit</a>";
                     }
