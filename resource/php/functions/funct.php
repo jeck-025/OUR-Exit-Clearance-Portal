@@ -148,8 +148,8 @@ function vald(){
                             }else if($user->data()->groups == 4){               // accounting
                             Redirect::to('accounting.php');
                            echo $user->data()->groups;
-                            }else if($user->data()->groups == 5){               // recorders
-                            Redirect::to('registrar.php');
+                            }else if($user->data()->groups == 5){               // guidance
+                            Redirect::to('guidance.php');
                            echo $user->data()->groups;
                             }else if($user->data()->groups == 6){               // library
                                 Redirect::to('library.php');
@@ -280,6 +280,9 @@ function changeP(){
                     }else if($user->data()->groups == 4){
                         Redirect::to('accounting.php');
                         echo $user->data()->groups;
+                    }else if($user->data()->groups == 5){
+                        Redirect::to('guidance.php');
+                        echo $user->data()->groups;
                     }else if($user->data()->groups == 6){
                         Redirect::to('library.php');
                         echo $user->data()->groups;
@@ -296,8 +299,18 @@ function changeP(){
 
 function approveAccounting(){
     if(!empty($_GET['edit'])){
-        $edit = new edit($_GET['edit'], $_GET['user']);
+        $edit = new edit($_GET['edit'], $_GET['user'], $_GET['type']);
         if($edit->approveClearanceAccounting()){
+        } else{
+            echo "Error in approving";
+        }
+    }
+}
+
+function approveGuidance(){
+    if(!empty($_GET['edit'])){
+        $edit = new edit($_GET['edit'], $_GET['user'], $_GET['type']);
+        if($edit->approveClearanceGuidance()){
         } else{
             echo "Error in approving";
         }
@@ -306,7 +319,7 @@ function approveAccounting(){
 
 function approveDepartment(){
     if(!empty($_GET['edit'])){
-        $edit = new edit($_GET['edit'], $_GET['user']);
+        $edit = new edit($_GET['edit'], $_GET['user'], $_GET['type']);
         if($edit->approveClearanceDepartment()){
         } else{
             echo "Error in approving";
@@ -316,7 +329,7 @@ function approveDepartment(){
 
 function approveLibrary(){
     if(!empty($_GET['edit'])){
-        $edit = new edit($_GET['edit'], $_GET['user']);
+        $edit = new edit($_GET['edit'], $_GET['user'], $_GET['type']);
         if($edit->approveClearanceLibrary()){
         } else{
             echo "Error in approving";
@@ -326,7 +339,7 @@ function approveLibrary(){
 
 function approveRegistrar(){
     if(!empty($_GET['edit'])){
-        $edit = new edit($_GET['edit'], $_GET['user']);
+        $edit = new edit($_GET['edit'], $_GET['user'],$_GET['type']);
         if($edit->approveClearanceRegistrar()){
         } else{
             echo "Error in approving";
@@ -336,44 +349,55 @@ function approveRegistrar(){
 
 function holdRegistrar(){
     if(isset($_POST['reset'])){
-        $hold = new hold($_POST['hold'],$_POST['remarks']);
+        $hold = new hold($_POST['hold'],$_POST['remarks'],$_POST['type']);
         $hold->resetHoldClearanceRegistrar();
     }
     elseif(!empty($_POST['hold']) && !empty($_POST['remarks'])){
-        $hold = new hold($_POST['hold'],$_POST['remarks']);
+        $hold = new hold($_POST['hold'],$_POST['remarks'],$_POST['type']);
         $hold->holdClearanceRegistrar();
     }
 }
 
 function holdAccounting(){
     if(isset($_POST['reset'])){
-        $hold = new hold($_POST['hold'],$_POST['remarks']);
+        $hold = new hold($_POST['hold'],$_POST['remarks'], $_POST['type']);
         $hold->resetHoldClearanceAccounting();
     }
     elseif(!empty($_POST['hold']) && !empty($_POST['remarks'])){
-        $hold = new hold($_POST['hold'],$_POST['remarks']);
+        $hold = new hold($_POST['hold'],$_POST['remarks'], $_POST['type']);
         $hold->holdClearanceAccounting();
+    }
+}
+
+function holdGuidance(){
+    if(isset($_POST['reset'])){
+        $hold = new hold($_POST['hold'],$_POST['remarks'], $_POST['type']);
+        $hold->resetHoldClearanceGuidance();
+    }
+    elseif(!empty($_POST['hold']) && !empty($_POST['remarks'])){
+        $hold = new hold($_POST['hold'],$_POST['remarks'], $_POST['type']);
+        $hold->holdClearanceGuidance();
     }
 }
 
 function holdDepartment(){
     if(isset($_POST['reset'])){
-        $hold = new hold($_POST['hold'],$_POST['remarks']);
+        $hold = new hold($_POST['hold'],$_POST['remarks'], $_POST['type']);
         $hold->resetHoldClearanceDepartment();
     }
     elseif(!empty($_POST['hold']) && !empty($_POST['remarks'])){
-        $hold = new hold($_POST['hold'],$_POST['remarks']);
+        $hold = new hold($_POST['hold'],$_POST['remarks'], $_POST['type']);
         $hold->holdClearanceDepartment();
     }
 }
 
 function holdLibrary(){
     if(isset($_POST['reset'])){
-        $hold = new hold($_POST['hold'],$_POST['remarks']);
+        $hold = new hold($_POST['hold'],$_POST['remarks'], $_POST['type']);
         $hold->resetHoldClearanceLibrary();
     }
     elseif(!empty($_POST['hold']) && !empty($_POST['remarks'])){
-        $hold = new hold($_POST['hold'],$_POST['remarks']);
+        $hold = new hold($_POST['hold'],$_POST['remarks'], $_POST['type']);
         $hold->holdClearanceLibrary();
     }
 }
@@ -418,6 +442,16 @@ function isAccounting($user){
     }
 }
 
+function isGuidance($user){
+    if($user === "5"){
+
+    }
+    else{
+        header("HTTP/1.1 403 Forbidden");
+        exit;
+    }
+}
+
 function isLibrary($user){
     if($user === "6"){
 
@@ -430,14 +464,23 @@ function isLibrary($user){
 
 function viewAccounting(){
     if(!empty($_GET['id'])){
-        $info = new info($_GET['id']);
+        $info = new info($_GET['id'], $_GET['type']);
         if($info->infoAccounting()){
         }
     }
 }
+
+function viewGuidance(){
+    if(!empty($_GET['id'])){
+        $info = new info($_GET['id'], $_GET['type']);
+        if($info->infoGuidance()){
+        }
+    }
+}
+
 function viewLibrary(){
     if(!empty($_GET['id'])){
-        $info = new info($_GET['id']);
+        $info = new info($_GET['id'], $_GET['type']);
         if($info->infoLibrary()){
         }
     }
@@ -445,14 +488,14 @@ function viewLibrary(){
 
 function viewRegistrar(){
     if(!empty($_GET['id'])){
-        $info = new info($_GET['id']);
+        $info = new info($_GET['id'], $_GET['type']);
         if($info->infoRegistrar()){
         }
     }
 }
 function viewDean(){
     if(!empty($_GET['id'])){
-        $info = new info($_GET['id']);
+        $info = new info($_GET['id'], $_GET['type']);
         if($info->infoDean()){
         }
     }
@@ -490,6 +533,10 @@ function sendmailAccounting(){
     $send->sendAccounting();
 }
 
+function sendmailGuidance(){
+    $send = new sendMail();
+    $send->sendGuidance();
+}
 
 function expireLibrary(){
     if(!empty($_GET['expire'])){
@@ -515,6 +562,16 @@ function expireAccounting(){
     if(!empty($_GET['expire'])){
         $expire = new expire($_GET['expire']);
         if($expire->expiredAccounting()){
+        } else{
+            echo "Error in expiring";
+        }
+    }
+}
+
+function expireGuidance(){
+    if(!empty($_GET['expire'])){
+        $expire = new expire($_GET['expire']);
+        if($expire->expiredGuidance()){
         } else{
             echo "Error in expiring";
         }
@@ -635,6 +692,12 @@ function schoolSelect()
     $user = new user();
     $libr_asst_name = $user->data()->username;
     return $libr_asst_name;
+  }
+
+  function guid_asstName(){
+    $user = new user();
+    $guid_asst_name = $user->data()->username;
+    return $guid_asst_name;
   }
 
 //   function evaluatorName(){

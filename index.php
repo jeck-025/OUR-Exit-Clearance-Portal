@@ -93,10 +93,10 @@
                 <div class="row align-items-center">
                   <div class="col-md">
                     <div class="btn">
-                      <button onclick="location.href='#'" class="button2" disabled>Apply Clearance</button>
                       <button onclick="location.href='#'" class="button4" disabled>Check Clearance</button>
-                      <!-- <button onclick="location.href='transfer.php'" class="button2" disabled>Apply Clearance</button>
-                      <button onclick="location.href='transferCheck.php'" class="button4" disabled>Check Clearance</button> -->
+                      <button onclick="location.href='#'" class="button2" disabled>Apply Clearance</button>
+                      <!-- <button onclick="location.href='transfer.php'" class="button2" >Apply Clearance</button>
+                      <button onclick="location.href='transferCheck.php'" class="button4" >Check Clearance</button> -->
                     </div>
                   </div>
                 </div>

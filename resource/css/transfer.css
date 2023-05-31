@@ -8,7 +8,7 @@ html{
   background-color: white;
   color:#555;
   font-family: "Montserrat", "sans-serif";
-  font-size: 20px;
+  font-size: 13px;
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
 }
@@ -78,10 +78,172 @@ select{
   color: #fff;
 }
 .button-submit{
-  width: 600px;
+  width: 50%;
   border-radius: 5px;
 }
 .button-back {
-  width: 600px;
+  width: 50%;
   border-radius: 5px;
 }
+
+.fupload{
+  padding-left:4%;
+}
+
+.fupload_head{
+  font-size:2em;
+  margin-bottom: 0;
+}
+
+.fupload_head_cap{
+  font-weight: bold;
+  color:red;
+  padding-bottom: 10px;
+}
+
+.wBorder{
+  border-right: 1px solid rgb(220, 218, 218);
+}
+
+.fupload_captcha{
+  font-weight: bold;
+  color: yellow;
+}
+
+@media only screen and (max-width: 961px) {
+  .content {
+      max-width: 75% !important;
+      margin-left: 0;
+    }
+  
+    .button-submit {
+      width: 100%;
+      border-radius: 5px;
+    }
+  
+    .button-back {
+      width: 100%;
+      border-radius: 5px;
+    }
+}
+
+/*under 750*/
+@media only screen and (max-width: 767px) {
+  .content {
+      max-width: 75% !important;
+      margin-left: 0;
+    }
+  
+    .button-submit {
+      width: 100%;
+      border-radius: 5px;
+    }
+  
+    .button-back {
+      width: 100%;
+      border-radius: 5px;
+    }
+}
+
+@media only screen and (max-width: 320px){
+  html {
+      font-size: 8px;
+  }
+
+  .content {
+      max-width: 100% !important;
+      margin-left: 0;
+    }
+  
+    .button-submit {
+      width: 100%;
+      border-radius: 5px;
+    }
+  
+    .button-back {
+      width: 100%;
+      border-radius: 5px;
+    }
+}
+
+@media only screen and (max-width: 641px) {
+  .content {
+    /* max-width: 50% !important; */
+    margin-left:0;
+  }
+  .button-submit {
+    width: 100%;
+    border-radius: 5px;
+  }
+  .button-back {
+      width: 100%;
+      border-radius: 5px;
+  }
+}
+
+@media only screen and (max-width: 1200px){
+  .content {
+      max-width: 100% !important;
+      margin-left: 0;
+    }
+  
+    .button-submit {
+      width: 100%;
+      border-radius: 5px;
+    }
+  
+    .button-back {
+      width: 100%;
+      border-radius: 5px;
+    }
+  }
+@media only screen and (max-width: 1025px){
+  .content {
+      max-width: 100% !important;
+      margin-left: 0;
+    }
+  
+    .button-submit {
+      width: 100%;
+      border-radius: 5px;
+    }
+  
+    .button-back {
+      width: 100%;
+      border-radius: 5px;
+    }
+  }
+
+@media only screen and (max-width: 991px){
+  .content {
+      max-width: 100% !important;
+      margin-left: 0;
+    }
+  
+    .button-submit {
+      width: 100%;
+      border-radius: 5px;
+    }
+  
+    .button-back {
+      width: 100%;
+      border-radius: 5px;
+    }
+ }
+
+ @media only screen and (max-width: 600px){
+    .content {
+        max-width: 100% !important;
+        margin-left: 0;
+      }
+    
+      .button-submit {
+        width: 100%;
+        border-radius: 5px;
+      }
+    
+      .button-back {
+        width: 100%;
+        border-radius: 5px;
+      }
+    }

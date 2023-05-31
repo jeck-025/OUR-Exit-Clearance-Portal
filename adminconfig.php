@@ -130,21 +130,25 @@ $view = new view();
                     <div class="row">
                       <div class="col col-md-8">
                         <form method="get" action="reportsDownload.php">
-                        <h4>Generate Report</h4><hr>
+                        <h4>Generate Reports</h4><hr>
                           <div class="row">
-                            <div class="col col-md-5">
+                            <div class="col col-md-3">
                               <label for="r_semester" class="form-label">Semester</label>
                                 <select name="r_semester" id="semester" class="form-select form-control" data-live-search="true">
                                   <?php $view->semesterChoose();?>
                                 </select>
                             </div>
-                            <div class="col col-md-4">
+                            <div class="col col-md-3">
                               <label for="r_sy" class="form-label">School Year</label>
                                 <input type="text" name="r_sy" id="r_sy" class="form-control" placeholder="xxxx-xxxx" pattern="[0-9]{4}-[0-9]{4}" oninvalid="this.setCustomValidity('Please follow the pattern (XXXX-XXXX)')" oninput="this.setCustomValidity('')" autocomplete="off">
                             </div>
                             <div class="col-md-3 text-center">
-                                <label for="r_submit" class="form-label">&nbsp;</label>
-                              <button type="submit" id="r_submit" class="btn btn-dark btn-block" onClick="btnDownload()"><i class="fa-solid fa-download"></i> Download </button>
+                                <label for="g_submit" class="form-label"><u>Graduates</u></label>
+                              <button type="submit" id="g_submit" name="g_submit" class="btn btn-dark btn-block" onClick="btnDownloadG()"><i class="fa-solid fa-download"></i> Download </button>
+                            </div>
+                            <div class="col-md-3 text-center">
+                                <label for="u_submit" class="form-label"><u>Transfers</u></label>
+                              <button type="submit" id="u_submit" name="u_submit" class="btn btn-dark btn-block" onClick="btnDownloadU()"><i class="fa-solid fa-download"></i> Download </button>
                             </div>
                           </div> 
                         </form>
@@ -261,9 +265,14 @@ $view = new view();
         s_submit.innerHTML = '<div class="spinner-border text-light spinner-border-sm" role="status"><span class="sr-only">Loading...</span></div> Saving...';
       }
       
-      function btnDownload(){
-        r_submit.innerHTML = '<div class="spinner-border text-light spinner-border-sm" role="status"><span class="sr-only">Loading...</span></div> Loading...';
-        setTimeout(() => {r_submit.innerHTML = '<i class="fa-solid fa-download"></i> Download';}, 1500);
+      function btnDownloadG(){
+        g_submit.innerHTML = '<div class="spinner-border text-light spinner-border-sm" role="status"><span class="sr-only">Loading...</span></div> Loading...';
+        setTimeout(() => {g_submit.innerHTML = '<i class="fa-solid fa-download"></i> Graduates';}, 1500);
+      }
+
+      function btnDownloadU(){
+        u_submit.innerHTML = '<div class="spinner-border text-light spinner-border-sm" role="status"><span class="sr-only">Loading...</span></div> Loading...';
+        setTimeout(() => {u_submit.innerHTML = '<i class="fa-solid fa-download"></i> Transfers';}, 1500);
       }
 
       function btnSendMails(){

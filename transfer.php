@@ -7,12 +7,11 @@ $view = new view();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script src="https://kit.fontawesome.com/ee4d206cc2.js"></script>
+    <script src="https://kit.fontawesome.com/03ca298d2d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="resource/css/transfer.css" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    
-  
+
     <title>ECLE Transfer Form</title>
     <link rel="icon" type="image/x-icon" href="resource/img/icon.ico" />
   </head>
@@ -35,23 +34,36 @@ $view = new view();
           </div>
         </nav>
 
-      <div class="container mt-5">
+      <div class="container mt-5 responsive">
         <div class="row">
-          <div class="content px-4 m-auto justify-content-center">
+          <div class="content px-4 m-auto justify-content-center responsive">
             <div class="col-md pt-3 text-center">
-              <img class="ecleLogo" src="resource/img/ecle-logo-new.png">
-              <h2 class="head-text">Transfer Form</h2>
+              <!-- <img class="ecleLogo" src="resource/img/ecle-logo-new.png"> -->
+              <h2 class="head-text"><img class="ecleLogo" src="resource/img/ecle-logo-new.png">Exit Clearance Form for Undergraduates</h2>
+              
               <hr class="divider">
             </div>
 
           <?php
           if(!empty($_POST)){
-            $insert= new insert($_POST['fname'], $_POST['lname'], $_POST['mname'], $_POST['studID'], $_POST['email'], $_POST['contact'], $_POST['course'], $_POST['bday'], $_POST['year'], $_POST['university'], $_POST['reason']);
-            $insert->insertApplication();
+              if($_POST['captcha'] != $_SESSION['digit']){
+                echo '<div class="alert alert-danger alert-dismissible fade show col-12" role="alert">
+                        <b>Captcha Error: </b>Digits did not match.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>';
+              }else{
+              $insert= new insert($_POST['fname'], $_POST['lname'], $_POST['mname'], $_POST['studID'], 
+                                $_POST['email'], $_POST['contact'], $_POST['course'], $_POST['bday'], 
+                                $_POST['year'], $_POST['university'], $_POST['reason'], 
+                                $_FILES['validID'],$_FILES['validID']['tmp_name'],
+                                $_FILES['file_letter'],$_FILES['file_letter']['tmp_name']);
+              }
           }
           ?>
 
-          <form method="POST">
+          <form method="POST" enctype="multipart/form-data">
             <div class="row mt-3 g-3">
               <!---Firstname--->
               <div class="col-md-4">
@@ -107,13 +119,13 @@ $view = new view();
             </div>
             <div class="row mt-3 g-3">
               <!---Year Level--->
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <label for="yearLevel" class="form-label">Year Last Enrolled</label>
                 <input type="text" name="year" class="form-control" pattern="20[0-9]{2}" oninvalid="this.setCustomValidity('Please follow the pattern 20XX')" oninput="this.setCustomValidity('')" id="yearLevel" required>
               </div>
 
               <!---Transfer School--->
-              <div class="col-md-4">
+              <div class="col-md-5">
                 <label for="university" class="form-label">Transferring School</label>
                 <select id="university" name="university" class="form-select form-control" data-live-search="true" required>
                 <?php $view->university();?>
@@ -128,14 +140,54 @@ $view = new view();
                 </select>
               </div>
             </div>
-              <div class="col-md my-5 text-center">
-                <div>
-                  <button type="submit" class="btn button-submit btn-info">Submit</button>
-                </div>
-                <div>
-                  <button onclick="location.href='index.php'" class="btn btn-outline-light mt-2 button-back">Back</button>
+
+            <hr class="divider">
+            <div class="row mt-3 g-3">
+              
+              
+            </div>
+
+            <div class="row g-3">
+              <div class="col-md-6 mb-3 text-center">
+                <div class="row">
+                  <div class="col-12 text-center">
+                    <p class="fupload_head">Required Documents</p>
+                    <p class="fupload_head_cap">Please attach the following documents in PDF Format</p>
+                  </div>
+                  <div class="col-md-6 fupload wBorder">
+                    <label for="validID" class="form-label"><b>Valid ID of Parent or Guardian</b></label><br>
+                    <input id="validID" class="form-control-file " accept=".pdf" type="file" name="validID" required>
+                  </div>
+                  <div class="col-md-6 fupload wBorder">
+                    <label for="file_letter" class="form-label"><b>Letter of Intent for Exit</b></label><br>
+                    <input id="file_letter" class="form-control-file " accept=".pdf" type="file" name="file_letter" required>
+                  </div>
                 </div>
               </div>
+              
+              <div class="col-md-6 text-center">
+                <div class="col-12 text-center">
+                <p class="fupload_head">Captcha</p>
+                <p class="fupload_captcha">Please complete the captcha below before submitting.</p>
+                <!-- <div class="form-group col-md-5 justify-content-center"> -->
+                  <p><img src="captcha.php" width="120" height="30" alt="CAPTCHA"></p>
+                  <p><input type="text" size="6" maxlength="5" name="captcha" value="">
+                  <small>Copy the digits from the image into this box</small></p>
+                  <!-- </div> -->
+              </div>
+            </div>
+
+            <hr class="divider">
+              <div class="col-md pb-5 text-center">
+                <div>
+                  <button type="submit" class="btn btn-sm button-submit btn-info">Submit</button>
+                </div>
+                <div>
+                  <!-- <button onclick="location.href='index.php'" class="btn btn-sm btn-outline-light mt-2 button-back">Back</button> -->
+                  <button onclick="history.back()" class="btn btn-sm btn-outline-light mt-2 button-back">Back</button>
+                </div>
+              </div>
+
             </div>
           </form>
         </div>
@@ -144,10 +196,14 @@ $view = new view();
   </div>
 </header>
 
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script> -->
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     
