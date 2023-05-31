@@ -23,7 +23,7 @@ class chartfilter extends config{
 
     public function viewTransferredSchoolNames() {
         $con = $this->con();
-        $sql = "SELECT transferredSchool, COUNT(transferredSchool) AS quantity FROM ecle_forms WHERE semester = '$this->sem' AND sy = '$this->sy' $this->sch AND transferredSchool != 'NULL' GROUP BY transferredSchool";
+        $sql = "SELECT transferredSchool, COUNT(transferredSchool) AS quantity FROM ecle_forms_ug WHERE semester = '$this->sem' AND sy = '$this->sy' $this->sch AND transferredSchool != 'NULL' GROUP BY transferredSchool";
         $data= $con->prepare($sql);
         $data->execute();
         $names[] = array();
@@ -37,7 +37,7 @@ class chartfilter extends config{
 
     public function viewTransferredSchoolTotal() {
         $con = $this->con();
-        $sql = "SELECT transferredSchool, COUNT(transferredSchool) AS quantity FROM ecle_forms WHERE semester = '$this->sem' AND sy = '$this->sy' $this->sch AND transferredSchool != '' GROUP BY transferredSchool";
+        $sql = "SELECT transferredSchool, COUNT(transferredSchool) AS quantity FROM ecle_forms_ug WHERE semester = '$this->sem' AND sy = '$this->sy' $this->sch AND transferredSchool != '' GROUP BY transferredSchool";
         $data= $con->prepare($sql);
         $data->execute();
         $numbers[] = array();
@@ -51,7 +51,7 @@ class chartfilter extends config{
 
     public function viewReasonNames(){
         $con = $this->con();
-        $sql = "SELECT reason, COUNT(reason) AS quantity FROM ecle_forms WHERE semester = '$this->sem' AND sy = '$this->sy' $this->sch AND reason != 'NULL' GROUP BY reason";
+        $sql = "SELECT reason, COUNT(reason) AS quantity FROM ecle_forms_ug WHERE semester = '$this->sem' AND sy = '$this->sy' $this->sch AND reason != 'NULL' GROUP BY reason";
         $data= $con->prepare($sql);
         $data->execute();
         $reasons[] = array();
@@ -65,7 +65,7 @@ class chartfilter extends config{
 
     public function viewReasonTotal(){
         $con = $this->con();
-        $sql = "SELECT reason, COUNT(reason) AS quantity FROM ecle_forms WHERE semester = '$this->sem' AND sy = '$this->sy' $this->sch AND reason != 'NULL' GROUP BY reason";
+        $sql = "SELECT reason, COUNT(reason) AS quantity FROM ecle_forms_ug WHERE semester = '$this->sem' AND sy = '$this->sy' $this->sch AND reason != 'NULL' GROUP BY reason";
         $data= $con->prepare($sql);
         $data->execute();
         $total[] = array();
@@ -80,7 +80,7 @@ class chartfilter extends config{
     public function countSAM(){
             $config = new config;
             $con = $config->con();
-            $sql = "SELECT count(*) AS `count` from ecle_forms WHERE semester = '$this->sem' AND sy = '$this->sy' AND reason != 'NULL' AND schoolABBR = 'SAM'";
+            $sql = "SELECT count(*) AS `count` from ecle_forms_ug WHERE semester = '$this->sem' AND sy = '$this->sy' AND reason != 'NULL' AND schoolABBR = 'SAM'";
             $data = $con-> prepare($sql);
             $data ->execute();
             $rows =$data-> fetchAll(PDO::FETCH_ASSOC); 
@@ -90,7 +90,7 @@ class chartfilter extends config{
     public function countDENTISTRY(){
             $config = new config;
             $con = $config->con();
-            $sql = "SELECT count(*) AS `count` from ecle_forms WHERE semester = '$this->sem' AND sy = '$this->sy' AND reason != 'NULL' AND schoolABBR = 'DENT'";
+            $sql = "SELECT count(*) AS `count` from ecle_forms_ug WHERE semester = '$this->sem' AND sy = '$this->sy' AND reason != 'NULL' AND schoolABBR = 'DENT'";
             $data = $con-> prepare($sql);
             $data ->execute();
             $rows =$data-> fetchAll(PDO::FETCH_ASSOC); 
@@ -100,7 +100,7 @@ class chartfilter extends config{
     public function countELAMS(){
             $config = new config;
             $con = $config->con();
-            $sql = "SELECT count(*) AS `count` from ecle_forms WHERE semester = '$this->sem' AND sy = '$this->sy' AND reason != 'NULL' AND schoolABBR = 'SELAMS'";
+            $sql = "SELECT count(*) AS `count` from ecle_forms_ug WHERE semester = '$this->sem' AND sy = '$this->sy' AND reason != 'NULL' AND schoolABBR = 'SELAMS'";
             $data = $con-> prepare($sql);
             $data ->execute();
             $rows =$data-> fetchAll(PDO::FETCH_ASSOC); 
@@ -110,7 +110,7 @@ class chartfilter extends config{
     public function countGS(){
             $config = new config;
             $con = $config->con();
-            $sql = "SELECT count(*) AS `count` from ecle_forms WHERE semester = '$this->sem' AND sy = '$this->sy' AND reason != 'NULL' AND schoolABBR = 'GRADSCH'";
+            $sql = "SELECT count(*) AS `count` from ecle_forms_ug WHERE semester = '$this->sem' AND sy = '$this->sy' AND reason != 'NULL' AND schoolABBR = 'GRADSCH'";
             $data = $con-> prepare($sql);
             $data ->execute();
             $rows =$data-> fetchAll(PDO::FETCH_ASSOC); 
@@ -120,7 +120,7 @@ class chartfilter extends config{
     public function countMEDTECH(){
             $config = new config;
             $con = $config->con();
-            $sql = "SELECT count(*) AS `count` from ecle_forms WHERE semester = '$this->sem' AND sy = '$this->sy' AND reason != 'NULL' AND schoolABBR = 'MEDTECH'";
+            $sql = "SELECT count(*) AS `count` from ecle_forms_ug WHERE semester = '$this->sem' AND sy = '$this->sy' AND reason != 'NULL' AND schoolABBR = 'MEDTECH'";
             $data = $con-> prepare($sql);
             $data ->execute();
             $rows =$data-> fetchAll(PDO::FETCH_ASSOC); 
@@ -130,7 +130,7 @@ class chartfilter extends config{
     public function countMEDICINE(){
             $config = new config;
             $con = $config->con();
-            $sql = "SELECT count(*) AS `count` from ecle_forms WHERE semester = '$this->sem' AND sy = '$this->sy' AND reason != 'NULL' AND schoolABBR = 'MEDICINE'";
+            $sql = "SELECT count(*) AS `count` from ecle_forms_ug WHERE semester = '$this->sem' AND sy = '$this->sy' AND reason != 'NULL' AND schoolABBR = 'MEDICINE'";
             $data = $con-> prepare($sql);
             $data ->execute();
             $rows =$data-> fetchAll(PDO::FETCH_ASSOC); 
@@ -140,7 +140,7 @@ class chartfilter extends config{
     public function countNHM(){
             $config = new config;
             $con = $config->con();
-            $sql = "SELECT count(*) AS `count` from ecle_forms WHERE semester = '$this->sem' AND sy = '$this->sy' AND reason != 'NULL' AND schoolABBR = 'NHM'";
+            $sql = "SELECT count(*) AS `count` from ecle_forms_ug WHERE semester = '$this->sem' AND sy = '$this->sy' AND reason != 'NULL' AND schoolABBR = 'NHM'";
             $data = $con-> prepare($sql);
             $data ->execute();
             $rows =$data-> fetchAll(PDO::FETCH_ASSOC); 
@@ -150,7 +150,7 @@ class chartfilter extends config{
     public function countNURSING(){
             $config = new config;
             $con = $config->con();
-            $sql = "SELECT count(*) AS `count` from ecle_forms WHERE semester = '$this->sem' AND sy = '$this->sy' AND reason != 'NULL' AND schoolABBR = 'NURSING'";
+            $sql = "SELECT count(*) AS `count` from ecle_forms_ug WHERE semester = '$this->sem' AND sy = '$this->sy' AND reason != 'NULL' AND schoolABBR = 'NURSING'";
             $data = $con-> prepare($sql);
             $data ->execute();
             $rows =$data-> fetchAll(PDO::FETCH_ASSOC); 
@@ -160,7 +160,7 @@ class chartfilter extends config{
     public function countOPTO(){
             $config = new config;
             $con = $config->con();
-            $sql = "SELECT count(*) AS `count` from ecle_forms WHERE semester = '$this->sem' AND sy = '$this->sy' AND reason != 'NULL' AND schoolABBR = 'OPTO'";
+            $sql = "SELECT count(*) AS `count` from ecle_forms_ug WHERE semester = '$this->sem' AND sy = '$this->sy' AND reason != 'NULL' AND schoolABBR = 'OPTO'";
             $data = $con-> prepare($sql);
             $data ->execute();
             $rows =$data-> fetchAll(PDO::FETCH_ASSOC); 
@@ -170,7 +170,7 @@ class chartfilter extends config{
     public function countPHARM(){
             $config = new config;
             $con = $config->con();
-            $sql = "SELECT count(*) AS `count` from ecle_forms WHERE semester = '$this->sem' AND sy = '$this->sy' AND reason != 'NULL' AND schoolABBR = 'PHARM'";
+            $sql = "SELECT count(*) AS `count` from ecle_forms_ug WHERE semester = '$this->sem' AND sy = '$this->sy' AND reason != 'NULL' AND schoolABBR = 'PHARM'";
             $data = $con-> prepare($sql);
             $data ->execute();
             $rows =$data-> fetchAll(PDO::FETCH_ASSOC); 
@@ -180,7 +180,7 @@ class chartfilter extends config{
     public function countSCITECH(){
             $config = new config;
             $con = $config->con();
-            $sql = "SELECT count(*) AS `count` from ecle_forms WHERE semester = '$this->sem' AND sy = '$this->sy' AND reason != 'NULL' AND schoolABBR = 'SCITECH'";
+            $sql = "SELECT count(*) AS `count` from ecle_forms_ug WHERE semester = '$this->sem' AND sy = '$this->sy' AND reason != 'NULL' AND schoolABBR = 'SCITECH'";
             $data = $con-> prepare($sql);
             $data ->execute();
             $rows =$data-> fetchAll(PDO::FETCH_ASSOC); 

@@ -56,13 +56,26 @@ body {
   -webkit-box-shadow: 0 0 3px #ccc;
   box-shadow: 0 0 5px #ccc;
 }
+
 table{
   font-size: 12px;
 }
+
 .btn-primary{
+  background-color: #3a14b9;
+  border-color: #3a14b9;
+}
+
+.btn-primary:hover{
   background-color: #2b0e8b;
   border-color: #2b0e8b;
 }
+
+.btn-primary:disabled{
+  background-color: #8762ff;
+  border-color: #8762ff;
+}
+
 #wrapper{
   overflow-x: hidden;
   background-image: linear-gradient(
