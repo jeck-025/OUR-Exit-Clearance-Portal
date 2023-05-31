@@ -34,7 +34,7 @@ $view = new view();
           </div>
         </nav>
 
-      <div class="container mt-5 responsive">
+      <div class="container-fluid mt-5 responsive">
         <div class="row">
           <div class="content px-4 m-auto justify-content-center responsive">
             <div class="col-md pt-3 text-center">
@@ -143,31 +143,37 @@ $view = new view();
 
             <hr class="divider">
             <div class="row mt-3 g-3">
-              <div class="col col-md-6 text-center wBorder">
-                <p class="fupload_head">Required Documents</p>
-                <p class="fupload_head_cap">Please attach the following documents in PDF Format</p>
-              </div>
-              <div class="col col-md-6 text-center">
-                <p class="fupload_head">Captcha</p>
-                <p class="fupload_captcha">Please complete the captcha below before submitting.</p>
-              </div>
+              
+              
             </div>
 
             <div class="row g-3">
-              <div class="col-md-3 fupload wBorder">
-                <label for="validID" class="form-label"><b>Valid ID of Parent or Guardian</b></label><br>
-                <input id="validID" class="form-control-file " accept=".pdf" type="file" name="validID" required>
+              <div class="col-md-6 mb-3 text-center">
+                <div class="row">
+                  <div class="col-12 text-center">
+                    <p class="fupload_head">Required Documents</p>
+                    <p class="fupload_head_cap">Please attach the following documents in PDF Format</p>
+                  </div>
+                  <div class="col-md-6 fupload wBorder">
+                    <label for="validID" class="form-label"><b>Valid ID of Parent or Guardian</b></label><br>
+                    <input id="validID" class="form-control-file " accept=".pdf" type="file" name="validID" required>
+                  </div>
+                  <div class="col-md-6 fupload wBorder">
+                    <label for="file_letter" class="form-label"><b>Letter of Intent for Exit</b></label><br>
+                    <input id="file_letter" class="form-control-file " accept=".pdf" type="file" name="file_letter" required>
+                  </div>
+                </div>
               </div>
-              <div class="col-md-3 fupload wBorder">
-                <label for="file_letter" class="form-label"><b>Letter of Intent for Exit</b></label><br>
-                <input id="file_letter" class="form-control-file " accept=".pdf" type="file" name="file_letter" required>
-              </div>
-              <div class="col col-md-6 text-center">
+              
+              <div class="col-md-6 text-center">
+                <div class="col-12 text-center">
+                <p class="fupload_head">Captcha</p>
+                <p class="fupload_captcha">Please complete the captcha below before submitting.</p>
                 <!-- <div class="form-group col-md-5 justify-content-center"> -->
                   <p><img src="captcha.php" width="120" height="30" alt="CAPTCHA"></p>
                   <p><input type="text" size="6" maxlength="5" name="captcha" value="">
                   <small>Copy the digits from the image into this box</small></p>
-                <!-- </div> -->
+                  <!-- </div> -->
               </div>
             </div>
 
@@ -181,7 +187,7 @@ $view = new view();
                   <button onclick="history.back()" class="btn btn-sm btn-outline-light mt-2 button-back">Back</button>
                 </div>
               </div>
-              
+
             </div>
           </form>
         </div>
