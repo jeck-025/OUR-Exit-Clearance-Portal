@@ -151,7 +151,7 @@ select{
   }
 
   .content {
-      max-width: 60% !important;
+      max-width: 100% !important;
       margin-left: 0;
     }
   
@@ -183,7 +183,7 @@ select{
 
 @media only screen and (max-width: 1200px){
   .content {
-      max-width: 75% !important;
+      max-width: 100% !important;
       margin-left: 0;
     }
   
@@ -199,7 +199,7 @@ select{
   }
 @media only screen and (max-width: 1025px){
   .content {
-      max-width: 75% !important;
+      max-width: 100% !important;
       margin-left: 0;
     }
   
@@ -216,7 +216,7 @@ select{
 
 @media only screen and (max-width: 991px){
   .content {
-      max-width: 75% !important;
+      max-width: 100% !important;
       margin-left: 0;
     }
   
@@ -233,7 +233,7 @@ select{
 
  @media only screen and (max-width: 600px){
     .content {
-        max-width: 75% !important;
+        max-width: 100% !important;
         margin-left: 0;
       }
     
