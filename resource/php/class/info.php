@@ -1469,7 +1469,7 @@ class info extends config{
                     if(empty($attachedID)){
                       echo "<a href='#' class='btn btn-primary btn-sm btn-block d-block' target='_blank' disabled><i class='fa-solid fa-id-card'></i> No Attached ID</a>";
                     }else{
-                      echo "<a href='#' class='btn btn-primary btn-sm btn-block d-block' target='_blank'><i class='fa-solid fa-id-card'></i> View Attached ID</a>";
+                      echo "<a href='resource/uploads/ids/$attachedID' class='btn btn-primary btn-sm btn-block d-block' target='_blank'><i class='fa-solid fa-id-card'></i> View Attached ID</a>";
                     }
                     if(empty($attachedID)){
                       echo "<a href='resource/uploads/letters/$attachedLTR' class='btn btn-primary btn-sm btn-block d-block' target='_blank'><i class='fa-solid fa-envelope'></i> View Letter of Intent for Exit</a>";
