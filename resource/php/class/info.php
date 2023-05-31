@@ -1467,7 +1467,7 @@ class info extends config{
                   
                   if($studType == "Transfer"){
                     if(empty($attachedID)){
-                      echo "<a href='#' class='btn btn-primary btn-sm btn-block d-block' target='_blank' disabled><i class='fa-solid fa-id-card'></i> No Attached ID</a>";
+                      echo "<a href='#' class='btn btn-primary btn-sm btn-block d-block disabled' target='_blank'><i class='fa-solid fa-id-card'></i> No Attached ID</a>";
                     }else{
                       echo "<a href='resource/uploads/ids/$attachedID' class='btn btn-primary btn-sm btn-block d-block' target='_blank'><i class='fa-solid fa-id-card'></i> View Attached ID</a>";
                     }
