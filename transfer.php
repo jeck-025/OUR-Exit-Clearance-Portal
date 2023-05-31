@@ -142,15 +142,11 @@ $view = new view();
             </div>
 
             <hr class="divider">
-            <div class="row mt-3 g-3">
-              
-              
-            </div>
 
             <div class="row g-3">
               <div class="col-md-6 mb-3 text-center">
                 <div class="row">
-                  <div class="col-12 text-center">
+                  <div class="col-12 text-center wBorder">
                     <p class="fupload_head">Required Documents</p>
                     <p class="fupload_head_cap">Please attach the following documents in PDF Format</p>
                   </div>
@@ -178,7 +174,7 @@ $view = new view();
             </div>
 
             <hr class="divider">
-              <div class="col-md pb-5 text-center">
+              <div class="col-md pb-5 pt-3 text-center">
                 <div>
                   <button type="submit" class="btn btn-sm button-submit btn-info">Submit</button>
                 </div>
