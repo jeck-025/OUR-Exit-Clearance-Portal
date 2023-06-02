@@ -158,10 +158,13 @@ echo"<div class='modal fade' id='regsHold$id' aria-labelledby='modal' aria-hidde
                     echo "<input type='hidden' name='landing' value='$landing'>";
                     echo "<input type='hidden' name='type' value='$studType'>";
                     echo "<input type='hidden' name='hold' value='$id'>";
-                    echo "<button type='button' class='btn btn-sm btn-danger' data-bs-dismiss='modal'><i class='fa-solid fa-x'></i> Cancel</button>
-                          <input type='submit' class='btn btn-sm btn-info' value='Clear Remarks' name='reset'>
-                          <input type='submit' class='btn btn-sm btn-warning' value='Hold Clearance' name='submit'>
-                     </div>
+                    echo "<button type='button' class='btn btn-sm btn-danger' data-bs-dismiss='modal'><i class='fa-solid fa-x'></i> Cancel</button>";
+                    if($regC == "ON HOLD"){
+                        echo "<input type='submit' class='btn btn-sm btn-info' value='Clear Remarks' name='reset'>";
+                    }else{                          
+                        echo "<input type='submit' class='btn btn-sm btn-warning' value='Hold Clearance' name='submit'>";
+                    }
+                    echo "</div>
                     </form>
                 </div>
             </div>
@@ -198,10 +201,13 @@ echo"<div class='modal fade' id='librHold$id' aria-labelledby='modal' aria-hidde
                     echo "<input type='hidden' name='landing' value='$landing'>";
                     echo "<input type='hidden' name='type' value='$studType'>";
                     echo "<input type='hidden' name='hold' value='$id'>";
-                    echo "<button type='button' class='btn btn-sm btn-danger' data-bs-dismiss='modal'><i class='fa-solid fa-x'></i> Cancel</button>
-                          <input type='submit' class='btn btn-sm btn-info' value='Clear Remarks' name='reset'>
-                          <input type='submit' class='btn btn-sm btn-warning' value='Hold Clearance' name='submit'>
-                     </div>
+                    echo "<button type='button' class='btn btn-sm btn-danger' data-bs-dismiss='modal'><i class='fa-solid fa-x'></i> Cancel</button>";
+                    if($libraryC == "ON HOLD"){
+                        echo "<input type='submit' class='btn btn-sm btn-info' value='Clear Remarks' name='reset'>";
+                    }else{                          
+                        echo "<input type='submit' class='btn btn-sm btn-warning' value='Hold Clearance' name='submit'>";
+                    }
+                    echo "</div>
                     </form>
                 </div>
             </div>
@@ -237,10 +243,13 @@ echo"<div class='modal fade' id='acctHold$id' aria-labelledby='modal' aria-hidde
 
                     echo "<input type='hidden' name='landing' value='$landing'>";
                     echo "<input type='hidden' name='hold' value='$id'>";
-                    echo "<button type='button' class='btn btn-sm btn-danger' data-bs-dismiss='modal'><i class='fa-solid fa-x'></i> Cancel</button>
-                          <input type='submit' class='btn btn-sm btn-info' value='Clear Remarks' name='reset'>
-                          <input type='submit' class='btn btn-sm btn-warning' value='Hold Clearance' name='submit'>
-                     </div>
+                    echo "<button type='button' class='btn btn-sm btn-danger' data-bs-dismiss='modal'><i class='fa-solid fa-x'></i> Cancel</button>";
+                    if($acctC == "ON HOLD"){
+                        echo "<input type='submit' class='btn btn-sm btn-info' value='Clear Remarks' name='reset'>";
+                    }else{                          
+                        echo "<input type='submit' class='btn btn-sm btn-warning' value='Hold Clearance' name='submit'>";
+                    }
+                    echo "</div>
                     </form>
                 </div>
             </div>
@@ -277,10 +286,13 @@ echo"<div class='modal fade' id='deanHold$id' aria-labelledby='modal' aria-hidde
                     echo "<input type='hidden' name='landing' value='$landing'>";
                     echo "<input type='hidden' name='type' value='$studType'>";
                     echo "<input type='hidden' name='hold' value='$id'>";
-                    echo "<button type='button' class='btn btn-sm btn-danger' data-bs-dismiss='modal'><i class='fa-solid fa-x'></i> Cancel</button>
-                          <input type='submit' class='btn btn-sm btn-info' value='Clear Remarks' name='reset'>
-                          <input type='submit' class='btn btn-sm btn-warning' value='Hold Clearance' name='submit'>
-                     </div>
+                    echo "<button type='button' class='btn btn-sm btn-danger' data-bs-dismiss='modal'><i class='fa-solid fa-x'></i> Cancel</button>";
+                    if($deptC == "ON HOLD"){
+                        echo "<input type='submit' class='btn btn-sm btn-info' value='Clear Remarks' name='reset'>";
+                    }else{                          
+                        echo "<input type='submit' class='btn btn-sm btn-warning' value='Hold Clearance' name='submit'>";
+                    }
+                    echo "</div>
                     </form>
                 </div>
             </div>
@@ -305,23 +317,26 @@ if($studType == "Transfer"){
                     </div>
                     <div class='modal-footer mt-3'>";
 
-                    if($deptC == "ON HOLD" && $studType == "Graduate"){
+                    if($guidanceC == "ON HOLD" && $studType == "Graduate"){
                         $landing = "ghg";
-                    }elseif($deptC == "ON HOLD" && $studType == "Transfer"){
+                    }elseif($guidanceC == "ON HOLD" && $studType == "Transfer"){
                         $landing = "ght";
-                    }elseif($deptC == "PENDING" && $studType == "Graduate"){
+                    }elseif($guidanceC == "PENDING" && $studType == "Graduate"){
                         $landing = "grg";
-                    }elseif($deptC == "PENDING" && $studType == "Transfer"){
+                    }elseif($guidanceC == "PENDING" && $studType == "Transfer"){
                         $landing = "grt";
                     }else{}
 
                     echo "<input type='hidden' name='landing' value='$landing'>";
                     echo "<input type='hidden' name='type' value='$studType'>";
                     echo "<input type='hidden' name='hold' value='$id'>";
-                    echo "<button type='button' class='btn btn-sm btn-danger' data-bs-dismiss='modal'><i class='fa-solid fa-x'></i> Cancel</button>
-                          <input type='submit' class='btn btn-sm btn-info' value='Clear Remarks' name='reset'>
-                          <input type='submit' class='btn btn-sm btn-warning' value='Hold Clearance' name='submit'>
-                     </div>
+                    echo "<button type='button' class='btn btn-sm btn-danger' data-bs-dismiss='modal'><i class='fa-solid fa-x'></i> Cancel</button>";
+                    if($guidanceC == "ON HOLD"){
+                        echo "<input type='submit' class='btn btn-sm btn-info' value='Clear Remarks' name='reset'>";
+                    }else{                          
+                        echo "<input type='submit' class='btn btn-sm btn-warning' value='Hold Clearance' name='submit'>";
+                    }
+                    echo "</div>
                     </form>
                 </div>
             </div>
