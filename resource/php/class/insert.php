@@ -4,9 +4,9 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/ecle/vendor/sendmailTransfer.php';
 
 class insert extends config{
 
-    public $fname,$lname,$mname,$studID,$email,$contact,$course,$year,$university,$reason, $validID, $validID_tmp, $file_letter, $file_letter_tmp;
+    public $fname,$lname,$mname,$studID,$email,$contact,$course,$year,$university,$reason, $validID, $validID_tmp, $file_letter, $file_letter_tmp, $validIDsize, $lettersize;
     
-    function __construct($fname=null,$lname=null,$mname=null,$studID=null,$email=null,$contact=null,$course=null,$bday=null,$year=null, $university=null, $reason=null, $validID=null, $validID_tmp=null, $file_letter=null, $file_letter_tmp = null){
+    function __construct($fname=null,$lname=null,$mname=null,$studID=null,$email=null,$contact=null,$course=null,$bday=null,$year=null, $university=null, $reason=null, $validID=null, $validID_tmp=null, $file_letter=null, $file_letter_tmp = null, $validIDsize = null, $lettersize = null){
 
         $this->fname =$fname;
         $this->lname =$lname;
@@ -21,6 +21,8 @@ class insert extends config{
         $this->reason = $reason;
         $this->valid_ID = $validID;
         $this->file_Letter = $file_letter;
+        $this->valid_IDsize = $validIDsize;
+        $this->file_Lettersize = $lettersize;
         
         //Get Filename Extensions
         $vID = strtolower(pathinfo($this->valid_ID['name'], PATHINFO_EXTENSION));
@@ -46,6 +48,13 @@ class insert extends config{
                 </div>";
             $error = $error + 1;
         }
+
+        // if($this->valid_IDsize > 2097152){
+        //     echo "<div class='alert alert-danger' role='alert'>
+        //             <i class='fa-solid fa-triangle-exclamation'></i> Error: Valid ID: File size limit exceeded.
+        //         </div>";
+        //     $error = $error + 1;
+        // }
 
         if($error == 0){
             $this->valid_ID['name'] = $this->studID."_".$this->lname."_".$this->fname."_id.".$vID;

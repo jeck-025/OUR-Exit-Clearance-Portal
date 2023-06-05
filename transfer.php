@@ -59,7 +59,9 @@ $view = new view();
                                 $_POST['email'], $_POST['contact'], $_POST['course'], $_POST['bday'], 
                                 $_POST['year'], $_POST['university'], $_POST['reason'], 
                                 $_FILES['validID'],$_FILES['validID']['tmp_name'],
-                                $_FILES['file_letter'],$_FILES['file_letter']['tmp_name']);
+                                $_FILES['file_letter'],$_FILES['file_letter']['tmp_name'],
+                                $_FILES['validID']['size'],
+                                $_FILES['file_letter']['size'],);
               }
           }
           ?>
