@@ -49,7 +49,7 @@ $view = new view();
           if(!empty($_POST)){
               if($_POST['captcha'] != $_SESSION['digit']){
                 echo '<div class="alert alert-danger alert-dismissible fade show col-12" role="alert">
-                        <b>Captcha Error: </b>Digits did not match.
+                        <b>Captcha Error: </b>Wrong Captcha answer.
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -61,7 +61,7 @@ $view = new view();
                                 $_FILES['validID'],$_FILES['validID']['tmp_name'],
                                 $_FILES['file_letter'],$_FILES['file_letter']['tmp_name'],
                                 $_FILES['validID']['size'],
-                                $_FILES['file_letter']['size'],);
+                                $_FILES['file_letter']['size']);
               }
           }
           ?>
