@@ -150,7 +150,7 @@ $view = new view();
               <div class="col-md-6 mb-3 text-center">
                 <div class="row">
                   <div class="col-12 text-center wBorder">
-                    <p class="fupload_head">Required Documents</p>
+                    <p class="fupload_head"><i class="fas fa-folder-open"></i> Required Documents</p>
                     <p class="fupload_head_cap">Please attach the following documents in PDF Format</p>
                   </div>
                   <div class="col-md-6 fupload wBorder">
@@ -166,7 +166,7 @@ $view = new view();
               
               <div class="col-md-6 text-center">
                 <div class="col-12 text-center">
-                <p class="fupload_head">Captcha</p>
+                <p class="fupload_head"><i class="fas fa-user-check"></i> Captcha</p>
                 <p class="fupload_captcha">Please complete the captcha below before submitting.</p>
                 <!-- <div class="form-group col-md-5 justify-content-center"> -->
                   <p><img src="captcha.php" width="120" height="30" alt="CAPTCHA"></p>
@@ -179,11 +179,11 @@ $view = new view();
             <hr class="divider">
               <div class="col-md pb-5 pt-3 text-center">
                 <div>
-                  <button type="submit" class="btn btn-sm button-submit btn-info">Submit</button>
+                  <button type="submit" class="btn btn-sm button-submit btn-info"><i class="fas fa-paper-plane"></i> Submit</button>
                 </div>
                 <div>
                   <!-- <button onclick="location.href='index.php'" class="btn btn-sm btn-outline-light mt-2 button-back">Back</button> -->
-                  <button onclick="history.back()" class="btn btn-sm btn-outline-light mt-2 button-back">Back</button>
+                  <button onclick="history.back()" class="btn btn-sm btn-outline-light mt-2 button-back"> <i class="fas fa-long-arrow-alt-left"></i> Back</button>
                 </div>
               </div>
 
