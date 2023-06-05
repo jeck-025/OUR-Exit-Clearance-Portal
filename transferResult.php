@@ -17,7 +17,7 @@ $reference = new reference();
 
     <div class="row m-auto">
         <div class="rcontent">
-          <div class="col-md py-5">
+          <div class="col-md">
             <?php
             $reference = new reference($_POST['transnumber']);
             $reference->referenceCheck();

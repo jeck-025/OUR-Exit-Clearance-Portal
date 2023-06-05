@@ -15,14 +15,18 @@ $referenceID = $_GET['referenceID'];
 $config = new config;
 $con = $config->con();
 
-
+if($_GET['type'] == "Transfer"){
+    $table = "ecle_forms_ug";
+}else{
+    $table = "ecle_forms";
+}
 
 // $conn = new mysqli($localhost, $username, $password, $dbname);
 // if ($conn->connect_error) {
 //     die("Connection failed: " . $conn->connect_error);
 // }
 
-$sql = "SELECT * FROM `ecle_forms` WHERE `referenceID` = '$referenceID'";
+$sql = "SELECT * FROM `$table` WHERE `referenceID` = '$referenceID'";
 $data1 = $con->prepare($sql);
 $data1->execute();
 $rows1 = $data1->fetchAll(PDO::FETCH_ASSOC);

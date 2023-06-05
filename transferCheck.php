@@ -22,16 +22,16 @@ $view = new view;
             <img src="resource/img/ceulogo2.png" class="img-fluid logo">
           </nav>
 
-      <div class="container py-5 text-white">
+      <div class="container text-white pt-3">
         <div class="content text-center">
           <div class="row">
-            <div class="col-md mt-5 pt">
+            <div class="col-md mt-1">
               <a href="transferCheck.php"><img class="ecleLogo" src="resource/img/ecle-logo-new.png"></a>
               <h2 class="head-text">Undergraduate Status Checker</h2>
               <hr class="divider">
               <!-- <h1 class="head-text text-center">Ecle Status Checker</h1> -->
             </div>
-          <div class="input pb-5 m-auto">
+          <div class="input pb-3 m-auto">
             <?php
               if(!empty($_POST)){
                   require 'transferResult.php';
@@ -44,19 +44,23 @@ $view = new view;
       </div>
     </div>
     <div class="row">
-        <div class="col col-md-4 buttonsdiv">
-          <?php 
-            if(!empty($_POST)){
-              echo '<a href="transferCheck.php" class="btn btn-sm btn-outline-light text-center ">Check Another Status</a>';
-            }else{
-              // do not show button
-            }
-          ?>
+        <div class="col col-md-4 mb-3 buttonsdiv">
+          <a href="transferCheck.php" class="btn btn-sm btn-outline-light text-center ">Check Another Status</a>
           <a href="index.php" class="btn btn-sm btn-outline-light text-center ">Back to ECLE Home</a>
         </div>
       </div>
   </header>
-
+  <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <p class="ft pt-3">
+              Centro Escolar University || R.Bolasoc | J.Espiritu | D.Calalang | C.DelaCruz | L.Pradez | D.Prado | J. Anatalio
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
 
 
     <!-- Optional JavaScript; choose one of the two! -->

@@ -35,6 +35,40 @@ body {
   }
 }
 
+td.staticon-approved {
+  font-size: 4rem;
+  text-align: center;
+  vertical-align: middle;
+  padding: 0;
+  color: #13a300
+}
+
+td.staticon-pending {
+  font-size: 4rem;
+  text-align: center;
+  vertical-align: middle;
+  padding: 0;
+  color: #cfcfcf
+}
+
+td.staticon-hold {
+  font-size: 4rem;
+  text-align: center;
+  vertical-align: middle;
+  padding: 0;
+  color: #ffe100
+}
+
+footer {
+  min-height: 7vh;
+  background-color: #1d2b34;
+}
+
+.ft {
+  color: #fff;
+  font-size: 60%;
+  text-align: center;
+}
 .buttonsdiv {
   display: block;
   margin-left: auto;
