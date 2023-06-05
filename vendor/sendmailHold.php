@@ -17,6 +17,12 @@ require 'autoload.php';
 function sendOnHoldMail($email, $remarks, $lname, $fname, $mname, $office){
 
   $mail = new PHPMailer(true);
+  $view = new view();
+  $mailerData = $view->viewConfigMailer();
+  $mailerUsername = $mailerData[0];
+  $mailerPassword = $mailerData[1];
+  $mailerPlatform = $mailerData[2];
+  $mailerPort = $mailerData[3];
 
   $body ="<p>Dear $lname, $fname $mname,</p>
   <p>Greetings of Peace!</p>
@@ -30,15 +36,15 @@ function sendOnHoldMail($email, $remarks, $lname, $fname, $mname, $office){
     //Server settings
      $mail->SMTPDebug = SMTP::DEBUG_SERVER;
      $mail->isSMTP();
-     $mail->Host       = 'smtp.gmail.com';     //platform
+     $mail->Host       = $mailerPlatform;     //platform
      $mail->SMTPAuth   = true;
-     $mail->Username   = 'ceumnlecle@gmail.com';   //email
-     $mail->Password   = 'ejgkweqvskernkxs';                                //password
+     $mail->Username   = $mailerUsername;   //email
+     $mail->Password   = $mailerPassword;                                //password
      $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-     $mail->Port       = 587;
+     $mail->Port       = $mailerPort;
 
      //Recipients
-     $mail->setFrom('ceumnlecle@gmail.com');       //sender
+     $mail->setFrom($mailerUsername);       //sender
      $mail->addAddress($email);
 
      //Content

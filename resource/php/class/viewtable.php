@@ -80,6 +80,7 @@ public function viewRequestTableRegistrarTransfer(){
     echo "<td class='text-center'><span class='badge bg-success'>$data[registrarclearance]</span></td>";
   }
   $id = $data["id"];
+  $studType = $data["studentType"];
   $libraryC = $data["libraryclearance"];
   $libraryR = $data["libraryremarks"];
   $guidanceC = $data["guidanceclearance"];
@@ -90,6 +91,7 @@ public function viewRequestTableRegistrarTransfer(){
   $acctR = $data["accountingremarks"];
   $regC = $data["registrarclearance"];
   $regR = $data["registrarremarks"];
+
   echo "<td>";
   // echo "<button class='btn btn-sm btn-block btn-success d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsModal$id' data-id='$id'><i class='fa-solid fa-check'></i> Sign</button>";
   // echo "<button class='btn btn-sm btn-block btn-warning d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsHold$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Hold</button>";
@@ -446,7 +448,6 @@ public function viewApproveTableRegistrarGraduate(){
   echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
   echo "<th>Student Number</th>";
-  echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
   echo "<th>Course</th>";
   echo "<th>Date Requested</th>";
@@ -458,7 +459,6 @@ public function viewApproveTableRegistrarGraduate(){
   echo "</thead>";
   foreach ($result as $data) {
   echo "<tr style='font-size: 13px'>";
-  echo "<td>$data[studentID]</td>";
   
   $temp_lname = utf8_decode($data['lname']);
   $lname = str_replace('?', 'Ñ', $temp_lname);

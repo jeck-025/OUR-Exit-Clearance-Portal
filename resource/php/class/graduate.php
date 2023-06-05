@@ -113,7 +113,7 @@ class graduate extends config{
                         echo "<td class='$iconClassA'>$iconAcct</td>";
                         echo "<td class='$iconClassR'>$iconReg</td>";
                         echo "</tr>";
-                        echo "<h5><a href='formDownload.php?referenceID=$data[referenceID]' class='btn btn-sm btn-outline-light'><i class='fa-solid fa-file-arrow-down'></i> DOWNLOAD</a> the copy of your Clearance Form</h5><br>";
+                        echo "<h5><a href='formDownload.php?referenceID=$data[referenceID]&type=Graduate' class='btn btn-sm btn-outline-light'><i class='fa-solid fa-file-arrow-down'></i> DOWNLOAD</a> the copy of your Clearance Form</h5><br>";
                         echo "</table>";
                         echo "</div>";
                         break;

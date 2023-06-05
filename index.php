@@ -83,9 +83,9 @@
             </div>
           </div>
           <div class="col-md trans">
-            <div class="box2 pt-0">
-              <div class="row mt-0 justify-content-center text-center">
-                <h6 class="pb-3"><i class="fas fa-exclamation-triangle"></i> Under Development <i class="fas fa-exclamation-triangle"></i></h6>
+            <div class="box2 pt-3">
+              <div class="row mt-4 justify-content-center text-center">
+                <!-- <h6 class="pb-3"><i class="fas fa-exclamation-triangle"></i> Under Development <i class="fas fa-exclamation-triangle"></i></h6> -->
                 <h1 class="pb-3 transHead">Transfer</h1>
                 <p class="transText px-md-5 d-none d-sm-block">
                   For transferring, graduate and continuing students please complete the requirements for the exit clearance form. All form requirements will be reviewd by all departments. You may check the status of your exit clearance by entering the reference number provided after initial submission of the form.
@@ -93,10 +93,10 @@
                 <div class="row align-items-center">
                   <div class="col-md">
                     <div class="btn">
-                      <button onclick="location.href='#'" class="button4" disabled>Check Clearance</button>
-                      <button onclick="location.href='#'" class="button2" disabled>Apply Clearance</button>
-                      <!-- <button onclick="location.href='transfer.php'" class="button2" >Apply Clearance</button>
-                      <button onclick="location.href='transferCheck.php'" class="button4" >Check Clearance</button> -->
+                      <!-- <button onclick="location.href='#'" class="button4" disabled>Check Clearance</button>
+                      <button onclick="location.href='#'" class="button2" disabled>Apply Clearance</button> -->
+                      <button onclick="location.href='transfer.php'" class="button2" >Apply Clearance</button>
+                      <button onclick="location.href='transferCheck.php'" class="button4" >Check Clearance</button>
                     </div>
                   </div>
                 </div>

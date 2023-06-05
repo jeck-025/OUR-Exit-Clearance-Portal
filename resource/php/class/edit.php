@@ -78,7 +78,7 @@ class edit extends config{
     public function approveClearanceRegistrar(){
         $con = $this->con();
 
-        if($this->id == "Graduate"){
+        if($this->type == "Graduate"){
             $sql2 = "SELECT * FROM `ecle_forms` WHERE `id` = '$this->id'";
         }else{
             $sql2 = "SELECT * FROM `ecle_forms_ug` WHERE `id` = '$this->id'";
@@ -93,9 +93,9 @@ class edit extends config{
             $mname = $row['mname'];
             $tn = $row['referenceID'];
         }
-        //sendmailApproved($email, $lname, $fname, $mname, $tn);
+        sendmailApproved($email, $lname, $fname, $mname, $tn, $this->type);
 
-        if($this->id == "Graduate"){
+        if($this->type == "Graduate"){
             $sql = "UPDATE `ecle_forms` SET `registrarclearance` = 'CLEARED', `registrarremarks` = '', `registrardate` = CURRENT_TIMESTAMP, `registrar_sra` = '$this->user' WHERE `id` = '$this->id'";
         }else{
             $sql = "UPDATE `ecle_forms_ug` SET `registrarclearance` = 'CLEARED', `registrarremarks` = '', `registrardate` = CURRENT_TIMESTAMP, `registrar_sra` = '$this->user' WHERE `id` = '$this->id'";
