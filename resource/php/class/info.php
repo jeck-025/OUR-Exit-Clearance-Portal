@@ -224,10 +224,10 @@ class info extends config{
         
         if($studType == "Transfer"){
           if(!empty($guidanceR)){
-            $dispGuidanceR = "Guidance Department: <b class='remarks'> $guidanceR </b><br>";
+            $dispGuidanceR = "Guidance Office: <b class='remarks'> $guidanceR </b><br>";
           }
           else{
-            $dispGuidanceR = "<i class='remarks'>No remarks from Guidance Department </i><br>";
+            $dispGuidanceR = "<i class='remarks'>No remarks from Guidance Office </i><br>";
           }
         }
         
@@ -333,7 +333,7 @@ class info extends config{
           echo "</div>";
 
           echo "<div class='row'>";
-            echo "<div class='col col-7'>";
+            echo "<div class='col col-8'>";
               echo "<p class=caption>Clearance Status</p>";
                 echo "<table class='table table-borderless shadow p-3 mb-5 bg-white rounded' width='100%'>";
                     echo "<th class='stathead'>Dean's Office</th>";
@@ -383,7 +383,7 @@ class info extends config{
 
             echo "</div>";
 
-            echo "<div class='col col-5'>";
+            echo "<div class='col col-4'>";
               echo "<p class=caption>Remarks</p>";
                 echo "<table class='table table-borderless shadow p-3 mb-5 bg-white rounded' width='100%'>";
                   echo "<tr>";
@@ -592,10 +592,10 @@ class info extends config{
       }
 
       if(!empty($guidanceR)){
-        $dispGuidanceR = "Guidance Department: <b class='remarks'> $guidanceR </b><br>";
+        $dispGuidanceR = "Guidance Office: <b class='remarks'> $guidanceR </b><br>";
       }
       else{
-        $dispGuidanceR = "<i class='remarks'>No remarks from Guidance Department </i><br>";
+        $dispGuidanceR = "<i class='remarks'>No remarks from Guidance Office </i><br>";
       }
       
       if(!empty($deptR)){
@@ -993,10 +993,10 @@ class info extends config{
 
         if($studType == "Transfer"){
           if(!empty($guidanceR)){
-            $dispGuidanceR = "Guidance Department: <b class='remarks'> $guidanceR </b><br>";
+            $dispGuidanceR = "Guidance Office: <b class='remarks'> $guidanceR </b><br>";
           }
           else{
-            $dispGuidanceR = "<i class='remarks'>No remarks from Guidance Department </i><br>";
+            $dispGuidanceR = "<i class='remarks'>No remarks from Guidance Office </i><br>";
           }
         }
                 
@@ -1391,10 +1391,10 @@ class info extends config{
 
         if($studType == "Transfer"){
           if(!empty($guidanceR)){
-            $dispGuidanceR = "Guidance Department: <b class='remarks'> $guidanceR </b><br>";
+            $dispGuidanceR = "Guidance Office: <b class='remarks'> $guidanceR </b><br>";
           }
           else{
-            $dispGuidanceR = "<i class='remarks'>No remarks from Guidance Department </i><br>";
+            $dispGuidanceR = "<i class='remarks'>No remarks from Guidance Office </i><br>";
           }
         }
         
@@ -1800,10 +1800,10 @@ class info extends config{
 
         if($studType == "Transfer"){
           if(!empty($guidanceR)){
-            $dispGuidanceR = "Guidance Department: <b class='remarks'> $guidanceR </b><br>";
+            $dispGuidanceR = "Guidance Office: <b class='remarks'> $guidanceR </b><br>";
           }
           else{
-            $dispGuidanceR = "<i class='remarks'>No remarks from Guidance Department </i><br>";
+            $dispGuidanceR = "<i class='remarks'>No remarks from Guidance Office </i><br>";
           }
         }
         

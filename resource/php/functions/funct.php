@@ -614,6 +614,10 @@ function deptImage(){
         echo "img-pharm.png";
     }elseif($username == "SCITECH"){
         echo "img-sc.png";
+    }elseif($username == "GUIDANCE"){
+        echo "img-gcd.png";
+    }elseif($username == "LIBRARY"){
+        echo "img-lib.png";
     }else{
         echo "img-ceu.png";
     }
