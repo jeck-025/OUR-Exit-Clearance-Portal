@@ -86,6 +86,10 @@ select{
   border-radius: 5px;
 }
 
+.studN{
+  color: yellow;
+}
+
 .fupload{
   padding-left:4%;
 }

@@ -89,19 +89,20 @@ $view = new view();
             <div class="row mt-3 g-3">
               <!---Student Number--->
               <div class="col-md-4">
-                <label for="studentNumber" class="form-label">Student Number</label>
-                <input type="text" name="studID" class="form-control" pattern="[0-9]{4}-[0-9]{5}" oninvalid="this.setCustomValidity('Please follow the pattern (XXXX-XXXXX)')" oninput="this.setCustomValidity('')" id="studentNumber" required>
+                <label for="studentNumber" class="form-label">Student Number <br><small class="studN">(Use <b>0000-00000</b> if you cannot remember your Student Number)</small></label>
+                <!-- <input type="text" name="studID" class="form-control" pattern="[A-Za-z0-9]{4}-[A-Za-z0-9]{5}" oninvalid="this.setCustomValidity('Please follow the pattern (XXXX-XXXXX)')" oninput="this.setCustomValidity('')" id="studentNumber" required> -->
+                <input type="text" name="studID" class="form-control" pattern="[0-9]{4}-[0-9]{5}" oninvalid="this.setCustomValidity('Please follow the pattern (xxxx-xxxxx)')" oninput="this.setCustomValidity('')" id="studentNumber" placeholder="xxxx-xxxxx" required>
               </div>
 
               <!---Email--->
               <div class="col-md-4">
-                <label for="email" class="form-label">Email</label>
+                <label for="email" class="mt-4 form-label">Email</label>
                 <input type="email" name="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" oninvalid="this.setCustomValidity('Please follow the pattern sample@gmail.com')" oninput="this.setCustomValidity('')" id="email" required>
               </div>
 
               <!---Contact Number--->
               <div class="col-md-4">
-                <label for="contactNumber" class="form-label">Contact Number</label>
+                <label for="contactNumber" class="form-label">Contact Number <br><small class="studN">12-Digit Mobile Number</small></label>
                 <input type="text" name="contact" class="form-control" pattern="09[0-9]{9}" oninvalid="this.setCustomValidity('Please follow the pattern 0XXXXXXXXXX')" oninput="this.setCustomValidity('')" id="contactNumber" required>
               </div>
             </div>
@@ -124,7 +125,7 @@ $view = new view();
               <!---Year Level--->
               <div class="col-md-3">
                 <label for="yearLevel" class="form-label">Year Last Enrolled</label>
-                <input type="text" name="year" class="form-control" pattern="20[0-9]{2}" oninvalid="this.setCustomValidity('Please follow the pattern 20XX')" oninput="this.setCustomValidity('')" id="yearLevel" required>
+                <input type="text" name="year" class="form-control" pattern="20[0-9]{2}" oninvalid="this.setCustomValidity('Please follow the pattern xxxx')" oninput="this.setCustomValidity('')" id="yearLevel" placeholder="xxxx" required>
               </div>
 
               <!---Transfer School--->
