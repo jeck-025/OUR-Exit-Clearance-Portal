@@ -30,7 +30,7 @@ class hold extends config{
         }
         $office = "Accounting";
         
-        //sendOnHoldMail($email, $this->remarks, $lname, $fname, $mname, $office);
+        sendOnHoldMail($email, $this->remarks, $lname, $fname, $mname, $office);
 
         if($this->type == "Graduate"){
             $sql = "UPDATE `ecle_forms` SET `accountingclearance` = 'ON HOLD', `accountingremarks` = '$this->remarks', `accountingdate` = CURRENT_TIMESTAMP WHERE `id` = '$this->id'";
@@ -95,7 +95,7 @@ class hold extends config{
             $mname = $row['mname'];
         }
         $office = "Guidance";
-        //sendOnHoldMail($email, $this->remarks, $lname, $fname, $mname, $office);
+        sendOnHoldMail($email, $this->remarks, $lname, $fname, $mname, $office);
 
         if($this->type == "Graduate"){
             $sql = "UPDATE `ecle_forms` SET `guidanceclearance` = 'ON HOLD', `guidanceremarks` = '$this->remarks', `guidancedate` = CURRENT_TIMESTAMP WHERE `id` = '$this->id'";
@@ -161,7 +161,7 @@ class hold extends config{
             $office = $row['school'];
         }
 
-        //sendOnHoldMail($email, $this->remarks, $lname, $fname, $mname, $office);
+        sendOnHoldMail($email, $this->remarks, $lname, $fname, $mname, $office);
 
         if($this->type == "Graduate"){
             $sql = "UPDATE `ecle_forms` SET `departmentclearance` = 'ON HOLD', `departmentremarks` = '$this->remarks', `departmentdate` = CURRENT_TIMESTAMP WHERE `id` = '$this->id'";
@@ -226,7 +226,7 @@ class hold extends config{
             $mname = $row['mname'];
         }
         $office = "Library";
-        //sendOnHoldMail($email, $this->remarks, $lname, $fname, $mname, $office);
+        sendOnHoldMail($email, $this->remarks, $lname, $fname, $mname, $office);
 
         if($this->type == "Graduate"){
             $sql = "UPDATE `ecle_forms` SET `libraryclearance` = 'ON HOLD', `libraryremarks` = '$this->remarks', `librarydate` = CURRENT_TIMESTAMP WHERE `id` = '$this->id'";
@@ -289,7 +289,7 @@ class hold extends config{
             $mname = $row['mname'];
         }
         $office = "Registrar";
-        //sendOnHoldMail($email, $this->remarks, $lname, $fname, $mname, $office);
+        sendOnHoldMail($email, $this->remarks, $lname, $fname, $mname, $office);
 
         if($this->type == "Graduate"){
             $sql = "UPDATE `ecle_forms` SET `registrarclearance` = 'ON HOLD', `registrarremarks` = '$this->remarks', `registrardate` = CURRENT_TIMESTAMP WHERE `id` = '$this->id'";

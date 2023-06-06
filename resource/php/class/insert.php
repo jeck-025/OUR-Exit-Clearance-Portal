@@ -105,11 +105,16 @@ class insert extends config{
 
 
         //check for duplicates
-        $sqlcheck = "SELECT COUNT(`studentID`) as `match` from `ecle_forms_ug` WHERE `studentID` LIKE '$this->studID'";
-        $datacheck = $con->prepare($sqlcheck);
-        $datacheck ->execute();
-        $checkrslt = $datacheck->fetchAll(PDO::FETCH_ASSOC);
-        $match = $checkrslt[0]['match'];
+
+        if($this->studID == "0000-00000"){
+            $match = 0;
+        }else{
+            $sqlcheck = "SELECT COUNT(`studentID`) as `match` from `ecle_forms_ug` WHERE `studentID` LIKE '$this->studID'";
+            $datacheck = $con->prepare($sqlcheck);
+            $datacheck ->execute();
+            $checkrslt = $datacheck->fetchAll(PDO::FETCH_ASSOC);
+            $match = $checkrslt[0]['match'];
+        }
 
         if($match == 0){
             if ($schoolType === "Science"){
