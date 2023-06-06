@@ -120,7 +120,7 @@ class reference extends config{
                         if($data['registrarclearance'] === "CLEARED" && $data['expiry'] === 'NO'){
                              echo "<h5><a href='formDownload.php?referenceID=$data[referenceID]&type=Transfer' class='btn btn-sm btn-outline-light'><i class='fa-solid fa-file-arrow-down'></i> DOWNLOAD</a> the copy of your Clearance Form</h5><br>";
                         }else{
-                            echo "h3 class='text-center font-weight-bold'> Clearance Status </h3>";
+                            echo "<h3 class='text-center font-weight-bold'> Clearance Status </h3>";
                         }
                         echo "<br>";
                         echo "<tr class='text-white'>";
