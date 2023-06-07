@@ -694,7 +694,7 @@ public function viewHoldTableRegistrarGraduate(){
 public function viewRequestTableAccountingTransfer(){
   $acct_asst_name = acct_asstName();
   $con = $this->con();
-  $sql = "SELECT * FROM `ecle_forms_ug` WHERE `accountingclearance`='PENDING' AND `studentType` = 'Transfer' AND `expiry` = 'NO' ORDER BY `dateReq` ASC";
+  $sql = "SELECT * FROM `ecle_forms_ug` WHERE `libraryclearance` = 'CLEARED' AND `accountingclearance`='PENDING' AND `studentType` = 'Transfer' AND `expiry` = 'NO' ORDER BY `dateReq` ASC";
   $data= $con->prepare($sql);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
@@ -878,7 +878,7 @@ public function viewRequestTableAccountingGraduate(){
 
 public function viewApproveTableAccountingTransfer(){
   $con = $this->con();
-  $sql = "SELECT * FROM `ecle_forms_ug` WHERE `accountingclearance`='CLEARED' AND `studentType` = 'Transfer' AND `expiry` = 'NO' ORDER BY `dateReq` ASC";
+  $sql = "SELECT * FROM `ecle_forms_ug` WHERE `libraryclearance` = 'CLEARED' `accountingclearance`='CLEARED' AND `studentType` = 'Transfer' AND `expiry` = 'NO' ORDER BY `dateReq` ASC";
   $data= $con->prepare($sql);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
@@ -1726,7 +1726,7 @@ public function viewHoldTableDepartmentGraduate(){
 public function viewRequestTableLibraryTransfer(){
   $libr_asst_name = libr_asstName();
   $con = $this->con();
-  $sql = "SELECT * FROM `ecle_forms_ug` WHERE `libraryclearance`='PENDING' AND `studentType` = 'Transfer' AND `expiry` = 'NO' ORDER BY `dateReq` ASC";
+  $sql = "SELECT * FROM `ecle_forms_ug` WHERE `guidanceclearance` = 'CLEARED' AND `libraryclearance`='PENDING' AND `studentType` = 'Transfer' AND `expiry` = 'NO' ORDER BY `dateReq` ASC";
   $data= $con->prepare($sql);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
@@ -2234,7 +2234,7 @@ public function viewHoldTableLibraryGraduate(){
 public function viewRequestTableGuidanceTransfer(){
   $guid_asst_name = guid_asstName();
   $con = $this->con();
-  $sql = "SELECT * FROM `ecle_forms_ug` WHERE `guidanceclearance`='PENDING' AND `studentType` = 'Transfer' AND `expiry` = 'NO' ORDER BY `dateReq` ASC";
+  $sql = "SELECT * FROM `ecle_forms_ug` WHERE `departmentclearance` = 'CLEARED' AND `guidanceclearance`='PENDING' AND `studentType` = 'Transfer' AND `expiry` = 'NO' ORDER BY `dateReq` ASC";
   $data= $con->prepare($sql);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
@@ -2504,7 +2504,7 @@ public function viewApproveTableGuidanceTransfer(){
 
 public function viewCountPendingGuidanceTR(){
   $con = $this->con();
-  $sql = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE `guidanceclearance` = 'PENDING' AND `studentType` = 'Transfer' AND `expiry` = 'NO'";
+  $sql = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE `departmentclearance` = 'CLEARED' AND `guidanceclearance` = 'PENDING' AND `studentType` = 'Transfer' AND `expiry` = 'NO'";
   $data= $con->prepare($sql);
   $data->execute();
   $result = $data->fetchColumn();
@@ -2513,7 +2513,7 @@ public function viewCountPendingGuidanceTR(){
 
 public function viewTotalGuidance(){
   $con = $this->con();
-  $sql = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE `guidanceclearance` = 'PENDING' AND `expiry` = 'NO'";
+  $sql = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE `departmentclearance` = 'CLEARED' AND `guidanceclearance` = 'PENDING' AND `expiry` = 'NO'";
   $data= $con->prepare($sql);
   $data->execute();
   $result = $data->fetchColumn();
@@ -2633,7 +2633,7 @@ public function viewTotalAccounting(){
   $data->execute();
   $result1 = $data->fetchColumn();
 
-  $sql2 = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE `accountingclearance` = 'PENDING' AND `expiry` = 'NO'";
+  $sql2 = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE  `libraryclearance` = 'CLEARED' AND  `accountingclearance` = 'PENDING' AND `expiry` = 'NO'";
   $data2= $con->prepare($sql2);
   $data2->execute();
   $result2= $data2->fetchColumn();
@@ -2644,7 +2644,7 @@ public function viewTotalAccounting(){
 
 public function viewCountPendingAccountingTR(){
   $con = $this->con();
-  $sql = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE `accountingclearance` = 'PENDING' AND `studentType` = 'Transfer' AND `expiry` = 'NO'";
+  $sql = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE  `libraryclearance` = 'CLEARED' AND  `accountingclearance` = 'PENDING' AND `studentType` = 'Transfer' AND `expiry` = 'NO'";
   $data= $con->prepare($sql);
   $data->execute();
   $result = $data->fetchColumn();
@@ -2667,7 +2667,7 @@ public function viewTotalLibrary(){
   $data->execute();
   $result1 = $data->fetchColumn();
 
-  $sql2 = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE `libraryclearance` = 'PENDING' AND `expiry` = 'NO'";
+  $sql2 = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE  `guidanceclearance` = 'CLEARED' AND  `libraryclearance` = 'PENDING' AND `expiry` = 'NO'";
   $data2= $con->prepare($sql2);
   $data2->execute();
   $result2 = $data2->fetchColumn();
@@ -2678,7 +2678,7 @@ public function viewTotalLibrary(){
 
 public function viewCountPendingLibraryTR(){
   $con = $this->con();
-  $sql = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE `libraryclearance` = 'PENDING' AND `studentType` = 'Transfer' AND `expiry` = 'NO'";
+  $sql = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE `guidanceclearance` = 'CLEARED' AND `libraryclearance` = 'PENDING' AND `studentType` = 'Transfer' AND `expiry` = 'NO'";
   $data= $con->prepare($sql);
   $data->execute();
   $result = $data->fetchColumn();
