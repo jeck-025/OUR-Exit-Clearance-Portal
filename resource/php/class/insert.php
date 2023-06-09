@@ -4,19 +4,19 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/ecle/vendor/sendmailTransfer.php';
 
 class insert extends config{
 
-    public $fname,$lname,$mname,$studID,$email,$contact,$course,$year,$university,$reason, $validID, $validID_tmp, $file_letter, $file_letter_tmp, $validIDsize, $lettersize;
+    public $fname,$lname,$mname,$studID,$email,$contact,$course,$year,$sem,$university,$reason, $validID, $validID_tmp, $file_letter, $file_letter_tmp, $validIDsize, $lettersize;
     
-    function __construct($fname=null,$lname=null,$mname=null,$studID=null,$email=null,$contact=null,$course=null,$bday=null,$year=null, $university=null, $reason=null, $validID=null, $validID_tmp=null, $file_letter=null, $file_letter_tmp = null, $validIDsize = null, $lettersize = null){
+    function __construct($fname=null,$lname=null,$mname=null,$studID=null,$email=null,$contact=null,$course=null,$bday=null,$year=null, $sem=null, $university=null, $reason=null, $validID=null, $validID_tmp=null, $file_letter=null, $file_letter_tmp = null, $validIDsize = null, $lettersize = null){
 
-        $this->fname =$fname;
-        $this->lname =$lname;
-        $this->mname =$mname;
-        $this->studID =$studID;
-        $this->email =$email;
-        $this->contact =$contact;
-        $this->course =$course;
-        $this->bday =$bday;
-        $this->year =$year;
+        $this->fname = $fname;
+        $this->lname = $lname;
+        $this->mname = $mname;
+        $this->studID = $studID;
+        $this->email = $email;
+        $this->contact = $contact;
+        $this->course = $course;
+        $this->bday = $bday;
+        $this->year = $year."-".$sem;
         $this->university = $university;
         $this->reason = $reason;
         $this->valid_ID = $validID;
@@ -24,6 +24,9 @@ class insert extends config{
         $this->valid_IDsize = $validIDsize;
         $this->file_Lettersize = $lettersize;
         
+        // echo $this->year;
+        // die();
+
         //Get Filename Extensions
         $vID = strtolower(pathinfo($this->valid_ID['name'], PATHINFO_EXTENSION));
         $vLtr = strtolower(pathinfo($this->file_Letter['name'], PATHINFO_EXTENSION));
@@ -79,7 +82,7 @@ class insert extends config{
 
     public function insertApplication(){
 
-        $transnumber = uniqid('Transfer');
+        $transnumber = uniqid('TransferMNL');
         $studentType = "Transfer";
         $config = new config;
 

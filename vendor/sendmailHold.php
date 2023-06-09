@@ -26,13 +26,13 @@ function sendOnHoldMail($email, $remarks, $lname, $fname, $mname, $office){
 
   $body ="<p>Dear $lname, $fname $mname,</p>
   <p>Greetings of Peace!</p>
-  <p>Your request for an Exit Clearance has been set to ON HOLD.</p>
-  <p>The department of the $office has given the remarks of '$remarks'.</p>
-  <p>Please resolve the issue immediately before your request expires due to unmet requirements.</p>
+  <p>Your request for an Exit Clearance is currently on-hold.</p>
+  <p>Please see the message from the $office below:</p>
+  <p><b><i>$remarks.</i></b></p>
+  <p>Please resolve the issue / concern immediately for your clearance to proceed.</p>
   <p><b>This is an auto generated email please do not reply.</b></p>
   <p>Thank you and stay safe.</p>";
   try {
-    //Server settings
     //Server settings
      $mail->SMTPDebug = SMTP::DEBUG_SERVER;
      $mail->isSMTP();

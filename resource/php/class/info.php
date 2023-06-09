@@ -269,7 +269,11 @@ class info extends config{
                       </tr>";
                 echo "<tr><td class='desc pt-2'>School: <b>$school</b></td></tr>";
                 echo "<tr><td class='desc'>Course: <b>$course</b></td></tr>";
-                echo "<tr><td class='desc'>School Year & Sem: <b>SY$sy-$sem</b></td></tr>";
+                if($studType == "Transfer"){
+                  echo "<tr><td class='desc'>School Year & Sem Last Enrolled: <b>SY$year</b></td></tr>";
+                }else{
+                  echo "<tr><td class='desc'>School Year & Sem: <b>SY$sy-$sem</b></td></tr>";
+                }
                 echo "<tr><td class='desc'>Student Type: <b>$studType</b></td></tr>";
                 echo "<tr><td class='desc'>Email Address: <b>$email</b></td></tr>";
                 echo "<tr><td class='desc'>Contact Number: <b>$contact</b></td></tr>";
@@ -657,7 +661,11 @@ class info extends config{
                     </tr>";
               echo "<tr><td class='desc pt-2'>School: <b>$school</b></td></tr>";
               echo "<tr><td class='desc'>Course: <b>$course</b></td></tr>";
-              echo "<tr><td class='desc'>School Year & Sem: <b>SY$sy-$sem</b></td></tr>";
+              if($studType == "Transfer"){
+                  echo "<tr><td class='desc'>School Year & Sem Last Enrolled: <b>SY$year</b></td></tr>";
+                }else{
+                  echo "<tr><td class='desc'>School Year & Sem: <b>SY$sy-$sem</b></td></tr>";
+                }
               echo "<tr><td class='desc'>Student Type: <b>$studType</b></td></tr>";
               echo "<tr><td class='desc'>Email Address: <b>$email</b></td></tr>";
               echo "<tr><td class='desc'>Contact Number: <b>$contact</b></td></tr>";
@@ -1038,7 +1046,11 @@ class info extends config{
                       </tr>";
                 echo "<tr><td class='desc pt-2'>School: <b>$school</b></td></tr>";
                 echo "<tr><td class='desc'>Course: <b>$course</b></td></tr>";
-                echo "<tr><td class='desc'>School Year & Sem: <b>SY$sy-$sem</b></td></tr>";
+                if($studType == "Transfer"){
+                  echo "<tr><td class='desc'>School Year & Sem Last Enrolled: <b>SY$year</b></td></tr>";
+                }else{
+                  echo "<tr><td class='desc'>School Year & Sem: <b>SY$sy-$sem</b></td></tr>";
+                }
                 echo "<tr><td class='desc'>Student Type: <b>$studType</b></td></tr>";
                 echo "<tr><td class='desc'>Email Address: <b>$email</b></td></tr>";
                 echo "<tr><td class='desc'>Contact Number: <b>$contact</b></td></tr>";
@@ -1447,7 +1459,11 @@ class info extends config{
                       </tr>";
                 echo "<tr><td class='desc pt-2'>School: <b>$school</b></td></tr>";
                 echo "<tr><td class='desc'>Course: <b>$course</b></td></tr>";
-                echo "<tr><td class='desc'>School Year & Sem: <b>SY$sy-$sem</b></td></tr>";
+                if($studType == "Transfer"){
+                  echo "<tr><td class='desc'>School Year & Sem Last Enrolled: <b>SY$year</b></td></tr>";
+                }else{
+                  echo "<tr><td class='desc'>School Year & Sem: <b>SY$sy-$sem</b></td></tr>";
+                }
                 echo "<tr><td class='desc'>Student Type: <b>$studType</b></td></tr>";
                 echo "<tr><td class='desc'>Email Address: <b>$email</b></td></tr>";
                 echo "<tr><td class='desc'>Contact Number: <b>$contact</b></td></tr>";
@@ -1845,7 +1861,11 @@ class info extends config{
                       </tr>";
                 echo "<tr><td class='desc pt-2'>School: <b>$school</b></td></tr>";
                 echo "<tr><td class='desc'>Course: <b>$course</b></td></tr>";
-                echo "<tr><td class='desc'>School Year & Sem: <b>SY$sy-$sem</b></td></tr>";
+                if($studType == "Transfer"){
+                  echo "<tr><td class='desc'>School Year & Sem Last Enrolled: <b>SY$year</b></td></tr>";
+                }else{
+                  echo "<tr><td class='desc'>School Year & Sem: <b>SY$sy-$sem</b></td></tr>";
+                }
                 echo "<tr><td class='desc'>Student Type: <b>$studType</b></td></tr>";
                 echo "<tr><td class='desc'>Email Address: <b>$email</b></td></tr>";
                 echo "<tr><td class='desc'>Contact Number: <b>$contact</b></td></tr>";

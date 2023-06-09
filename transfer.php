@@ -57,7 +57,7 @@ $view = new view();
               }else{
               $insert= new insert($_POST['fname'], $_POST['lname'], $_POST['mname'], $_POST['studID'], 
                                 $_POST['email'], $_POST['contact'], $_POST['course'], $_POST['bday'], 
-                                $_POST['year'], $_POST['university'], $_POST['reason'], 
+                                $_POST['year'], $_POST['sem'], $_POST['university'], $_POST['reason'], 
                                 $_FILES['validID'],$_FILES['validID']['tmp_name'],
                                 $_FILES['file_letter'],$_FILES['file_letter']['tmp_name'],
                                 $_FILES['validID']['size'],
@@ -125,7 +125,7 @@ $view = new view();
               <!---Year Level--->
               <div class="col-md-3">
                 <label for="yearLevel" class="form-label">School Year Last Enrolled</label>
-                <input type="text" name="year" class="form-control" pattern="20[0-9]{2}" oninvalid="this.setCustomValidity('Please follow the pattern xxxx-xxxx')" oninput="this.setCustomValidity('')" id="yearLevel" placeholder="xxxx-xxxx" required>
+                <input type="text" name="year" class="form-control" pattern="[0-9]{4}-[0-9]{4}" oninvalid="this.setCustomValidity('Please follow the pattern xxxx-xxxx')" oninput="this.setCustomValidity('')" id="yearLevel" placeholder="xxxx-xxxx" required>
                </div>
               <div class="col-md-2">
                 <label for="sem" class="form-label">Semester</label>

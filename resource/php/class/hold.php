@@ -28,7 +28,7 @@ class hold extends config{
             $fname = $row['fname'];
             $mname = $row['mname'];
         }
-        $office = "Accounting";
+        $office = "Accounting Department";
         
         sendOnHoldMail($email, $this->remarks, $lname, $fname, $mname, $office);
 
@@ -94,7 +94,7 @@ class hold extends config{
             $fname = $row['fname'];
             $mname = $row['mname'];
         }
-        $office = "Guidance";
+        $office = "Guidance and Counseling Department";
         sendOnHoldMail($email, $this->remarks, $lname, $fname, $mname, $office);
 
         if($this->type == "Graduate"){
@@ -225,7 +225,7 @@ class hold extends config{
             $fname = $row['fname'];
             $mname = $row['mname'];
         }
-        $office = "Library";
+        $office = "Library Department";
         sendOnHoldMail($email, $this->remarks, $lname, $fname, $mname, $office);
 
         if($this->type == "Graduate"){
@@ -288,7 +288,7 @@ class hold extends config{
             $fname = $row['fname'];
             $mname = $row['mname'];
         }
-        $office = "Registrar";
+        $office = "Office of the University Registrar";
         sendOnHoldMail($email, $this->remarks, $lname, $fname, $mname, $office);
 
         if($this->type == "Graduate"){
