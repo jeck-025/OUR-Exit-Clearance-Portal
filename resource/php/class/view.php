@@ -44,7 +44,9 @@ class view extends config{
           $data ->execute();
           $rows =$data-> fetchAll(PDO::FETCH_OBJ);
               foreach ($rows as $row) {
-                echo '<option data-tokens=".'.$row->university.'." value="'.$row->university.'">'.$row->university.'</option>';
+                $temp_univ = utf8_decode($row->university);
+                $display = str_replace('?', 'ñ', $temp_univ);
+                echo '<option data-tokens=".'.$row->university.'." value="'.$row->university.'">'.$display.'</option>';
                 // echo 'success';
               }
       }
@@ -56,7 +58,7 @@ class view extends config{
           echo '<option data-tokens="Family Issues" value="Family Issues">Family Issues</option>';
           echo '<option data-tokens="Change of Residence" value="Change of Residence">Change of Residence</option>';
           echo '<option data-tokens="University Quality Concerns" value="University Quality Concerns">University Quality Concerns</option>';
-          echo '<option data-tokens="International Transfer" value="International Transfer">International Transfer</option>';
+          //echo '<option data-tokens="International Transfer" value="International Transfer">International Transfer</option>';
           echo '<option data-tokens="Others" value="Others">Others</option>';
 
         }

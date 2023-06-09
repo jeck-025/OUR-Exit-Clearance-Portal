@@ -124,12 +124,18 @@ $view = new view();
             <div class="row mt-3 g-3">
               <!---Year Level--->
               <div class="col-md-3">
-                <label for="yearLevel" class="form-label">Year Last Enrolled</label>
-                <input type="text" name="year" class="form-control" pattern="20[0-9]{2}" oninvalid="this.setCustomValidity('Please follow the pattern xxxx')" oninput="this.setCustomValidity('')" id="yearLevel" placeholder="xxxx" required>
+                <label for="yearLevel" class="form-label">School Year Last Enrolled</label>
+                <input type="text" name="year" class="form-control" pattern="20[0-9]{2}" oninvalid="this.setCustomValidity('Please follow the pattern xxxx-xxxx')" oninput="this.setCustomValidity('')" id="yearLevel" placeholder="xxxx-xxxx" required>
+               </div>
+              <div class="col-md-2">
+                <label for="sem" class="form-label">Semester</label>
+                <select id="sem" name="sem" class="form-select form-control" data-live-search="true" required>
+                <?php $view->semesterChoose();?>
+                </select>
               </div>
 
               <!---Transfer School--->
-              <div class="col-md-5">
+              <div class="col-md-4">
                 <label for="university" class="form-label">Transferring School</label>
                 <select id="university" name="university" class="form-select form-control selectpicker" data-live-search="true" required>
                 <?php $view->university();?>
@@ -137,7 +143,7 @@ $view = new view();
               </div>
 
               <!---Reason--->
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <label for="reason" class="form-label">Reason</label>
                 <select id="reason" name="reason" class="form-select form-control" data-live-search="true" required>
                 <?php $view->reason();?>
