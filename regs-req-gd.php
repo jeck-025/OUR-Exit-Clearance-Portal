@@ -113,7 +113,6 @@ isRegistrar($user->data()->groups);
                       }
                     ?>
                     <li><a href= "#" class="dropdown-item" data-bs-toggle='modal' data-bs-target='#reportModal'>Reports</a></li>
-                          <?php include 'reportModal.php'; ?>
                     <li><a href="logout.php" class="dropdown-item">Logout</a></li>
                   </ul>
                 </li>
@@ -125,7 +124,7 @@ isRegistrar($user->data()->groups);
             <div class="row">
               <div class="col-md p-5 content">
                 <?php
- 
+                  include 'reportModal.php';
                   $viewtable->viewRequestTableRegistrarGraduate();
                 
               ?>
