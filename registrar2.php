@@ -110,7 +110,6 @@ $import = new import();
                       }
                     ?>
                     <li><a href= "#" class="dropdown-item" data-bs-toggle='modal' data-bs-target='#reportModal'>Reports</a></li>
-                          <?php include 'reportModal.php'; ?>
                     <li><a href="logout.php" class="dropdown-item">Logout</a></li>
                   </ul>
                 </li>
@@ -118,6 +117,7 @@ $import = new import();
             </div>
           </nav>
           <div class="pl-3 pt-3">
+            <?php include 'reportModal.php'; ?>
             <!-- <a href="reportsDownload.php" class="btn btn-primary btn-sm">
             <i class="fa-solid fa-file-arrow-down me-2"></i>Download Reports</a> -->
             <!-- <div class='float-right'>
