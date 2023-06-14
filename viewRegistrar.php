@@ -108,6 +108,7 @@ isRegistrar($user->data()->groups);
                         echo "<li><a href='sendmails.php' class='dropdown-item'>Send Mails</a></li>";
                       }
                     ?>
+                    <li><a href= "#" class="dropdown-item" data-bs-toggle='modal' data-bs-target='#reportModal'>Reports</a></li>
                     <li><a href="logout.php" class="dropdown-item">Logout</a></li>
                   </ul>
                 </li>

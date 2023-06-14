@@ -715,11 +715,13 @@ class info extends config{
                     echo "<a href='resource/uploads/ids/$attachedID' class='btn btn-primary btn-sm btn-block d-block' target='_blank'><i class='fa-solid fa-id-card'></i> View Attached ID</a>";
                   }
                   if(empty($attachedLTR)){
-                    echo "<a href='#' class='btn btn-primary btn-sm btn-block d-block disabled' target='_blank'><i class='fa-solid fa-envelope'></i> No Letter of Intent for Exit</a>";
+                    echo "<a href='#' class='btn btn-primary btn-sm btn-block d-block disabled' target='_blank'><i class='fa-solid fa-envelope-open-text'></i> No Letter of Intent for Exit</a>";
                   }else{
-                    echo "<a href='resource/uploads/letters/$attachedLTR' class='btn btn-primary btn-sm btn-block d-block' target='_blank'><i class='fa-solid fa-envelope'></i> View Letter of Intent for Exit</a>";
+                    echo "<a href='resource/uploads/letters/$attachedLTR' class='btn btn-primary btn-sm btn-block d-block' target='_blank'><i class='fa-solid fa-envelope-open-text'></i> View Letter of Intent for Exit</a>";
                   }
                 }
+
+                echo "<a href='https://mail.google.com/mail/u/0/?fs=1&to=$email&tf=cm&su=Exit Clearance Request - $fname $mname $lname' class='btn btn-google btn-sm btn-block d-block' target='_blank'> <i class='fa-solid fa-envelope'></i> Send <i class='fa-brands fa-google'></i>mail </a> ";
 
                 echo "<a href='guid-$urlA-$urlB.php' class='btn btn-info btn-sm my-2 d-block ' data-toggle='tooltip' data-placement='top' title='Back'><i class='fa-solid fa-arrow-left'></i> Back </a>";
                       include "modals.php";

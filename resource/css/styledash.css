@@ -61,9 +61,31 @@ table{
   font-size: 12px;
 }
 
+.modal-report-gen{
+  justify-content: center;
+  align-items: center;
+}
+
 .btn-primary{
   background-color: #201460 !important;
   border-color: #201460 !important;
+}
+
+.btn-google{
+  background-image: linear-gradient(45deg,
+        hsl(217deg 89% 61%) 0%,
+        hsl(246deg 50% 64%) 9%,
+        hsl(298deg 28% 53%) 18%,
+        hsl(344deg 51% 56%) 27%,
+        hsl(11deg 72% 54%) 36%,
+        hsl(25deg 78% 53%) 45%,
+        hsl(34deg 84% 53%) 55%,
+        hsl(42deg 90% 51%) 64%,
+        hsl(45deg 73% 51%) 73%,
+        hsl(55deg 51% 47%) 82%,
+        hsl(84deg 37% 47%) 91%,
+        hsl(151deg 83% 34%) 100%);
+  color: white;
 }
 
 .downloadF{
