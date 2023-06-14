@@ -414,9 +414,7 @@ echo"<div class='modal fade' id='reportModal' aria-labelledby='modal' aria-hidde
                 <?php
                 echo"</div>";
                 echo "<div class='modal-footer mt-3'>";
-                echo "<button type='button' class='btn btn-sm btn-danger' data-bs-dismiss='modal'><i class='fa-solid fa-x'></i> Cancel</button>
-                    <a href='#' class='btn btn-sm my-1 d-block btn-success' data-toggle='tooltip' data-placement='top' title='Approve'><i class='fa-solid fa-check'></i> Yes</a>
-                </div>
+                echo "</div>
             </div>
         </div>
     </div>
