@@ -112,6 +112,7 @@ isRegistrar($user->data()->groups);
                         echo "<li><a href='changepasswordRegistrar.php' class='dropdown-item'>Change Password</a></li>";
                       }
                     ?>
+                    <li><a href= "#" class="dropdown-item" data-bs-toggle='modal' data-bs-target='#reportModal'>Reports</a></li>
                     <li><a href="logout.php" class="dropdown-item">Logout</a></li>
                   </ul>
                 </li>
