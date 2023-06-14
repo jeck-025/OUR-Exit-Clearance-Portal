@@ -110,6 +110,7 @@ isLibrary($user->data()->groups);
             <div class="row">
               <div class="col-md p-5 content ">
                 <?php
+                  include 'reportModal.php';
                   viewLibrary();
                 ?>
               </div>
