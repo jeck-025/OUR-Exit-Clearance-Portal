@@ -110,7 +110,6 @@ $import = new import();
                       }
                     ?>
                     <li><a href= "#" class="dropdown-item" data-bs-toggle='modal' data-bs-target='#reportModal'>Reports</a></li>
-                          <?php include 'reportModal.php'; ?>
                     <li><a href="logout.php" class="dropdown-item">Logout</a></li>
                   </ul>
                 </li>
@@ -123,6 +122,7 @@ $import = new import();
             <!-- <div class='float-right'>
                   <img src='resource/img/ecle-logo-new-inv.png' class='ecleLogo'>
                 </div> -->
+          <?php include 'reportModal.php'; ?>
           </div>
 
           <div class="container-fluid p-5">
