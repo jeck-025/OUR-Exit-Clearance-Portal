@@ -110,6 +110,7 @@ $import = new import();
                       }
                     ?>
                     <li><a href= "#" class="dropdown-item" data-bs-toggle='modal' data-bs-target='#reportModal'>Reports</a></li>
+                          <?php include 'modals.php'; ?>
                     <li><a href="logout.php" class="dropdown-item">Logout</a></li>
                   </ul>
                 </li>
