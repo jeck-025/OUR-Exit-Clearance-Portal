@@ -96,8 +96,8 @@ $rows4 = $data4->fetchAll(PDO::FETCH_ASSOC);
     $pdf->SetXY(145, 80);
     $pdf->Write(0, $dean." .(SGD)");
     
-    $pdf->SetXY(180, 112);
-    $pdf->Write(0, "(".$rows1[0]['registrar_sra'].")");
+    // $pdf->SetXY(180, 112);
+    // $pdf->Write(0, "(".$rows1[0]['registrar_sra'].")");
 
     // Signature accounting
     $pdf->Image('signatures/'.$accounting, "135","84", "50","14");
