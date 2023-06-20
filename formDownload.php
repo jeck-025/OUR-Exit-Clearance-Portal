@@ -55,7 +55,32 @@ $data4 = $con->query($sql4);
 $data4->execute();
 $rows4 = $data4->fetchAll(PDO::FETCH_ASSOC);
 
-    $dean = $rows4[0]['name'];
+    //$dean = $rows4[0]['name'];
+
+    if($college == "School of Accountancy and Management"){
+        $dean = "Dr. Rosemarie I. So";
+    }elseif($college == "School of Dentistry"){
+        $dean = "Dr. Mary Iodine Lacanienta";
+    }elseif($college == "School of Education, Liberal Arts, Music and Social Work"){
+        $dean = "Dr. Maria Rita D. Lucas";
+    }elseif($college == "Graduate School"){
+        $dean = "Dr. Erna V. Yabut";
+    }elseif($college == "School of Medicine"){
+        $dean = "Dr. Christine S. Tinio";
+    }elseif($college == "School of Medical Technology"){
+        $dean = "Dr. Charito M. Bermido";
+    }elseif($college == "School of Nutrition and Hospitality Management"){
+        $dean = "Dr. Cecilia C. Uncad";
+    }elseif($college == "School of Nursing"){
+        $dean = "Dr. Elvira L. Urgel";
+    }elseif($college == "School of Optometry"){
+        $dean = "Dr. Elena C. Borromeo";
+    }elseif($college == "School of Pharmacy"){
+        $dean = "Dr. Cecilia D. Santiago";
+    }elseif($college == "School of Science and Technology"){
+        $dean = "Dr. Julieta Z. Dungca";
+    }else{}
+
     $lname = $rows1[0]['lname'];
     $fname = $rows1[0]['fname'];
 
@@ -96,8 +121,8 @@ $rows4 = $data4->fetchAll(PDO::FETCH_ASSOC);
     $pdf->SetXY(145, 80);
     $pdf->Write(0, $dean." .(SGD)");
     
-    // $pdf->SetXY(180, 112);
-    // $pdf->Write(0, "(".$rows1[0]['registrar_sra'].")");
+    $pdf->SetXY(180, 112);
+    $pdf->Write(0, "(".$rows1[0]['registrar_sra'].")");
 
     // Signature accounting
     $pdf->Image('signatures/'.$accounting, "135","84", "50","14");
