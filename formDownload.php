@@ -76,10 +76,12 @@ $rows4 = $data4->fetchAll(PDO::FETCH_ASSOC);
     }elseif($college == "School of Optometry"){
         $dean = "Dr. Elena C. Borromeo";
     }elseif($college == "School of Pharmacy"){
-        $dean = "Dr. Cecilia D. Santiago";
+        $dean = "Dr. Maria Donnabelle U. Dean";
     }elseif($college == "School of Science and Technology"){
         $dean = "Dr. Julieta Z. Dungca";
-    }else{}
+    }else{
+        $dean = "";
+    }
 
     $lname = $rows1[0]['lname'];
     $fname = $rows1[0]['fname'];
