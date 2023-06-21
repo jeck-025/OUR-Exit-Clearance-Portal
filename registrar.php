@@ -98,14 +98,15 @@ $import = new import();
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav  ms-auto mb-2 mb-lg-0">
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown ">
                   <a href="#" class="nav-link dropdown-toggle second-text fw-bold" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-user me-2"></i> <?php echo $user->data()->username ?>
                   </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <?php 
                       if($user->data()->username == "REGISTRAR" || $user->data()->username == "RCBOLASOC" || $user->data()->username == "jeck"){
-                        echo "<li><a href='adminconfig.php' class='dropdown-item'>Config</a></li>";
+                        echo "<li><a href='adminconfig.php' class='dropdown-item'>General Config</a></li>";
+                        echo "<li><a href= '#' class='dropdown-item' data-bs-toggle='modal' data-bs-target='#deanCFG'>Deans Config</a></li>";
                         echo "<li><a href='changepasswordRegistrar.php' class='dropdown-item'>Change Password</a></li>";
                       }
                     ?>
@@ -117,12 +118,21 @@ $import = new import();
             </div>
           </nav>
           <div class="pl-3 pt-3">
-            <!-- <a href="reportsDownload.php" class="btn btn-primary btn-sm">
-            <i class="fa-solid fa-file-arrow-down me-2"></i>Download Reports</a> -->
-            <!-- <div class='float-right'>
-                  <img src='resource/img/ecle-logo-new-inv.png' class='ecleLogo'>
-                </div> -->
-          <?php include 'reportModal.php'; ?>
+
+          <?php 
+            include 'reportModal.php'; 
+            include 'deancfg.php';
+            
+            if(isset($_POST['updatedeanCFG'])){
+                $update->setDeans();
+            
+          ?>
+            <script> 
+                alert('Dean Configuration Updated');
+                location.replace('registrar.php'); 
+            </script>
+          <?php } ?>
+
           </div>
 
           <div class="container-fluid p-5">

@@ -107,4 +107,30 @@ class view extends config{
           return array($mailer_username, $mailer_password, $mailer_platform, $mailer_port);
         }
 
+        public function loadDeans(){
+          $config = new config;
+          $con = $config->con();
+
+          $sql = "SELECT * FROM `collegeschool` where `state` = 'active'";
+          $data = $con-> prepare($sql);
+          $data ->execute();
+          $result = $data->fetchAll(PDO::FETCH_ASSOC);
+          foreach ($result as $row)
+          {
+            $id = $row['id'];
+            $school = $row['college_school'];
+            $dean = $row['dean'];
+
+            echo "<tr>";
+            echo "<td> $school </td>";
+            echo "<td> <input type='text' class='form-control' value='$dean' name='dean[]'> </td>";
+            echo "<input type='hidden' name='id[]' value='$id'>";
+            echo "</tr>";
+
+
+
+          }
+
+
+        }
 }
