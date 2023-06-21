@@ -66,6 +66,14 @@ table{
   align-items: center;
 }
 
+.modal-dean-cfg {
+  justify-content: center;
+  align-items: center;
+  display: table;
+}
+
+
+
 .btn-primary{
   background-color: #201460 !important;
   border-color: #201460 !important;
