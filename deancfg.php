@@ -3,31 +3,33 @@ $view = new view();
 $update = new updateDeanCFG();
 
 echo"<div class='modal fade' id='deanCFG' aria-labelledby='modal' aria-hidden='true'>
-        <div class='modal-dialog modal-xl'>
+        <div class='modal-dialog modal-lg'>
             <div class='modal-content'>
                 <div class='modal-header'>
-                    <h5 class='modal-title' id='modal'>Dean Info Configuration</h5>
+                    <h5 class='modal-title' id='modal'>Configure Dean's Info</h5>
                     <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
                 </div>
 
                 <div class='modal-body'>
-                    <div class='input-group col-md-12 modal-report-gen'>
+                    <div class='input-group col-md-12 modal-dean-cfg'>
                         <form method='post'>
-                            <div class='row'>
-                                <table id='scholartable' class='table table-hover table-striped table-borderless table-sm'>
+                            
+                                <table id='scholartable' class='table table-hover table-striped table-borderless table-sm table-dean'>
                                 <tr>
-                                <th><h5>School</h5></th>
-                                <th><h5>Dean</h5></th>
-                                </tr>"; ?>
-                                <?php $view->loadDeans(); ?>
-                                </table>
-                            </div>
-                            <input type="submit" name="updatedeanCFG" id="updatedeanCFG">
-                        </form>
-                <?php
+                                <th width='50%'><h5>College / School</h5></th>
+                                <th width='50%'><h5>Dean</h5></th>
+                                </tr>"; 
+                                $view->loadDeans();
+                                echo "</table>";
+                            
+                            
+                        
+
                 echo"</div>";
                 echo "<div class='modal-footer mt-3'>";
-                echo "FOOTER";
+                echo "<button type='button' class='btn btn-dark' data-bs-dismiss='modal' aria-label='Close'><i class='fa-solid fa-xmark'></i> Close</button>";
+                echo "<button type='submit' name='updatedeanCFG' id='updatedeanCFG' class='btn btn-dark'><i class='fa-solid fa-floppy-disk'></i> Save Changes</button>";
+                echo "</form>";
                 echo "</div>
             </div>
         </div>
