@@ -63,7 +63,7 @@ $view = new view();
                   <a href="#" class="nav-link dropdown-toggle second-text fw-bold" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-user me-2"></i> <?php echo $user->data()->username ?>
                   </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a href="adminconfig.php" class="dropdown-item">Config</a></li>
                     <li><a href="changepasswordRegistrar.php" class="dropdown-item">Setting</a></li>
                     <!-- <li><a href="sendmails.php" class="dropdown-item">Send Mails</a></li> -->
