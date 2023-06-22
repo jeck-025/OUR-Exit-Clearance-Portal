@@ -75,7 +75,7 @@ $rows4 = $data4->fetchAll(PDO::FETCH_ASSOC);
     $pdf->SetXY(93, 40);
     $pdf->Write(0, $rows1[0]['mname']);
     $pdf->SetXY(132, 40);
-    $pdf->Write(0, substr($rows1[0]['fname'],0,1).substr($rows1[0]['mname'],0,1).substr($rows1[0]['lname'],0,1)."(SGD)");
+    $pdf->Write(0, strtoupper(substr($rows1[0]['fname'],0,1).substr($rows1[0]['mname'],0,1).substr($rows1[0]['lname'],0,1))."(SGD)");
     $pdf->SetXY(170, 40);
     $pdf->Write(0, date('Y-m-d',strtotime($rows1[0]['dateReq'])));
 
@@ -94,7 +94,7 @@ $rows4 = $data4->fetchAll(PDO::FETCH_ASSOC);
     $pdf->Write(0, $rows1[0]['year']);
 
     $pdf->SetXY(145, 80);
-    $pdf->Write(0, $dean." .(SGD)");
+    $pdf->Write(0, strtoupper($dean)." (SGD)");
     
     $pdf->SetXY(180, 112);
     $pdf->Write(0, "(".$rows1[0]['registrar_sra'].")");
