@@ -123,7 +123,7 @@ class view extends config{
 
             echo "<tr>";
             echo "<td> $school </td>";
-            echo "<td> <input type='text' class='form-control' value='$dean' name='dean[]'> </td>";
+            echo "<td> <input type='text' class='form-control' value='$dean' name='dean[]' autocomplete='off'> </td>";
             echo "<input type='hidden' name='id[]' value='$id'>";
             echo "</tr>";
 
