@@ -101,7 +101,7 @@ isGuidance($user->data()->groups);
                   <a href="#" class="nav-link dropdown-toggle second-text fw-bold" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-user me-2"></i> <?php echo $user->data()->username ?>
                   </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <!-- <li><a href="changepasswordGuidance.php" class="dropdown-item">Setting</a></li> -->
                     <li><a href= "#" class="dropdown-item" data-bs-toggle='modal' data-bs-target='#reportModal'>Reports</a></li>
                     <li><a href="logout.php" class="dropdown-item">Logout</a></li>
