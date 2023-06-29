@@ -379,7 +379,7 @@ public function viewApproveTableRegistrarTransfer(){
   // echo "<th>Library</th>";
   // echo "<th>Accounting</th>";
   // echo "<th>Registrar</th>";
-  echo "<th>Clearance Form</th>";
+  echo "<th>Clearance Forms</th>";
   echo "</thead>";
   foreach ($result as $data) {
   echo "<tr style='font-size: 13px'>";
@@ -436,7 +436,8 @@ public function viewApproveTableRegistrarTransfer(){
   // echo "<td class='text-center'></td>";
   // echo "<td class='text-center'></td>";
   // echo "<td class='text-center'></td>";
-  echo "<td class='text-center'><a class='btn btn-info btn-sm downloadF' href='https://ceumnlregistrar.com/ecle/formDownload.php?referenceID=$data[referenceID]&type=$data[studentType]'><i class='fa-solid fa-download'></i> Download</a></td>";
+  echo "<td class='text-center'><a class='btn btn-info btn-sm mr-1 mb-1 downloadF' href='https://ceumnlregistrar.com/ecle/formDownload.php?referenceID=$data[referenceID]&type=$data[studentType]'><i class='fa-solid fa-download'></i> ROF 033</a>";
+  echo "<a class='btn btn-info btn-sm mr-1 mb-1 downloadF' href='https://ceumnlregistrar.com/ecle/formDownloadL.php?referenceID=$data[referenceID]&type=$data[studentType]'><i class='fa-solid fa-download'></i> LIF 009 </a></td>";
   echo "</tr>";
   }
   echo "</table>";
@@ -460,7 +461,7 @@ public function viewApproveTableRegistrarGraduate(){
   echo "<th>Date Applied</th>";
   echo "<th>Date Cleared</th>";
   echo "<th>Reference ID</th>";
-  echo "<th>Clearance Form</th>";
+  echo "<th>Clearance Forms</th>";
   echo "</thead>";
   foreach ($result as $data) {
   echo "<tr style='font-size: 13px'>";
@@ -478,7 +479,8 @@ public function viewApproveTableRegistrarGraduate(){
   echo "<td>$data[dateReq]</td>";
   echo "<td>$data[registrardate]</td>";
   echo "<td>$data[referenceID]</td>";
-  echo "<td class='text-center'><a class='btn btn-info btn-sm downloadF' href='https://ceumnlregistrar.com/ecle/formDownload.php?referenceID=$data[referenceID]&type=$data[studentType]'><i class='fa-solid fa-download'></i> Download</a></td>";
+  echo "<td class='text-center'><a class='btn btn-info btn-sm mr-1 mb-1 downloadF' href='https://ceumnlregistrar.com/ecle/formDownload.php?referenceID=$data[referenceID]&type=$data[studentType]'><i class='fa-solid fa-download'></i> ROF 033</a>";
+  echo "<a class='btn btn-info btn-sm mr-1 mb-1 downloadF' href='https://ceumnlregistrar.com/ecle/formDownloadL.php?referenceID=$data[referenceID]&type=$data[studentType]'><i class='fa-solid fa-download'></i> LIF 009 </a></td>";
   echo "</tr>";
   }
   echo "</table>";
@@ -870,7 +872,7 @@ public function viewApproveTableAccountingTransfer(){
   echo "<th>Date Applied</th>";
   echo "<th>Date Cleared</th>";
   echo "<th>Reference ID</th>";
-  echo "<th>Clearance Form</th>";
+  echo "<th>Clearance Forms</th>";
   echo "</thead>";
   foreach ($result as $data) {
   echo "<tr style='font-size: 13px'>";
@@ -892,7 +894,8 @@ public function viewApproveTableAccountingTransfer(){
   if($data['registrardate'] == null || $data['registrardate'] == ""){
     echo "<td class='text-center'><button class='btn btn-info btn-sm downloadF disabled' data-toggle='tooltip' id='btn' data-placement='top'> Unavailable </button></td>";
   }else{
-    echo "<td class='text-center'><a class='btn btn-info btn-sm downloadF' href='https://ceumnlregistrar.com/ecle/formDownload.php?referenceID=$data[referenceID]&type=$data[studentType]'><i class='fa-solid fa-download'></i> Download</a></td>";
+      echo "<td class='text-center'><a class='btn btn-info btn-sm mr-1 mb-1 downloadF' href='https://ceumnlregistrar.com/ecle/formDownload.php?referenceID=$data[referenceID]&type=$data[studentType]'><i class='fa-solid fa-download'></i> ROF 033</a>";
+  echo "<a class='btn btn-info btn-sm mr-1 mb-1 downloadF' href='https://ceumnlregistrar.com/ecle/formDownloadL.php?referenceID=$data[referenceID]&type=$data[studentType]'><i class='fa-solid fa-download'></i> LIF 009 </a></td>";
   }
 
   echo "</tr>";
@@ -938,7 +941,8 @@ public function viewApproveTableAccountingGraduate(){
   if($data['registrardate'] == null || $data['registrardate'] == ""){
     echo "<td class='text-center'><button class='btn btn-info btn-sm downloadF disabled' data-toggle='tooltip' id='btn' data-placement='top'> Unavailable </button></td>";
   }else{
-    echo "<td class='text-center'><a class='btn btn-info btn-sm downloadF' href='https://ceumnlregistrar.com/ecle/formDownload.php?referenceID=$data[referenceID]&type=$data[studentType]'><i class='fa-solid fa-download'></i> Download</a></td>";
+      echo "<td class='text-center'><a class='btn btn-info btn-sm mr-1 mb-1 downloadF' href='https://ceumnlregistrar.com/ecle/formDownload.php?referenceID=$data[referenceID]&type=$data[studentType]'><i class='fa-solid fa-download'></i> ROF 033</a>";
+  echo "<a class='btn btn-info btn-sm mr-1 mb-1 downloadF' href='https://ceumnlregistrar.com/ecle/formDownloadL.php?referenceID=$data[referenceID]&type=$data[studentType]'><i class='fa-solid fa-download'></i> LIF 009 </a></td>";
   }
 
   echo "</tr>";
@@ -1332,7 +1336,7 @@ public function viewApproveTableDepartmentTransfer(){
   echo "<th>Date Applied</th>";
   echo "<th>Date Cleared</th>";
   echo "<th>Reference ID</th>";
-  echo "<th>Clearance Form</th>";
+  echo "<th>Clearance Forms</th>";
   echo "</thead>";
   foreach ($result as $data) {
   echo "<tr style='font-size: 13px'>";
@@ -1354,7 +1358,8 @@ public function viewApproveTableDepartmentTransfer(){
   if($data['registrardate'] == null || $data['registrardate'] == ""){
     echo "<td class='text-center'><button class='btn btn-info btn-sm downloadF disabled' data-toggle='tooltip' id='btn' data-placement='top'> Unavailable </button></td>";
   }else{
-    echo "<td class='text-center'><a class='btn btn-info btn-sm downloadF' href='https://ceumnlregistrar.com/ecle/formDownload.php?referenceID=$data[referenceID]&type=$data[studentType]'><i class='fa-solid fa-download'></i> Download</a></td>";
+      echo "<td class='text-center'><a class='btn btn-info btn-sm mr-1 mb-1 downloadF' href='https://ceumnlregistrar.com/ecle/formDownload.php?referenceID=$data[referenceID]&type=$data[studentType]'><i class='fa-solid fa-download'></i> ROF 033</a>";
+  echo "<a class='btn btn-info btn-sm mr-1 mb-1 downloadF' href='https://ceumnlregistrar.com/ecle/formDownloadL.php?referenceID=$data[referenceID]&type=$data[studentType]'><i class='fa-solid fa-download'></i> LIF 009 </a></td>";
   }
 
   echo "</tr>";
@@ -1380,7 +1385,7 @@ public function viewApproveTableDepartmentGraduate(){
   echo "<th>Date Applied</th>";
   echo "<th>Date Cleared</th>";
   echo "<th>Reference ID</th>";
-  echo "<th>Clearance Form</th>";
+  echo "<th>Clearance Forms</th>";
   echo "</thead>";
   foreach ($result as $data) {
   echo "<tr style='font-size: 13px'>";
@@ -1402,7 +1407,8 @@ public function viewApproveTableDepartmentGraduate(){
   if($data['registrardate'] == null || $data['registrardate'] == ""){
     echo "<td class='text-center'><button class='btn btn-info btn-sm downloadF disabled' data-toggle='tooltip' id='btn' data-placement='top'> Unavailable </button></td>";
   }else{
-    echo "<td class='text-center'><a class='btn btn-info btn-sm downloadF' href='https://ceumnlregistrar.com/ecle/formDownload.php?referenceID=$data[referenceID]&type=$data[studentType]'><i class='fa-solid fa-download'></i> Download</a></td>";
+      echo "<td class='text-center'><a class='btn btn-info btn-sm mr-1 mb-1 downloadF' href='https://ceumnlregistrar.com/ecle/formDownload.php?referenceID=$data[referenceID]&type=$data[studentType]'><i class='fa-solid fa-download'></i> ROF 033</a>";
+  echo "<a class='btn btn-info btn-sm mr-1 mb-1 downloadF' href='https://ceumnlregistrar.com/ecle/formDownloadL.php?referenceID=$data[referenceID]&type=$data[studentType]'><i class='fa-solid fa-download'></i> LIF 009 </a></td>";
   }
   
   echo "</tr>";
@@ -1793,7 +1799,7 @@ public function viewApproveTableLibraryTransfer(){
   echo "<th>Date Applied</th>";
   echo "<th>Date Cleared</th>";
   echo "<th>Reference ID</th>";
-  echo "<th>Clearance Form</th>";
+  echo "<th>Clearance Forms</th>";
   echo "</thead>";
   foreach ($result as $data) {
   echo "<tr style='font-size: 13px'>";
@@ -1815,7 +1821,8 @@ public function viewApproveTableLibraryTransfer(){
   if($data['registrardate'] == null || $data['registrardate'] == ""){
     echo "<td class='text-center'><button class='btn btn-info btn-sm downloadF disabled' data-toggle='tooltip' id='btn' data-placement='top'> Unavailable </button></td>";
   }else{
-    echo "<td class='text-center'><a class='btn btn-info btn-sm downloadF' href='https://ceumnlregistrar.com/ecle/formDownload.php?referenceID=$data[referenceID]&type=$data[studentType]'><i class='fa-solid fa-download'></i> Download</a></td>";
+      echo "<td class='text-center'><a class='btn btn-info btn-sm mr-1 mb-1 downloadF' href='https://ceumnlregistrar.com/ecle/formDownload.php?referenceID=$data[referenceID]&type=$data[studentType]'><i class='fa-solid fa-download'></i> ROF 033</a>";
+  echo "<a class='btn btn-info btn-sm mr-1 mb-1 downloadF' href='https://ceumnlregistrar.com/ecle/formDownloadL.php?referenceID=$data[referenceID]&type=$data[studentType]'><i class='fa-solid fa-download'></i> LIF 009 </a></td>";
   }
   
   echo "</tr>";
@@ -1839,7 +1846,7 @@ public function viewApproveTableLibraryGraduate(){
   echo "<th>Date Applied</th>";
   echo "<th>Date Cleared</th>";
   echo "<th>Reference ID</th>";
-  echo "<th>Clearance Form</th>";
+  echo "<th>Clearance Forms</th>";
   echo "</thead>";
   foreach ($result as $data) {
   echo "<tr style='font-size: 13px'>";
@@ -1861,7 +1868,8 @@ public function viewApproveTableLibraryGraduate(){
   if($data['registrardate'] == null || $data['registrardate'] == ""){
     echo "<td class='text-center'><button class='btn btn-info btn-sm downloadF disabled' data-toggle='tooltip' id='btn' data-placement='top'> Unavailable </button></td>";
   }else{
-    echo "<td class='text-center'><a class='btn btn-info btn-sm downloadF' href='https://ceumnlregistrar.com/ecle/formDownload.php?referenceID=$data[referenceID]&type=$data[studentType]'><i class='fa-solid fa-download'></i> Download</a></td>";
+      echo "<td class='text-center'><a class='btn btn-info btn-sm mr-1 mb-1 downloadF' href='https://ceumnlregistrar.com/ecle/formDownload.php?referenceID=$data[referenceID]&type=$data[studentType]'><i class='fa-solid fa-download'></i> ROF 033</a>";
+  echo "<a class='btn btn-info btn-sm mr-1 mb-1 downloadF' href='https://ceumnlregistrar.com/ecle/formDownloadL.php?referenceID=$data[referenceID]&type=$data[studentType]'><i class='fa-solid fa-download'></i> LIF 009 </a></td>";
   }
   
   echo "</tr>";
@@ -2259,7 +2267,7 @@ public function viewApproveTableGuidanceTransfer(){
   echo "<th>Date Applied</th>";
   echo "<th>Date Cleared</th>";
   echo "<th>Reference ID</th>";
-  echo "<th>Clearance Form</th>";
+  echo "<th>Clearance Forms</th>";
   echo "</thead>";
   foreach ($result as $data) {
   echo "<tr style='font-size: 13px'>";
@@ -2281,7 +2289,8 @@ public function viewApproveTableGuidanceTransfer(){
   if($data['registrardate'] == null || $data['registrardate'] == ""){
     echo "<td class='text-center'><button class='btn btn-info btn-sm downloadF disabled' data-toggle='tooltip' id='btn' data-placement='top'> Unavailable </button></td>";
   }else{
-    echo "<td class='text-center'><a class='btn btn-info btn-sm downloadF' href='https://ceumnlregistrar.com/ecle/formDownload.php?referenceID=$data[referenceID]&type=$data[studentType]'><i class='fa-solid fa-download'></i> Download</a></td>";
+      echo "<td class='text-center'><a class='btn btn-info btn-sm mr-1 mb-1 downloadF' href='https://ceumnlregistrar.com/ecle/formDownload.php?referenceID=$data[referenceID]&type=$data[studentType]'><i class='fa-solid fa-download'></i> ROF 033</a>";
+  echo "<a class='btn btn-info btn-sm mr-1 mb-1 downloadF' href='https://ceumnlregistrar.com/ecle/formDownloadL.php?referenceID=$data[referenceID]&type=$data[studentType]'><i class='fa-solid fa-download'></i> LIF 009 </a></td>";
   }
   
   echo "</tr>";

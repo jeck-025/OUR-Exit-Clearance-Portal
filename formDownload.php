@@ -36,7 +36,9 @@ $data2 = $con-> prepare($sql2);
 $data2->execute();
 $rows2 = $data2->fetchAll(PDO::FETCH_ASSOC);
 
-$sql3 = "SELECT `signature` FROM `tbl_accounts` WHERE `username` = 'ACCOUNTING'";
+$accountingsig = $rows1[0]['acct_asst'];
+
+$sql3 = "SELECT * FROM `tbl_accounts` WHERE `username` = '$accountingsig'";
 $data3 = $con-> prepare($sql3);
 $data3->execute();
 $rows3 = $data3->fetchAll(PDO::FETCH_ASSOC);
@@ -47,7 +49,6 @@ $college = $rows1[0]['school'];
 $course = $rows1[0]['course'];
 
 $registrar = $rows2[0]['signature'];
-
 $accounting = $rows3[0]['signature'];
 
 $sql4 = "SELECT * FROM `collegeschool` WHERE `college_school` = '$college'";
