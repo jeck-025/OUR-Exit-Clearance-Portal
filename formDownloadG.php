@@ -21,53 +21,44 @@ if($_GET['type'] == "Transfer"){
     $table = "ecle_forms";
 }
 
-// $conn = new mysqli($localhost, $username, $password, $dbname);
-// if ($conn->connect_error) {
-//     die("Connection failed: " . $conn->connect_error);
-// }
-
 $sql = "SELECT * FROM `$table` WHERE `referenceID` = '$referenceID'";
 $data1 = $con->prepare($sql);
 $data1->execute();
 $rows1 = $data1->fetchAll(PDO::FETCH_ASSOC);
-
 $guidancesig = $rows1[0]['guid_asst'];
-
-$sql2 = "SELECT * FROM `tbl_accounts` WHERE `username` = '$guidancesig'";
-$data2 = $con-> prepare($sql2);
-$data2->execute();
-$rows2 = $data2->fetchAll(PDO::FETCH_ASSOC);
-
-
-// $sql3 = "SELECT * FROM `tbl_accounts` WHERE `username` = '$accountingsig'";
-// $data3 = $con-> prepare($sql3);
-// $data3->execute();
-// $rows3 = $data3->fetchAll(PDO::FETCH_ASSOC);
-
-// $registrar = "";
+$school = $rows1[0]['school'];
 $sn = $rows1[0]['studentID'];
 $lname = $rows1[0]['lname'];
 $fname = $rows1[0]['fname'];
 $fullname = $rows1[0]['fname']." ".$rows1[0]['mname']." ".$rows1[0]['lname'];
 
 
-$filename="resource/uploads/letters/".$sn."_".$lname."_".$fname."_letter.pdf";
+$sql2 = "SELECT * FROM `tbl_accounts` WHERE `username` = '$guidancesig'";
+$data2 = $con-> prepare($sql2);
+$data2->execute();
+$rows2 = $data2->fetchAll(PDO::FETCH_ASSOC);
+$guidance = $rows2[0]['name'];
+
+
+$sql3 = "SELECT * FROM `collegeschool` WHERE `college_school` = '$school'";
+$data3 = $con-> prepare($sql3);
+$data3->execute();
+$rows3 = $data3->fetchAll(PDO::FETCH_ASSOC);
+$dean = $rows3[0]['dean'];
+
 // $college = $rows1[0]['school'];
 // $course = $rows1[0]['course'];
 
 // $registrar = $rows2[0]['signature'];
-$guidance = $rows2[0]['name'];
 
 // $sql4 = "SELECT * FROM `collegeschool` WHERE `college_school` = '$college'";
 // $data4 = $con->query($sql4);
 // $data4->execute();
 // $rows4 = $data4->fetchAll(PDO::FETCH_ASSOC);
 
-    // $dean = $rows4[0]['dean'];
-
-
     $pdf = new FPDI();
     $pdf->AddPage();
+    $filename="resource/uploads/letters/".$sn."_".$lname."_".$fname."_letter.pdf";
     $pdf->setSourceFile($filename);
     $template = $pdf->importPage(1);
     $pdf->useTemplate($template);
@@ -76,15 +67,22 @@ $guidance = $rows2[0]['name'];
     $pdf->SetFontSize(9);
 
     $pdf->SetXY(14, 25);
+    $pdf->Write(0, $dean);
+
+    $pdf->SetXY(41, 32);
+    $pdf->Write(0, date('m-d-Y',strtotime($rows1[0]['departmentdate'])));
+
+    $pdf->SetXY(71, 25);
     $pdf->Write(0, $guidance);
-    // $pdf->SetXY(54, 40);
-    // $pdf->Write(0, $rows1[0]['fname']);
+
+    $pdf->SetXY(98, 32);
+    $pdf->Write(0, date('m-d-Y',strtotime($rows1[0]['guidancedate'])));
+
+
     // $pdf->SetXY(93, 40);
     // $pdf->Write(0, $rows1[0]['mname']);
     // $pdf->SetXY(132, 40);
     // $pdf->Write(0, strtoupper(substr($rows1[0]['fname'],0,1).substr($rows1[0]['mname'],0,1).substr($rows1[0]['lname'],0,1))."(SGD)");
-    $pdf->SetXY(41, 32);
-    $pdf->Write(0, date('m-d-Y',strtotime($rows1[0]['guidancedate'])));
 
     // $pdf->SetXY(12, 49);
     // $pdf->MultiCell(34,2,$college,0,"L");
@@ -106,11 +104,11 @@ $guidance = $rows2[0]['name'];
     // $pdf->SetXY(180, 112);
     // $pdf->Write(0, "(".$rows1[0]['registrar_sra'].")");
 
-    // Signature accounting
-    $pdf->Image('signatures/gcd-stamp.png', "3","4", "60","34");
 
-    // // Signature Registrar
-    // $pdf->Image('signatures/'.$registrar, "135","100", "50","14");
+    $pdf->Image('signatures/dean-stamp.png', "3","4", "60","34");
+    $pdf->Image('signatures/gcd-stamp.png', "60","4", "60","34");
+
+
     $pdf->Output('D', "signed_letter-$lname$fname.pdf");
 
 

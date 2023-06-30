@@ -119,7 +119,7 @@ class reference extends config{
                         if($data['registrarclearance'] === "CLEARED" && $data['expiry'] === 'NO'){
                              echo "<h6><a href='formDownload.php?referenceID=$data[referenceID]&type=Transfer' class='btn btn-sm btn-outline-light btn-block fdown'><i class='fa-solid fa-download'></i> DOWNLOAD Exit Clearance Form </a></h6>";
                              echo "<h6><a href='formDownloadL.php?referenceID=$data[referenceID]&type=Transfer' class='btn btn-sm btn-outline-light btn-block fdown'><i class='fa-solid fa-download'></i> DOWNLOAD Library Clearance Form </a></h6>";
-                             echo "<h6><a href='#' class='btn btn-sm btn-outline-light btn-block fdown'><i class='fa-solid fa-download'></i> DOWNLOAD signed Letter of Intent </a></h6>";
+                             echo "<h6><a href='formDownloadG.php?referenceID=$data[referenceID]&type=Transfer' class='btn btn-sm btn-outline-light btn-block fdown'><i class='fa-solid fa-download'></i> DOWNLOAD signed Letter of Intent </a></h6>";
                         echo "</div>";
 
                         echo "</div>";
