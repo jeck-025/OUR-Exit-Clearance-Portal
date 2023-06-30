@@ -103,6 +103,40 @@ class reference extends config{
                             $iconReg = "<i class='fa-regular fa-circle'></i>";
                         }
                         echo "<h3 class='text-center font-weight-bold'> Student Information </h3>";
+                        echo "<br>";
+
+                        echo "<div class='container'>";
+                        echo "<div class='row'>";
+
+                        echo "<div class='col-md-8 text-left'>";
+                        echo "<p> <small>Student Name:</small>&emsp;<strong> $data[lname], $data[fname] $data[mname]</strong></p>";
+                        echo "<p> <small>Course:&emsp;</small><strong> $data[course]</strong></p>";
+                        echo "<p> <small>Email:&emsp;</small><strong> $data[email]</strong> </p>";
+                        echo "</div>";
+
+
+                        echo "<div class='col-md-4 text-center'>";
+                        if($data['registrarclearance'] === "CLEARED" && $data['expiry'] === 'NO'){
+                             echo "<h6><a href='formDownload.php?referenceID=$data[referenceID]&type=Transfer' class='btn btn-sm btn-outline-light btn-block fdown'><i class='fa-solid fa-download'></i> DOWNLOAD Exit Clearance Form </a></h6>";
+                             echo "<h6><a href='formDownloadL.php?referenceID=$data[referenceID]&type=Transfer' class='btn btn-sm btn-outline-light btn-block fdown'><i class='fa-solid fa-download'></i> DOWNLOAD Library Clearance Form </a></h6>";
+                             echo "<h6><a href='formDownloadG.php?referenceID=$data[referenceID]&type=Transfer' class='btn btn-sm btn-outline-light btn-block fdown'><i class='fa-solid fa-download'></i> DOWNLOAD signed Letter of Intent </a></h6>";
+                        echo "</div>";
+
+                        echo "</div>";
+                        echo "</div>";
+
+
+
+
+
+                        // echo "<p> <small>First Name:</small>&emsp;<strong> $data[fname] </strong> &emsp;&emsp; <small>Last Name:</small>&emsp;<strong>$data[lname]</strong>  &emsp;&emsp;<small>Middle Name: </small>&emsp;<strong>$data[mname]</strong></p>";
+                        // echo "</div>";
+                        echo "<hr>";
+
+                        }else{
+                            echo "<h3 class='text-center font-weight-bold'> Clearance Status </h3>";
+                        }
+                        echo "<br>";
                         echo "<div class='table-responsive'>";
                         echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%'>";
                         echo "<thead class='thead-dark' style='font-size: medium'>";
@@ -111,18 +145,6 @@ class reference extends config{
                         echo "<th>Accounting</th>";
                         echo "<th>Registrar</th>";
                         echo "</thead>";
-                        echo "<br>";
-                        echo "<p> <small>Student Name:</small>&emsp;<strong> $data[lname], $data[fname] $data[mname]</strong></p>";
-                        // echo "<p> <small>First Name:</small>&emsp;<strong> $data[fname] </strong> &emsp;&emsp; <small>Last Name:</small>&emsp;<strong>$data[lname]</strong>  &emsp;&emsp;<small>Middle Name: </small>&emsp;<strong>$data[mname]</strong></p>";
-                        echo "<p> <small>Course:&emsp;</small><strong> $data[course]</strong></p>";
-                        echo "<p> <small>Email:&emsp;</small><strong> $data[email]</strong> </p>";
-                        echo "<hr>";
-                        if($data['registrarclearance'] === "CLEARED" && $data['expiry'] === 'NO'){
-                             echo "<h5><a href='formDownload.php?referenceID=$data[referenceID]&type=Transfer' class='btn btn-sm btn-outline-light'><i class='fa-solid fa-file-arrow-down'></i> DOWNLOAD</a> the copy of your Clearance Form</h5><br>";
-                        }else{
-                            echo "<h3 class='text-center font-weight-bold'> Clearance Status </h3>";
-                        }
-                        echo "<br>";
                         echo "<tr class='text-white'>";
                         echo "<td style='font-size: large'>$deptC </td>";
                         echo "<td style='font-size: large'>$libraryC</td>";
