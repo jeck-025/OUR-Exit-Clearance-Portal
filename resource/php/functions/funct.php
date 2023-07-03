@@ -538,6 +538,11 @@ function sendmailGuidance(){
     $send->sendGuidance();
 }
 
+function sendmailRegistrar(){
+    $send = new sendMail();
+    $send->sendRegistrar();
+}
+
 function expireLibrary(){
     if(!empty($_GET['expire'])){
         $expire = new expire($_GET['expire']);

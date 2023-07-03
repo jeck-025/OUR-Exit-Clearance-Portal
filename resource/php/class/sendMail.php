@@ -6,51 +6,51 @@ class sendMail extends config{
 
     public $student;
 
-    public function sendLibrary(){
-        $config = new config;
-        $con = $config->con();
-        $sql = "SELECT * FROM `ecle_forms` WHERE `libraryclearance` = 'PENDING'";
-        $data = $con->prepare($sql);
-        $data->execute();
-        $arr = array();
-        $result = $data->fetchAll(PDO::FETCH_ASSOC);
-        foreach($result as $row){
-            $arr[] = $row['lname'].", ".$row['fname']." ".$row['mname'];
-        }
+    // public function sendLibrary(){
+    //     $config = new config;
+    //     $con = $config->con();
+    //     $sql = "SELECT * FROM `ecle_forms` WHERE `libraryclearance` = 'PENDING'";
+    //     $data = $con->prepare($sql);
+    //     $data->execute();
+    //     $arr = array();
+    //     $result = $data->fetchAll(PDO::FETCH_ASSOC);
+    //     foreach($result as $row){
+    //         $arr[] = $row['lname'].", ".$row['fname']." ".$row['mname'];
+    //     }
 
-        $sql2 = "SELECT * FROM `tbl_accounts` WHERE `groups` = 6";
-        $data2 = $con->prepare($sql2);
-        $data2->execute();
-        $result2 = $data2->fetchAll(PDO::FETCH_ASSOC);
-        foreach($result2 as $row2){
-            $email = $row2['email'];
-            $username = $row2['username'];
-        }
-        sendmailAccounts($email, $username, $arr);
-    }
+    //     $sql2 = "SELECT * FROM `tbl_accounts` WHERE `groups` = 6";
+    //     $data2 = $con->prepare($sql2);
+    //     $data2->execute();
+    //     $result2 = $data2->fetchAll(PDO::FETCH_ASSOC);
+    //     foreach($result2 as $row2){
+    //         $email = $row2['email'];
+    //         $username = $row2['username'];
+    //     }
+    //     sendmailAccounts($email, $username, $arr);
+    // }
 
-    public function sendGuidance(){
-        $config = new config;
-        $con = $config->con();
-        $sql = "SELECT * FROM `ecle_forms` WHERE `guidanceclearance` = 'PENDING'";
-        $data = $con->prepare($sql);
-        $data->execute();
-        $arr = array();
-        $result = $data->fetchAll(PDO::FETCH_ASSOC);
-        foreach($result as $row){
-            $arr[] = $row['lname'].", ".$row['fname']." ".$row['mname'];
-        }
+    // public function sendGuidance(){
+    //     $config = new config;
+    //     $con = $config->con();
+    //     $sql = "SELECT * FROM `ecle_forms` WHERE `guidanceclearance` = 'PENDING'";
+    //     $data = $con->prepare($sql);
+    //     $data->execute();
+    //     $arr = array();
+    //     $result = $data->fetchAll(PDO::FETCH_ASSOC);
+    //     foreach($result as $row){
+    //         $arr[] = $row['lname'].", ".$row['fname']." ".$row['mname'];
+    //     }
 
-        $sql2 = "SELECT * FROM `tbl_accounts` WHERE `groups` = 5";
-        $data2 = $con->prepare($sql2);
-        $data2->execute();
-        $result2 = $data2->fetchAll(PDO::FETCH_ASSOC);
-        foreach($result2 as $row2){
-            $email = $row2['email'];
-            $username = $row2['username'];
-        }
-        sendmailAccounts($email, $username, $arr);
-    }
+    //     $sql2 = "SELECT * FROM `tbl_accounts` WHERE `groups` = 5";
+    //     $data2 = $con->prepare($sql2);
+    //     $data2->execute();
+    //     $result2 = $data2->fetchAll(PDO::FETCH_ASSOC);
+    //     foreach($result2 as $row2){
+    //         $email = $row2['email'];
+    //         $username = $row2['username'];
+    //     }
+    //     sendmailAccounts($email, $username, $arr);
+    // }
 
     public function sendDean(){
         $config = new config;
@@ -120,27 +120,211 @@ class sendMail extends config{
           }
     }
 
+    // public function sendAccounting(){
+    //     $config = new config;
+    //     $con = $config->con();
+    //     $sql = "SELECT * FROM `ecle_forms` WHERE `accountingclearance` = 'PENDING'";
+    //     $data = $con->prepare($sql);
+    //     $data->execute();
+    //     $arr = array();
+    //     $result = $data->fetchAll(PDO::FETCH_ASSOC);
+    //     foreach($result as $row){
+    //         $arr[] = $row['lname'].", ".$row['fname']." ".$row['mname'];
+    //     }
+
+    //     $sql2 = "SELECT * FROM `tbl_accounts` WHERE `groups` = 4";
+    //     $data2 = $con->prepare($sql2);
+    //     $data2->execute();
+    //     $result2 = $data2->fetchAll(PDO::FETCH_ASSOC);
+    //     foreach($result2 as $row2){
+    //         $email = $row2['email'];
+    //         $username = $row2['username'];
+    //     }
+    //     sendmailAccounts($email, $username, $arr);
+    // }
+
+
+    public function sendLibrary(){
+        $config = new config;
+        $con = $config->con();
+
+        //undergraduate
+        // PENDING
+        $sql = "SELECT count(*) as `count` FROM `ecle_forms_ug` WHERE `guidanceclearance` = 'CLEARED' AND `libraryclearance` = 'PENDING'";
+        $data = $con->prepare($sql);
+        $data->execute();
+        $result = $data->fetchAll(PDO::FETCH_ASSOC);
+        $countLibraryUG = $result[0]['count'];
+
+        //ONHOLD
+        $sql2 = "SELECT count(*) as `count` FROM `ecle_forms_ug` WHERE `guidanceclearance` = 'CLEARED' AND `libraryclearance` = 'ON HOLD'";
+        $data2 = $con->prepare($sql);
+        $data2->execute();
+        $result2 = $data2->fetchAll(PDO::FETCH_ASSOC);
+        $countLibraryUGH = $result2[0]['count'];
+        
+        //graduate
+        //PENDING
+        $sql1 = "SELECT count(*) as `count` FROM `ecle_forms` WHERE `libraryclearance` = 'PENDING'";
+        $data1 = $con->prepare($sql1);
+        $data1->execute();
+        $result1 = $data1->fetchAll(PDO::FETCH_ASSOC);
+        $countLibraryGD = $result1[0]['count'];
+
+        //HOLD
+        $sql1 = "SELECT count(*) as `count` FROM `ecle_forms` WHERE `libraryclearance` = 'ON HOLD'";
+        $data1 = $con->prepare($sql1);
+        $data1->execute();
+        $result1 = $data1->fetchAll(PDO::FETCH_ASSOC);
+        $countLibraryGDH = $result1[0]['count'];
+
+        mailerLibrary($countLibraryGD, $countLibraryUG, $countLibraryGDH, $countLibraryUGH);
+    }
+
     public function sendAccounting(){
         $config = new config;
         $con = $config->con();
-        $sql = "SELECT * FROM `ecle_forms` WHERE `accountingclearance` = 'PENDING'";
+
+        //undergraduate
+        // PENDING
+        $sql = "SELECT count(*) as `count` FROM `ecle_forms_ug` WHERE `libraryclearance` = 'CLEARED' AND `accountingclearance` = 'PENDING'";
         $data = $con->prepare($sql);
         $data->execute();
-        $arr = array();
         $result = $data->fetchAll(PDO::FETCH_ASSOC);
-        foreach($result as $row){
-            $arr[] = $row['lname'].", ".$row['fname']." ".$row['mname'];
+        $countAcctgUG = $result[0]['count'];
+
+        //ONHOLD
+        $sql2 = "SELECT count(*) as `count` FROM `ecle_forms_ug` WHERE `libraryclearance` = 'CLEARED' AND `accountingclearance` = 'ON HOLD'";
+        $data2 = $con->prepare($sql);
+        $data2->execute();
+        $result2 = $data2->fetchAll(PDO::FETCH_ASSOC);
+        $countAcctgUGH = $result2[0]['count'];
+        
+        //graduate
+        //PENDING
+        $sql1 = "SELECT count(*) as `count` FROM `ecle_forms` WHERE `accountingclearance` = 'PENDING'";
+        $data1 = $con->prepare($sql1);
+        $data1->execute();
+        $result1 = $data1->fetchAll(PDO::FETCH_ASSOC);
+        $countAcctgGD = $result1[0]['count'];
+
+        //HOLD
+        $sql1 = "SELECT count(*) as `count` FROM `ecle_forms` WHERE `accountingclearance` = 'ON HOLD'";
+        $data1 = $con->prepare($sql1);
+        $data1->execute();
+        $result1 = $data1->fetchAll(PDO::FETCH_ASSOC);
+        $countAcctgGDH = $result1[0]['count'];
+
+        mailerAccounting($countAcctgGD, $countAcctgUG, $countAcctgGDH, $countAcctgUGH);
+    }
+    
+    public function sendGuidance(){
+        $config = new config;
+        $con = $config->con();
+
+        //undergraduate
+        // PENDING
+        $sql = "SELECT count(*) as `count` FROM `ecle_forms_ug` WHERE `departmentclearance` = 'CLEARED' AND `guidanceclearance` = 'PENDING'";
+        $data = $con->prepare($sql);
+        $data->execute();
+        $result = $data->fetchAll(PDO::FETCH_ASSOC);
+        $countGuidUG = $result[0]['count'];
+
+        //ONHOLD
+        $sql2 = "SELECT count(*) as `count` FROM `ecle_forms_ug` WHERE `departmentclearance` = 'CLEARED' AND `guidanceclearance` = 'ON HOLD'";
+        $data2 = $con->prepare($sql);
+        $data2->execute();
+        $result2 = $data2->fetchAll(PDO::FETCH_ASSOC);
+        $countGuidUGH = $result2[0]['count'];
+        
+        //graduate
+        //PENDING
+        // $sql1 = "SELECT count(*) as `count` FROM `ecle_forms` WHERE `guidanceclearance` = 'PENDING'";
+        // $data1 = $con->prepare($sql1);
+        // $data1->execute();
+        // $result1 = $data1->fetchAll(PDO::FETCH_ASSOC);
+        // $countAcctgGD = $result1[0]['count'];
+
+        //HOLD
+        // $sql1 = "SELECT count(*) as `count` FROM `ecle_forms` WHERE `guidanceclearance` = 'ON HOLD'";
+        // $data1 = $con->prepare($sql1);
+        // $data1->execute();
+        // $result1 = $data1->fetchAll(PDO::FETCH_ASSOC);
+        // $countAcctgGDH = $result1[0]['count'];
+
+        mailerGuidance($countGuidUG, $countGuidUGH);
+    }
+
+    public function sendRegistrar(){
+        $config = new config;
+        $con = $config->con();
+
+        //undergraduate
+        // PENDING
+        $sql = "SELECT `school`, count(*) as `count` FROM `ecle_forms_ug` WHERE `accountingclearance` = 'CLEARED' AND `registrarclearance` = 'PENDING' GROUP BY `school`";
+        $data = $con->prepare($sql);
+        $data->execute();
+        $result = $data->fetchAll(PDO::FETCH_ASSOC);
+        if(!empty($result)){
+            foreach ($result as $data){
+                $ugPendingSch[] = $data['school'];
+                $ugPendingCT[] = $data['count'];
+            }
+        }else{
+            $ugPendingSch[] = 0;
+            $ugPendingCT[] = 0;
         }
 
-        $sql2 = "SELECT * FROM `tbl_accounts` WHERE `groups` = 4";
+        //ONHOLD
+        $sql2 = "SELECT `school`, count(*) as `count` FROM `ecle_forms_ug` WHERE `accountingclearance` = 'CLEARED' AND `registrarclearance` = 'ON HOLD' GROUP BY `school`";
         $data2 = $con->prepare($sql2);
         $data2->execute();
         $result2 = $data2->fetchAll(PDO::FETCH_ASSOC);
-        foreach($result2 as $row2){
-            $email = $row2['email'];
-            $username = $row2['username'];
+        
+        if(!empty($result2)){
+            foreach ($result2 as $data2){
+                $ugHoldSch[] = $data2['school'];
+                $ugHoldCT[] = $data2['count'];
+            }
+        }else{
+            $ugHoldSch = 0;
+            $ugHoldCT = 0;
         }
-        sendmailAccounts($email, $username, $arr);
+        
+        //graduate
+        //PENDING
+        $sql1 = "SELECT `school`, count(*) as `count` FROM `ecle_forms` WHERE `registrarclearance` = 'PENDING' GROUP BY `school`";
+        $data1 = $con->prepare($sql1);
+        $data1->execute();
+        $result1 = $data1->fetchAll(PDO::FETCH_ASSOC);
+        
+        if(!empty($result1)){
+            foreach ($result1 as $data1){
+                $gdPendingSch[] = $data1['school'];
+                $gdPendingCT[] = $data1['count'];
+            }
+        }else{
+            $gdPendingSch[] = 0;
+            $gdPendingCT[] = 0;
+        }
+
+
+        //HOLD
+        $sql3 = "SELECT `school`, count(*) as `count` FROM `ecle_forms` WHERE `registrarclearance` = 'ON HOLD' GROUP BY `school`";
+        $data3 = $con->prepare($sql3);
+        $data3->execute();
+        $result3 = $data3->fetchAll(PDO::FETCH_ASSOC);
+        if(!empty($result3)){
+            foreach ($result3 as $data3){
+                $gdHoldSch[] = $data3['school'];
+                $gdHoldCT[] = $data3['count'];
+            }
+        }else{
+            $gdHoldSch[] = 0;
+            $gdHoldCT[] = 0;
+        }
+
+        mailerRegistrar($ugPendingSch, $ugPendingCT, $gdPendingSch, $gdPendingCT, $ugHoldSch, $ugHoldCT, $gdHoldSch, $gdHoldCT);
     }
 }
 

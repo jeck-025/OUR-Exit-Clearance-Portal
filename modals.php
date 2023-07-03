@@ -242,6 +242,7 @@ echo"<div class='modal fade' id='acctHold$id' aria-labelledby='modal' aria-hidde
                     }else{}
 
                     echo "<input type='hidden' name='landing' value='$landing'>";
+                    echo "<input type='hidden' name='type' value='$studType'>";
                     echo "<input type='hidden' name='hold' value='$id'>";
                     echo "<button type='button' class='btn btn-sm btn-danger' data-bs-dismiss='modal'><i class='fa-solid fa-x'></i> Cancel</button>";
                     if($acctC == "ON HOLD"){
