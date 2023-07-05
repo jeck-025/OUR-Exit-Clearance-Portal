@@ -162,6 +162,16 @@ function libraryEmail(){
   return $rows;
 }
 
+function deansEmail(){
+  $config = new config;
+  $con = $config->con();
+  $sql = "SELECT distinct(`name`), email, colleges from `tbl_accounts` WHERE `groups` = '3'";
+  $data = $con-> prepare($sql);
+  $data ->execute();
+  $rows =$data-> fetchAll(PDO::FETCH_ASSOC);
+  return $rows;
+}
+
 function mailerRegistrar($ugPendingSch, $ugPendingCT, $gdPendingSch, $gdPendingCT, $ugHoldSch, $ugHoldCT, $gdHoldSch, $gdHoldCT){
 
   $emails = registrarEmail();
@@ -177,87 +187,66 @@ function mailerRegistrar($ugPendingSch, $ugPendingCT, $gdPendingSch, $gdPendingC
   if($ugPendingCT > 0){
     $regsPendingArrayUG = array();
     for($i = 0; $i < count($ugPendingSch); $i++){
-      $regsPendingArrayUG[$i] = "<tr><td>".$ugPendingSch[$i]." - ".$ugPendingCT[$i]."</td></tr>";}
+      $regsPendingArrayUG[$i] = "<tr><td>".$ugPendingSch[$i]." - <b>".$ugPendingCT[$i]."</b></td></tr>";}
     $regsPendingUG = implode('<br>', $regsPendingArrayUG);
   }else{
-    $regsPendingUG = "None";
+    $regsPendingUG = "<b>NONE</b>";
   }
 
   if($ugHoldCT > 0){
     $regsHoldArrayUG = array();
     for($i = 0; $i < count($ugHoldSch); $i++){
-      $regsHoldArrayUG[$i] = "<tr><td>".$ugHoldSch[$i]." - ".$ugHoldCT[$i]."</td></tr>";}
+      $regsHoldArrayUG[$i] = "<tr><td>".$ugHoldSch[$i]." - <b>".$ugHoldCT[$i]."</b></td></tr>";}
     $regsHoldUG = implode('<br>', $regsHoldArrayUG);
   }else{
-    $regsHoldUG = "None";
+    $regsHoldUG = "<b>NONE</b>";
   }
 
   if($gdPendingCT > 0){
     $regsPendingArrayGD = array();
     for($i = 0; $i < count($gdPendingSch); $i++){
-      $regsPendingArrayGD[$i] = "<tr><td>".$gdPendingSch[$i]." - ".$gdPendingCT[$i]."</td></tr>";}
+      $regsPendingArrayGD[$i] = "<tr><td>".$gdPendingSch[$i]." - <b>".$gdPendingCT[$i]."</b></td></tr>";}
     $regsPendingGD = implode('<br>', $regsPendingArrayGD);
   }else{
-    $regsPendingGD = "None";
+    $regsPendingGD = "<b>NONE</b>";
   }
 
   if($gdHoldCT > 0){
     $regsHoldArrayGD = array();
     for($i = 0; $i < count($gdHoldSch); $i++){
-      $regsHoldArrayGD[$i] = "<tr><td>".$gdHoldSch[$i]." - ".$gdHoldCT[$i]."</td></tr>";}
+      $regsHoldArrayGD[$i] = "<tr><td>".$gdHoldSch[$i]." - <b>".$gdHoldCT[$i]."</b></td></tr>";}
     $regsHoldGD = implode('<br>', $regsHoldArrayGD);
   }else{
-    $regsHoldGD = "None";
+    $regsHoldGD = "<b>NONE</b>";
   }
 
   
-  $body = "<table style='font-family:arial, sans-serif; border: 1px solid #ddd; border-collapse: collapse; width=70%;'>
-            <tr><th> <b><u> Exit Clearance Daily Report for the Office of the University Registrar </u></b> </th></tr>
+  $body = "<p>Good Day!</p>
+            <p>Please see below the Exit Clearance Daily Report for the Office of the University Registrar</p>
+  
+          <table style='font-family:arial, sans-serif; border: 1px solid #ddd; border-collapse: collapse; width=100%;'>
             <tr><td>&nbsp;</td></tr>
             
-            <tr><th style='border: 1px solid #ddd;'> Pending Exit Clearance - Graduates </th></tr>"
-            .$regsPendingGD.
+            <tr><th style='border: 1px solid #201460; background-color:#201460; color:#fff;'> <h3>Pending Exit Clearance - Graduates</h3> </th></tr>
+            $regsPendingGD
             
-            "<tr><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td></tr>
 
-            <tr><th style='border: 1px solid #ddd;'> Pending Exit Clearance - Undergraduates </th></tr>"
-            .$regsPendingUG.
+            <tr><th style='border: 1px solid #201460; background-color:#201460; color:#fff;'> <h3>Pending Exit Clearance - Undergraduates</h3> </th></tr>
+            $regsPendingUG
 
-            "<tr><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td></tr>
 
-            <tr><th style='border: 1px solid #ddd;'> On-Hold Clearance - Graduates </th></tr>"
-            .$regsHoldGD.
+            <tr><th style='border: 1px solid #201460; background-color:#201460; color:#fff;'> <h3>On-Hold Clearance - Graduates</h3> </th></tr>
+            $regsHoldGD
 
-            "<tr><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td></tr>
 
-            <tr><th style='border: 1px solid #ddd;'> On-Hold Clearance - Undergraduates </th></tr>"
-            .$regsHoldUG.
+            <tr><th style='border: 1px solid #201460; background-color:#201460; color:#fff;'> <h3>On-Hold Clearance - Undergraduates</h3> </th></tr>
+            $regsHoldUG
 
-            "<tr><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td></tr>
           </table>";
-
-  //echo $body;
-
-
-
-
-
-  // echo $gp;
-
-  // $body = 
-  //       '<p>Pending Graduates:</p>
-
-  //       for($i = 0; $i < count($gp); $i++){
-  //         echo $gp[$i]." ".$gpct[$i];
-  //       }
-        
-        
-        
-        
-        
-  //       ';
-
-  
 
   try {
     //Server settings
@@ -273,6 +262,7 @@ function mailerRegistrar($ugPendingSch, $ugPendingCT, $gdPendingSch, $gdPendingC
     //Sender
     $mail->setFrom($mailerUsername);
     $mail->addAddress('jganatalio@ceu.edu.ph');
+    $mail->addAddress('rcbolasoc@ceu.edu.ph');
 
     // Recipients
     // for($i = 0; $i < count($emails); $i++){
@@ -434,4 +424,220 @@ function mailerLibrary($countLibraryGD, $countLibraryUG, $countLibraryGDH, $coun
   }
 }
 
+function mailerDeans($countUGPending0, $countUGHold0, $countGDPending0, $countGDHold0, $abbr0,
+                      $countUGPending1, $countUGHold1, $countGDPending1, $countGDHold1, $abbr1,
+                      $countUGPending2, $countUGHold2, $countGDPending2, $countGDHold2, $abbr2,
+                      $countUGPending3, $countUGHold3, $countGDPending3, $countGDHold3, $abbr3,
+                      $countUGPending4, $countUGHold4, $countGDPending4, $countGDHold4, $abbr4,
+                      $countUGPending5, $countUGHold5, $countGDPending5, $countGDHold5, $abbr5,
+                      $countUGPending6, $countUGHold6, $countGDPending6, $countGDHold6, $abbr6,
+                      $countUGPending7, $countUGHold7, $countGDPending7, $countGDHold7, $abbr7,
+                      $countUGPending8, $countUGHold8, $countGDPending8, $countGDHold8, $abbr8,
+                      $countUGPending9, $countUGHold9, $countGDPending9, $countGDHold9, $abbr9,
+                      $countUGPending10, $countUGHold10, $countGDPending10, $countGDHold10, $abbr10
+                    ){
+  
+  //$emails = registrarEmail();
+
+  date_default_timezone_set('asia/manila');
+  $today = date("F j, Y");
+
+  $emails = deansEmail();
+  $mail = new PHPMailer(true);
+  $view = new view();
+  $mailerData = $view->viewConfigMailer();
+  $mailerUsername = $mailerData[0];
+  $mailerPassword = $mailerData[1];
+  $mailerPlatform = $mailerData[2];
+  $mailerPort = $mailerData[3];
+
+  for($i = 0; $i < 1; $i++){
+  //for($i = 0; $i < count($emails); $i++){
+      if($emails[$i]['colleges'] == "School of Accountancy and Management"){
+        $undergradPending = $countUGPending0;
+        $undergradHold = $countUGHold0;
+        $graduatePending = $countGDPending0;
+        $graduateHold = $countGDHold0;
+        $school = $abbr0;
+      }elseif($emails[$i]['colleges'] == "School of Dentistry"){
+        $undergradPending = $countUGPending1;
+        $undergradHold = $countUGHold1;
+        $graduatePending = $countGDPending1;
+        $graduateHold = $countGDHold1;
+        $school = $abbr1;
+      }elseif($emails[$i]['colleges'] == "School of Education, Liberal Arts, Music and Social Work"){
+        $undergradPending = $countUGPending2;
+        $undergradHold = $countUGHold2;
+        $graduatePending = $countGDPending2;
+        $graduateHold = $countGDHold2;
+        $school = $abbr2;
+      }elseif($emails[$i]['colleges'] == "Graduate School"){
+        $undergradPending = $countUGPending3;
+        $undergradHold = $countUGHold3;
+        $graduatePending = $countGDPending3;
+        $graduateHold = $countGDHold3;
+        $school = $abbr3;
+      }elseif($emails[$i]['colleges'] == "School of Medical Technology"){
+        $undergradPending = $countUGPending4;
+        $undergradHold = $countUGHold4;
+        $graduatePending = $countGDPending4;
+        $graduateHold = $countGDHold4;
+        $school = $abbr4;
+      }elseif($emails[$i]['colleges'] == "School of Medicine"){
+        $undergradPending = $countUGPending5;
+        $undergradHold = $countUGHold5;
+        $graduatePending = $countGDPending5;
+        $graduateHold = $countGDHold5;
+        $school = $abbr5;
+      }elseif($emails[$i]['colleges'] == "School of Nursing"){
+        $undergradPending = $countUGPending6;
+        $undergradHold = $countUGHold6;
+        $graduatePending = $countGDPending6;
+        $graduateHold = $countGDHold6;
+        $school = $abbr6;
+      }elseif($emails[$i]['colleges'] == "School of Nutrition and Hospitality Management"){
+        $undergradPending = $countUGPending7;
+        $undergradHold = $countUGHold7;
+        $graduatePending = $countGDPending7;
+        $graduateHold = $countGDHold7;
+        $school = $abbr7;
+      }elseif($emails[$i]['colleges'] == "School of Optometry"){
+        $undergradPending = $countUGPending8;
+        $undergradHold = $countUGHold8;
+        $graduatePending = $countGDPending8;
+        $graduateHold = $countGDHold8;
+        $school = $abbr8;
+      }elseif($emails[$i]['colleges'] == "School of Pharmacy"){
+        $undergradPending = $countUGPending9;
+        $undergradHold = $countUGHold9;
+        $graduatePending = $countGDPending9;
+        $graduateHold = $countGDHold9;
+        $school = $abbr9;
+      }elseif($emails[$i]['colleges'] == "School of Science and Technology"){
+        $undergradPending = $countUGPending10;
+        $undergradHold = $countUGHold10;
+        $graduatePending = $countGDPending10;
+        $graduateHold = $countGDHold10;
+        $school = $abbr10;
+      }else{
+        $undergradPending = "";
+        $undergradHold = "";
+        $graduatePending = "";
+        $graduateHold = "";
+        $school = "";
+      }
+
+      // echo $emails[$i]['colleges']."<br>";
+      // echo $school."<br>";
+      // echo $emails[$i]['name']."<br>";
+      // echo $emails[$i]['email']."<br>";
+      // echo $undergradPending."<br>";
+      // echo $undergradHold."<br>";
+      // echo $graduatePending."<br>";
+      // echo $graduateHold."<br>";
+
+      $schoolName = $emails[$i]['colleges']; // Complete School / College Name
+      $user = $emails[$i]['name'];           // Name of Recipient / Secretary
+      $recipient_email = $emails[$i]['email']; // Secretary's Email
+
+      $subject = "Exit Clearance Daily Report - $schoolName - $today";
+      $body = "<p>Good Day!</p>
+                <p>Please see below the Exit Clearance Daily Report for the $schoolName ($today)</p>
+      
+                <table style='font-family:arial, sans-serif; border: 1px solid #ddd; border-collapse: collapse; width=100%;'>
+                  <tr>
+                    <td style='border: 1px solid #ddd; width:50%; text-align:center; vertical-align:center; padding-left:10px; padding-right:10px;'> <h3>Pending Graduates</h3> </td>
+                    <td style='border: 1px solid #ddd; width:50%; text-align:center; vertical-align:center;'> <h3>$graduatePending</h3> </td>
+                  </tr>
+                  
+                  <tr>
+                    <td style='border: 1px solid #ddd; width:50%; text-align:center; vertical-align:center; padding-left:10px; padding-right:10px;'> <h3>Pending Undergraduates</h3> </td>
+                    <td style='border: 1px solid #ddd; width:50%; text-align:center; vertical-align:center;'> <h3>$undergradPending</h3> </td>
+                  </tr>
+
+                  <tr>
+                    <td style='border: 1px solid #ddd; width:50%; text-align:center; vertical-align:center; padding-left:10px; padding-right:10px;'> <h3>On-Hold Graduates</h3> </td>
+                    <td style='border: 1px solid #ddd; width:50%; text-align:center; vertical-align:center;'> <h3>$graduateHold</h3> </td>
+                  </tr>
+
+                  <tr>
+                    <td style='border: 1px solid #ddd; width:50%; text-align:center; vertical-align:center; padding-left:10px; padding-right:10px;'> <h3>On-Hold Undergraduates</h3> </td>
+                    <td style='border: 1px solid #ddd; width:50%; text-align:center; vertical-align:center;'> <h3>$undergradHold</h3> </td>
+                  </tr>
+
+                </table>
+                
+                <p>You may log-in to your ECLE Account <a href=ceumnlregistrar.com/ecle/adminlogin>HERE</a> to view these pending clearances.</p>
+                <p>Thank you.</p>";
+                
+
+      echo $body;
+
+
+      try {
+        //Server settings
+        $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+        $mail->isSMTP();
+        $mail->Host       = $mailerPlatform;
+        $mail->SMTPAuth   = true;
+        $mail->Username   = $mailerUsername;
+        $mail->Password   = $mailerPassword;
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port       = $mailerPort;
+
+        //Sender
+        $mail->setFrom($mailerUsername);
+        $mail->addAddress('jganatalio@ceu.edu.ph');
+        $mail->addAddress('rcbolasoc@ceu.edu.ph');
+
+        // Recipients
+        // for($i = 0; $i < count($emails); $i++){
+        //   $mail->addAddress($emails[$i]['email']);
+        // }
+
+        $mail->isHTML(true);
+        $mail->Subject = $subject;
+        $mail->Body = $body;
+        // $mail->Body = $body;
+        $mail->SMTPDebug  = SMTP::DEBUG_OFF;
+        $mail->send();
+        
+      }catch(Exception $e){
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+      }
+    }
+
+}
+
+
 ?>
+
+
+
+	
+
+<!-- School of Education, Liberal Arts, Music and Socia...
+	
+
+School of Medicine
+	
+
+School of Medical Technology
+	
+
+School of Nursing
+	
+
+School of Nutrition and Hospitality Management
+	
+
+School of Optometry
+	
+
+School of Pharmacy
+	
+
+School of Science and Technology
+	
+
+Graduate School -->

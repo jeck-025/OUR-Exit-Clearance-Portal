@@ -709,6 +709,16 @@ function schoolSelect()
     return $guid_asst_name;
   }
 
+  function college_list(){
+    $config = new config;
+    $con = $config->con();
+    $sql = "SELECT DISTINCT(`college_school`) FROM `collegeschool` WHERE `state` = 'active'";
+    $data = $con-> prepare($sql);
+    $data ->execute();
+    $rows =$data-> fetchAll(PDO::FETCH_OBJ);
+    return $rows;
+  }
+
 //   function evaluatorName(){
 //     $user = new user();
 //     $config = new config;

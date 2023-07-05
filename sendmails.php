@@ -1,10 +1,10 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'].'/ecle/resource/php/class/core/init.php';
 //sendmailLibrary();
-// sendmailDean();
+ sendmailDean();
 // sendmailAccounting();
 // sendmailGuidance();
- sendmailRegistrar();
+// sendmailRegistrar();
 // header('Location:adminconfig.php');
 
 ?>
