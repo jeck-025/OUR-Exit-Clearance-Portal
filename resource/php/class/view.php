@@ -16,6 +16,18 @@ class view extends config{
                 }
         }
 
+        public function groupSP2(){
+            $config = new config;
+            $con = $config->con();
+            $sql = "SELECT * FROM `tbl_group`";
+            $data = $con-> prepare($sql);
+            $data ->execute();
+            $rows =$data-> fetchAll(PDO::FETCH_OBJ);
+                foreach ($rows as $row) {
+                  echo '<option data-tokens=".'.$row->id.'." value="'.$row->id.'">'.$row->name.'</option>';
+                }
+        }
+
         public function courseSP2(){
             $config = new config;
             $con = $config->con();

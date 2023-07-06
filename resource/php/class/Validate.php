@@ -29,7 +29,7 @@ class Validate{
                             break;
                             case 'matches':
                                 if($value != $source[$rule_value]){
-                                    $this->addError(strtoupper($rule_value)."must match".strtoupper($item));
+                                    $this->addError(strtoupper($rule_value)." must match ".strtoupper($item));
                                 }
                             break;
                             case 'unique':

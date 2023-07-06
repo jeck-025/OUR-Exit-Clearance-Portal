@@ -87,6 +87,12 @@ footer {
   width: 100%;
 }
 
+.btn-adduser {
+  background-color: #201460 !important;
+  border-color: #201460 !important;
+  color: #fff !important;
+}
+
 .semester-config-form{
   display: flex;
   justify-content: center;

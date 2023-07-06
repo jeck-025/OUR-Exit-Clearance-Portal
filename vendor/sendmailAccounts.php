@@ -451,7 +451,7 @@ function mailerDeans($countUGPending0, $countUGHold0, $countGDPending0, $countGD
   $mailerPlatform = $mailerData[2];
   $mailerPort = $mailerData[3];
 
-  for($i = 0; $i < 1; $i++){
+  for($i = 0; $i < 1; $i++){ //test
   //for($i = 0; $i < count($emails); $i++){
       if($emails[$i]['colleges'] == "School of Accountancy and Management"){
         $undergradPending = $countUGPending0;
@@ -527,15 +527,6 @@ function mailerDeans($countUGPending0, $countUGHold0, $countGDPending0, $countGD
         $school = "";
       }
 
-      // echo $emails[$i]['colleges']."<br>";
-      // echo $school."<br>";
-      // echo $emails[$i]['name']."<br>";
-      // echo $emails[$i]['email']."<br>";
-      // echo $undergradPending."<br>";
-      // echo $undergradHold."<br>";
-      // echo $graduatePending."<br>";
-      // echo $graduateHold."<br>";
-
       $schoolName = $emails[$i]['colleges']; // Complete School / College Name
       $user = $emails[$i]['name'];           // Name of Recipient / Secretary
       $recipient_email = $emails[$i]['email']; // Secretary's Email
@@ -587,18 +578,14 @@ function mailerDeans($countUGPending0, $countUGHold0, $countGDPending0, $countGD
 
         //Sender
         $mail->setFrom($mailerUsername);
+
+        //Recipient
         $mail->addAddress('jganatalio@ceu.edu.ph');
         $mail->addAddress('rcbolasoc@ceu.edu.ph');
-
-        // Recipients
-        // for($i = 0; $i < count($emails); $i++){
-        //   $mail->addAddress($emails[$i]['email']);
-        // }
 
         $mail->isHTML(true);
         $mail->Subject = $subject;
         $mail->Body = $body;
-        // $mail->Body = $body;
         $mail->SMTPDebug  = SMTP::DEBUG_OFF;
         $mail->send();
         
@@ -611,33 +598,3 @@ function mailerDeans($countUGPending0, $countUGHold0, $countGDPending0, $countGD
 
 
 ?>
-
-
-
-	
-
-<!-- School of Education, Liberal Arts, Music and Socia...
-	
-
-School of Medicine
-	
-
-School of Medical Technology
-	
-
-School of Nursing
-	
-
-School of Nutrition and Hospitality Management
-	
-
-School of Optometry
-	
-
-School of Pharmacy
-	
-
-School of Science and Technology
-	
-
-Graduate School -->
