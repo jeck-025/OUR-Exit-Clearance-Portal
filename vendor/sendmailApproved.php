@@ -24,14 +24,22 @@ function sendmailApproved($email, $lname, $fname, $mname, $tn, $type){
   $mailerPlatform = $mailerData[2];
   $mailerPort = $mailerData[3];
 
-  $body ="<p>Dear $lname, $fname $mname,</p>
-  <p>Greetings of Peace!</p>
-  <p>Your Exit Clearance has been Approved by the Office of the University Registrar.</p>
-  <p>You may now download your copy of the Exit Clearance Form</p>
-  <p>by visiting the ECLE status checker or click this <a href=https://ceumnlregistrar.com/ecle/formDownload.php?referenceID=$tn&type=$type> LINK </a></p>
-  <p>You may now also request for your credentials <a href=https://ceumnlregistrar.com/report/transaction> HERE </a></p>
-  <p><b>This is an auto-generated email. Please do not reply.</b></p>
-  <p>Thank you and stay safe.</p>";
+  $body ="
+            <p>Dear $lname, $fname $mname,</p>
+
+            <p>Good Day!</p>
+
+            <p>Your Exit Clearance has been Approved by the Office of the University Registrar.</p>
+
+            <p>You may now download your signed Exit Clearance form by clicking this <a href=http://ceumnlregistrar.com/ecle/formDownload.php?referenceID=$tn&type=$type> LINK </a>.</p>
+            
+            <p>You may also download your signed Library Clearance form by clicking this <a href=http://ceumnlregistrar.com/ecle/formDownloadL.php?referenceID=$tn&type=$type> LINK </a>.</p>
+            
+            <p>To request for your credentials and other documents, you may click this <a href=https://ceumnlregistrar.com/report/transaction> LINK </a><./p>
+            
+            <p><b>This is an auto-generated email. Please do not reply here.</b></p>
+            
+            <p>Thank you and stay safe.</p>";
   try {
     //Server settings
      $mail->SMTPDebug = SMTP::DEBUG_SERVER;

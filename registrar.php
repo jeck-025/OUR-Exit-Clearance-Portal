@@ -63,11 +63,20 @@ $import = new import();
             </div>
 
             <!-- hold -->
-            <div class="item pb-3 border-bottom">
+            <div class="item">
               <a class="sub-btn"><i class="fa-sharp fa-solid fa-pause"></i>On Hold<i class="fas fa-chevron-right dropdown"></i></a>
                 <div class="sub-menu">
                   <a href="regs-hld-tr.php" name="Atransfer" class="sub-item border-bottom" value="Transfer">Transfer</a>
                   <a href="regs-hld-gd.php" name="Agraduate" class="sub-item" value="Graduate">Graduate</a>
+                </div>
+            </div>
+
+            <!-- removed -->
+            <div class="item pb-3 border-bottom">
+              <a class="sub-btn"><i class="fa-solid fa-xmark"></i></i>Removed<i class="fas fa-chevron-right dropdown"></i></a>
+                <div class="sub-menu">
+                  <!-- <a href="regs-hld-tr.php" name="Atransfer" class="sub-item border-bottom" value="Transfer">Transfer</a> -->
+                  <a href="regs-rem-gd.php" name="Agraduate" class="sub-item" value="Graduate">Graduate</a>
                 </div>
             </div>
 
@@ -107,6 +116,7 @@ $import = new import();
                       if($user->data()->username == "REGISTRAR" || $user->data()->username == "RCBOLASOC" || $user->data()->username == "jeck"){
                         echo "<li><a href='adminconfig.php' class='dropdown-item'>General Config</a></li>";
                         echo "<li><a href= '#' class='dropdown-item' data-bs-toggle='modal' data-bs-target='#deanCFG'>Deans Config</a></li>";
+                        echo "<li><a href='addusers.php' class='dropdown-item'>Add User</a></li>";
                         echo "<li><a href='changepasswordRegistrar.php' class='dropdown-item'>Change Password</a></li>";
                       }
                     ?>

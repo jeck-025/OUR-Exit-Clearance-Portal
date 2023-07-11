@@ -4,6 +4,7 @@ sendmailLibrary();
 sendmailDean();
 sendmailAccounting();
 sendmailGuidance();
+sendmailRegistrar();
 header('Location:adminconfig.php');
 
 ?>

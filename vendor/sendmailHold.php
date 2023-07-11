@@ -24,14 +24,22 @@ function sendOnHoldMail($email, $remarks, $lname, $fname, $mname, $office){
   $mailerPlatform = $mailerData[2];
   $mailerPort = $mailerData[3];
 
-  $body ="<p>Dear $lname, $fname $mname,</p>
-  <p>Greetings of Peace!</p>
-  <p>Your request for an Exit Clearance is currently on-hold.</p>
-  <p>Please see the message from the $office below:</p>
-  <p><b><i>$remarks.</i></b></p>
-  <p>Please resolve the issue / concern immediately for your clearance to proceed.</p>
-  <p><b>This is an auto generated email please do not reply.</b></p>
-  <p>Thank you and stay safe.</p>";
+  $body ="
+          <p>Dear $lname, $fname $mname,</p>
+
+          <p>Good Day!</p>
+
+          <p>Your request for an Exit Clearance is currently on-hold.</p>
+          
+          <p>Please see the message / remakrs from the $office below:</p>
+          
+          <p><b><i>$remarks.</i></b></p>
+          
+          <p>Please resolve the issue / concern immediately for your clearance to proceed.</p>
+          
+          <p><b>This is an auto generated email please do not reply.</b></p>
+          
+          <p>Thank you and stay safe.</p>";
   try {
     //Server settings
      $mail->SMTPDebug = SMTP::DEBUG_SERVER;

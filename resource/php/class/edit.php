@@ -107,6 +107,45 @@ class edit extends config{
             return false;
         }
     }
+
+        public function removeClearanceRegistrar(){
+        $con = $this->con();
+
+
+
+        // echo "execute sql now";
+        // die();
+
+        if($this->type == "Graduate"){
+            $sql2 = "SELECT * FROM `ecle_forms` WHERE `id` = '$this->id'";
+        }else{
+            $sql2 = "SELECT * FROM `ecle_forms_ug` WHERE `id` = '$this->id'";
+        }
+        $data2 = $con->prepare($sql2);
+        $data2->execute();
+        $result = $data2->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($result as $row) {
+            $email = $row['email'];
+            $lname = $row['lname'];
+            $fname = $row['fname'];
+            $mname = $row['mname'];
+            $tn = $row['referenceID'];
+        }
+
+        if($this->type == "Graduate"){
+            $sql = "UPDATE `ecle_forms` SET `registrarclearance` = 'REMOVED', `registrarremarks` = '', `registrar_sra` = '$this->user' WHERE `id` = '$this->id'";
+
+        }else{ 
+            //not yet working for undergraduates as of July 11, 2023
+            // $sql = "UPDATE `ecle_forms_ug` SET `registrarclearance` = 'CLEARED', `registrarremarks` = '', `registrardate` = CURRENT_TIMESTAMP, `registrar_sra` = '$this->user' WHERE `id` = '$this->id'";
+        }
+        $data = $con->prepare($sql);
+        if($data->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
 
 ?>

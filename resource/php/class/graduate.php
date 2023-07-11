@@ -16,24 +16,22 @@ class graduate extends config{
         $data = $con->prepare($sql);
         $data->execute();
         $result = $data->fetchAll(PDO::FETCH_ASSOC);
-        if (empty($result)) {
+        if(empty($result)){
             echo '<div class="alert alert-danger alert-dismissible fade show col-12" role="alert">
                     <b><i class="fa-solid fa-triangle-exclamation"></i> Error:</b> No Records Matched.
                   </div>';
-        }
-        else {
-            foreach ($result as $data) {
+        }else{
+            foreach($result as $data){
                 if($data['studentType'] === "Transfer"){
                     echo "Please refer to the transfer section of reference checking for transferring students.";
-                } else {
+                }else{
                     if($data['registrarclearance'] === "CLEARED" && $data['expiry'] === 'NO'){
-
-                        // STATUS ICONS -------------------------------------------------------------------------------------------------
-                        // declare first
-                            $libraryC = $data["libraryclearance"];
-                            $deptC = $data["departmentclearance"];
-                            $acctC = $data["accountingclearance"];
-                            $regC = $data["registrarclearance"];
+                    // STATUS ICONS -------------------------------------------------------------------------------------------------
+                    // declare first
+                        $libraryC = $data["libraryclearance"];
+                        $deptC = $data["departmentclearance"];
+                        $acctC = $data["accountingclearance"];
+                        $regC = $data["registrarclearance"];
 
                         if($libraryC == "CLEARED"){
                             $iconClassL = "staticon-approved";
@@ -88,54 +86,87 @@ class graduate extends config{
                         }
 
                         echo "<h3 class='text-center font-weight-bold'> Student Information </h3>";
-                        echo "<div class='table-responsive'>";
-                        echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%'>";
-                        echo "<thead class='thead-dark' style='font-size: mediu'>";
-                        echo "<th>Dean's Office</th>";
-                        echo "<th>Library</th>";
-                        echo "<th>Accounting</th>";
-                        echo "<th>Registrar</th>";
-                        echo "</thead>";
                         echo "<br>";
-                        echo "<p> <small>Student Name:</small>&emsp;<strong> $data[lname], $data[fname] $data[mname]</strong></p>";
-                        // echo "<p> <small>First Name:</small>&emsp;<strong> $data[fname] </strong> &emsp;&emsp; <small>Last Name:</small>&emsp;<strong>$data[lname]</strong>  &emsp;&emsp;<small>Middle Name: </small>&emsp;<strong>$data[mname]</strong></p>";
-                        echo "<p> <small>Course:&emsp;</small><strong> $data[course]</strong></p>";
-                        echo "<p> <small>Email:&emsp;</small><strong> $data[email]</strong> </p><hr>";
-                        echo "<tr class='text-white'>";
-                        echo "<td style='font-size: large'>$deptC </td>";
-                        echo "<td style='font-size: large'>$libraryC</td>";
-                        echo "<td style='font-size: large'>$acctC</td>";
-                        echo "<td style='font-size: large'>$regC</td>";
-                        echo "</tr>";   
-                        echo "<tr class='text-white'>";
-                        echo "<td class='$iconClassD'>$iconDept</td>";
-                        echo "<td class='$iconClassL'>$iconLibrary</td>";
-                        echo "<td class='$iconClassA'>$iconAcct</td>";
-                        echo "<td class='$iconClassR'>$iconReg</td>";
-                        echo "</tr>";
-                        echo "<h5><a href='formDownload.php?referenceID=$data[referenceID]&type=Graduate' class='btn btn-sm btn-outline-light'><i class='fa-solid fa-file-arrow-down'></i> DOWNLOAD</a> the copy of your Clearance Form</h5><br>";
-                        echo "</table>";
+                        echo "<div class='container'>";
+                            echo "<div class='row'>";
+                                echo "<div class='col-md-8 text-left'>";
+                                    echo "<p> <small>Student Name:</small>&emsp;<strong> $data[lname], $data[fname] $data[mname]</strong></p>";
+                                    echo "<p> <small>Course:&emsp;</small><strong> $data[course]</strong></p>";
+                                    echo "<p> <small>Email:&emsp;</small><strong> $data[email]</strong> </p>";                        
+                                echo "</div>";
+                                echo "<div class='col-md-4 text-center'>";
+                                    echo "<h6><a href='formDownload.php?referenceID=$data[referenceID]&type=Graduate' class='btn btn-sm btn-outline-light btn-block fdown'><i class='fa-solid fa-download'></i> DOWNLOAD Exit Clearance Form </a></h6>";
+                                    echo "<h6><a href='formDownloadL.php?referenceID=$data[referenceID]&type=Graduate' class='btn btn-sm btn-outline-light btn-block fdown'><i class='fa-solid fa-download'></i> DOWNLOAD Library Clearance Form </a></h6>";
+                                echo "</div>";
+                            echo "</div>";
                         echo "</div>";
-                        break;
-                    }
-                    else if($data['expiry'] === 'YES'){
+                        echo "<hr>";
+                        echo "<h3 class='text-center font-weight-bold'> Clearance Status </h3><br>";
+                        echo "<div class='table-responsive'>";
+                            echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%'>";
+                                echo "<thead class='thead-dark' style='font-size: medium'>";
+                                    echo "<th>Dean's Office</th>";
+                                    echo "<th>Library</th>";
+                                    echo "<th>Accounting</th>";
+                                    echo "<th>Registrar</th>";
+                                echo "</thead>";
+                                echo "<tr class='text-white'>";
+                                    echo "<td style='font-size: large'>$deptC </td>";
+                                    echo "<td style='font-size: large'>$libraryC</td>";
+                                    echo "<td style='font-size: large'>$acctC</td>";
+                                    echo "<td style='font-size: large'>$regC</td>";
+                                echo "</tr>";   
+                                echo "<tr class='text-white'>";
+                                    echo "<td class='$iconClassD'>$iconDept</td>";
+                                    echo "<td class='$iconClassL'>$iconLibrary</td>";
+                                    echo "<td class='$iconClassA'>$iconAcct</td>";
+                                    echo "<td class='$iconClassR'>$iconReg</td>";
+                                echo "</tr>";
+                                echo "<tr class='text-white'>";
+                                    if($data['registrarclearance'] === "CLEARED" && $data['expiry'] === 'NO'){
+                                        // do not display remarks area
+                                    }else{
+                                        if(!empty($deptR)){
+                                            echo "<td style='font-size: small; width:25%;'>$deptR</td>";
+                                        }else{
+                                            echo "<td style='font-size: small; width:25%;'><i>No Remarks</i></td>";
+                                        }
+                                        if(!empty($libraryR)){
+                                            echo "<td style='font-size: small; width:25%;'>$libraryR</td>";
+                                        }else{
+                                            echo "<td style='font-size: small; width:25%;'><i>No Remarks</i></td>";
+                                        }
+                                        if(!empty($acctR)){
+                                            echo "<td style='font-size: small; width:25%;'>$acctR</td>";
+                                        }else{
+                                            echo "<td style='font-size: small; width:25%;'><i>No Remarks</i></td>";
+                                        }
+                                        if(!empty($regR)){
+                                            echo "<td style='font-size: small; width:25%;'>$regR</td>";
+                                        }else{
+                                            echo "<td style='font-size: small; width:25%;'><i>No Remarks</i></td>";
+                                        }
+                                    }
+                                echo "</tr>";
+                            echo "</table>";
+                        echo "</div>";
+                    }elseif($data['expiry'] === 'YES'){
                         echo '<div class="alert alert-danger alert-dismissible fade show col-12" role="alert">
                                 <b>Error!</b> Your form has expired due to unattended remarks set, please contact a Techer-In-Charge!
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>';
-                    }
-                    else {
-                            $libraryC = $data["libraryclearance"];
-                            $deptC = $data["departmentclearance"];
-                            $acctC = $data["accountingclearance"];
-                            $regC = $data["registrarclearance"];
+                    }else{
+                        $libraryC = $data["libraryclearance"];
+                        $deptC = $data["departmentclearance"];
+                        $acctC = $data["accountingclearance"];
+                        $regC = $data["registrarclearance"];
 
-                            $libraryR = $data["libraryremarks"];
-                            $deptR = $data["departmentremarks"];
-                            $acctR = $data["accountingremarks"];
-                            $regR = $data["registrarremarks"];
+                        $libraryR = $data["libraryremarks"];
+                        $deptR = $data["departmentremarks"];
+                        $acctR = $data["accountingremarks"];
+                        $regR = $data["registrarremarks"];
 
                         if($libraryC == "CLEARED"){
                             $iconClassL = "staticon-approved";
@@ -188,64 +219,60 @@ class graduate extends config{
                             $iconClassR = "staticon-pending";
                             $iconReg = "<i class='fa-regular fa-circle'></i>";
                         }
+
                         echo "<h3 class='text-center font-weight-bold'> Student Information </h3>";
-                        echo "<div class='table-responsive'>";
-                        echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%'>";
-                        echo "<thead class='thead-dark' style='font-size: medium'>";
-                        echo "<th>Dean's Office</th>";
-                        echo "<th>Library</th>";
-                        echo "<th>Accounting</th>";
-                        echo "<th>Registrar</th>";
-                        echo "</thead>";
-                        echo "<br>";
                         echo "<p> <small>Student Name:</small>&emsp;<strong> $data[lname], $data[fname] $data[mname]</strong></p>";
-                        // echo "<p> <small>First Name:</small>&emsp;<strong> $data[fname] </strong> &emsp;&emsp; <small>Last Name:</small>&emsp;<strong>$data[lname]</strong>  &emsp;&emsp;<small>Middle Name: </small>&emsp;<strong>$data[mname]</strong></p>";
                         echo "<p> <small>Course:&emsp;</small><strong> $data[course]</strong></p>";
                         echo "<p> <small>Email:&emsp;</small><strong> $data[email]</strong> </p>";
                         echo "<hr><h3 class='text-center font-weight-bold'> Clearance Status </h3><br>";
-                        echo "<tr class='text-white'>";
-                        echo "<td style='font-size: large'>$deptC </td>";
-                        echo "<td style='font-size: large'>$libraryC</td>";
-                        echo "<td style='font-size: large'>$acctC</td>";
-                        echo "<td style='font-size: large'>$regC</td>";
-                        echo "</tr>";   
-                        echo "<tr class='text-white'>";
-                        echo "<td class='$iconClassD'>$iconDept</td>";
-                        echo "<td class='$iconClassL'>$iconLibrary</td>";
-                        echo "<td class='$iconClassA'>$iconAcct</td>";
-                        echo "<td class='$iconClassR'>$iconReg</td>";
-                        echo "</tr>";
-                        echo "<tr class='text-white'>";
-                        if(!empty($deptR)){
-                            echo "<td style='font-size: small; width:25%;'>$deptR</td>";
-                        }else{
-                            echo "<td style='font-size: small; width:25%;'><i>No Remarks</i></td>";
-                        }
-                        if(!empty($libraryR)){
-                            echo "<td style='font-size: small; width:25%;'>$libraryR</td>";
-                        }else{
-                            echo "<td style='font-size: small; width:25%;'><i>No Remarks</i></td>";
-                        }
-                        if(!empty($acctR)){
-                            echo "<td style='font-size: small; width:25%;'>$acctR</td>";
-                        }else{
-                            echo "<td style='font-size: small; width:25%;'><i>No Remarks</i></td>";
-                        }
-                        if(!empty($regR)){
-                            echo "<td style='font-size: small; width:25%;'>$regR</td>";
-                        }else{
-                            echo "<td style='font-size: small; width:25%;'><i>No Remarks</i></td>";
-                        }
-                        echo "</tr>";
-                        echo "</table>";
+                        echo "<div class='table-responsive'>";
+                            echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%'>";
+                                echo "<thead class='thead-dark' style='font-size: medium'>";
+                                    echo "<th>Dean's Office</th>";
+                                    echo "<th>Library</th>";
+                                    echo "<th>Accounting</th>";
+                                    echo "<th>Registrar</th>";
+                                echo "</thead>";
+                                echo "<tr class='text-white'>";
+                                    echo "<td style='font-size: large'>$deptC </td>";
+                                    echo "<td style='font-size: large'>$libraryC</td>";
+                                    echo "<td style='font-size: large'>$acctC</td>";
+                                    echo "<td style='font-size: large'>$regC</td>";
+                                echo "</tr>";   
+                                echo "<tr class='text-white'>";
+                                    echo "<td class='$iconClassD'>$iconDept</td>";
+                                    echo "<td class='$iconClassL'>$iconLibrary</td>";
+                                    echo "<td class='$iconClassA'>$iconAcct</td>";
+                                    echo "<td class='$iconClassR'>$iconReg</td>";
+                                echo "</tr>";
+                                echo "<tr class='text-white'>";
+                                    if(!empty($deptR)){
+                                        echo "<td style='font-size: small; width:25%;'>$deptR</td>";
+                                    }else{
+                                        echo "<td style='font-size: small; width:25%;'><i>No Remarks</i></td>";
+                                    }
+                                    if(!empty($libraryR)){
+                                        echo "<td style='font-size: small; width:25%;'>$libraryR</td>";
+                                    }else{
+                                        echo "<td style='font-size: small; width:25%;'><i>No Remarks</i></td>";
+                                    }
+                                    if(!empty($acctR)){
+                                        echo "<td style='font-size: small; width:25%;'>$acctR</td>";
+                                    }else{
+                                        echo "<td style='font-size: small; width:25%;'><i>No Remarks</i></td>";
+                                    }
+                                    if(!empty($regR)){
+                                        echo "<td style='font-size: small; width:25%;'>$regR</td>";
+                                    }else{
+                                        echo "<td style='font-size: small; width:25%;'><i>No Remarks</i></td>";
+                                    }
+                                echo "</tr>";
+                            echo "</table>";
                         echo "</div>";
-                        break;
                     }
                 }
             }
         }
-        
-
     }
 
     public function checkPass(){
@@ -254,7 +281,7 @@ class graduate extends config{
         $data = $con->prepare($sql);
         $data->execute();
         $result = $data->fetchAll(PDO::FETCH_ASSOC);
-        if (empty($result)) {
+        if(empty($result)){
             echo '<div class="alert alert-danger alert-dismissible fade show col-12" role="alert">
                     <b><i class="fa-solid fa-triangle-exclamation"></i> Error:</b> No Records Matched.
                   </div>';
@@ -262,15 +289,13 @@ class graduate extends config{
         }else{
             if(strtoupper(mb_substr($result[0]['lname'], 0, 1)) !== strtoupper($this->pass)){
                 echo '<div class="alert alert-danger alert-dismissible fade show col-12" role="alert">
-                    <b><i class="fa-solid fa-triangle-exclamation"></i> Error:</b> No Records Matched.
-                  </div>';
+                        <b><i class="fa-solid fa-triangle-exclamation"></i> Error:</b> No Records Matched.
+                    </div>';
                   exit;
             }else{
-
+                // Do Nothing?
             }
         }
     }
-
-    
 }
 ?>

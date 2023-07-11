@@ -16,6 +16,18 @@ class view extends config{
                 }
         }
 
+        public function groupSP2(){
+            $config = new config;
+            $con = $config->con();
+            $sql = "SELECT * FROM `tbl_group`";
+            $data = $con-> prepare($sql);
+            $data ->execute();
+            $rows =$data-> fetchAll(PDO::FETCH_OBJ);
+                foreach ($rows as $row) {
+                  echo '<option data-tokens=".'.$row->id.'." value="'.$row->id.'">'.$row->name.'</option>';
+                }
+        }
+
         public function courseSP2(){
             $config = new config;
             $con = $config->con();
@@ -31,6 +43,12 @@ class view extends config{
 
         public function semesterChoose(){
           echo '<option>Choose Sem</option>';
+          echo '<option data-tokens="1" value="1">First</option>';
+          echo '<option data-tokens="2" value="2">Second</option>';
+          echo '<option data-tokens="3" value="3">Summer</option>';
+        }
+        public function semesterChoose2(){
+          // echo '<option>Choose Sem</option>';
           echo '<option data-tokens="1" value="1">First</option>';
           echo '<option data-tokens="2" value="2">Second</option>';
           echo '<option data-tokens="3" value="3">Summer</option>';

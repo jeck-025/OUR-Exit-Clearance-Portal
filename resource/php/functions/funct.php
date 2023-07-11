@@ -12,7 +12,7 @@ function CheckSuccess($status){
 
 function Success(){
     echo '<div class="alert alert-success alert-dismissible fade show col-12" role="alert">
-            <b>Congratulations!</b> You have successfully registered a new Student Records Assistant!
+            <b>Congratulations!</b> You have successfully added a new user account.
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -90,7 +90,7 @@ function vald(){
                         'salt'=>$salt,
                         'name'=> Input::get('fullName'),
                         'joined'=>date('Y-m-d H:i:s'),
-                        'groups'=>1,
+                        'groups'=>Input::get('group'),
                         'colleges'=> Input::get('College'),
                         'email'=> Input::get('email'),
                     ));
@@ -347,6 +347,16 @@ function approveRegistrar(){
     }
 }
 
+function removeRegistrar(){
+    if(!empty($_GET['edit'])){
+        $edit = new edit($_GET['edit'], $_GET['user'],$_GET['type']);
+        if($edit->removeClearanceRegistrar()){
+        } else{
+            echo "Error in approving";
+        }
+    }
+}
+
 function holdRegistrar(){
     if(isset($_POST['reset'])){
         $hold = new hold($_POST['hold'],$_POST['remarks'],$_POST['type']);
@@ -355,6 +365,16 @@ function holdRegistrar(){
     elseif(!empty($_POST['hold']) && !empty($_POST['remarks'])){
         $hold = new hold($_POST['hold'],$_POST['remarks'],$_POST['type']);
         $hold->holdClearanceRegistrar();
+    }
+}
+
+function restoreRegistrar(){
+    if(isset($_POST['restoreR'])){
+        $restore = new restore($_POST['restore'],$_POST['r_sy'], $_POST['r_semester'], $_POST['type']);
+        $restore->restoreClearanceRegistrar();
+    }elseif(isset($_POST['restoreW'])){
+        $restore = new restore($_POST['restore'],$_POST['r_sy'], $_POST['r_semester'], $_POST['type']);
+        $restore->restorewDataClearanceRegistrar();
     }
 }
 
@@ -538,6 +558,11 @@ function sendmailGuidance(){
     $send->sendGuidance();
 }
 
+function sendmailRegistrar(){
+    $send = new sendMail();
+    $send->sendRegistrar();
+}
+
 function expireLibrary(){
     if(!empty($_GET['expire'])){
         $expire = new expire($_GET['expire']);
@@ -702,6 +727,16 @@ function schoolSelect()
     $user = new user();
     $guid_asst_name = $user->data()->username;
     return $guid_asst_name;
+  }
+
+  function college_list(){
+    $config = new config;
+    $con = $config->con();
+    $sql = "SELECT DISTINCT(`college_school`) FROM `collegeschool` WHERE `state` = 'active'";
+    $data = $con-> prepare($sql);
+    $data ->execute();
+    $rows =$data-> fetchAll(PDO::FETCH_OBJ);
+    return $rows;
   }
 
 //   function evaluatorName(){
