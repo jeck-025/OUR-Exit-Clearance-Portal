@@ -47,6 +47,12 @@ class view extends config{
           echo '<option data-tokens="2" value="2">Second</option>';
           echo '<option data-tokens="3" value="3">Summer</option>';
         }
+        public function semesterChoose2(){
+          // echo '<option>Choose Sem</option>';
+          echo '<option data-tokens="1" value="1">First</option>';
+          echo '<option data-tokens="2" value="2">Second</option>';
+          echo '<option data-tokens="3" value="3">Summer</option>';
+        }
 
         public function university(){
           $config = new config;

@@ -261,18 +261,17 @@ function mailerRegistrar($ugPendingSch, $ugPendingCT, $gdPendingSch, $gdPendingC
 
     //Sender
     $mail->setFrom($mailerUsername);
-    $mail->addAddress('jganatalio@ceu.edu.ph');
-    $mail->addAddress('rcbolasoc@ceu.edu.ph');
+    // $mail->addAddress('jganatalio@ceu.edu.ph');
+    // $mail->addAddress('rcbolasoc@ceu.edu.ph');
 
     // Recipients
-    // for($i = 0; $i < count($emails); $i++){
-    //   $mail->addAddress($emails[$i]['email']);
-    // }
+    for($i = 0; $i < count($emails); $i++){
+      $mail->addAddress($emails[$i]['email']);
+    }
 
     $mail->isHTML(true);
     $mail->Subject = 'Exit Clearance Daily Report - Office of the University Registrar';
     $mail->Body = $body;
-    // $mail->Body = $body;
     $mail->SMTPDebug  = SMTP::DEBUG_OFF;
     $mail->send();
     
@@ -323,7 +322,7 @@ function mailerAccounting($countAcctgGD, $countAcctgUG, $countAcctgGDH, $countAc
     $mail->Subject = 'Exit Clearance Daily Report - Accounting Department';
     $mail->Body = $body;
     $mail->SMTPDebug  = SMTP::DEBUG_OFF;
-    //$mail->send();
+    $mail->send();
     
   }catch(Exception $e){
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
@@ -369,7 +368,7 @@ function mailerGuidance($countGuidUG, $countGuidUGH){
     $mail->Subject = 'Exit Clearance Daily Report - Guidance and Counseling Department';
     $mail->Body = $body;
     $mail->SMTPDebug  = SMTP::DEBUG_OFF;
-    //$mail->send();
+    $mail->send();
     
   }catch(Exception $e){
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
@@ -451,8 +450,8 @@ function mailerDeans($countUGPending0, $countUGHold0, $countGDPending0, $countGD
   $mailerPlatform = $mailerData[2];
   $mailerPort = $mailerData[3];
 
-  for($i = 0; $i < 1; $i++){ //test
-  //for($i = 0; $i < count($emails); $i++){
+  //for($i = 0; $i < 1; $i++){ //test
+  for($i = 0; $i < count($emails); $i++){
       if($emails[$i]['colleges'] == "School of Accountancy and Management"){
         $undergradPending = $countUGPending0;
         $undergradHold = $countUGHold0;
@@ -580,8 +579,9 @@ function mailerDeans($countUGPending0, $countUGHold0, $countGDPending0, $countGD
         $mail->setFrom($mailerUsername);
 
         //Recipient
-        $mail->addAddress('jganatalio@ceu.edu.ph');
-        $mail->addAddress('rcbolasoc@ceu.edu.ph');
+        $mail->addAddress($recipient_email);
+        //$mail->addAddress('jganatalio@ceu.edu.ph');
+        //$mail->addAddress('rcbolasoc@ceu.edu.ph');
 
         $mail->isHTML(true);
         $mail->Subject = $subject;

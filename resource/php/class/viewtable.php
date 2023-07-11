@@ -273,6 +273,7 @@ public function viewRequestTableRegistrarGraduate(){
   // echo "<button class='btn btn-sm btn-block btn-success d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsModal$id' data-id='$id'><i class='fa-solid fa-check'></i> Sign</button>";
   // echo "<button class='btn btn-sm btn-block btn-warning d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsHold$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Hold</button>";
   echo "<a href='viewRegistrar.php?id=$data[id]&type=$data[studentType]' class='btn btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
+  echo "<button class='btn btn-sm btn-block btn-danger d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsRemove$id' data-id='$id'><i class='fa-solid fa-trash'></i> Remove </button>";
           include "modals.php";
   echo "</td>";
   echo "</tr>";
@@ -350,6 +351,8 @@ public function viewRequestTableRegistrarGraduate(){
   // echo "<button class='btn btn-sm btn-block btn-secondary d-block actions disabled' id='btn' type='button'><i class='fa-solid fa-triangle-exclamation'></i> Hold</button>";
   echo "</span>";
   echo "<a href='viewRegistrar.php?id=$data2[id]&type=$data2[studentType]' class='btn btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
+  echo "<button class='btn btn-sm btn-block btn-danger d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsRemove$id2' data-id='$id2'><i class='fa-solid fa-trash'></i> Remove </button>";
+      include "modals-ext.php";
   echo "</td>";
   echo "</tr>";
   }
@@ -2595,6 +2598,59 @@ public function viewReportsTransfer(){
     echo "<td>$data[registrardate]</td>";
     echo "<td>$data[expiry]</td>";
     echo "</tr>";
+  }
+  echo "</table>";
+}
+
+public function viewRemovedTableRegistrarGraduate(){
+  $evaluator = evaluatorAssignment();
+  $evaluator_name = evaluatorName();
+  $con = $this->con();
+  $sql = "SELECT * FROM `ecle_forms` WHERE `registrarclearance`='REMOVED' AND `studentType` = 'Graduate' AND `expiry` = 'NO' $evaluator ORDER BY `dateReq` ASC";
+  $data= $con->prepare($sql);
+  $data->execute();
+  $result = $data->fetchAll(PDO::FETCH_ASSOC);
+  echo "<h3 class='text-center'> Removed Names (Graduates)</h3>";
+  echo "<div class='table-responsive'>";
+  echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+  echo "<thead class='thead-dark'>";
+  echo "<th>Student Number</th>";
+  echo "<th style='width: 250px;'>Student Name</th>";
+  echo "<th>Course</th>";
+  echo "<th>Year and Semester Candidate</th>";
+  echo "<th>Actions</th>";
+  echo "</thead>";
+  foreach ($result as $data) {
+  echo "<tr style='font-size: 13px'>";
+  
+  $temp_lname = utf8_decode($data['lname']);
+  $lname = str_replace('?', 'Ñ', $temp_lname);
+  $temp_fname = utf8_decode($data['fname']);
+  $fname = str_replace('?', 'Ñ', $temp_fname);
+  $temp_mname = utf8_decode($data['mname']);
+  $mname = str_replace('?', 'Ñ', $temp_mname);
+
+  $id = $data["id"];
+  $studType = $data["studentType"];
+  $libraryC = $data["libraryclearance"];
+  $libraryR = $data["libraryremarks"];
+  $deptC = $data["departmentclearance"];
+  $deptR = $data["departmentremarks"];
+  $acctC = $data["accountingclearance"];
+  $acctR = $data["accountingremarks"];
+  $regC = $data["registrarclearance"];
+  $regR = $data["registrarremarks"];
+  $sy = $data["sy"];
+  $sem = $data["semester"];
+
+  echo "<td>$data[studentID]</td>";
+  echo "<td>$fname $mname $lname</td>";
+  echo "<td>$data[course]</td>";
+  echo "<td>$sy-$sem</td>";
+   echo "<td><button class='btn btn-sm btn-block btn-warning d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsRestore$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Restore </button>";
+          include "modals.php";
+  echo "</td>";
+  echo "</tr>";
   }
   echo "</table>";
 }

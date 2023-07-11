@@ -300,6 +300,90 @@ echo"<div class='modal fade' id='deanHold$id' aria-labelledby='modal' aria-hidde
         </div>
     </div>";
 
+echo"<div class='modal fade' id='regsRemove$id' aria-labelledby='modal' aria-hidden='true'>
+        <div class='modal-dialog modal-md'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <h5 class='modal-title' id='modal'>Confirm</h5>
+                    <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                </div>
+                <div class='modal-body'>
+                        Remove Name from the list?
+                    <div class='modal-footer mt-3'>";
+
+                    if($regC == "ON HOLD" && $studType == "Graduate"){
+                        $landing = "rhg";
+                    }elseif($regC == "ON HOLD" && $studType == "Transfer"){
+                        $landing = "rht";
+                    }elseif($regC == "PENDING" && $studType == "Graduate"){
+                        $landing = "rrg";
+                    }elseif($regC == "PENDING" && $studType == "Transfer"){
+                        $landing = "rrt";
+                    }else{}
+
+                    echo "<input type='hidden' name='landing' value='$landing'>";
+                    echo "<input type='hidden' name='type' value='$studType'>";
+                    echo "<input type='hidden' name='hold' value='$id'>";
+                    echo "<button type='button' class='btn btn-sm btn-warning' data-bs-dismiss='modal'> Cancel </button>";
+                    echo "<a href='registrarRemove.php?edit=$id&landing=$landing&user=$evaluator_name&type=$studType' class='btn btn-sm my-1 d-block btn-danger' data-toggle='tooltip' data-placement='top' title='Remove'><i class='fa-solid fa-trash'></i> Remove </a>";
+                    echo "</div>
+                </div>
+            </div>
+        </div>
+    </div>";
+
+echo"<div class='modal fade' id='regsRestore$id' aria-labelledby='modal' aria-hidden='true'>
+        <div class='modal-dialog modal-lg'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <h5 class='modal-title' id='modal'>Restore</h5>
+                    <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                </div>
+                <form action='restoreRegistrar.php' method='post'>
+                <div class='modal-body'>
+                    <div class='input-group col-md-12 modal-report-gen'>
+                        <div class='row'>
+                            Set School Year and Semester
+                        </div>
+                        <div class='row'>
+                            <div class='col-md-6'>
+                                <input type='text' name='r_sy' id='r_sy' class='form-control ml-3' placeholder='xxxx-xxxx' pattern='[0-9]{4}-[0-9]{4}' autocomplete='off' required>
+                            </div>
+                            <div class='col-md-6'>
+                                <select name='r_semester' id='r_semester' class='form-select form-control' data-live-search='true'>";
+                                    $view = new view();
+                                    $view->semesterChoose2();
+                                echo "</select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class='modal-footer mt-3'>";
+
+                    if($regC == "REMOVED" && $studType == "Graduate"){
+                        $landing = "rhg";
+                    }elseif($regC == "REMOVED" && $studType == "Transfer"){
+                        $landing = "rht";
+                    }elseif($regC == "REMOVED" && $studType == "Graduate"){
+                        $landing = "rrg";
+                    }elseif($regC == "REMOVED" && $studType == "Transfer"){
+                        $landing = "rrt";
+                    }else{}
+
+                    echo "<input type='hidden' name='landing' value='$landing'>";
+                    echo "<input type='hidden' name='type' value='$studType'>";
+                    echo "<input type='hidden' name='restore' value='$id'>";
+                    echo "<button type='button' class='btn btn-sm btn-warning' data-bs-dismiss='modal'> Cancel </button>";
+                    echo "<input type='submit' class='btn btn-sm btn-info' value='Restore and Reset Status' name='restoreR'>";
+                    echo "<input type='submit' class='btn btn-sm btn-info' value='Restore' name='restoreW'>";
+                    // echo "<a href='registrarRestore.php?edit=$id&landing=$landing&user=$evaluator_name&type=$studType' class='btn btn-sm my-1 d-block btn-danger' data-toggle='tooltip' data-placement='top' title='Remove'><i class='fa-solid fa-trash-undo'></i> Restore </a>";
+                    echo "</div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>";
+
 if($studType == "Transfer"){
     echo"<div class='modal fade' id='guidHold$id' aria-labelledby='modal' aria-hidden='true'>
         <div class='modal-dialog modal-lg'>

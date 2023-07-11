@@ -347,6 +347,16 @@ function approveRegistrar(){
     }
 }
 
+function removeRegistrar(){
+    if(!empty($_GET['edit'])){
+        $edit = new edit($_GET['edit'], $_GET['user'],$_GET['type']);
+        if($edit->removeClearanceRegistrar()){
+        } else{
+            echo "Error in approving";
+        }
+    }
+}
+
 function holdRegistrar(){
     if(isset($_POST['reset'])){
         $hold = new hold($_POST['hold'],$_POST['remarks'],$_POST['type']);
@@ -355,6 +365,16 @@ function holdRegistrar(){
     elseif(!empty($_POST['hold']) && !empty($_POST['remarks'])){
         $hold = new hold($_POST['hold'],$_POST['remarks'],$_POST['type']);
         $hold->holdClearanceRegistrar();
+    }
+}
+
+function restoreRegistrar(){
+    if(isset($_POST['restoreR'])){
+        $restore = new restore($_POST['restore'],$_POST['r_sy'], $_POST['r_semester'], $_POST['type']);
+        $restore->restoreClearanceRegistrar();
+    }elseif(isset($_POST['restoreW'])){
+        $restore = new restore($_POST['restore'],$_POST['r_sy'], $_POST['r_semester'], $_POST['type']);
+        $restore->restorewDataClearanceRegistrar();
     }
 }
 
