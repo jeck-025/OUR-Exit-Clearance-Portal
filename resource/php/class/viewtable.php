@@ -2496,13 +2496,13 @@ public function viewCountPendingLibraryGD(){
 public function viewTotalDean(){
   $con = $this->con();
   $user = new user();
-  $department = $user->data()->username;
-  $sql = "SELECT COUNT(*) FROM `ecle_forms` WHERE `departmentclearance` = 'PENDING' AND `schoolABBR` = '$department' AND `expiry` = 'NO'";
+  $department = $user->data()->colleges;
+  $sql = "SELECT COUNT(*) FROM `ecle_forms` WHERE `departmentclearance` = 'PENDING' AND `school` = '$department' AND `expiry` = 'NO'";
   $data= $con->prepare($sql);
   $data->execute();
   $result1 = $data->fetchColumn();
 
-  $sql2 = "SELECT COUNT(*) FROM `ecle_forms_UG` WHERE `departmentclearance` = 'PENDING' AND `schoolABBR` = '$department' AND `expiry` = 'NO'";
+  $sql2 = "SELECT COUNT(*) FROM `ecle_forms_UG` WHERE `departmentclearance` = 'PENDING' AND `school` = '$department' AND `expiry` = 'NO'";
   $data2= $con->prepare($sql2);
   $data2->execute();
   $result2 = $data2->fetchColumn();
@@ -2515,8 +2515,8 @@ public function viewTotalDean(){
 public function viewCountPendingDeanTR(){
   $con = $this->con();
   $user = new user();
-  $department = $user->data()->username;
-  $sql = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE `departmentclearance` = 'PENDING' AND `schoolABBR` = '$department' AND `studentType` = 'Transfer' AND `expiry` = 'NO'";
+  $department = $user->data()->colleges;
+  $sql = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE `departmentclearance` = 'PENDING' AND `school` = '$department' AND `studentType` = 'Transfer' AND `expiry` = 'NO'";
   $data= $con->prepare($sql);
   $data->execute();
   $result = $data->fetchColumn();
@@ -2526,8 +2526,8 @@ public function viewCountPendingDeanTR(){
 public function viewCountPendingDeanGD(){
   $con = $this->con();
   $user = new user();
-  $department = $user->data()->username;
-  $sql = "SELECT COUNT(*) FROM `ecle_forms` WHERE `departmentclearance` = 'PENDING' AND `schoolABBR` = '$department' AND `studentType` = 'Graduate' AND `expiry` = 'NO'";
+  $department = $user->data()->colleges;
+  $sql = "SELECT COUNT(*) FROM `ecle_forms` WHERE `departmentclearance` = 'PENDING' AND `school` = '$department' AND `studentType` = 'Graduate' AND `expiry` = 'NO'";
   $data= $con->prepare($sql);
   $data->execute();
   $result = $data->fetchColumn();
