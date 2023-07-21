@@ -25,17 +25,17 @@ function sendmailApproved($email, $lname, $fname, $mname, $tn, $type){
   $mailerPort = $mailerData[3];
 
   $body ="
-            <p>Dear $lname, $fname $mname,</p>
+            <p>Dear $fname $mname $lname,</p>
 
             <p>Good Day!</p>
 
-            <p>Your Exit Clearance has been Approved by the Office of the University Registrar.</p>
+            <p>Your Exit Clearance has been processed by all concerned departments.</p><br>
 
             <p>You may now download your signed Exit Clearance form by clicking this <a href=http://ceumnlregistrar.com/ecle/formDownload.php?referenceID=$tn&type=$type> LINK </a>.</p>
             
             <p>You may also download your signed Library Clearance form by clicking this <a href=http://ceumnlregistrar.com/ecle/formDownloadL.php?referenceID=$tn&type=$type> LINK </a>.</p>
             
-            <p>To request for your credentials and other documents, you may click this <a href=https://ceumnlregistrar.com/report/transaction> LINK </a><./p>
+            <p>To request for your credentials and other documents, you may click this <a href=https://ceumnlregistrar.com/report/transaction> LINK </a>.</p><br>
             
             <p><b>This is an auto-generated email. Please do not reply here.</b></p>
             
