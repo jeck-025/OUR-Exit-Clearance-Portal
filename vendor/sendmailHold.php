@@ -25,19 +25,19 @@ function sendOnHoldMail($email, $remarks, $lname, $fname, $mname, $office){
   $mailerPort = $mailerData[3];
 
   $body ="
-          <p>Dear $lname, $fname $mname,</p>
+          <p>Dear $fname $mname $lname,</p>
 
           <p>Good Day!</p>
 
-          <p>Your request for an Exit Clearance is currently on-hold.</p>
+          <p>Your request Exit Clearance is currently on-hold.</p><br>
           
-          <p>Please see the message / remakrs from the $office below:</p>
+          <p>Please see the message / remarks from the $office below:</p>
           
-          <p><b><i>$remarks.</i></b></p>
+          <p><b><i>$remarks.</i></b></p><br>
           
-          <p>Please resolve the issue / concern immediately for your clearance to proceed.</p>
+          <p>Please resolve the issue / concern immediately for your clearance to proceed.</p><br>
           
-          <p><b>This is an auto generated email please do not reply.</b></p>
+          <p><b>This is an auto generated email please do not reply.</b></p><br>
           
           <p>Thank you and stay safe.</p>";
   try {
