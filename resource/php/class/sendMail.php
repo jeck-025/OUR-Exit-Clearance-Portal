@@ -292,7 +292,7 @@ class sendMail extends config{
         
         //graduate
         //PENDING
-        $sql1 = "SELECT `school`, count(*) as `count` FROM `ecle_forms` WHERE `registrarclearance` = 'PENDING' GROUP BY `school`";
+        $sql1 = "SELECT `school`, count(*) as `count` FROM `ecle_forms` WHERE `departmentclearance` = 'CLEARED' AND `libraryclearance` = 'CLEARED' AND `accountingclearance` = 'CLEARED' AND `registrarclearance` = 'PENDING' GROUP BY `school`";
         $data1 = $con->prepare($sql1);
         $data1->execute();
         $result1 = $data1->fetchAll(PDO::FETCH_ASSOC);
@@ -318,8 +318,8 @@ class sendMail extends config{
                 $gdHoldCT[] = $data3['count'];
             }
         }else{
-            $gdHoldSch[] = 0;
-            $gdHoldCT[] = 0;
+            $gdHoldSch = 0;
+            $gdHoldCT = 0;
         }
 
         mailerRegistrar($ugPendingSch, $ugPendingCT, $gdPendingSch, $gdPendingCT, $ugHoldSch, $ugHoldCT, $gdHoldSch, $gdHoldCT);

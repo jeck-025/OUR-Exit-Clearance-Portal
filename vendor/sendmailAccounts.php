@@ -379,6 +379,9 @@ function mailerLibrary($countLibraryGD, $countLibraryUG, $countLibraryGDH, $coun
 
   $emails = libraryEmail();
 
+  date_default_timezone_set('asia/manila');
+  $today = date("F j, Y");
+
   $mail = new PHPMailer(true);
   $view = new view();
   $mailerData = $view->viewConfigMailer();
@@ -388,10 +391,34 @@ function mailerLibrary($countLibraryGD, $countLibraryUG, $countLibraryGDH, $coun
   $mailerPort = $mailerData[3];
 
   $body =
-        "Library Graduate Pending: $countLibraryGD <br>
-         Library Undergraduate Pending: $countLibraryUG <br>
-         Library Graduate Hold: $countLibraryGDH <br>
-         Library Undergraduate Hold: $countLibraryUGH <br>";
+        "<p>Good Day!</p>
+                <p>Please see below the Exit Clearance Daily Report for the Library Department ($today)</p>
+
+                  <table style='font-family:arial, sans-serif; border: 1px solid #ddd; border-collapse: collapse; width=100%;'>
+                  <tr>
+                    <td style='border: 1px solid #ddd; width:50%; text-align:center; vertical-align:center; padding-left:10px; padding-right:10px;'> <h3>Pending Graduates</h3> </td>
+                    <td style='border: 1px solid #ddd; width:50%; text-align:center; vertical-align:center;'> <h3>$countLibraryGD</h3> </td>
+                  </tr>
+                  
+                  <tr>
+                    <td style='border: 1px solid #ddd; width:50%; text-align:center; vertical-align:center; padding-left:10px; padding-right:10px;'> <h3>Pending Undergraduates</h3> </td>
+                    <td style='border: 1px solid #ddd; width:50%; text-align:center; vertical-align:center;'> <h3>$countLibraryUG</h3> </td>
+                  </tr>
+
+                  <tr>
+                    <td style='border: 1px solid #ddd; width:50%; text-align:center; vertical-align:center; padding-left:10px; padding-right:10px;'> <h3>On-Hold Graduates</h3> </td>
+                    <td style='border: 1px solid #ddd; width:50%; text-align:center; vertical-align:center;'> <h3>$countLibraryGDH</h3> </td>
+                  </tr>
+
+                  <tr>
+                    <td style='border: 1px solid #ddd; width:50%; text-align:center; vertical-align:center; padding-left:10px; padding-right:10px;'> <h3>On-Hold Undergraduates</h3> </td>
+                    <td style='border: 1px solid #ddd; width:50%; text-align:center; vertical-align:center;'> <h3>$countLibraryUGH</h3> </td>
+                  </tr>
+
+                </table>
+                
+                <p>You may log-in to your ECLE Account <a href=ceumnlregistrar.com/ecle/adminlogin>HERE</a> to view these pending clearances.</p>
+                <p>Thank you.</p>";
 
   try {
     //Server settings
