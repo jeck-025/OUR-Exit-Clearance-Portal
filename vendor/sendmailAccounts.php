@@ -248,6 +248,9 @@ function mailerRegistrar($ugPendingSch, $ugPendingCT, $gdPendingSch, $gdPendingC
             <tr><td>&nbsp;</td></tr>
           </table>";
 
+          echo $body;
+      echo $recipient_email;
+
   try {
     //Server settings
     $mail->SMTPDebug = SMTP::DEBUG_SERVER;
@@ -265,9 +268,9 @@ function mailerRegistrar($ugPendingSch, $ugPendingCT, $gdPendingSch, $gdPendingC
     // $mail->addAddress('rcbolasoc@ceu.edu.ph');
 
     // Recipients
-    for($i = 0; $i < count($emails); $i++){
-      $mail->addAddress($emails[$i]['email']);
-    }
+    // for($i = 0; $i < count($emails); $i++){
+    //   $mail->addAddress($emails[$i]['email']);
+    // }
 
     $mail->isHTML(true);
     $mail->Subject = 'Exit Clearance Daily Report - Office of the University Registrar';
@@ -420,6 +423,9 @@ function mailerLibrary($countLibraryGD, $countLibraryUG, $countLibraryGDH, $coun
                 <p>You may log-in to your ECLE Account <a href=ceumnlregistrar.com/ecle/adminlogin>HERE</a> to view these pending clearances.</p>
                 <p>Thank you.</p>";
 
+      echo $body;
+
+
   try {
     //Server settings
     $mail->SMTPDebug = SMTP::DEBUG_SERVER;
@@ -468,7 +474,7 @@ function mailerDeans($countUGPending0, $countUGHold0, $countGDPending0, $countGD
   date_default_timezone_set('asia/manila');
   $today = date("F j, Y");
 
-  $emails = deansEmail();
+  //$emails = deansEmail();
   $mail = new PHPMailer(true);
   $view = new view();
   $mailerData = $view->viewConfigMailer();
@@ -479,6 +485,7 @@ function mailerDeans($countUGPending0, $countUGHold0, $countGDPending0, $countGD
 
   //for($i = 0; $i < 1; $i++){ //test
   for($i = 0; $i < count($emails); $i++){
+      $emails = deansEmail();
       if($emails[$i]['colleges'] == "School of Accountancy and Management"){
         $undergradPending = $countUGPending0;
         $undergradHold = $countUGHold0;
@@ -588,7 +595,10 @@ function mailerDeans($countUGPending0, $countUGHold0, $countGDPending0, $countGD
                 <p>Thank you.</p>";
                 
 
-      echo $body;
+      // echo $body;
+      // echo $recipient_email;
+      // echo $emails;
+
 
 
       try {
@@ -606,7 +616,7 @@ function mailerDeans($countUGPending0, $countUGHold0, $countGDPending0, $countGD
         $mail->setFrom($mailerUsername);
 
         //Recipient
-        $mail->addAddress($recipient_email);
+        //$mail->addAddress($recipient_email);
         //$mail->addAddress('jganatalio@ceu.edu.ph');
         //$mail->addAddress('rcbolasoc@ceu.edu.ph');
 
@@ -614,7 +624,7 @@ function mailerDeans($countUGPending0, $countUGHold0, $countGDPending0, $countGD
         $mail->Subject = $subject;
         $mail->Body = $body;
         $mail->SMTPDebug  = SMTP::DEBUG_OFF;
-        $mail->send();
+        //$mail->send();
         
       }catch(Exception $e){
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
