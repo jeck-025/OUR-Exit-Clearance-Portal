@@ -244,9 +244,10 @@ function mailerRegistrar($ugPendingSch, $ugPendingCT, $gdPendingSch, $gdPendingC
             <tr><td>$regsHoldUG</td></tr>
 
             <tr><td>&nbsp;</td></tr>
+            <p><small><i>NOTE: This is an auto-generated email message by the system. Daily Reports are generated every 3pm, Monday-Saturday</i></small></p>
           </table>";
 
-          echo $body;
+          //echo $body;
 
   try {
     //Server settings
@@ -267,14 +268,14 @@ function mailerRegistrar($ugPendingSch, $ugPendingCT, $gdPendingSch, $gdPendingC
     // Recipients
     for($i = 0; $i < count($emails); $i++){
       $mail->addAddress($emails[$i]['email']);
-      echo $emails[$i]['email'];
+      //echo $emails[$i]['email'];
     }
 
     $mail->isHTML(true);
     $mail->Subject = 'Exit Clearance Daily Report - Office of the University Registrar';
     $mail->Body = $body;
     $mail->SMTPDebug  = SMTP::DEBUG_OFF;
-    // $mail->send();
+    $mail->send();
     
   }catch(Exception $e){
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
@@ -324,9 +325,10 @@ function mailerAccounting($countAcctgGD, $countAcctgUG, $countAcctgGDH, $countAc
                 </table>
                 
                 <p>You may log-in to your ECLE Account <a href=ceumnlregistrar.com/ecle/adminlogin>HERE</a> to view these pending clearances.</p>
+                <p><small><i>NOTE: This is an auto-generated email message by the system. Daily Reports are generated every 3pm, Monday-Saturday</i></small></p>
                 <p>Thank you.</p>";
 
-      echo $body;
+      //echo $body;
 
   try {
     //Server settings
@@ -345,14 +347,14 @@ function mailerAccounting($countAcctgGD, $countAcctgUG, $countAcctgGDH, $countAc
     // Recipients
     for($i = 0; $i < count($emails); $i++){
       $mail->addAddress($emails[$i]['email']);
-      echo $emails[$i]['email'];
+      //echo $emails[$i]['email'];
     }
 
     $mail->isHTML(true);
     $mail->Subject = 'Exit Clearance Daily Report - Accounting Department';
     $mail->Body = $body;
     $mail->SMTPDebug  = SMTP::DEBUG_OFF;
-    //$mail->send();
+    $mail->send();
     
   }catch(Exception $e){
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
@@ -448,9 +450,10 @@ function mailerLibrary($countLibraryGD, $countLibraryUG, $countLibraryGDH, $coun
                 </table>
                 
                 <p>You may log-in to your ECLE Account <a href=ceumnlregistrar.com/ecle/adminlogin>HERE</a> to view these pending clearances.</p>
+                <p><small><i>NOTE: This is an auto-generated email message by the system. Daily Reports are generated every 3pm, Monday-Saturday</i></small></p>
                 <p>Thank you.</p>";
 
-      echo $body;
+      //echo $body;
 
 
   try {
@@ -470,14 +473,14 @@ function mailerLibrary($countLibraryGD, $countLibraryUG, $countLibraryGDH, $coun
     // Recipients
     for($i = 0; $i < count($emails); $i++){
       $mail->addAddress($emails[$i]['email']);
-      echo $emails[$i]['email'];
+      //echo $emails[$i]['email'];
     }
 
     $mail->isHTML(true);
     $mail->Subject = 'Exit Clearance Daily Report - Library Department';
     $mail->Body = $body;
     $mail->SMTPDebug  = SMTP::DEBUG_OFF;
-    //$mail->send();
+    $mail->send();
     
   }catch(Exception $e){
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
@@ -527,9 +530,10 @@ function mailerSAM($countUGPending0, $countUGHold0, $countGDPending0, $countGDHo
                 </table>
                 
                 <p>You may log-in to your ECLE Account <a href=ceumnlregistrar.com/ecle/adminlogin>HERE</a> to view these pending clearances.</p>
+                <p><small><i>NOTE: This is an auto-generated email message by the system. Daily Reports are generated every 3pm, Monday-Saturday</i></small></p>
                 <p>Thank you.</p>";
 
-      echo $body;
+      //echo $body;
 
 
   try {
@@ -549,7 +553,7 @@ function mailerSAM($countUGPending0, $countUGHold0, $countGDPending0, $countGDHo
     // Recipients
     for($i = 0; $i < count($emails); $i++){
       $mail->addAddress($emails[$i]['email']);
-      echo $emails[$i]['email'];
+      //echo $emails[$i]['email'];
     }
     // $mail->addAddress('jganatalio@ceu.edu.ph');
 
@@ -557,7 +561,7 @@ function mailerSAM($countUGPending0, $countUGHold0, $countGDPending0, $countGDHo
     $mail->Subject = $subject;
     $mail->Body = $body;
     $mail->SMTPDebug  = SMTP::DEBUG_OFF;
-    //$mail->send();
+    $mail->send();
     
   }catch(Exception $e){
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
@@ -607,9 +611,10 @@ function mailerDENT($countUGPending1, $countUGHold1, $countGDPending1, $countGDH
                 </table>
                 
                 <p>You may log-in to your ECLE Account <a href=ceumnlregistrar.com/ecle/adminlogin>HERE</a> to view these pending clearances.</p>
+                <p><small><i>NOTE: This is an auto-generated email message by the system. Daily Reports are generated every 3pm, Monday-Saturday</i></small></p>
                 <p>Thank you.</p>";
 
-      echo $body;
+      //echo $body;
 
 
   try {
@@ -629,7 +634,7 @@ function mailerDENT($countUGPending1, $countUGHold1, $countGDPending1, $countGDH
     // Recipients
     for($i = 0; $i < count($emails); $i++){
       $mail->addAddress($emails[$i]['email']);
-      echo $emails[$i]['email'];
+      //echo $emails[$i]['email'];
     }
         // $mail->addAddress('jganatalio@ceu.edu.ph');
 
@@ -637,7 +642,7 @@ function mailerDENT($countUGPending1, $countUGHold1, $countGDPending1, $countGDH
     $mail->Subject = $subject;
     $mail->Body = $body;
     $mail->SMTPDebug  = SMTP::DEBUG_OFF;
-    //$mail->send();
+    $mail->send();
     
   }catch(Exception $e){
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
@@ -687,9 +692,10 @@ function mailerELAMS($countUGPending2, $countUGHold2, $countGDPending2, $countGD
                 </table>
                 
                 <p>You may log-in to your ECLE Account <a href=ceumnlregistrar.com/ecle/adminlogin>HERE</a> to view these pending clearances.</p>
+                <p><small><i>NOTE: This is an auto-generated email message by the system. Daily Reports are generated every 3pm, Monday-Saturday</i></small></p>
                 <p>Thank you.</p>";
 
-      echo $body;
+      //echo $body;
 
 
   try {
@@ -709,7 +715,7 @@ function mailerELAMS($countUGPending2, $countUGHold2, $countGDPending2, $countGD
     // Recipients
     for($i = 0; $i < count($emails); $i++){
       $mail->addAddress($emails[$i]['email']);
-      echo $emails[$i]['email'];
+      //echo $emails[$i]['email'];
     }
     // $mail->addAddress('jganatalio@ceu.edu.ph');
 
@@ -717,7 +723,7 @@ function mailerELAMS($countUGPending2, $countUGHold2, $countGDPending2, $countGD
     $mail->Subject = $subject;
     $mail->Body = $body;
     $mail->SMTPDebug  = SMTP::DEBUG_OFF;
-    // $mail->send();
+    $mail->send();
     
   }catch(Exception $e){
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
@@ -767,9 +773,10 @@ function mailerGRADSCH($countUGPending3, $countUGHold3, $countGDPending3, $count
                 </table>
                 
                 <p>You may log-in to your ECLE Account <a href=ceumnlregistrar.com/ecle/adminlogin>HERE</a> to view these pending clearances.</p>
+                <p><small><i>NOTE: This is an auto-generated email message by the system. Daily Reports are generated every 3pm, Monday-Saturday</i></small></p>
                 <p>Thank you.</p>";
 
-      echo $body;
+      //echo $body;
 
   try {
     //Server settings
@@ -788,7 +795,7 @@ function mailerGRADSCH($countUGPending3, $countUGHold3, $countGDPending3, $count
     // Recipients
     for($i = 0; $i < count($emails); $i++){
       $mail->addAddress($emails[$i]['email']);
-      echo $emails[$i]['email'];
+      //echo $emails[$i]['email'];
     }
     // $mail->addAddress('jganatalio@ceu.edu.ph');
 
@@ -796,7 +803,7 @@ function mailerGRADSCH($countUGPending3, $countUGHold3, $countGDPending3, $count
     $mail->Subject = $subject;
     $mail->Body = $body;
     $mail->SMTPDebug  = SMTP::DEBUG_OFF;
-    // $mail->send();
+    $mail->send();
     
   }catch(Exception $e){
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
@@ -846,9 +853,10 @@ function mailerMEDTECH($countUGPending4, $countUGHold4, $countGDPending4, $count
                 </table>
                 
                 <p>You may log-in to your ECLE Account <a href=ceumnlregistrar.com/ecle/adminlogin>HERE</a> to view these pending clearances.</p>
+                <p><small><i>NOTE: This is an auto-generated email message by the system. Daily Reports are generated every 3pm, Monday-Saturday</i></small></p>
                 <p>Thank you.</p>";
 
-      echo $body;
+      //echo $body;
 
 
   try {
@@ -868,7 +876,7 @@ function mailerMEDTECH($countUGPending4, $countUGHold4, $countGDPending4, $count
     // Recipients
     for($i = 0; $i < count($emails); $i++){
       $mail->addAddress($emails[$i]['email']);
-      echo $emails[$i]['email'];
+      //echo $emails[$i]['email'];
     }
     // $mail->addAddress('jganatalio@ceu.edu.ph');
 
@@ -876,7 +884,7 @@ function mailerMEDTECH($countUGPending4, $countUGHold4, $countGDPending4, $count
     $mail->Subject = $subject;
     $mail->Body = $body;
     $mail->SMTPDebug  = SMTP::DEBUG_OFF;
-    // $mail->send();
+    $mail->send();
     
   }catch(Exception $e){
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
@@ -926,9 +934,10 @@ function mailerMEDICINE($countUGPending5, $countUGHold5, $countGDPending5, $coun
                 </table>
                 
                 <p>You may log-in to your ECLE Account <a href=ceumnlregistrar.com/ecle/adminlogin>HERE</a> to view these pending clearances.</p>
+                <p><small><i>NOTE: This is an auto-generated email message by the system. Daily Reports are generated every 3pm, Monday-Saturday</i></small></p>
                 <p>Thank you.</p>";
 
-      echo $body;
+      //echo $body;
 
 
   try {
@@ -948,7 +957,7 @@ function mailerMEDICINE($countUGPending5, $countUGHold5, $countGDPending5, $coun
     // Recipients
     for($i = 0; $i < count($emails); $i++){
       $mail->addAddress($emails[$i]['email']);
-      echo $emails[$i]['email'];
+      //echo $emails[$i]['email'];
     }
     // $mail->addAddress('jganatalio@ceu.edu.ph');
 
@@ -956,7 +965,7 @@ function mailerMEDICINE($countUGPending5, $countUGHold5, $countGDPending5, $coun
     $mail->Subject = $subject;
     $mail->Body = $body;
     $mail->SMTPDebug  = SMTP::DEBUG_OFF;
-    // $mail->send();
+    $mail->send();
     
   }catch(Exception $e){
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
@@ -1006,9 +1015,10 @@ function mailerNURSING($countUGPending6, $countUGHold6, $countGDPending6, $count
                 </table>
                 
                 <p>You may log-in to your ECLE Account <a href=ceumnlregistrar.com/ecle/adminlogin>HERE</a> to view these pending clearances.</p>
+                <p><small><i>NOTE: This is an auto-generated email message by the system. Daily Reports are generated every 3pm, Monday-Saturday</i></small></p>
                 <p>Thank you.</p>";
 
-      echo $body;
+      //echo $body;
 
 
   try {
@@ -1028,7 +1038,7 @@ function mailerNURSING($countUGPending6, $countUGHold6, $countGDPending6, $count
     // Recipients
     for($i = 0; $i < count($emails); $i++){
       $mail->addAddress($emails[$i]['email']);
-      echo $emails[$i]['email'];
+      //echo $emails[$i]['email'];
     }
     // $mail->addAddress('jganatalio@ceu.edu.ph');
 
@@ -1036,7 +1046,7 @@ function mailerNURSING($countUGPending6, $countUGHold6, $countGDPending6, $count
     $mail->Subject = $subject;
     $mail->Body = $body;
     $mail->SMTPDebug  = SMTP::DEBUG_OFF;
-    // $mail->send();
+    $mail->send();
     
   }catch(Exception $e){
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
@@ -1086,9 +1096,10 @@ function mailerNHM($countUGPending7, $countUGHold7, $countGDPending7, $countGDHo
                 </table>
                 
                 <p>You may log-in to your ECLE Account <a href=ceumnlregistrar.com/ecle/adminlogin>HERE</a> to view these pending clearances.</p>
+                <p><small><i>NOTE: This is an auto-generated email message by the system. Daily Reports are generated every 3pm, Monday-Saturday</i></small></p>
                 <p>Thank you.</p>";
 
-      echo $body;
+      //echo $body;
 
 
   try {
@@ -1108,7 +1119,7 @@ function mailerNHM($countUGPending7, $countUGHold7, $countGDPending7, $countGDHo
     // Recipients
     for($i = 0; $i < count($emails); $i++){
       $mail->addAddress($emails[$i]['email']);
-      echo $emails[$i]['email'];
+      //$emails[$i]['email'];
     }
     // $mail->addAddress('jganatalio@ceu.edu.ph');
 
@@ -1116,7 +1127,7 @@ function mailerNHM($countUGPending7, $countUGHold7, $countGDPending7, $countGDHo
     $mail->Subject = $subject;
     $mail->Body = $body;
     $mail->SMTPDebug  = SMTP::DEBUG_OFF;
-    // $mail->send();
+    $mail->send();
     
   }catch(Exception $e){
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
@@ -1166,9 +1177,10 @@ function mailerOPTO($countUGPending8, $countUGHold8, $countGDPending8, $countGDH
                 </table>
                 
                 <p>You may log-in to your ECLE Account <a href=ceumnlregistrar.com/ecle/adminlogin>HERE</a> to view these pending clearances.</p>
+                <p><small><i>NOTE: This is an auto-generated email message by the system. Daily Reports are generated every 3pm, Monday-Saturday</i></small></p>
                 <p>Thank you.</p>";
 
-      echo $body;
+      //echo $body;
 
 
   try {
@@ -1188,7 +1200,7 @@ function mailerOPTO($countUGPending8, $countUGHold8, $countGDPending8, $countGDH
     // Recipients
     for($i = 0; $i < count($emails); $i++){
       $mail->addAddress($emails[$i]['email']);
-      echo $emails[$i]['email'];
+      //echo $emails[$i]['email'];
     }
     // $mail->addAddress('jganatalio@ceu.edu.ph');
 
@@ -1196,7 +1208,7 @@ function mailerOPTO($countUGPending8, $countUGHold8, $countGDPending8, $countGDH
     $mail->Subject = $subject;
     $mail->Body = $body;
     $mail->SMTPDebug  = SMTP::DEBUG_OFF;
-    // $mail->send();
+    $mail->send();
     
   }catch(Exception $e){
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
@@ -1246,9 +1258,10 @@ function mailerPHARM($countUGPending9, $countUGHold9, $countGDPending9, $countGD
                 </table>
                 
                 <p>You may log-in to your ECLE Account <a href=ceumnlregistrar.com/ecle/adminlogin>HERE</a> to view these pending clearances.</p>
+                <p><small><i>NOTE: This is an auto-generated email message by the system. Daily Reports are generated every 3pm, Monday-Saturday</i></small></p>
                 <p>Thank you.</p>";
 
-      echo $body;
+      //echo $body;
 
 
   try {
@@ -1268,7 +1281,7 @@ function mailerPHARM($countUGPending9, $countUGHold9, $countGDPending9, $countGD
     // Recipients
     for($i = 0; $i < count($emails); $i++){
       $mail->addAddress($emails[$i]['email']);
-      echo $emails[$i]['email'];
+      //echo $emails[$i]['email'];
     }
     // $mail->addAddress('jganatalio@ceu.edu.ph');
 
@@ -1276,7 +1289,7 @@ function mailerPHARM($countUGPending9, $countUGHold9, $countGDPending9, $countGD
     $mail->Subject = $subject;
     $mail->Body = $body;
     $mail->SMTPDebug  = SMTP::DEBUG_OFF;
-    // $mail->send();
+    $mail->send();
     
   }catch(Exception $e){
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
@@ -1326,9 +1339,10 @@ function mailerSCITECH($countUGPending10, $countUGHold10, $countGDPending10, $co
                 </table>
                 
                 <p>You may log-in to your ECLE Account <a href=ceumnlregistrar.com/ecle/adminlogin>HERE</a> to view these pending clearances.</p>
+                <p><small><i>NOTE: This is an auto-generated email message by the system. Daily Reports are generated every 3pm, Monday-Saturday</i></small></p>
                 <p>Thank you.</p>";
 
-      echo $body;
+      //echo $body;
 
 
   try {
@@ -1348,7 +1362,7 @@ function mailerSCITECH($countUGPending10, $countUGHold10, $countGDPending10, $co
     // Recipients
     for($i = 0; $i < count($emails); $i++){
       $mail->addAddress($emails[$i]['email']);
-      echo $emails[$i]['email'];
+      //echo $emails[$i]['email'];
     }
     // $mail->addAddress('jganatalio@ceu.edu.ph');
 
@@ -1356,7 +1370,7 @@ function mailerSCITECH($countUGPending10, $countUGHold10, $countGDPending10, $co
     $mail->Subject = $subject;
     $mail->Body = $body;
     $mail->SMTPDebug  = SMTP::DEBUG_OFF;
-    // $mail->send();
+    $mail->send();
     
   }catch(Exception $e){
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
@@ -1364,6 +1378,20 @@ function mailerSCITECH($countUGPending10, $countUGHold10, $countGDPending10, $co
 }
 
 
+
+
+
+// unused functions below here--------------------------------------------------------------------------
+
+// function deansEmail(){
+//   $config = new config;
+//   $con = $config->con();
+//   $sql = "SELECT distinct(`name`), email, colleges from `tbl_accounts` WHERE `groups` = '3'";
+//   $data = $con-> prepare($sql);
+//   $data ->execute();
+//   $rows =$data-> fetchAll(PDO::FETCH_ASSOC);
+//   return $rows;
+// }
 
 // function mailerDeans($countUGPending0, $countUGHold0, $countGDPending0, $countGDHold0, $abbr0,
 //                       $countUGPending1, $countUGHold1, $countGDPending1, $countGDHold1, $abbr1,
@@ -1540,18 +1568,6 @@ function mailerSCITECH($countUGPending10, $countUGHold10, $countGDPending10, $co
 //       }
 //     }
 
-// }
-
-// unused functions below here--------------------------------------------------------------------------
-
-// function deansEmail(){
-//   $config = new config;
-//   $con = $config->con();
-//   $sql = "SELECT distinct(`name`), email, colleges from `tbl_accounts` WHERE `groups` = '3'";
-//   $data = $con-> prepare($sql);
-//   $data ->execute();
-//   $rows =$data-> fetchAll(PDO::FETCH_ASSOC);
-//   return $rows;
 // }
 
 ?>
