@@ -425,7 +425,7 @@ class chartfilter extends config{
 
      public function viewCountClearedGDPHARMACY() {
             $con = $this->con();
-            $sql = "SELECT count(*) AS `count` from ecle_forms WHERE `registrarclearance` = 'CLEARED' AND `studentType` = 'Graduate' AND semester = '$this->sem' AND sy = '$this->sy' AND `schoolABBR` = 'PHARMACY'";
+            $sql = "SELECT count(*) AS `count` from ecle_forms WHERE `registrarclearance` = 'CLEARED' AND `studentType` = 'Graduate' AND semester = '$this->sem' AND sy = '$this->sy' AND `schoolABBR` = 'PHARM'";
             $data= $con->prepare($sql);
             $data->execute();
             $numbers[] = array();
@@ -579,7 +579,7 @@ class chartfilter extends config{
 
     public function viewCountUnclearedGDPHARMACY() {
         $con = $this->con();
-        $sql = "SELECT count(*) AS `count` from ecle_forms WHERE (`registrarclearance` = 'PENDING' OR `registrarclearance` = 'ON HOLD') AND `studentType` = 'Graduate' AND semester = '$this->sem' AND sy = '$this->sy' AND `schoolABBR` = 'PHARMACY'";
+        $sql = "SELECT count(*) AS `count` from ecle_forms WHERE (`registrarclearance` = 'PENDING' OR `registrarclearance` = 'ON HOLD') AND `studentType` = 'Graduate' AND semester = '$this->sem' AND sy = '$this->sy' AND `schoolABBR` = 'PHARM'";
         $data= $con->prepare($sql);
         $data->execute();
         $numbers[] = array();

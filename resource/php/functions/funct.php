@@ -548,6 +548,7 @@ function sendmailDean(){
     $send = new sendMail();
     $send->sendDean();
 }
+
 function sendmailAccounting(){
     $send = new sendMail();
     $send->sendAccounting();
@@ -561,6 +562,61 @@ function sendmailGuidance(){
 function sendmailRegistrar(){
     $send = new sendMail();
     $send->sendRegistrar();
+}
+
+function sendmailSAM(){
+    $send = new sendMail();
+    $send->sendDeanSAM();
+}
+
+function sendmailDENT(){
+    $send = new sendMail();
+    $send->sendDeanDENT();
+}
+
+function sendmailELAMS(){
+    $send = new sendMail();
+    $send->sendDeanELAMS();
+}
+
+function sendmailGRADSCH(){
+    $send = new sendMail();
+    $send->sendDeanGRADSCH();
+}
+
+function sendmailMEDTECH(){
+    $send = new sendMail();
+    $send->sendDeanMEDTECH();
+}
+
+function sendmailMEDICINE(){
+    $send = new sendMail();
+    $send->sendDeanMEDICINE();
+}
+
+function sendmailNURSING(){
+    $send = new sendMail();
+    $send->sendDeanNURSING();
+}
+
+function sendmailNHM(){
+    $send = new sendMail();
+    $send->sendDeanNHM();
+}
+
+function sendmailOPTO(){
+    $send = new sendMail();
+    $send->sendDeanOPTO();
+}
+
+function sendmailPHARM(){
+    $send = new sendMail();
+    $send->sendDeanPHARM();
+}
+
+function sendmailSCITECH(){
+    $send = new sendMail();
+    $send->sendDeanSCITECH();
 }
 
 function expireLibrary(){
@@ -677,7 +733,7 @@ function schoolSelect()
   function evaluatorAssignment(){
     $user = new user();
     if($user->data()->username == "EFLORENTINO"){
-        $query = " AND `schoolABBR` = 'PHARMACY'";
+        $query = " AND `schoolABBR` = 'PHARM'";
     }elseif($user->data()->username == "CSEETIONG"){
         $query = " AND (`schoolABBR` = 'NHM' OR `schoolABBR` = 'MEDICINE' OR `schoolABBR` = 'SCITECH') ";
     }elseif($user->data()->username == "MJACOSALEM"){
@@ -685,13 +741,13 @@ function schoolSelect()
     }elseif($user->data()->username == "JCRUZ"){
         $query = " AND (`schoolABBR` = 'SELAMS' OR `schoolABBR` = 'OPTO') ";
     }elseif($user->data()->username == "MAPOSTOL"){
-        $query = " AND `schoolABBR` = 'DENTISTRY'";
+        $query = " AND `schoolABBR` = 'DENT'";
     }elseif($user->data()->username == "MFLORES"){
          $query = " AND (`schoolABBR` = 'SAM' OR `schoolABBR` = 'NURSING') ";
     }elseif($user->data()->username == "ERIVERA"){
         $query = " AND (`schoolABBR` = 'GRADSCH' OR `schoolABBR` = 'SCITECH') ";
     }elseif($user->data()->username == "JBOCO"){
-        $query = " AND (`schoolABBR` = 'SAM') ";
+        $query = " AND (`schoolABBR` = 'SAM' OR `schoolABBR` = 'NURSING') ";
     }else{
         $query = "";
         //for REGISTRAR and non-evaluator admin only
