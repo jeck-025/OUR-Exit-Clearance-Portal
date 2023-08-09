@@ -1,10 +1,21 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'].'/ecle/resource/php/class/core/init.php';
 sendmailLibrary();
-sendmailDean();
+//sendmailDean();
 sendmailAccounting();
-sendmailGuidance();
+//sendmailGuidance();
 sendmailRegistrar();
-header('Location:adminconfig.php');
+sendmailSAM();
+sendmailDENT();
+sendmailELAMS();
+sendmailGRADSCH();
+sendmailMEDTECH();
+sendmailMEDICINE();
+sendmailNURSING();
+sendmailNHM();
+sendmailOPTO();
+sendmailPHARM();
+sendmailSCITECH();
+//header('Location:adminconfig.php');
 
 ?>
