@@ -244,6 +244,7 @@ function mailerRegistrar($ugPendingSch, $ugPendingCT, $gdPendingSch, $gdPendingC
             <tr><td>$regsHoldUG</td></tr>
 
             <tr><td>&nbsp;</td></tr>
+            <p><small><i>NOTE: This is an auto-generated email message by the system. Daily Reports are generated every 3pm, Monday-Saturday</i></small></p>
           </table>";
 
           //echo $body;
@@ -324,6 +325,7 @@ function mailerAccounting($countAcctgGD, $countAcctgUG, $countAcctgGDH, $countAc
                 </table>
                 
                 <p>You may log-in to your ECLE Account <a href=ceumnlregistrar.com/ecle/adminlogin>HERE</a> to view these pending clearances.</p>
+                <p><small><i>NOTE: This is an auto-generated email message by the system. Daily Reports are generated every 3pm, Monday-Saturday</i></small></p>
                 <p>Thank you.</p>";
 
       //echo $body;
@@ -448,6 +450,7 @@ function mailerLibrary($countLibraryGD, $countLibraryUG, $countLibraryGDH, $coun
                 </table>
                 
                 <p>You may log-in to your ECLE Account <a href=ceumnlregistrar.com/ecle/adminlogin>HERE</a> to view these pending clearances.</p>
+                <p><small><i>NOTE: This is an auto-generated email message by the system. Daily Reports are generated every 3pm, Monday-Saturday</i></small></p>
                 <p>Thank you.</p>";
 
       //echo $body;
@@ -527,6 +530,7 @@ function mailerSAM($countUGPending0, $countUGHold0, $countGDPending0, $countGDHo
                 </table>
                 
                 <p>You may log-in to your ECLE Account <a href=ceumnlregistrar.com/ecle/adminlogin>HERE</a> to view these pending clearances.</p>
+                <p><small><i>NOTE: This is an auto-generated email message by the system. Daily Reports are generated every 3pm, Monday-Saturday</i></small></p>
                 <p>Thank you.</p>";
 
       //echo $body;
@@ -607,6 +611,7 @@ function mailerDENT($countUGPending1, $countUGHold1, $countGDPending1, $countGDH
                 </table>
                 
                 <p>You may log-in to your ECLE Account <a href=ceumnlregistrar.com/ecle/adminlogin>HERE</a> to view these pending clearances.</p>
+                <p><small><i>NOTE: This is an auto-generated email message by the system. Daily Reports are generated every 3pm, Monday-Saturday</i></small></p>
                 <p>Thank you.</p>";
 
       //echo $body;
@@ -687,6 +692,7 @@ function mailerELAMS($countUGPending2, $countUGHold2, $countGDPending2, $countGD
                 </table>
                 
                 <p>You may log-in to your ECLE Account <a href=ceumnlregistrar.com/ecle/adminlogin>HERE</a> to view these pending clearances.</p>
+                <p><small><i>NOTE: This is an auto-generated email message by the system. Daily Reports are generated every 3pm, Monday-Saturday</i></small></p>
                 <p>Thank you.</p>";
 
       //echo $body;
@@ -767,6 +773,7 @@ function mailerGRADSCH($countUGPending3, $countUGHold3, $countGDPending3, $count
                 </table>
                 
                 <p>You may log-in to your ECLE Account <a href=ceumnlregistrar.com/ecle/adminlogin>HERE</a> to view these pending clearances.</p>
+                <p><small><i>NOTE: This is an auto-generated email message by the system. Daily Reports are generated every 3pm, Monday-Saturday</i></small></p>
                 <p>Thank you.</p>";
 
       //echo $body;
@@ -846,6 +853,7 @@ function mailerMEDTECH($countUGPending4, $countUGHold4, $countGDPending4, $count
                 </table>
                 
                 <p>You may log-in to your ECLE Account <a href=ceumnlregistrar.com/ecle/adminlogin>HERE</a> to view these pending clearances.</p>
+                <p><small><i>NOTE: This is an auto-generated email message by the system. Daily Reports are generated every 3pm, Monday-Saturday</i></small></p>
                 <p>Thank you.</p>";
 
       //echo $body;
@@ -926,6 +934,7 @@ function mailerMEDICINE($countUGPending5, $countUGHold5, $countGDPending5, $coun
                 </table>
                 
                 <p>You may log-in to your ECLE Account <a href=ceumnlregistrar.com/ecle/adminlogin>HERE</a> to view these pending clearances.</p>
+                <p><small><i>NOTE: This is an auto-generated email message by the system. Daily Reports are generated every 3pm, Monday-Saturday</i></small></p>
                 <p>Thank you.</p>";
 
       //echo $body;
@@ -1006,6 +1015,7 @@ function mailerNURSING($countUGPending6, $countUGHold6, $countGDPending6, $count
                 </table>
                 
                 <p>You may log-in to your ECLE Account <a href=ceumnlregistrar.com/ecle/adminlogin>HERE</a> to view these pending clearances.</p>
+                <p><small><i>NOTE: This is an auto-generated email message by the system. Daily Reports are generated every 3pm, Monday-Saturday</i></small></p>
                 <p>Thank you.</p>";
 
       //echo $body;
@@ -1086,6 +1096,7 @@ function mailerNHM($countUGPending7, $countUGHold7, $countGDPending7, $countGDHo
                 </table>
                 
                 <p>You may log-in to your ECLE Account <a href=ceumnlregistrar.com/ecle/adminlogin>HERE</a> to view these pending clearances.</p>
+                <p><small><i>NOTE: This is an auto-generated email message by the system. Daily Reports are generated every 3pm, Monday-Saturday</i></small></p>
                 <p>Thank you.</p>";
 
       //echo $body;
@@ -1166,6 +1177,7 @@ function mailerOPTO($countUGPending8, $countUGHold8, $countGDPending8, $countGDH
                 </table>
                 
                 <p>You may log-in to your ECLE Account <a href=ceumnlregistrar.com/ecle/adminlogin>HERE</a> to view these pending clearances.</p>
+                <p><small><i>NOTE: This is an auto-generated email message by the system. Daily Reports are generated every 3pm, Monday-Saturday</i></small></p>
                 <p>Thank you.</p>";
 
       //echo $body;
@@ -1246,6 +1258,7 @@ function mailerPHARM($countUGPending9, $countUGHold9, $countGDPending9, $countGD
                 </table>
                 
                 <p>You may log-in to your ECLE Account <a href=ceumnlregistrar.com/ecle/adminlogin>HERE</a> to view these pending clearances.</p>
+                <p><small><i>NOTE: This is an auto-generated email message by the system. Daily Reports are generated every 3pm, Monday-Saturday</i></small></p>
                 <p>Thank you.</p>";
 
       //echo $body;
@@ -1326,6 +1339,7 @@ function mailerSCITECH($countUGPending10, $countUGHold10, $countGDPending10, $co
                 </table>
                 
                 <p>You may log-in to your ECLE Account <a href=ceumnlregistrar.com/ecle/adminlogin>HERE</a> to view these pending clearances.</p>
+                <p><small><i>NOTE: This is an auto-generated email message by the system. Daily Reports are generated every 3pm, Monday-Saturday</i></small></p>
                 <p>Thank you.</p>";
 
       //echo $body;
