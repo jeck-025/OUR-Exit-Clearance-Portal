@@ -94,10 +94,13 @@ $rows4 = $data4->fetchAll(PDO::FETCH_ASSOC);
     $pdf->SetXY(88, 63);
     $pdf->Write(0, $rows1[0]['year']);
 
-    $pdf->SetXY(145, 80);
+    $pdf->SetXY(140, 80);
     $pdf->Write(0, strtoupper($dean)." (SGD)");
     
-    $pdf->SetXY(180, 112);
+    $pdf->SetXY(170, 86);
+    $pdf->Write(0, "(".strtoupper($rows1[0]['dean_asst']).")");
+    
+    $pdf->SetXY(176, 112);
     $pdf->Write(0, "(".$rows1[0]['registrar_sra'].")");
 
     // Signature accounting

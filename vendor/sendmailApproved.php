@@ -35,8 +35,6 @@ function sendmailApproved($email, $lname, $fname, $mname, $tn, $type){
             
             <p>You may also download your signed Library Clearance form by clicking this <a href=http://ceumnlregistrar.com/ecle/formDownloadL.php?referenceID=$tn&type=$type> LINK </a>.</p>
             
-            <p>To request for your credentials and other documents, you may click this <a href=https://ceumnlregistrar.com/report/transaction> LINK </a>.</p><br>
-            
             <p><b>This is an auto-generated email. Please do not reply here.</b></p>
             
             <p>Thank you and stay safe.</p>";
