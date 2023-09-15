@@ -332,6 +332,27 @@ echo"<div class='modal fade' id='regsRemove$id' aria-labelledby='modal' aria-hid
         </div>
     </div>";
 
+echo"<div class='modal fade' id='regsPermDeleteGD$id' aria-labelledby='modal' aria-hidden='true'>
+        <div class='modal-dialog modal-md'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <h5 class='modal-title' id='modal'>Confirm</h5>
+                    <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                </div>
+                <div class='modal-body'>
+                        This will delete the entire clearance entry for $fname $mname $lname.
+                        Action cannot be undone.
+                    <div class='modal-footer mt-3'>";
+                    echo "<input type='hidden' name='type' value='$studType'>";
+                    echo "<input type='hidden' name='hold' value='$id'>";
+                    echo "<button type='button' class='btn btn-sm btn-warning' data-bs-dismiss='modal'> Cancel </button>";
+                    echo "<a href='registrarPDelete.php?edit=$id&landing=rrg&user=$evaluator_name&type=$studType' class='btn btn-sm my-1 d-block btn-danger' data-toggle='tooltip' data-placement='top' title='Remove'><i class='fa-solid fa-trash'></i> Remove </a>";
+                    echo "</div>
+                </div>
+            </div>
+        </div>
+    </div>";
+
 echo"<div class='modal fade' id='regsRestore$id' aria-labelledby='modal' aria-hidden='true'>
         <div class='modal-dialog modal-lg'>
             <div class='modal-content'>

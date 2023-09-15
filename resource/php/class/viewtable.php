@@ -2650,7 +2650,11 @@ public function viewRemovedTableRegistrarGraduate(){
   echo "<td>$fname $mname $lname</td>";
   echo "<td>$data[course]</td>";
   echo "<td>$sy-$sem</td>";
-   echo "<td><button class='btn btn-sm btn-block btn-warning d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsRestore$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Restore </button>";
+   echo "<td>
+            <button class='btn btn-sm btn-block btn-warning d-block actions mb-1' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsRestore$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Restore </button>
+            
+            <button class='btn btn-sm btn-block btn-danger d-block actions mt-0' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsPermDeleteGD$id' data-id='$id'><i class='fa-solid fa-trash'></i> Delete from DB </button>";
+
           include "modals.php";
   echo "</td>";
   echo "</tr>";
