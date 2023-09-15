@@ -357,6 +357,16 @@ function removeRegistrar(){
     }
 }
 
+function removePermRegistrar(){
+    if(!empty($_GET['edit'])){
+        $edit = new edit($_GET['edit'],$_GET['user'],$_GET['type']);
+        if($edit->permDeleteClearanceRegistrar()){
+        } else{
+            echo "Error in approving";
+        }
+    }
+}
+
 function holdRegistrar(){
     if(isset($_POST['reset'])){
         $hold = new hold($_POST['hold'],$_POST['remarks'],$_POST['type']);
