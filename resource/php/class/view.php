@@ -144,10 +144,59 @@ class view extends config{
             echo "<td> <input type='text' class='form-control' value='$dean' name='dean[]' autocomplete='off'> </td>";
             echo "<input type='hidden' name='id[]' value='$id'>";
             echo "</tr>";
-
-
-
           }
+        }
+
+        public function loadDeans2(){
+          $config = new config;
+          $con = $config->con();
+
+          $sql0 = "SELECT DISTINCT `college_school` from `collegeschool` ORDER BY `college_school` ASC";
+          $data0 = $con-> prepare($sql0);
+          $data0 ->execute();
+          $result0 = $data0->fetchAll(PDO::FETCH_ASSOC);
+
+          foreach ($result0 as $row0){
+            $school = $row0['college_school'];
+            echo "<tr><td>$school</td>";
+            echo "<td>";
+            echo "<div class='form-group mb-0'>
+                  <select name='id[]' class='form-select form-select-sm'>";
+
+                  $sql1 = "SELECT * from `collegeschool` where `college_school` = '$school' ORDER BY `state` ASC";
+                  $data1 = $con-> prepare($sql1);
+                  $data1 ->execute();
+                  $result1 = $data1->fetchAll(PDO::FETCH_ASSOC);
+                  foreach ($result1 as $row1){
+
+                    $id = $row1['id'];
+                    $dean = $row1['dean'];
+
+                    echo "<option data-tokens='$id' value='$id'> $dean </option>";
+                  }
+                  echo "</select></div></td>";
+          }
+        }
+
+        public function loadDeans3(){
+          $config = new config;
+          $con = $config->con();
+
+          echo "<div class='form-group mb-0'>
+                  <select name='d_dean' class='form-control form-select form-select-sm'>";
+
+                  $sql1 = "SELECT * from `collegeschool`";
+                  $data1 = $con-> prepare($sql1);
+                  $data1 ->execute();
+                  $result1 = $data1->fetchAll(PDO::FETCH_ASSOC);
+                  foreach ($result1 as $row1){
+
+                    $id = $row1['id'];
+                    $dean = $row1['dean'];
+
+                    echo "<option data-tokens='$id' value='$id'> $dean </option>";
+                  }
+                  echo "</select></div>";
 
 
         }

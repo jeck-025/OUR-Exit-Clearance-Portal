@@ -115,7 +115,8 @@ $import = new import();
                     <?php 
                       if($user->data()->username == "REGISTRAR" || $user->data()->username == "RCBOLASOC" || $user->data()->username == "jeck"){
                         echo "<li><a href='adminconfig.php' class='dropdown-item'>General Config</a></li>";
-                        echo "<li><a href= '#' class='dropdown-item' data-bs-toggle='modal' data-bs-target='#deanCFG'>Deans Config</a></li>";
+                        echo "<li><a href= 'deanconfig.php' class='dropdown-item'>Deans Config</a></li>";
+                        echo "<li><a href= '#' class='dropdown-item' data-bs-toggle='modal' data-bs-target='#deanCFG'>Deans Config PopUp</a></li>";
                         echo "<li><a href='addusers.php' class='dropdown-item'>Add User</a></li>";
                         echo "<li><a href='changepasswordRegistrar.php' class='dropdown-item'>Change Password</a></li>";
                       }

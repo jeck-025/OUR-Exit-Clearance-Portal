@@ -127,6 +127,10 @@ table{
   font-size: 12px;
 }
 
+.table-dean{
+  width: 100%;
+}
+
 .sendMails{
   font-weight: bold;
   font-size: 0.65em;
