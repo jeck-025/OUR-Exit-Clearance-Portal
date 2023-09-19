@@ -61,10 +61,25 @@ class updateDeanCFG extends config{
 
         $sql0 = "DELETE FROM `collegeschool` WHERE `id` = '$dean_id'";
         $data0 = $con->prepare($sql0);
-        $data0 ->execute();   
+        $data0 ->execute();
 
         echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
                 <i class='fa-solid fa-circle-check'></i> Name Deleted.
+                <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>";
+    }
+
+    public function delUser(){
+        $user_id = $_POST['d_user'];
+        $config = new config();
+        $con = $config->con();
+
+        $sql0 = "DELETE FROM `tbl_accounts` WHERE `id` = '$user_id'";
+        $data0 = $con->prepare($sql0);
+        $data0 ->execute();
+
+        echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+                <i class='fa-solid fa-circle-check'></i> User Deleted.
                 <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
             </div>";
     }

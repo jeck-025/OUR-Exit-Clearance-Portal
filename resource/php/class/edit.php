@@ -6,11 +6,13 @@ class edit extends config{
     public $id;
     public $user;
     public $type;
+    public $school;
 
-    public function __construct($id = null, $user = null, $type = null){
+    public function __construct($id = null, $user = null, $type = null, $school = null){
         $this->id = $id;
         $this->user = $user;
         $this->type = $type;
+        $this->school = $school;
     }
 
     public function approveClearanceAccounting(){
@@ -46,12 +48,22 @@ class edit extends config{
 
     public function approveClearanceDepartment(){
         $con = $this->con();
+        $deanSQL = "SELECT * FROM `collegeschool` WHERE `college_school` = '$this->school' AND `state` = 'active'";
+        $deanData = $con->prepare($deanSQL);
+        $deanData->execute();
+        $deanResult = $deanData->fetchAll(PDO::FETCH_ASSOC);
+        $deanID = $deanResult[0]["id"];
+
         if($this->type == "Graduate"){
-            $sql = "UPDATE `ecle_forms` SET `departmentclearance` = 'CLEARED', `departmentremarks` = '', `departmentdate` = CURRENT_TIMESTAMP, `dean_asst` = '$this->user' WHERE `id` = '$this->id'";
+            $sql = "UPDATE `ecle_forms` SET `departmentclearance` = 'CLEARED', `departmentremarks` = '', `departmentdate` = CURRENT_TIMESTAMP, `dean_asst` = '$this->user', `dean_id` = '$deanID' WHERE `id` = '$this->id'";
         }else{
-            $sql = "UPDATE `ecle_forms_ug` SET `departmentclearance` = 'CLEARED', `departmentremarks` = '', `departmentdate` = CURRENT_TIMESTAMP, `dean_asst` = '$this->user' WHERE `id` = '$this->id'";
+            $sql = "UPDATE `ecle_forms_ug` SET `departmentclearance` = 'CLEARED', `departmentremarks` = '', `departmentdate` = CURRENT_TIMESTAMP, `dean_asst` = '$this->user', `dean_id` = '$deanID' WHERE `id` = '$this->id'";
         }
        
+        echo $deanID."<br>";
+        echo $sql;
+        die();
+
         $data = $con->prepare($sql);
         if($data->execute()){
             return true;

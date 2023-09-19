@@ -79,7 +79,6 @@ $update = new updateDeanCFG();
           <div class="container-fluid main p-3">
             <div class="row justify-content-md-center next ">
               <div class="col-md-10 pt-3 content">
-              <h4 class="text-center m-3">Dean Configuration</h4><hr>
 
               <div class="accordion" id="accordionExample">
                 <?php 
@@ -94,7 +93,22 @@ $update = new updateDeanCFG();
                   if(isset($_POST['updatedeanCFGDel'])){
                     $update->delDean(); 
                   }
+
+                  if(isset($_POST['userDel'])){
+                    $update->delUser(); 
+                  }
+                  
+                  if(!empty($_POST['mailer-username']) && !empty($_POST['mailer-password'])){
+                    $updateMailer = new updateMailer($_POST['mailer-username'], $_POST['mailer-password'], $_POST['mailer-port'], $_POST['mailer-platform']);
+                    $updateMailer->updateMailerConfig();
+
+                    echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+                      <strong><i class='fa-solid fa-circle-check'></i> Mailer Config Updated</strong><br>
+                      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>";
+                  }
                 ?>
+
+                <h4 class="text-center m-3">Dean Configuration</h4><hr>
                  <div class="accordion-item">
                   <h2 class="accordion-header" id="headingOne">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -116,7 +130,7 @@ $update = new updateDeanCFG();
                                     </tr> 
                                     <?php $view->loadDeans2(); ?>
                                   </table>
-                                  <button type='submit' name='updatedeanCFG' id='updatedeanCFG' class='btn btn-dark'><i class='fa-solid fa-floppy-disk'></i> Save Changes</button>
+                                  <button type='submit' name='updatedeanCFG' id='updatedeanCFG' class='btn btn-adduser'><i class='fa-solid fa-floppy-disk'></i> Save Changes</button>
                                 </form>
                               </div>
                             </div>
@@ -159,7 +173,7 @@ $update = new updateDeanCFG();
                                   
                                     <div class="col-md-2 text-center">
                                       <label for="s_submit" class="form-label">&nbsp;</label>
-                                      <button type="submit" id="updatedeanCFGAdd" name="updatedeanCFGAdd" class="btn btn-dark btn-block"><i class="fa-solid fa-floppy-disk"></i> Save </button>
+                                      <button type="submit" id="updatedeanCFGAdd" name="updatedeanCFGAdd" class="btn btn-adduser btn-block"><i class="fa-solid fa-floppy-disk"></i> Save </button>
                                     </div>
                                   </div>
                                 </form>
@@ -205,11 +219,13 @@ $update = new updateDeanCFG();
                     </div>
                   </div>
                 </div>
-
-                <!-- <div class="accordion-item">
+              </div>
+              <h4 class="text-center m-4">User Configuration</h4><hr>
+              <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
                   <h2 class="accordion-header" id="headingThree">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                      Accordion Item #3
+                      Add User Account
                     </button>
                   </h2>
                   <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
@@ -217,15 +233,203 @@ $update = new updateDeanCFG();
                       <div class="report-dl-form">
                         <div class="col col-md-9 pt-3 pb-3 mb-3 text-center shadow">
                           <div class="col col-md text-center">
+                            <?php vald(); ?>
+                               <h4>Add User</h4><hr>
+                                  <form action="" method="post">
+                                    <table class="table ">
+                                        <tr>
+                                            <td>
+                                                <div class="row justify-content-center">
+                                                    <div class="form-group col-4">
+                                                    <label for = "username" class=""> Username:</label>
+                                                    <input class="form-control"  type = "text" name="username" id="username" value ="<?php echo input::get('username');?>" autocomplete="off" required />
+                                                    </div>
+                                                    <div class="form-group col-4">
+                                                    <label for = "password"> Password:</label>
+                                                    <input type="password" class="form-control" name="password" id="password" value ="<?php echo input::get('password');?>" autocomplete="off"required/>
+                                                    </div>
+                                                    <div class="form-group col-4">
+                                                    <label for = "ConfirmPassword"> Confirm Password:</label>
+                                                    <input type="password" class="form-control" name="ConfirmPassword" id="ConfirmPassword" value ="<?php echo input::get('ConfirmPassword');?>" autocomplete="off"required/>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="row justify-content-center">
+                                                    <div class="form-group col-6">
+                                                    <label for = "fullName" class=""> Full Name</label>
+                                                    <input class="form-control"  type = "text" name="fullName" id="fullName" value ="<?php echo input::get('fullName');?>"/required>
+                                                    </div>
+                                                    <div class="form-group col-6">
+                                                    <label for = "email" class=""> Email Address</label>
+                                                    <input class="form-control"  type = "text" name="email" id="email" value ="<?php echo input::get('email');?>"/required>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="row justify-content-center">
+   
+                                                    <div class="form-group col-6">
+                                                      <label for="College" >Assign to School:</label>
+                                                          <select id="College" name="College[]" class="form-select form-control" data-live-search="true" required>
+                                                            <?php $view->collegeSP2();?>
+                                                          </select>
+                                                    </div>
+                                                    <div class="form-group col-6">
+                                                      <label for="College" >Assign to User Group:</label>
+                                                          <select id="Group" name="group" class="form-select form-control" data-live-search="true" required>
+                                                            <?php $view->groupSP2();?>
+                                                          </select>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="row justify-content-center">
+                                                    <div class="form-group col-7">
+                                                        <label  >&nbsp;</label>
+                                                    <input type="hidden" name ="Token" value="<?php echo Token::generate();?>" />
+                                                    <input type="submit" value="Add New Account" class=" form-control btn btn-adduser" />
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingFour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                      Remove User Account
+                    </button>
+                  </h2>
+                  <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <div class="report-dl-form">
+                        <div class="col col-md-9 pt-3 pb-3 mb-3 shadow">
+                          <div class="col col-md">
+                          
+                            <div class='input-group col-md-12'>
+                              <div class="col col-md">
+                                <form method="post">
+                                  <div class="row mb-3">
+                                    <h4 class="text-center">Remove User</h4><hr>
+                                    <div class="col col-md-10">
+                                      <label for="d_user" class="form-label">Name</label>
+                                      <?php $view->loadUserAcct(); ?>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                      <label for="s_submit" class="form-label">&nbsp;</label>
+                                      <button type="button" class="btn btn-danger btn-block" data-bs-toggle="modal" data-bs-target="#userDelModal"><i class="fa-solid fa-trash"></i> Delete</button>
+                                    </div>
+                                  </div>
+                                  <div class="modal fade" id="userDelModal" tabindex="-1" aria-labelledby="userDelModal" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="#userDelModalLabel">Confirm</h5>
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                          Delete User? <br>
+                                          This cannot be undone.
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                          <button type="submit" id="userDel" name="userDel" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete </button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </form>
+
+                              </div>
+                            </div>
+
 
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div> -->
+                </div>
+              </div>
+              
+              <h4 class="text-center m-4">Mailer Configuration</h4><hr>
+              <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingFive">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                      Mailer Credentials
+                    </button>
+                  </h2>
+                  <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <div class="report-dl-form">
+                        <div class="col col-md-12 pt-3 pb-4 mb-3 text-center shadow">
+                          <div class="col col-md text-center">
+                            <div class="mailer-config-form">
+                              <div class="col col-md-9 pt-3 pb-3 text-center shadow">
+                                <form method="post">
+                                  <div class="row">
+                                    <div class="col">
+                                      <h4>Mailer Settings</h4><hr>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <?php
+                                      $mailerData = $view->viewConfigMailer();
+                                      $mailerUsername = $mailerData[0];
+                                      $mailerPassword = $mailerData[1];
+                                      $mailerPlatform = $mailerData[2];
+                                      $mailerPort = $mailerData[3];
+                                    ?>
+                                    <div class="col col-md-3">
+                                      <label for="mailer-username" class="form-label">Username / Email Address</label>
+                                      <input type="text" id="mailer-username" name="mailer-username" class="form-control" autocomplete="off" value="<?php echo "$mailerUsername"; ?>" required>
+                                    </div>
+                                    <div class="col col-md-3">
+                                      <label for="mailer-password" class="form-label">App Password</label>
+                                      <input type="password" id="mailer-password" name="mailer-password" class="form-control" autocomplete="off" value="<?php echo "$mailerPassword"; ?>" required>
+                                    </div>
+                                    <div class="col col-md-3">
+                                      <label for="mailer-platform" class="form-label">Platform</label>
+                                      <input type="text" name="mailer-platform" id="mailer-platform" class="form-control" autocomplete="off" value="<?php echo "$mailerPlatform"; ?>" required>
+                                    </div>
+                                    <div class="col col-md-1">
+                                      <label for="mailer-port" class="form-label">Port</label>
+                                      <input type="text" name="mailer-port" id="mailer-port" class="form-control" autocomplete="off" value="<?php echo "$mailerPort"; ?>" required>
+                                    </div>
+                                    <div class="col col-md-2">
+                                      <label for="mailer_info_update" class="form-label">&nbsp;</label>
+                                      <button type="submit" id="mailer_info_update" class="btn btn-dark btn-block" onClick="btnSaveMailer()"><i class="fa-solid fa-floppy-disk"></i> Save </button>
+                                    </div>
+                                  </div>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
               </div>
+
+
             </div>                 
           </div>
         </div>
@@ -255,6 +459,11 @@ $update = new updateDeanCFG();
       toggleButton.onclick = function(){
         el.classList.toggle("toggled")    
       }
+
+      function btnSaveMailer(){
+        mailer_info_update.innerHTML = '<div class="spinner-border text-light spinner-border-sm" role="status"><span class="sr-only">Loading...</span></div> Saving...';
+      }
+
     </script>
   </body>
 </html>

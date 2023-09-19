@@ -319,7 +319,7 @@ function approveGuidance(){
 
 function approveDepartment(){
     if(!empty($_GET['edit'])){
-        $edit = new edit($_GET['edit'], $_GET['user'], $_GET['type']);
+        $edit = new edit($_GET['edit'], $_GET['user'], $_GET['type'], $_GET['school']);
         if($edit->approveClearanceDepartment()){
         } else{
             echo "Error in approving";

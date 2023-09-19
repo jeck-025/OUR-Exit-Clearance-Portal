@@ -197,7 +197,26 @@ class view extends config{
                     echo "<option data-tokens='$id' value='$id'> $dean </option>";
                   }
                   echo "</select></div>";
+        }
 
+        public function loadUserAcct(){
+          $config = new config;
+          $con = $config->con();
 
+          echo "<div class='form-group mb-0'>
+                  <select name='d_user' class='form-control form-select form-select-sm'>";
+
+                  $sql1 = "SELECT * from `tbl_accounts` WHERE `groups` != '1'";
+                  $data1 = $con-> prepare($sql1);
+                  $data1 ->execute();
+                  $result1 = $data1->fetchAll(PDO::FETCH_ASSOC);
+                  foreach ($result1 as $row1){
+
+                    $id = $row1['id'];
+                    $dean = $row1['name'];
+
+                    echo "<option data-tokens='$id' value='$id'> $dean </option>";
+                  }
+                  echo "</select></div>";
         }
 }

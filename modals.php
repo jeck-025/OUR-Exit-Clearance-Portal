@@ -25,7 +25,7 @@ echo"<div class='modal fade' id='deanModal$id' aria-labelledby='modal' aria-hidd
                     }else{}
 
                     echo "<button type='button' class='btn btn-sm btn-danger' data-bs-dismiss='modal'><i class='fa-solid fa-x'></i> Cancel</button>
-                        <a href='deanApprove.php?edit=$id&landing=$landing&user=$dean_asst_name&type=$studType' class='btn btn-sm my-1 d-block btn-success' data-toggle='tooltip' data-placement='top' title='Approve'><i class='fa-solid fa-check'></i> Yes</a>
+                        <a href='deanApprove.php?edit=$id&landing=$landing&school=$school&user=$dean_asst_name&type=$studType' class='btn btn-sm my-1 d-block btn-success' data-toggle='tooltip' data-placement='top' title='Approve'><i class='fa-solid fa-check'></i> Yes</a>
                      </div>
                 </div>
             </div>

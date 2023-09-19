@@ -51,12 +51,21 @@ $course = $rows1[0]['course'];
 $registrar = $rows2[0]['signature'];
 $accounting = $rows3[0]['signature'];
 
-$sql4 = "SELECT * FROM `collegeschool` WHERE `college_school` = '$college'";
-$data4 = $con->query($sql4);
-$data4->execute();
-$rows4 = $data4->fetchAll(PDO::FETCH_ASSOC);
-
+if(empty($rows1[0]['dean_id'])){ //execute old code without dean_id
+    $sql4 = "SELECT * FROM `collegeschool` WHERE `college_school` = '$college' AND `state` = 'active'";
+    $data4 = $con->query($sql4);
+    $data4->execute();
+    $rows4 = $data4->fetchAll(PDO::FETCH_ASSOC);
     $dean = $rows4[0]['dean'];
+}else{ // execute new code with dean_id
+    $dean_id = $rows1[0]['dean_id'];
+    $sql4 = "SELECT * FROM `collegeschool` WHERE `id` = '$dean_id' AND `state` = 'active'";
+    $data4 = $con->query($sql4);
+    $data4->execute();
+    $rows4 = $data4->fetchAll(PDO::FETCH_ASSOC);
+    $dean = $rows4[0]['dean'];
+}
+
     $lname = $rows1[0]['lname'];
     $fname = $rows1[0]['fname'];
 

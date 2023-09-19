@@ -1313,6 +1313,8 @@ public function viewRequestTableDepartmentGraduate(){
   $acctR = $data["accountingremarks"];
   $regC = $data["registrarclearance"];
   $regR = $data["registrarremarks"];
+  $schoolname = $data["school"];
+  
   echo "<td>";
   // echo "<button class='btn btn-sm btn-block btn-success d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#deanModal$id' data-id='$id'><i class='fa-solid fa-check'></i> Sign</button>";
   // echo "<button class='btn btn-sm btn-block btn-warning d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#deanHold$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Hold</button>";
