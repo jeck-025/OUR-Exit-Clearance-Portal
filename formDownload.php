@@ -85,7 +85,7 @@ if(empty($rows1[0]['dean_id'])){ //execute old code without dean_id
     $pdf->SetXY(93, 40);
     $pdf->Write(0, $rows1[0]['mname']);
     $pdf->SetXY(132, 40);
-    $pdf->Write(0, strtoupper(substr($rows1[0]['fname'],0,1).substr($rows1[0]['mname'],0,1).substr($rows1[0]['lname'],0,1))."(SGD)");
+    $pdf->Write(0, "(SGD.) ".strtoupper(substr($rows1[0]['fname'],0,1).substr($rows1[0]['mname'],0,1).substr($rows1[0]['lname'],0,1)));
     $pdf->SetXY(170, 40);
     $pdf->Write(0, date('Y-m-d',strtotime($rows1[0]['dateReq'])));
 
@@ -104,7 +104,7 @@ if(empty($rows1[0]['dean_id'])){ //execute old code without dean_id
     $pdf->Write(0, $rows1[0]['year']);
 
     $pdf->SetXY(140, 80);
-    $pdf->Write(0, strtoupper($dean)." (SGD)");
+    $pdf->Write(0, "(SGD.) ".strtoupper($dean));
     
     $pdf->SetXY(170, 86);
     $pdf->Write(0, "(".strtoupper($rows1[0]['dean_asst']).")");

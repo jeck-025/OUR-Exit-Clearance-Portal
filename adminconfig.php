@@ -169,56 +169,7 @@ $view = new view();
                     </div>
                   </div>
                 </div>
-                <div class="mailer-config-form">
-                  <div class="col col-md-9 pt-3 pb-3 text-center shadow">
-                    <form method="post">
-                    <?php
-                        if(!empty($_POST['mailer-username']) && !empty($_POST['mailer-password'])){
-                          $updateMailer = new updateMailer($_POST['mailer-username'], $_POST['mailer-password'], $_POST['mailer-port'], $_POST['mailer-platform']);
-                          $updateMailer->updateMailerConfig(); ?>
-
-                          <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <strong><i class="fa-solid fa-circle-check"></i> Mailer Config Updated</strong><br>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                          </div>
-                      <?php }?>
-                    <div class="row">
-                      <div class="col">
-                        <h4>Mailer Settings</h4><hr>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <?php
-                        $mailerData = $view->viewConfigMailer();
-                        $mailerUsername = $mailerData[0];
-                        $mailerPassword = $mailerData[1];
-                        $mailerPlatform = $mailerData[2];
-                        $mailerPort = $mailerData[3];
-                      ?>
-                      <div class="col col-md-3">
-                        <label for="mailer-username" class="form-label">Username</label>
-                        <input type="text" id="mailer-username" name="mailer-username" class="form-control" autocomplete="off" value="<?php echo "$mailerUsername"; ?>" required>
-                      </div>
-                      <div class="col col-md-3">
-                        <label for="mailer-password" class="form-label">Password</label>
-                        <input type="password" id="mailer-password" name="mailer-password" class="form-control" autocomplete="off" value="<?php echo "$mailerPassword"; ?>" required>
-                      </div>
-                      <div class="col col-md-3">
-                        <label for="mailer-platform" class="form-label">Platform</label>
-                        <input type="text" name="mailer-platform" id="mailer-platform" class="form-control" autocomplete="off" value="<?php echo "$mailerPlatform"; ?>" required>
-                      </div>
-                      <div class="col col-md-1">
-                        <label for="mailer-port" class="form-label">Port</label>
-                        <input type="text" name="mailer-port" id="mailer-port" class="form-control" autocomplete="off" value="<?php echo "$mailerPort"; ?>" required>
-                      </div>
-                      <div class="col col-md-2">
-                        <label for="mailer_info_update" class="form-label">&nbsp;</label>
-                        <button type="submit" id="mailer_info_update" class="btn btn-dark btn-block" onClick="btnSaveMailer()"><i class="fa-solid fa-floppy-disk"></i> Save </button>
-                      </div>
-                    </div>
-                    </form>
-                  </div>
-                </div>
+                <!--  -->
               </div>
             </div>                 
           </div>
