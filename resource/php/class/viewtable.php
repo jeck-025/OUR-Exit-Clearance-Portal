@@ -4,11 +4,12 @@ require_once 'config.php';
 
 class viewtable extends config{
 
-public function viewRequestTableRegistrarTransfer(){
-  $evaluator = evaluatorAssignment();
+  
+  public function viewRequestTableRegistrarTransfer(){
+  $eval = new evalassign();
   $evaluator_name = evaluatorName();
   $con = $this->con();
-  $sql = "SELECT * FROM `ecle_forms_ug` WHERE `registrarclearance` = 'PENDING' AND `libraryclearance` = 'CLEARED' AND `departmentclearance` = 'CLEARED' AND `accountingclearance` = 'CLEARED' AND `registrarclearance` = 'PENDING' AND `studentType` = 'Transfer' AND `expiry` = 'NO' $evaluator ORDER BY `dateReq` ASC";
+  $sql = $eval->evaluatorAssignment2UG();
   $data= $con->prepare($sql);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
@@ -104,14 +105,8 @@ public function viewRequestTableRegistrarTransfer(){
   }
 
 // NOT YET CLEARED FOR REGISTRAR - FOR DISPLAY ONLY
-  $sql = "SELECT * FROM `ecle_forms_ug` 
-          WHERE (`libraryclearance` NOT LIKE 'CLEARED' OR 
-                `departmentclearance` NOT LIKE 'CLEARED' OR
-                `guidanceclearance` NOT LIKE 'CLEARED' OR 
-                `accountingclearance` NOT LIKE 'CLEARED') 
-                AND `registrarclearance` = 'PENDING' AND `studentType` = 'Transfer' AND `expiry` = 'NO' $evaluator ORDER BY `dateReq` ASC;";
-
-  $data2= $con->prepare($sql);
+  $sql0 = $eval->evaluatorAssignment2UGPD();
+  $data2= $con->prepare($sql0);
   $data2->execute();
   $result2 = $data2->fetchAll(PDO::FETCH_ASSOC);
   foreach ($result2 as $data2) {
@@ -193,11 +188,10 @@ public function viewRequestTableRegistrarTransfer(){
 }
 
 public function viewRequestTableRegistrarGraduate(){
-  $evaluator = evaluatorAssignment();
+  $eval = new evalassign();
   $evaluator_name = evaluatorName();
-  //echo $evaluator_name;
   $con = $this->con();
-  $sql = "SELECT * FROM `ecle_forms` WHERE `registrarclearance` = 'PENDING' AND `libraryclearance` = 'CLEARED' AND `departmentclearance` = 'CLEARED' AND `accountingclearance` = 'CLEARED' AND `registrarclearance` = 'PENDING' AND `studentType` = 'Graduate' AND `expiry` = 'NO' $evaluator ORDER BY `dateReq` ASC";
+  $sql = $eval->evaluatorAssignment2GD();
   $data= $con->prepare($sql);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
@@ -282,14 +276,8 @@ public function viewRequestTableRegistrarGraduate(){
   echo "</tr>";
   }
 
-  // NOT YET CLEARED FOR REGISTRAR - FOR DISPLAY ONLY
-  $sql = "SELECT * FROM `ecle_forms` 
-          WHERE (`libraryclearance` NOT LIKE 'CLEARED' OR 
-                `departmentclearance` NOT LIKE 'CLEARED' OR 
-                `accountingclearance` NOT LIKE 'CLEARED') 
-                AND `registrarclearance` = 'PENDING' AND `studentType` = 'Graduate' AND `expiry` = 'NO' $evaluator ORDER BY `dateReq` ASC;";
-
-  $data2= $con->prepare($sql);
+  $sql0 = $eval->evaluatorAssignment2GDPD();
+  $data2= $con->prepare($sql0);
   $data2->execute();
   $result2 = $data2->fetchAll(PDO::FETCH_ASSOC);
   foreach ($result2 as $data2) {

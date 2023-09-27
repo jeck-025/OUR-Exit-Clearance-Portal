@@ -16,10 +16,58 @@ class view extends config{
                 }
         }
 
+        public function collegeSP3($college0){
+            $config = new config;
+            $con = $config->con();
+            $sql = "SELECT * FROM `collegeschool` WHERE `college_school` = '$college0' AND `state` = 'active'";
+            $data = $con-> prepare($sql);
+            $data ->execute();
+            $rows =$data-> fetchAll(PDO::FETCH_OBJ);
+                foreach ($rows as $row) {
+                  echo '<option data-tokens=".'.$row->college_school.'." value="'.$row->college_school.'">'.$row->college_school.'</option>';
+                }
+        }
+
+        public function collegeSP4($college1){
+            $config = new config;
+            $con = $config->con();
+            $sql = "SELECT * FROM `collegeschool` WHERE `college_school` = '$college1' AND `state` = 'active'";
+            $data = $con-> prepare($sql);
+            $data ->execute();
+            $rows =$data-> fetchAll(PDO::FETCH_OBJ);
+                foreach ($rows as $row) {
+                  echo '<option data-tokens=".'.$row->college_school.'." value="'.$row->college_school.'">'.$row->college_school.'</option>';
+                }
+        }
+
+        public function collegeSP5($college2){
+            $config = new config;
+            $con = $config->con();
+            $sql = "SELECT * FROM `collegeschool` WHERE `college_school` = '$college2' AND `state` = 'active'";
+            $data = $con-> prepare($sql);
+            $data ->execute();
+            $rows =$data-> fetchAll(PDO::FETCH_OBJ);
+                foreach ($rows as $row) {
+                  echo '<option data-tokens=".'.$row->college_school.'." value="'.$row->college_school.'">'.$row->college_school.'</option>';
+                }
+        }
+
         public function groupSP2(){
             $config = new config;
             $con = $config->con();
             $sql = "SELECT * FROM `tbl_group`";
+            $data = $con-> prepare($sql);
+            $data ->execute();
+            $rows =$data-> fetchAll(PDO::FETCH_OBJ);
+                foreach ($rows as $row) {
+                  echo '<option data-tokens=".'.$row->id.'." value="'.$row->id.'">'.$row->name.'</option>';
+                }
+        }
+
+        public function groupSP3($groups){
+            $config = new config;
+            $con = $config->con();
+            $sql = "SELECT * FROM `tbl_group` WHERE `id` = '$groups'";
             $data = $con-> prepare($sql);
             $data ->execute();
             $rows =$data-> fetchAll(PDO::FETCH_OBJ);
@@ -214,8 +262,35 @@ class view extends config{
 
                     $id = $row1['id'];
                     $dean = $row1['name'];
-
                     echo "<option data-tokens='$id' value='$id'> $dean </option>";
+                  }
+                  echo "</select>";
+                  echo "</div>";
+        }
+        
+        public function loadReg2(){
+          $config = new config;
+          $con = $config->con();
+
+          echo "<div class='form-group mb-0'>
+                  <select name='regselect' class='form-control form-select form-select-sm mb-3'>";
+
+                  $sql0 = "SELECT * from `tbl_accounts` WHERE `pos` = 'reg'";
+                  $data0 = $con-> prepare($sql0);
+                  $data0 ->execute();
+                  $result0 = $data0->fetchAll(PDO::FETCH_ASSOC);
+                    $id0 = $result0[0]['id'];
+                    $name0 = $result0[0]['name'];
+                    echo "<option data-tokens='$id0' value='$id0'> $name0 - <i>Active</i> </option>";
+
+                  $sql1 = "SELECT * from `tbl_accounts` WHERE `groups` = '2'";
+                  $data1 = $con-> prepare($sql1);
+                  $data1 ->execute();
+                  $result1 = $data1->fetchAll(PDO::FETCH_ASSOC);
+                  foreach ($result1 as $row1){
+                    $id = $row1['id'];
+                    $name = $row1['name'];
+                    echo "<option data-tokens='$id' value='$id'> $name </option>";
                   }
                   echo "</select></div>";
         }

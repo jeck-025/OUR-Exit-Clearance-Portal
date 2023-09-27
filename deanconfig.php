@@ -94,8 +94,18 @@ $update = new updateDeanCFG();
                     $update->delDean(); 
                   }
 
+                  if(isset($_POST['updatedeanCFGRegUpd'])){
+                    $update->setRegistrar(); 
+                  }
+
                   if(isset($_POST['userDel'])){
                     $update->delUser(); 
+                  }
+
+                  if(isset($_POST['userEdit'])){
+                    $id = $_POST['d_user'];
+                    $url = 'edituser.php?id='.$id;
+                    echo '<script> window.location ="'.$url.'"</script>';
                   }
                   
                   if(!empty($_POST['mailer-username']) && !empty($_POST['mailer-password'])){
@@ -108,8 +118,37 @@ $update = new updateDeanCFG();
                   }
                 ?>
 
-                <h4 class="text-center m-3">Dean Configuration</h4><hr>
-                 <div class="accordion-item">
+                <h4 class="text-center m-3">Dept. Heads Configuration</h4><hr>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingZero">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseZero" aria-expanded="true" aria-controls="collapseZero">
+                      Set Active Registrar
+                    </button>
+                  </h2>
+                  <div id="collapseZero" class="accordion-collapse collapse" aria-labelledby="headingZero" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <div class="import-grad-form">
+                        <div class="col col-md-9 pt-3 pb-3 mb-3 text-center shadow">
+                          <h4>Set Active Registrar</h4><hr>
+                          <div class='input-group col-md-12'>
+                            <div class="col col-md text-center">
+                              <form method='post'>
+                                  
+                                    <?php $view->loadReg2(); ?>
+
+                                <button type='submit' name='updatedeanCFGRegUpd' id='updatedeanCFGRegUpd' class='btn btn-adduser'><i class='fa-solid fa-floppy-disk'></i> Save Changes</button>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                
+
+                <div class="accordion-item">
                   <h2 class="accordion-header" id="headingOne">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                       Set Active Deans
@@ -209,10 +248,8 @@ $update = new updateDeanCFG();
                                     </div>
                                   </div>
                                 </form>
-
                               </div>
                             </div>
-
                           </div>
                         </div>
                       </div>
@@ -220,15 +257,16 @@ $update = new updateDeanCFG();
                   </div>
                 </div>
               </div>
+
+              <div class="accordion" id="accordionExample2">
               <h4 class="text-center m-4">User Configuration</h4><hr>
-              <div class="accordion" id="accordionExample">
                 <div class="accordion-item">
                   <h2 class="accordion-header" id="headingThree">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                       Add User Account
                     </button>
                   </h2>
-                  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample2">
                     <div class="accordion-body">
                       <div class="report-dl-form">
                         <div class="col col-md-9 pt-3 pb-3 mb-3 text-center shadow">
@@ -312,10 +350,10 @@ $update = new updateDeanCFG();
                 <div class="accordion-item">
                   <h2 class="accordion-header" id="headingFour">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                      Remove User Account
+                      Edit / Remove User Account
                     </button>
                   </h2>
-                  <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                  <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample2">
                     <div class="accordion-body">
                       <div class="report-dl-form">
                         <div class="col col-md-9 pt-3 pb-3 mb-3 shadow">
@@ -325,14 +363,18 @@ $update = new updateDeanCFG();
                               <div class="col col-md">
                                 <form method="post">
                                   <div class="row mb-3">
-                                    <h4 class="text-center">Remove User</h4><hr>
-                                    <div class="col col-md-10">
+                                    <h4 class="text-center">Edit / Remove User</h4><hr>
+                                    <div class="col col-md-8">
                                       <label for="d_user" class="form-label">Name</label>
                                       <?php $view->loadUserAcct(); ?>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                      <label for="s_submit" class="form-label">&nbsp;</label>
-                                      <button type="button" class="btn btn-danger btn-block" data-bs-toggle="modal" data-bs-target="#userDelModal"><i class="fa-solid fa-trash"></i> Delete</button>
+                                      <label for="userEdit" class="form-label">&nbsp</label>
+                                        <button type="submit" class="btn btn-editButtons btn-block" name="userEdit" id="userEdit"><i class="fa-solid fa-user-pen"></i> Edit</button>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                      <label for="userEdit" class="form-label">&nbsp</label>
+                                        <button type="button" class="btn btn-danger btn-block" data-bs-toggle="modal" data-bs-target="#userDelModal"><i class="fa-solid fa-trash"></i> Delete</button>
                                     </div>
                                   </div>
                                   <div class="modal fade" id="userDelModal" tabindex="-1" aria-labelledby="userDelModal" aria-hidden="true">
