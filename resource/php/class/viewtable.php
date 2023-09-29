@@ -7,7 +7,11 @@ class viewtable extends config{
   
   public function viewRequestTableRegistrarTransfer(){
   $eval = new evalassign();
+  $reg = new curReg();
+
   $evaluator_name = evaluatorName();
+  $rid = $reg->currentRegistrar();
+
   $con = $this->con();
   $sql = $eval->evaluatorAssignment2UG();
   $data= $con->prepare($sql);
@@ -189,7 +193,11 @@ class viewtable extends config{
 
 public function viewRequestTableRegistrarGraduate(){
   $eval = new evalassign();
+  $reg = new curReg();
+
   $evaluator_name = evaluatorName();
+  $rid = $reg->currentRegistrar();
+
   $con = $this->con();
   $sql = $eval->evaluatorAssignment2GD();
   $data= $con->prepare($sql);

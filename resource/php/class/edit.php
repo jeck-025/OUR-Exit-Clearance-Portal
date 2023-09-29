@@ -7,12 +7,15 @@ class edit extends config{
     public $user;
     public $type;
     public $school;
+    public $regid;
 
     public function __construct($id = null, $user = null, $type = null, $school = null){
         $this->id = $id;
         $this->user = $user;
         $this->type = $type;
         $this->school = $school;
+
+        //this->school may either contain the Name of the School for approveClearanceDepartment() or ID of the current Registrar if approveClearanceRegistrar is used.
     }
 
     public function approveClearanceAccounting(){
@@ -59,10 +62,6 @@ class edit extends config{
         }else{
             $sql = "UPDATE `ecle_forms_ug` SET `departmentclearance` = 'CLEARED', `departmentremarks` = '', `departmentdate` = CURRENT_TIMESTAMP, `dean_asst` = '$this->user', `dean_id` = '$deanID' WHERE `id` = '$this->id'";
         }
-       
-        echo $deanID."<br>";
-        echo $sql;
-        die();
 
         $data = $con->prepare($sql);
         if($data->execute()){
@@ -105,12 +104,13 @@ class edit extends config{
             $mname = $row['mname'];
             $tn = $row['referenceID'];
         }
+        
         sendmailApproved($email, $lname, $fname, $mname, $tn, $this->type);
 
         if($this->type == "Graduate"){
-            $sql = "UPDATE `ecle_forms` SET `registrarclearance` = 'CLEARED', `registrarremarks` = '', `registrardate` = CURRENT_TIMESTAMP, `registrar_sra` = '$this->user' WHERE `id` = '$this->id'";
+            $sql = "UPDATE `ecle_forms` SET `registrarclearance` = 'CLEARED', `registrarremarks` = '', `registrardate` = CURRENT_TIMESTAMP, `registrar_sra` = '$this->user', `reg_id` = '$this->school' WHERE `id` = '$this->id'";
         }else{
-            $sql = "UPDATE `ecle_forms_ug` SET `registrarclearance` = 'CLEARED', `registrarremarks` = '', `registrardate` = CURRENT_TIMESTAMP, `registrar_sra` = '$this->user' WHERE `id` = '$this->id'";
+            $sql = "UPDATE `ecle_forms_ug` SET `registrarclearance` = 'CLEARED', `registrarremarks` = '', `registrardate` = CURRENT_TIMESTAMP, `registrar_sra` = '$this->user', `reg_id` = '$this->school' WHERE `id` = '$this->id'";
         }
         $data = $con->prepare($sql);
         if($data->execute()){

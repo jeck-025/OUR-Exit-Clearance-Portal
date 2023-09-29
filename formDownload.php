@@ -30,8 +30,9 @@ $sql = "SELECT * FROM `$table` WHERE `referenceID` = '$referenceID'";
 $data1 = $con->prepare($sql);
 $data1->execute();
 $rows1 = $data1->fetchAll(PDO::FETCH_ASSOC);
+$reg_name = $rows1[0]['reg_id'];
 
-$sql2 = "SELECT `signature` FROM `tbl_accounts` WHERE `username` = 'REGISTRAR'";
+$sql2 = "SELECT `signature` FROM `tbl_accounts` WHERE `id` = '$reg_name'";
 $data2 = $con-> prepare($sql2);
 $data2->execute();
 $rows2 = $data2->fetchAll(PDO::FETCH_ASSOC);
