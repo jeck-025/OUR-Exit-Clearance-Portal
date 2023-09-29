@@ -151,11 +151,19 @@ class updateDeanCFG extends config{
         }
 
         if(!empty($_FILES["signature"])){
-            $signuser = $_POST['signuser'];
-            $sign = new signature($_FILES['signature'], $signuser);
+            $sign = new signature($_FILES['signature'], $_POST['signuser']);
             $sign->insertSignature();
             echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
                             <i class='fa-solid fa-circle-check'></i> Signature Updated.
+                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>    
+                    </div>";
+        }
+
+        if(isset($_POST['sigclear'])){
+            $sign = new signature($_POST['signature'], $_POST['signuser']);
+            $sign->clearSignature();
+            echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+                            <i class='fa-solid fa-circle-check'></i> Signature Removed.
                             <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>    
                     </div>";
         }
@@ -360,11 +368,17 @@ class updateDeanCFG extends config{
                                         $signature
                                         <input type='hidden' name='signuser' value='$username'>
                                         <label for = 'signature'> Upload Signature File:</label>
-                                        <div class='col col-md-10'>
+                                        <div class='col col-md-8'>
                                             <input type='file' name='signature' class='form-control'>
                                         </div>
                                         <div class='col col-md-2'>
-                                            <input type='submit' value='Update Signature' name='sigupdate' class='form-control btn btn-adduser'>
+                                            <input type='submit' value='Update Signature' name='sigupdate' class='form-control btn btn-adduser'> </form>
+                                        </div>
+                                        <div class='col col-md-2'>
+                                            <form method='POST'>
+                                            <input type='hidden' name='signature' value='$signature'>
+                                            <input type='hidden' name='signuser' value='$username'>
+                                            <input type='submit' value='Clear Signature' name='sigclear' class='form-control btn btn-danger'>
                                         </div>
                                     </div>
                                 </td>

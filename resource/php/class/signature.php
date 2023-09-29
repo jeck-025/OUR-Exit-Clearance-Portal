@@ -43,8 +43,14 @@ class signature extends config{
                 }
             }
         }
+    }
 
-        
+    public function clearSignature(){
+        $config = new config;
+        $con = $config->con();
+        $sql = "UPDATE `tbl_accounts` SET `signature` = NULL WHERE `username` = '$this->account'";
+        $data = $con->prepare($sql);
+        $data->execute();
     }
 }
 ?>

@@ -805,9 +805,6 @@ function evaluatorAssignment(){
     return $query;
   }
 
-
-
-
   function evaluatorName(){
     $user = new user();
     $evaluator_name = $user->data()->username;
