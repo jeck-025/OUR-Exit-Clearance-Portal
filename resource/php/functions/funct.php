@@ -296,6 +296,47 @@ function changeP(){
     }
 }
 
+function changeP2(){
+    if(Input::exists()){
+        $validate = new Validate;
+        $validate = $validate->check($_POST,array(
+            'password_current'=>array(
+                'required'=>'true',
+            ),
+            'password'=>array(
+                'required'=>'true',
+                'min'=>6,
+            ),
+            'ConfirmPassword'=>array(
+                'required'=>'true',
+                'matches'=>'password'
+            )));
+
+            if($validate->passed()){
+                $user = new user();
+                if(Hash::make(Input::get('password_current'),$user->data()->salt) !== $user->data()->password){
+                    curpassError();
+                }else{
+                    $user = new user();
+                    $salt = Hash::salt(32);
+                    try {
+                        $user->update(array(
+                            'password'=>Hash::make(Input::get('password'),$salt),
+                            'salt'=>$salt
+                        ));
+                    } catch (Exception $e) {
+                        die($e->getMessage());
+                    }
+                    //Redirect::to('registrar.php');
+                }
+            }else{
+                foreach ($validate->errors()as $error) {
+                pError($error);
+            }
+        }
+    }
+}
+
 
 function approveAccounting(){
     if(!empty($_GET['edit'])){
@@ -319,7 +360,7 @@ function approveGuidance(){
 
 function approveDepartment(){
     if(!empty($_GET['edit'])){
-        $edit = new edit($_GET['edit'], $_GET['user'], $_GET['type']);
+        $edit = new edit($_GET['edit'], $_GET['user'], $_GET['type'], $_GET['school']);
         if($edit->approveClearanceDepartment()){
         } else{
             echo "Error in approving";
@@ -339,7 +380,7 @@ function approveLibrary(){
 
 function approveRegistrar(){
     if(!empty($_GET['edit'])){
-        $edit = new edit($_GET['edit'], $_GET['user'],$_GET['type']);
+        $edit = new edit($_GET['edit'], $_GET['user'],$_GET['type'],$_GET['regid']);
         if($edit->approveClearanceRegistrar()){
         } else{
             echo "Error in approving";
@@ -727,8 +768,7 @@ function schoolYear(){
     }
   }
 
-function schoolSelect()
-  {
+function schoolSelect(){
     $config = new config;
     $con = $config->con();
     $sql = "SELECT DISTINCT `departmentABBR`, `department` FROM `courseschool` ORDER BY `department` ASC";
@@ -740,7 +780,7 @@ function schoolSelect()
     }
   }
 
-  function evaluatorAssignment(){
+function evaluatorAssignment(){
     $user = new user();
     if($user->data()->username == "EFLORENTINO"){
         $query = " AND `schoolABBR` = 'PHARM'";

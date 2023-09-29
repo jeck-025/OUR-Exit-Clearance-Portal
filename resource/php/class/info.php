@@ -1189,6 +1189,8 @@ class info extends config{
       }
 
     public function infoRegistrar(){
+        $reg = new curReg();
+        $rid = $reg->currentRegistrar();
         $con = $this->con();
         //echo $this->type;
         if($this->type == "Graduate"){

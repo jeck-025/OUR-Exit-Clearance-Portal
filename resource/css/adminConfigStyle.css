@@ -127,6 +127,20 @@ table{
   font-size: 12px;
 }
 
+.table-dean{
+  width: 100%;
+}
+
+.btn-editButtons{
+  background-color: #201460 !important;
+  border-color: #201460 !important;
+  color: #fff !important;
+}
+
+.form-switch .form-check-input{
+  /* scale: 200% !important; */
+}
+
 .sendMails{
   font-weight: bold;
   font-size: 0.65em;

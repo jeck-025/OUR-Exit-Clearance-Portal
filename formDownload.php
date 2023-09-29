@@ -30,8 +30,9 @@ $sql = "SELECT * FROM `$table` WHERE `referenceID` = '$referenceID'";
 $data1 = $con->prepare($sql);
 $data1->execute();
 $rows1 = $data1->fetchAll(PDO::FETCH_ASSOC);
+$reg_name = $rows1[0]['reg_id'];
 
-$sql2 = "SELECT `signature` FROM `tbl_accounts` WHERE `username` = 'REGISTRAR'";
+$sql2 = "SELECT `signature` FROM `tbl_accounts` WHERE `id` = '$reg_name'";
 $data2 = $con-> prepare($sql2);
 $data2->execute();
 $rows2 = $data2->fetchAll(PDO::FETCH_ASSOC);
@@ -51,12 +52,21 @@ $course = $rows1[0]['course'];
 $registrar = $rows2[0]['signature'];
 $accounting = $rows3[0]['signature'];
 
-$sql4 = "SELECT * FROM `collegeschool` WHERE `college_school` = '$college'";
-$data4 = $con->query($sql4);
-$data4->execute();
-$rows4 = $data4->fetchAll(PDO::FETCH_ASSOC);
-
+if(empty($rows1[0]['dean_id'])){ //execute old code without dean_id
+    $sql4 = "SELECT * FROM `collegeschool` WHERE `college_school` = '$college' AND `state` = 'active'";
+    $data4 = $con->query($sql4);
+    $data4->execute();
+    $rows4 = $data4->fetchAll(PDO::FETCH_ASSOC);
     $dean = $rows4[0]['dean'];
+}else{ // execute new code with dean_id
+    $dean_id = $rows1[0]['dean_id'];
+    $sql4 = "SELECT * FROM `collegeschool` WHERE `id` = '$dean_id' AND `state` = 'active'";
+    $data4 = $con->query($sql4);
+    $data4->execute();
+    $rows4 = $data4->fetchAll(PDO::FETCH_ASSOC);
+    $dean = $rows4[0]['dean'];
+}
+
     $lname = $rows1[0]['lname'];
     $fname = $rows1[0]['fname'];
 
@@ -76,7 +86,7 @@ $rows4 = $data4->fetchAll(PDO::FETCH_ASSOC);
     $pdf->SetXY(93, 40);
     $pdf->Write(0, $rows1[0]['mname']);
     $pdf->SetXY(132, 40);
-    $pdf->Write(0, strtoupper(substr($rows1[0]['fname'],0,1).substr($rows1[0]['mname'],0,1).substr($rows1[0]['lname'],0,1))."(SGD)");
+    $pdf->Write(0, "(SGD.) ".strtoupper(substr($rows1[0]['fname'],0,1).substr($rows1[0]['mname'],0,1).substr($rows1[0]['lname'],0,1)));
     $pdf->SetXY(170, 40);
     $pdf->Write(0, date('Y-m-d',strtotime($rows1[0]['dateReq'])));
 
@@ -95,7 +105,7 @@ $rows4 = $data4->fetchAll(PDO::FETCH_ASSOC);
     $pdf->Write(0, $rows1[0]['year']);
 
     $pdf->SetXY(140, 80);
-    $pdf->Write(0, strtoupper($dean)." (SGD)");
+    $pdf->Write(0, "(SGD.) ".strtoupper($dean));
     
     $pdf->SetXY(170, 86);
     $pdf->Write(0, "(".strtoupper($rows1[0]['dean_asst']).")");
