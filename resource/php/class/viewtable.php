@@ -359,10 +359,9 @@ public function viewRequestTableRegistrarGraduate(){
 }
 
 public function viewApproveTableRegistrarTransfer(){
-  $evaluator = evaluatorAssignment();
-  $evaluator_name = evaluatorName();
+  $eval = new evalassign();
   $con = $this->con();
-  $sql = "SELECT * FROM `ecle_forms_ug` WHERE `registrarclearance`='CLEARED' AND `studentType` = 'Transfer' AND `expiry` = 'NO' $evaluator ORDER BY `dateReq` ASC";
+  $sql = $eval->tableRegistrarClearedUG();
   $data= $con->prepare($sql);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
@@ -446,10 +445,9 @@ public function viewApproveTableRegistrarTransfer(){
 }
 
 public function viewApproveTableRegistrarGraduate(){
-  $evaluator = evaluatorAssignment();
-  $evaluator_name = evaluatorName();
+  $eval = new evalassign();
   $con = $this->con();
-  $sql = "SELECT * FROM `ecle_forms` WHERE `registrarclearance`='CLEARED' AND `studentType` = 'Graduate' AND `expiry` = 'NO' $evaluator ORDER BY `dateReq` ASC";
+  $sql = $eval->tableRegistrarClearedGD();
   $data= $con->prepare($sql);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
@@ -489,10 +487,9 @@ public function viewApproveTableRegistrarGraduate(){
 }
 
 public function viewHoldTableRegistrarTransfer(){
-  $evaluator = evaluatorAssignment();
-  $evaluator_name = evaluatorName();
+  $eval = new evalassign();
   $con = $this->con();
-  $sql = "SELECT * FROM `ecle_forms_ug` WHERE `registrarclearance`='ON HOLD' AND `studentType` = 'Transfer' AND `expiry` = 'NO' $evaluator ORDER BY `dateReq` ASC";
+  $sql =  $eval->tableRegistrarHoldUG();
   $data= $con->prepare($sql);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
@@ -587,10 +584,9 @@ public function viewHoldTableRegistrarTransfer(){
 }
 
 public function viewHoldTableRegistrarGraduate(){
-  $evaluator = evaluatorAssignment();
-  $evaluator_name = evaluatorName();
+  $eval = new evalassign();
   $con = $this->con();
-  $sql = "SELECT * FROM `ecle_forms` WHERE `registrarclearance`='ON HOLD' AND `studentType` = 'Graduate' AND `expiry` = 'NO' $evaluator ORDER BY `dateReq` ASC";
+  $sql =  $eval->tableRegistrarHoldGD();
   $data= $con->prepare($sql);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);

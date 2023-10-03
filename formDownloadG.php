@@ -31,6 +31,7 @@ $sn = $rows1[0]['studentID'];
 $lname = $rows1[0]['lname'];
 $fname = $rows1[0]['fname'];
 $fullname = $rows1[0]['fname']." ".$rows1[0]['mname']." ".$rows1[0]['lname'];
+$filename = "resource/uploads/letters/".$rows1[0]['file_letter'];
 
 
 $sql2 = "SELECT * FROM `tbl_accounts` WHERE `username` = '$guidancesig'";
@@ -58,7 +59,7 @@ $dean = $rows3[0]['dean'];
 
     $pdf = new FPDI();
     $pdf->AddPage();
-    $filename="resource/uploads/letters/".$sn."_".$lname."_".$fname."_letter.pdf";
+    //$filename="resource/uploads/letters/".$sn."_".$lname."_".$fname."_letter.pdf";
     $pdf->setSourceFile($filename);
     $template = $pdf->importPage(1);
     $pdf->useTemplate($template);
