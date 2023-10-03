@@ -83,7 +83,6 @@ $import = new import();
             <!-- search -->
             <div class="item pb-3 border-bottom">
               <a class="sub-btn" href="regs-search.php"><i class="fa-solid fa-magnifying-glass"></i> Search All</a>
-
             </div>
 
             <script type="text/javascript">
