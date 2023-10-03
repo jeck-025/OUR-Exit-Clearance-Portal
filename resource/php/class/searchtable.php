@@ -4,11 +4,9 @@ require_once 'config.php';
 
 class searchtable extends config{
 
-  
   public function searchTable($key){
 
   $key = strtoupper($key);
-
 
   $con = $this->con();
   $sql = "SELECT * FROM `ecle_forms` WHERE `lname` LIKE '%$key%' OR `fname` LIKE '%$key%' OR `mname` LIKE '%$key%'";
