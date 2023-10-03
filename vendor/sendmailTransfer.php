@@ -24,7 +24,7 @@ function sendReferenceMail($lname, $fname, $mname, $transnumber, $email){
   $mailerPlatform = $mailerData[2];
   $mailerPort = $mailerData[3];
 
-  $body ="<p>Dear $lname, $fname $mname,</p>
+  $body ="<p>Dear $fname $mname $lname,</p>
 
             <p>Good Day!</p>
 
@@ -34,7 +34,7 @@ function sendReferenceMail($lname, $fname, $mname, $transnumber, $email){
 
             <p>You may check the status of your clearance using our Exit Clearance status checker by clicking this <a href=https://ceumnlregistrar.com/ecle/transferCheck>LINK</a>.</p>
 
-            <p>Kindly check your email regularly for updates regarding your clearance.</p>
+            <p>Kindly check your email regularly for updates regarding your clearance or call the Office of the University Registrar at (00632)8735-68-77 or (00632)8735-68-61 Local 245</p><br>
 
             <p><b>This is an auto generated email please do not reply.</b></p>
 

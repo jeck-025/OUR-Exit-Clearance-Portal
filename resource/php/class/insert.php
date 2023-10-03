@@ -34,6 +34,8 @@ class insert extends config{
         //Get Temporary Filenames from Temporary Folder
         $this->file_letter_tmp = $file_letter_tmp;
         $this->validID_tmp = $validID_tmp;
+
+        $curdate = date("mdyHis");
         
         //Error counter
         $error = 0;
@@ -60,12 +62,12 @@ class insert extends config{
         // }
 
         if($error == 0){
-            $this->valid_ID['name'] = $this->studID."_".$this->lname."_".$this->fname."_id.".$vID;
+            $this->valid_ID['name'] = $this->studID."_".$this->lname."_".$this->fname."_id".$curdate.".".$vID;
             $storage2 = "resource/uploads/ids/";
             $this->idFile = $storage2 . $this->valid_ID['name'];
             move_uploaded_file($this->validID_tmp, $this->idFile);
 
-            $this->file_letter['name'] = $studID."_".$this->lname."_".$this->fname."_letter.".$vLtr;
+            $this->file_letter['name'] = $studID."_".$this->lname."_".$this->fname."_letter".$curdate.".".$vLtr;
             $storage = "resource/uploads/letters/";
             $this->ltrfile = $storage . $this->file_letter['name'];
             move_uploaded_file($this->file_letter_tmp, $this->ltrfile);
