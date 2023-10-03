@@ -1,7 +1,7 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'].'/ecle/resource/php/class/core/init.php';
 isLogin();
-$searchtable = new searchtable($key);
+$searchtable = new searchAllTable();
 $viewtable = new viewtable();
 $user = new user();
 isRegistrar($user->data()->groups);

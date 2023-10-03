@@ -2,7 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/ecle/resource/php/class/core/init.php';
 require_once 'config.php';
 
-class searchtable extends config{
+class searchAllTable extends config{
 
   public function searchTable($key){
 
