@@ -97,7 +97,7 @@ $import = new import();
             
           </div>
           <div class="sch-img text-center">
-              <img class="sch-logo" src='resource/img/<?php deptImage(); ?>'>
+              <img class="sch-logo-reg" src='resource/img/<?php deptImage(); ?>'>
           </div>
         </div>
 

@@ -241,6 +241,14 @@ footer {
   /* filter: grayscale(100%); */
 }
 
+.sch-logo-reg {
+  width: 200%;
+  opacity: 10%;
+  margin-left: -50%;
+  margin-top: -60%;
+  /* filter: grayscale(100%); */
+}
+
 @keyframes slideInFromBottom {
   100% {
     transform: translateY(0);
