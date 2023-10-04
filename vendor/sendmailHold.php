@@ -36,10 +36,12 @@ function sendOnHoldMail($email, $remarks, $lname, $fname, $mname, $office){
           <p><b><i>$remarks.</i></b></p><br>
           
           <p>Please resolve the issue / concern immediately for your clearance to proceed.</p><br>
+
+          <p>For more information, you may call the Office of the University Registrar at (00632)8735-68-77 or (00632)8735-68-61 local 245 / 274</p><br>
           
           <p><b>This is an auto generated email please do not reply.</b></p><br>
           
-          <p>Thank you and stay safe.</p>";
+          <p>Thank you.</p>";
   try {
     //Server settings
      $mail->SMTPDebug = SMTP::DEBUG_SERVER;

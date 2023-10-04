@@ -34,13 +34,12 @@ function sendReferenceMail($lname, $fname, $mname, $transnumber, $email){
 
             <p>You may check the status of your clearance using our Exit Clearance status checker by clicking this <a href=https://ceumnlregistrar.com/ecle/transferCheck>LINK</a>.</p>
 
-            <p>Kindly check your email regularly for updates regarding your clearance or call the Office of the University Registrar at (00632)8735-68-77 or (00632)8735-68-61 Local 245</p><br>
+            <p>Kindly check your email regularly for updates regarding your clearance or call the Office of the University Registrar at (00632)8735-68-77 or (00632)8735-68-61 Local 245 / 274</p><br>
 
-            <p><b>This is an auto generated email please do not reply.</b></p>
+            <p><b><i>This is an auto generated email please do not reply.</i></b></p>
 
-            <p>Thank you and stay safe.</p>";
+            <p>Thank you.</p>";
   try {
-    //Server settings
     //Server settings
      $mail->SMTPDebug = SMTP::DEBUG_SERVER;
      $mail->isSMTP();

@@ -6,10 +6,6 @@ require_once ('pdfprototype/fpdi/src/autoload.php');
 require_once ('pdfprototype/fpdf.php');
 require_once $_SERVER['DOCUMENT_ROOT'].'/ecle/resource/php/class/config.php';
 
-
-// $localhost = "127.0.0.1";
-// $username = "root";
-// $password = "";
 $dbname = "ceumnlre_ecle";
 $referenceID = $_GET['referenceID'];
 $config = new config;
@@ -21,35 +17,33 @@ if($_GET['type'] == "Transfer"){
     $table = "ecle_forms";
 }
 
-// $conn = new mysqli($localhost, $username, $password, $dbname);
-// if ($conn->connect_error) {
-//     die("Connection failed: " . $conn->connect_error);
-// }
-
 $sql = "SELECT * FROM `$table` WHERE `referenceID` = '$referenceID'";
 $data1 = $con->prepare($sql);
 $data1->execute();
 $rows1 = $data1->fetchAll(PDO::FETCH_ASSOC);
 $reg_name = $rows1[0]['reg_id'];
+$accountingsig = $rows1[0]['acct_asst'];
 
-$sql2 = "SELECT `signature` FROM `tbl_accounts` WHERE `id` = '$reg_name'";
+if(!empty($reg_name)){
+    $sql2 = "SELECT `signature` FROM `tbl_accounts` WHERE `id` = '$reg_name'";
+}else{
+    $sql2 = "SELECT `signature` FROM `tbl_accounts` WHERE `username` = 'REGISTRAR'";
+}
+
 $data2 = $con-> prepare($sql2);
 $data2->execute();
 $rows2 = $data2->fetchAll(PDO::FETCH_ASSOC);
-
-$accountingsig = $rows1[0]['acct_asst'];
+$registrar = $rows2[0]['signature'];
 
 $sql3 = "SELECT * FROM `tbl_accounts` WHERE `username` = '$accountingsig'";
 $data3 = $con-> prepare($sql3);
 $data3->execute();
 $rows3 = $data3->fetchAll(PDO::FETCH_ASSOC);
 
-$registrar = "";
 $filename="EXIT_CLEARANCE.pdf";
 $college = $rows1[0]['school'];
 $course = $rows1[0]['course'];
 
-$registrar = $rows2[0]['signature'];
 $accounting = $rows3[0]['signature'];
 
 if(empty($rows1[0]['dean_id'])){ //execute old code without dean_id
