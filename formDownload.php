@@ -51,7 +51,7 @@ $data3 = $con-> prepare($sql3);
 $data3->execute();
 $rows3 = $data3->fetchAll(PDO::FETCH_ASSOC);
 
-$registrar = "";
+//$registrar = "";
 $filename="EXIT_CLEARANCE.pdf";
 $college = $rows1[0]['school'];
 $course = $rows1[0]['course'];
