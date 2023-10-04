@@ -98,86 +98,7 @@ class searchAllTable extends config{
   echo "</tr>";
   }
 
-// // NOT YET CLEARED FOR REGISTRAR - FOR DISPLAY ONLY
-//   $sql0 = $eval->evaluatorAssignment2UGPD();
-//   $data2= $con->prepare($sql0);
-//   $data2->execute();
-//   $result2 = $data2->fetchAll(PDO::FETCH_ASSOC);
-//   foreach ($result2 as $data2) {
-//   echo "<tr style='font-size: 13px'>";
 
-//   $temp_lname2 = utf8_decode($data2['lname']);
-//   $lname2 = str_replace('?', 'Ñ', $temp_lname2);
-//   $temp_fname2 = utf8_decode($data2['fname']);
-//   $fname2 = str_replace('?', 'Ñ', $temp_fname2);
-//   $temp_mname2 = utf8_decode($data2['mname']);
-//   $mname2 = str_replace('?', 'Ñ', $temp_mname2);
-
-//   echo "<td>$data2[studentID]</td>";
-// 	echo "<td>$fname2 $mname2 $lname2</td>";
-//   echo "<td>$data2[course]</td>";
-//   echo "<td>$data2[dateReq]</td>";
-//   echo "<td>$data2[referenceID]</td>";
-//   if($data2["departmentclearance"] === "PENDING"){
-//     echo "<td class='text-center'><span class='badge bg-secondary'>$data2[departmentclearance]</span></td>";
-//   }elseif($data2["departmentclearance"] === "ON HOLD"){
-//     echo "<td class='text-center'><span class='badge bg-warning'>$data2[departmentclearance]</span></td>";
-//   }else {
-//     echo "<td class='text-center'><span class='badge bg-success'>$data2[departmentclearance]</span></td>";
-//   }
-//   if($data2["guidanceclearance"] === "PENDING"){
-//     echo "<td class='text-center'><span class='badge bg-secondary'>$data2[guidanceclearance]</span></td>";
-//   }elseif($data2["guidanceclearance"] === "ON HOLD"){
-//     echo "<td class='text-center'><span class='badge bg-warning'>$data2[guidanceclearance]</span></td>";
-//   }else {
-//     echo "<td class='text-center'><span class='badge bg-success'>$data2[guidanceclearance]</span></td>";
-//   }
-//   if($data2["libraryclearance"] === "PENDING"){
-//     echo "<td class='text-center'><span class='badge bg-secondary'>$data2[libraryclearance]</span></td>";
-//   }elseif($data2["libraryclearance"] === "ON HOLD"){
-//     echo "<td class='text-center'><span class='badge bg-warning'>$data2[libraryclearance]</span></td>";
-//   }else {
-//     echo "<td class='text-center'><span class='badge bg-success'>$data2[libraryclearance]</span></td>";
-//   }
-//   if($data2["accountingclearance"] === "PENDING"){
-//     echo "<td class='text-center'><span class='badge bg-secondary'>$data2[accountingclearance]</span></td>";
-//   }elseif($data2["accountingclearance"] === "ON HOLD"){
-//     echo "<td class='text-center'><span class='badge bg-warning'>$data2[accountingclearance]</span></td>";
-//   }else {
-//     echo "<td class='text-center'><span class='badge bg-success'>$data2[accountingclearance]</span></td>";
-//   }
-//   if($data2["registrarclearance"] === "PENDING"){
-//     echo "<td class='text-center'><span class='badge bg-secondary'>$data2[registrarclearance]</span></td>";
-//   }elseif($data2["registrarclearance"] === "ON HOLD"){
-//     echo "<td class='text-center'><span class='badge bg-warning'>$data2[registrarclearance]</span></td>";
-//   }else {
-//     echo "<td class='text-center'><span class='badge bg-success'>$data2[registrarclearance]</span></td>";
-//   }
-
-//   $id2 = $data2["id"];
-//   $studType2 = $data2["studentType"];
-//   $libraryC2 = $data2["libraryclearance"];
-//   $libraryR2 = $data2["libraryremarks"];
-//   $guidanceC2 = $data2["guidanceclearance"];
-//   $guidanceR2 = $data2["guidanceremarks"];
-//   $deptC2 = $data2["departmentclearance"];
-//   $deptR2 = $data2["departmentremarks"];
-//   $acctC2 = $data2["accountingclearance"];
-//   $acctR2 = $data2["accountingremarks"];
-//   $regC2 = $data2["registrarclearance"];
-//   $regR2 = $data2["registrarremarks"];
-
-//   echo "<td>";
-//   echo "<span class 'd-inline-block' tabindex='0' data-bs-toggle='tooltip' title='Not Yet Cleared for Registrar'>";
-//   // echo "<button class='btn btn-sm btn-block btn-secondary d-block actions disabled' id='btn' type='button'><i class='fa-solid fa-check'></i> Sign</button>";
-//   // echo "<button class='btn btn-sm btn-block btn-secondary d-block actions disabled' id='btn' type='button'><i class='fa-solid fa-triangle-exclamation'></i> Hold</button>";
-//   echo "</span>";
-//   echo "<a href='viewRegistrar.php?id=$data2[id]&type=$data2[studentType]' class='btn btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
-//   echo "<button class='btn btn-sm btn-block btn-danger d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsRemove$id2' data-id='$id2'><i class='fa-solid fa-trash'></i> Remove </button>";
-//       include "modals-ext.php";
-//   echo "</td>";
-//   echo "</tr>";
-//   }
   echo "</table></div>";
 
   $sql0 = "SELECT * FROM `ecle_forms_ug` WHERE `lname` LIKE '%$key%' OR `fname` LIKE '%$key%' OR `mname` LIKE '%$key%'";
@@ -256,8 +177,6 @@ class searchAllTable extends config{
   $studType = $data0["studentType"];
   $libraryC = $data0["libraryclearance"];
   $libraryR = $data0["libraryremarks"];
-  // $guidanceC = $data0["guidanceclearance"];
-  // $guidanceR = $data0["guidanceremarks"];
   $deptC = $data0["departmentclearance"];
   $deptR = $data0["departmentremarks"];
   $acctC = $data0["accountingclearance"];
@@ -275,87 +194,6 @@ class searchAllTable extends config{
 
   echo "</tr>";
   }
-
-// // NOT YET CLEARED FOR REGISTRAR - FOR DISPLAY ONLY
-//   $sql0 = $eval->evaluatorAssignment2UGPD();
-//   $data2= $con->prepare($sql0);
-//   $data2->execute();
-//   $result2 = $data2->fetchAll(PDO::FETCH_ASSOC);
-//   foreach ($result2 as $data2) {
-//   echo "<tr style='font-size: 13px'>";
-
-//   $temp_lname2 = utf8_decode($data2['lname']);
-//   $lname2 = str_replace('?', 'Ñ', $temp_lname2);
-//   $temp_fname2 = utf8_decode($data2['fname']);
-//   $fname2 = str_replace('?', 'Ñ', $temp_fname2);
-//   $temp_mname2 = utf8_decode($data2['mname']);
-//   $mname2 = str_replace('?', 'Ñ', $temp_mname2);
-
-//   echo "<td>$data2[studentID]</td>";
-// 	echo "<td>$fname2 $mname2 $lname2</td>";
-//   echo "<td>$data2[course]</td>";
-//   echo "<td>$data2[dateReq]</td>";
-//   echo "<td>$data2[referenceID]</td>";
-//   if($data2["departmentclearance"] === "PENDING"){
-//     echo "<td class='text-center'><span class='badge bg-secondary'>$data2[departmentclearance]</span></td>";
-//   }elseif($data2["departmentclearance"] === "ON HOLD"){
-//     echo "<td class='text-center'><span class='badge bg-warning'>$data2[departmentclearance]</span></td>";
-//   }else {
-//     echo "<td class='text-center'><span class='badge bg-success'>$data2[departmentclearance]</span></td>";
-//   }
-//   if($data2["guidanceclearance"] === "PENDING"){
-//     echo "<td class='text-center'><span class='badge bg-secondary'>$data2[guidanceclearance]</span></td>";
-//   }elseif($data2["guidanceclearance"] === "ON HOLD"){
-//     echo "<td class='text-center'><span class='badge bg-warning'>$data2[guidanceclearance]</span></td>";
-//   }else {
-//     echo "<td class='text-center'><span class='badge bg-success'>$data2[guidanceclearance]</span></td>";
-//   }
-//   if($data2["libraryclearance"] === "PENDING"){
-//     echo "<td class='text-center'><span class='badge bg-secondary'>$data2[libraryclearance]</span></td>";
-//   }elseif($data2["libraryclearance"] === "ON HOLD"){
-//     echo "<td class='text-center'><span class='badge bg-warning'>$data2[libraryclearance]</span></td>";
-//   }else {
-//     echo "<td class='text-center'><span class='badge bg-success'>$data2[libraryclearance]</span></td>";
-//   }
-//   if($data2["accountingclearance"] === "PENDING"){
-//     echo "<td class='text-center'><span class='badge bg-secondary'>$data2[accountingclearance]</span></td>";
-//   }elseif($data2["accountingclearance"] === "ON HOLD"){
-//     echo "<td class='text-center'><span class='badge bg-warning'>$data2[accountingclearance]</span></td>";
-//   }else {
-//     echo "<td class='text-center'><span class='badge bg-success'>$data2[accountingclearance]</span></td>";
-//   }
-//   if($data2["registrarclearance"] === "PENDING"){
-//     echo "<td class='text-center'><span class='badge bg-secondary'>$data2[registrarclearance]</span></td>";
-//   }elseif($data2["registrarclearance"] === "ON HOLD"){
-//     echo "<td class='text-center'><span class='badge bg-warning'>$data2[registrarclearance]</span></td>";
-//   }else {
-//     echo "<td class='text-center'><span class='badge bg-success'>$data2[registrarclearance]</span></td>";
-//   }
-
-//   $id2 = $data2["id"];
-//   $studType2 = $data2["studentType"];
-//   $libraryC2 = $data2["libraryclearance"];
-//   $libraryR2 = $data2["libraryremarks"];
-//   $guidanceC2 = $data2["guidanceclearance"];
-//   $guidanceR2 = $data2["guidanceremarks"];
-//   $deptC2 = $data2["departmentclearance"];
-//   $deptR2 = $data2["departmentremarks"];
-//   $acctC2 = $data2["accountingclearance"];
-//   $acctR2 = $data2["accountingremarks"];
-//   $regC2 = $data2["registrarclearance"];
-//   $regR2 = $data2["registrarremarks"];
-
-//   echo "<td>";
-//   echo "<span class 'd-inline-block' tabindex='0' data-bs-toggle='tooltip' title='Not Yet Cleared for Registrar'>";
-//   // echo "<button class='btn btn-sm btn-block btn-secondary d-block actions disabled' id='btn' type='button'><i class='fa-solid fa-check'></i> Sign</button>";
-//   // echo "<button class='btn btn-sm btn-block btn-secondary d-block actions disabled' id='btn' type='button'><i class='fa-solid fa-triangle-exclamation'></i> Hold</button>";
-//   echo "</span>";
-//   echo "<a href='viewRegistrar.php?id=$data2[id]&type=$data2[studentType]' class='btn btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
-//   echo "<button class='btn btn-sm btn-block btn-danger d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsRemove$id2' data-id='$id2'><i class='fa-solid fa-trash'></i> Remove </button>";
-//       include "modals-ext.php";
-//   echo "</td>";
-//   echo "</tr>";
-//   }
   echo "</table></div>";
 }
 
