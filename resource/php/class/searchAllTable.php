@@ -71,6 +71,8 @@ class searchAllTable extends config{
     echo "<td class='text-center'><span class='badge bg-secondary'>$data[registrarclearance]</span></td>";
   }elseif($data["registrarclearance"] === "ON HOLD"){
     echo "<td class='text-center'><span class='badge bg-warning'>$data[registrarclearance]<br>$data[registrardate]</span></td>";
+  }elseif($data["registrarclearance"] === "REMOVED"){
+    echo "<td class='text-center'><span class='badge bg-danger'>$data[registrarclearance]<br>$data[registrardate]</span></td>";
   }else {
     echo "<td class='text-center'><span class='badge bg-success'>$data[registrarclearance]<br>$data[registrardate]</span></td>";
   }
