@@ -31,13 +31,20 @@ $data1 = $con->prepare($sql);
 $data1->execute();
 $rows1 = $data1->fetchAll(PDO::FETCH_ASSOC);
 $reg_name = $rows1[0]['reg_id'];
+$accountingsig = $rows1[0]['acct_asst'];
 
-$sql2 = "SELECT `signature` FROM `tbl_accounts` WHERE `id` = '$reg_name'";
+
+if(empty($reg_name)){
+    $sql2 = "SELECT `signature` FROM `tbl_accounts` WHERE `id` = '$reg_name'";
+}else{
+    $sql2 = "SELECT `signature` FROM `tbl_accounts` WHERE `username` = 'REGISTRAR'";
+}
+
+//$sql2 = "SELECT `signature` FROM `tbl_accounts` WHERE `id` = '$reg_name'";
 $data2 = $con-> prepare($sql2);
 $data2->execute();
 $rows2 = $data2->fetchAll(PDO::FETCH_ASSOC);
-
-$accountingsig = $rows1[0]['acct_asst'];
+$registrar = $rows2[0]['signature'];
 
 $sql3 = "SELECT * FROM `tbl_accounts` WHERE `username` = '$accountingsig'";
 $data3 = $con-> prepare($sql3);
@@ -49,7 +56,6 @@ $filename="EXIT_CLEARANCE.pdf";
 $college = $rows1[0]['school'];
 $course = $rows1[0]['course'];
 
-$registrar = $rows2[0]['signature'];
 $accounting = $rows3[0]['signature'];
 
 if(empty($rows1[0]['dean_id'])){ //execute old code without dean_id

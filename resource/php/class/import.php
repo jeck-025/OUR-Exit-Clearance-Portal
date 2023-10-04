@@ -46,7 +46,7 @@ class import extends config{
                             $course = $line[6];
                             $year = $line[7];
                             $studentType = "Graduate";
-                            $transnumber = uniqid('Graduate');
+                            $transnumber = uniqid('GraduateMNL');
 
                             $config = new config;
                             $con = $config->con();
