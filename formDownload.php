@@ -34,7 +34,7 @@ $reg_name = $rows1[0]['reg_id'];
 $accountingsig = $rows1[0]['acct_asst'];
 
 
-if(empty($reg_name)){
+if(!empty($reg_name)){
     $sql2 = "SELECT `signature` FROM `tbl_accounts` WHERE `id` = '$reg_name'";
 }else{
     $sql2 = "SELECT `signature` FROM `tbl_accounts` WHERE `username` = 'REGISTRAR'";
