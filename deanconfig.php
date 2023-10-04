@@ -37,6 +37,49 @@ $update = new updateDeanCFG();
             <div class="item">
               <a href="registrar.php"><i class="fa-solid fa-gauge-high"></i>Dashboard</a>
             </div>
+
+            <!-- requests -->
+            <div class="item">
+              <a class="sub-btn"><i class="fa-solid fa-tag"></i>Requests<i class="fas fa-chevron-right dropdown"></i></a>
+                <div class="sub-menu">
+                  <a href="regs-req-tr.php" name="Rtransfer" class="sub-item border-bottom" value="Transfer">
+                   Transfer <?php echo '<span class="badge badge-danger">'.$viewtable->viewCountPendingRegistrarTR(). '</span>';?> </a> 
+                  <a href="regs-req-gd.php" name="Rgraduate" class="sub-item" value="Graduate">
+                   Graduate <?php echo '<span class="badge badge-danger">'.$viewtable->viewCountPendingRegistrarGD(). '</span>';?> </a> 
+                </div>
+            </div>
+
+            <!-- approved -->
+            <div class="item">
+              <a class="sub-btn"><i class="fa-solid fa-thumbs-up"></i>Cleared<i class="fas fa-chevron-right dropdown"></i></a>
+                <div class="sub-menu">
+                  <a href="regs-app-tr.php" name="Atransfer" class="sub-item border-bottom" value="Transfer">Transfer</a>
+                  <a href="regs-app-gd.php" name="Agraduate" class="sub-item" value="Graduate">Graduate</a>
+                </div>
+            </div>
+
+            <!-- hold -->
+            <div class="item">
+              <a class="sub-btn"><i class="fa-sharp fa-solid fa-pause"></i>On Hold<i class="fas fa-chevron-right dropdown"></i></a>
+                <div class="sub-menu">
+                  <a href="regs-hld-tr.php" name="Atransfer" class="sub-item border-bottom" value="Transfer">Transfer</a>
+                  <a href="regs-hld-gd.php" name="Agraduate" class="sub-item" value="Graduate">Graduate</a>
+                </div>
+            </div>
+
+            <!-- removed -->
+            <div class="item">
+              <a class="sub-btn"><i class="fa-solid fa-xmark"></i></i>Removed<i class="fas fa-chevron-right dropdown"></i></a>
+                <div class="sub-menu">
+                  <!-- <a href="regs-hld-tr.php" name="Atransfer" class="sub-item border-bottom" value="Transfer">Transfer</a> -->
+                  <a href="regs-rem-gd.php" name="Agraduate" class="sub-item" value="Graduate">Graduate</a>
+                </div>
+            </div>
+
+            <!-- search -->
+            <div class="item pb-3 border-bottom">
+              <a class="sub-btn" href="regs-search.php"><i class="fa-solid fa-magnifying-glass"></i> Search All</a>
+            </div>
             <script type="text/javascript">
               $(document).ready(function(){
                 $('.sub-btn').click(function(){
@@ -47,7 +90,7 @@ $update = new updateDeanCFG();
             </script>
           </div>
           <div class="sch-img text-center">
-            <img class="sch-logo" src="resource/img/gear.png">
+            <img class="sch-logo-reg" src="resource/img/gear.png">
           </div>
         </div>
 

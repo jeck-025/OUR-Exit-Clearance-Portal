@@ -1,7 +1,7 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'].'/ecle/resource/php/class/core/init.php';
 isLogin();
-$searchtable = new searchtable();
+$searchtable = new searchAllTable();
 $viewtable = new viewtable();
 $user = new user();
 isRegistrar($user->data()->groups);
@@ -26,7 +26,7 @@ isRegistrar($user->data()->groups);
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
 
-    <title>Dashboard</title>
+    <title>ECLE - Search All</title>
     <link rel="icon" type="image/x-icon" href="resource/img/icon.ico" />
   </head>
   <body>
@@ -75,12 +75,17 @@ isRegistrar($user->data()->groups);
             </div>
 
             <!-- removed -->
-            <div class="item pb-3 border-bottom">
+            <div class="item">
               <a class="sub-btn"><i class="fa-solid fa-xmark"></i></i>Removed<i class="fas fa-chevron-right dropdown"></i></a>
                 <div class="sub-menu">
                   <!-- <a href="regs-hld-tr.php" name="Atransfer" class="sub-item border-bottom" value="Transfer">Transfer</a> -->
                   <a href="regs-rem-gd.php" name="Agraduate" class="sub-item" value="Graduate">Graduate</a>
                 </div>
+            </div>
+
+            <!-- search -->
+            <div class="item pb-3 border-bottom">
+              <a class="sub-btn" href="regs-search.php"><i class="fa-solid fa-magnifying-glass"></i> Search All</a>
             </div>
 
             <script type="text/javascript">
@@ -95,7 +100,7 @@ isRegistrar($user->data()->groups);
             
           </div>
           <div class="sch-img text-center">
-              <img class="sch-logo" src='resource/img/<?php deptImage(); ?>'>
+              <img class="sch-logo-reg" src='resource/img/<?php deptImage(); ?>'>
           </div>
         </div>
 
@@ -115,7 +120,7 @@ isRegistrar($user->data()->groups);
                     <i class="fas fa-user me-2"></i> <?php echo $user->data()->username ?>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a href= "#" class="dropdown-item" data-bs-toggle='modal' data-bs-target='#reportModal'>Reports</a></li>
+                    <!-- <li><a href= "#" class="dropdown-item" data-bs-toggle='modal' data-bs-target='#reportModal'>Reports</a></li> -->
                     <li><a href="logout.php" class="dropdown-item">Logout</a></li>
                   </ul>
                 </li>
@@ -129,16 +134,16 @@ isRegistrar($user->data()->groups);
           <div class="container-fluid main p-5">
             <div class="col-md p-3 content">
 
-              <div class="row justify-content-md-center next">
-                <div class="col-md-3 pt-3 border border-danger">
-                  <h3 class="text-center"><i class="fa-solid fa-magnifying-glass"></i> Search All</h3>
+              <div class="row justify-content-md-center next p-3">
+                <div class="col-md-3 pt-3 content">
+                  <h3 class="text-center p-3"><i class="fa-solid fa-magnifying-glass fa-beat-fade fa-lg"></i> Search All</h3>
                 </div>
-                <div class="col-md-9 pt-3 border border-warning">
+                <div class="col-md-9 pt-3">
                   <form method="get">
                     <div class="row form-group">
                       <div class="col col-md-9">
                         <label for="searchName">Name of Student</label>
-                        <input type="text" class="form-control" name="searchName" id="searchName" value="<?php if(!empty($_GET['searchName'])){echo $_GET['searchName'];}?>" required>
+                        <input type="text" class="form-control" name="searchName" id="searchName" value="<?php if(!empty($_GET['searchName'])){echo $_GET['searchName'];}?>" autocomplete="off" required>
                       </div>
                       <div class="col col-md-3">
                         <label for="submitSearch" class="form-label">&nbsp</label>
@@ -150,7 +155,7 @@ isRegistrar($user->data()->groups);
               </div>
               
               <div class="row justify-content-md-center next">
-                <div class="col-md p-5 border border-primary content">
+                <div class="col-md p-5">
                     <?php 
                       if(!empty($_GET['searchName'])){
                         $searchtable->searchTable($_GET['searchName']);

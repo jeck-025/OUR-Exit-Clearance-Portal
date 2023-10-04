@@ -83,7 +83,6 @@ $import = new import();
             <!-- search -->
             <div class="item pb-3 border-bottom">
               <a class="sub-btn" href="regs-search.php"><i class="fa-solid fa-magnifying-glass"></i> Search All</a>
-
             </div>
 
             <script type="text/javascript">
@@ -98,7 +97,7 @@ $import = new import();
             
           </div>
           <div class="sch-img text-center">
-              <img class="sch-logo" src='resource/img/<?php deptImage(); ?>'>
+              <img class="sch-logo-reg" src='resource/img/<?php deptImage(); ?>'>
           </div>
         </div>
 
