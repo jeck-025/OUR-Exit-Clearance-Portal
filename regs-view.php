@@ -4,7 +4,7 @@ isLogin();
 $searchtable = new searchAllTable();
 $viewtable = new viewtable();
 $user = new user();
-isRegistrar($user->data()->groups);
+isViewer($user->data()->groups);
 ?>
 
 <!DOCTYPE html>
@@ -36,68 +36,8 @@ isRegistrar($user->data()->groups);
           <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase">
             <img src="resource/img/logo.jpg" class="img-fluid logo">
           </div>
-          <div class="list-group list-group-flush my-3">
-            <a class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
-            <i class="fas fa-question-circle me-2"></i>Pendings <?php echo '<span class="badge badge-danger">'.$viewtable->viewTotalRegistrar(). '</span>';  ?>
-            </a>
-
-            <div class="item">
-              <a class="sub-btn" href="registrar.php"><i class="fa-solid fa-house-user"></i>Dashboard</a>
-            </div>
-
-            <!-- requests -->
-            <div class="item">
-              <a class="sub-btn"><i class="fa-solid fa-tag"></i>Requests<i class="fas fa-chevron-right dropdown"></i></a>
-                <div class="sub-menu">
-                  <a href="regs-req-tr.php" name="Rtransfer" class="sub-item border-bottom" value="Transfer">
-                   Transfer <?php echo '<span class="badge badge-danger">'.$viewtable->viewCountPendingRegistrarTR(). '</span>';?> </a> 
-                  <a href="regs-req-gd.php" name="Rgraduate" class="sub-item" value="Graduate">
-                   Graduate <?php echo '<span class="badge badge-danger">'.$viewtable->viewCountPendingRegistrarGD(). '</span>';?> </a> 
-                </div>
-            </div>
-
-            <!-- approved -->
-            <div class="item">
-              <a class="sub-btn"><i class="fa-solid fa-thumbs-up"></i>Cleared<i class="fas fa-chevron-right dropdown"></i></a>
-                <div class="sub-menu">
-                  <a href="regs-app-tr.php" name="Atransfer" class="sub-item border-bottom" value="Transfer">Transfer</a>
-                  <a href="regs-app-gd.php" name="Agraduate" class="sub-item" value="Graduate">Graduate</a>
-                </div>
-            </div>
-
-            <!-- hold -->
-            <div class="item">
-              <a class="sub-btn"><i class="fa-sharp fa-solid fa-pause"></i>On Hold<i class="fas fa-chevron-right dropdown"></i></a>
-                <div class="sub-menu">
-                  <a href="regs-hld-tr.php" name="Atransfer" class="sub-item border-bottom" value="Transfer">Transfer</a>
-                  <a href="regs-hld-gd.php" name="Agraduate" class="sub-item" value="Graduate">Graduate</a>
-                </div>
-            </div>
-
-            <!-- removed -->
-            <div class="item">
-              <a class="sub-btn"><i class="fa-solid fa-xmark"></i></i>Removed<i class="fas fa-chevron-right dropdown"></i></a>
-                <div class="sub-menu">
-                  <!-- <a href="regs-hld-tr.php" name="Atransfer" class="sub-item border-bottom" value="Transfer">Transfer</a> -->
-                  <a href="regs-rem-gd.php" name="Agraduate" class="sub-item" value="Graduate">Graduate</a>
-                </div>
-            </div>
-
-            <!-- search -->
-            <div class="item pb-3 border-bottom">
-              <a class="sub-btn" href="regs-search.php"><i class="fa-solid fa-magnifying-glass"></i> Search All</a>
-            </div>
-
-            <script type="text/javascript">
-              $(document).ready(function(){
-                  $('.sub-btn').click(function(){
-                      $(this).next('.sub-menu').slideToggle();
-                      $(this).find('.dropdown').toggleClass('rotate');
-                  });
-              });
-            </script>
-
-            
+          <div class="list-group list-group-flush my-3 p-2 text-center">
+            <h4><i class="fa-solid fa-hand-peace"></i> <?php echo "Hi, ".$user->data()->name; ?>
           </div>
           <div class="sch-img text-center">
               <img class="sch-logo-reg" src='resource/img/<?php deptImage(); ?>'>
@@ -136,7 +76,7 @@ isRegistrar($user->data()->groups);
 
               <div class="row justify-content-md-center next p-3">
                 <div class="col-md-3 pt-3 content">
-                  <h3 class="text-center p-3"><i class="fa-solid fa-magnifying-glass fa-beat-fade fa-lg"></i> Search All</h3>
+                  <h3 class="text-center p-3"><i class="fa-solid fa-magnifying-glass fa-beat-fade fa-lg"></i> Clearance Search</h3>
                 </div>
                 <div class="col-md-9 pt-3">
                   <form method="get">

@@ -9,7 +9,7 @@ class searchAllTable extends config{
   $key = strtoupper($key);
 
   $con = $this->con();
-  $sql = "SELECT * FROM `ecle_forms` WHERE `lname` LIKE '%$key%' OR `fname` LIKE '%$key%' OR `mname` LIKE '%$key%' OR `course` LIKE '%$key%'";
+  $sql = "SELECT * FROM `ecle_forms` WHERE `lname` LIKE '%$key%' OR `fname` LIKE '%$key%' OR `mname` LIKE '%$key%' OR upper(course) LIKE '%$key%'";
   $data= $con->prepare($sql);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
@@ -101,7 +101,7 @@ class searchAllTable extends config{
 
   echo "</table></div>";
 
-  $sql0 = "SELECT * FROM `ecle_forms_ug` WHERE `lname` LIKE '%$key%' OR `fname` LIKE '%$key%' OR `mname` LIKE '%$key%'";
+  $sql0 = "SELECT * FROM `ecle_forms_ug` WHERE `lname` LIKE '%$key%' OR `fname` LIKE '%$key%' OR `mname` LIKE '%$key%' OR upper(course) LIKE '%$key%'";
   $data0= $con->prepare($sql0);
   $data0->execute();
   $result0 = $data0->fetchAll(PDO::FETCH_ASSOC);
