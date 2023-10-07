@@ -142,7 +142,7 @@ isRegistrar($user->data()->groups);
                   <form method="get">
                     <div class="row form-group">
                       <div class="col col-md-9">
-                        <label for="searchName">Name of Student</label>
+                        <label for="searchName">Enter Name of Student or Course</label>
                         <input type="text" class="form-control" name="searchName" id="searchName" value="<?php if(!empty($_GET['searchName'])){echo $_GET['searchName'];}?>" autocomplete="off" required>
                       </div>
                       <div class="col col-md-3">
