@@ -139,23 +139,25 @@ function vald(){
                             if($user->data()->groups == 1){                     // admin
                                  Redirect::to('registrar.php');
                                 echo $user->data()->groups;
-                            }else if($user->data()->groups == 2){               // registrar
+                            }elseif($user->data()->groups == 2){               // registrar
                                  Redirect::to('registrar.php');
                                 echo $user->data()->groups;
-                            }else if($user->data()->groups == 3){               // dean's offices
+                            }elseif($user->data()->groups == 3){               // dean's offices
                                 Redirect::to('dean.php');
                                echo $user->data()->groups;
-                            }else if($user->data()->groups == 4){               // accounting
-                            Redirect::to('accounting.php');
-                           echo $user->data()->groups;
-                            }else if($user->data()->groups == 5){               // guidance
-                            Redirect::to('guidance.php');
-                           echo $user->data()->groups;
-                            }else if($user->data()->groups == 6){               // library
+                            }elseif($user->data()->groups == 4){               // accounting
+                                Redirect::to('accounting.php');
+                                echo $user->data()->groups;
+                            }elseif($user->data()->groups == 5){               // guidance
+                                Redirect::to('guidance.php');
+                                echo $user->data()->groups;
+                            }elseif($user->data()->groups == 6){               // library
                                 Redirect::to('library.php');
-                               echo $user->data()->groups;
-                            }
-                            else{
+                                echo $user->data()->groups;
+                            }elseif($user->data()->groups == 7){               // viewer-OUR
+                                Redirect::to('regs-view.php');
+                                echo $user->data()->groups;
+                            }else{
                                 Redirect::to('index.php');
                                echo $user->data()->groups;
                             }
@@ -525,6 +527,16 @@ function isGuidance($user){
 
 function isLibrary($user){
     if($user === "6"){
+
+    }
+    else{
+        header("HTTP/1.1 403 Forbidden");
+        exit;
+    }
+}
+
+function isViewer($user){
+    if($user === "7"){
 
     }
     else{
