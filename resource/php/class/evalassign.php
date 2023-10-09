@@ -360,13 +360,9 @@ class evalassign extends config{
 
     public function countTotalRegistrar(){
         $count = new evalassign();
-
-        $con = $this->con();
         $GD = $count->countTotalRegistrarGD();
         $UG = $count->countTotalRegistrarUG();
-
         $count = $GD + $UG;
-
         return $count;
     }
 }
