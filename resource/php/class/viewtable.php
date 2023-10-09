@@ -101,7 +101,7 @@ class viewtable extends config{
   // echo "<button class='btn btn-sm btn-block btn-success d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsModal$id' data-id='$id'><i class='fa-solid fa-check'></i> Sign</button>";
   // echo "<button class='btn btn-sm btn-block btn-warning d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsHold$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Hold</button>";
   echo "<a href='viewRegistrar.php?id=$data[id]&type=$data[studentType]' class='btn btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
-  echo "<button class='btn btn-sm btn-block btn-danger d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsRemove$id' data-id='$id'><i class='fa-solid fa-trash'></i> Remove </button>";
+  echo "<button class='btn btn-sm btn-block btn-danger d-block actions mt-1' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsRemove$id' data-id='$id'><i class='fa-solid fa-trash'></i> Remove </button>";
           include "modals.php";
   echo "</td>";
 
@@ -183,7 +183,7 @@ class viewtable extends config{
   // echo "<button class='btn btn-sm btn-block btn-secondary d-block actions disabled' id='btn' type='button'><i class='fa-solid fa-triangle-exclamation'></i> Hold</button>";
   echo "</span>";
   echo "<a href='viewRegistrar.php?id=$data2[id]&type=$data2[studentType]' class='btn btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
-  echo "<button class='btn btn-sm btn-block btn-danger d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsRemove$id2' data-id='$id2'><i class='fa-solid fa-trash'></i> Remove </button>";
+  echo "<button class='btn btn-sm btn-block btn-danger d-block actions mt-1' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsRemove$id2' data-id='$id2'><i class='fa-solid fa-trash'></i> Remove </button>";
       include "modals-ext.php";
   echo "</td>";
   echo "</tr>";
@@ -278,7 +278,7 @@ public function viewRequestTableRegistrarGraduate(){
   // echo "<button class='btn btn-sm btn-block btn-success d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsModal$id' data-id='$id'><i class='fa-solid fa-check'></i> Sign</button>";
   // echo "<button class='btn btn-sm btn-block btn-warning d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsHold$id' data-id='$id'><i class='fa-solid fa-triangle-exclamation'></i> Hold</button>";
   echo "<a href='viewRegistrar.php?id=$data[id]&type=$data[studentType]' class='btn btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
-  echo "<button class='btn btn-sm btn-block btn-danger d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsRemove$id' data-id='$id'><i class='fa-solid fa-trash'></i> Remove </button>";
+  echo "<button class='btn btn-sm btn-danger d-block btn-block actions mt-1' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsRemove$id' data-id='$id'><i class='fa-solid fa-trash'></i> Remove </button>";
           include "modals.php";
   echo "</td>";
   echo "</tr>";
@@ -350,7 +350,7 @@ public function viewRequestTableRegistrarGraduate(){
   // echo "<button class='btn btn-sm btn-block btn-secondary d-block actions disabled' id='btn' type='button'><i class='fa-solid fa-triangle-exclamation'></i> Hold</button>";
   echo "</span>";
   echo "<a href='viewRegistrar.php?id=$data2[id]&type=$data2[studentType]' class='btn btn-sm d-block btn-info actions' data-toggle='tooltip' data-placement='top' title='View info'><i class='fa-solid fa-eye'></i> Info</a>";
-  echo "<button class='btn btn-sm btn-block btn-danger d-block actions' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsRemove$id2' data-id='$id2'><i class='fa-solid fa-trash'></i> Remove </button>";
+  echo "<button class='btn btn-sm btn-danger d-block btn-block actions mt-1' id='btn' type='button' data-bs-toggle='modal' data-bs-target='#regsRemove$id2' data-id='$id2'><i class='fa-solid fa-trash'></i> Remove </button>";
       include "modals-ext.php";
   echo "</td>";
   echo "</tr>";
