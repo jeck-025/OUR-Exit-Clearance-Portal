@@ -283,4 +283,90 @@ class evalassign extends config{
         }
         return $query;
     }
+
+    public function countTotalRegistrarGD(){
+        $user = new user();
+        $username = $user->data()->username;
+
+        if($user->data()->groups == '2'){
+            $con = $this->con();
+            $sql = "SELECT * FROM `tbl_accounts` WHERE `username` = '$username'";
+            $data= $con->prepare($sql);
+            $data->execute();
+            $result = $data->fetchAll(PDO::FETCH_ASSOC);
+                $college = $result[0]['colleges'];
+                $college0 = $result[0]['colleges0'];
+                $college1 = $result[0]['colleges1'];
+
+                if(!empty($college1) && !empty($college0)){
+                    $query = "SELECT COUNT(*) FROM `ecle_forms` WHERE `registrarclearance` = 'PENDING' AND `accountingclearance` = 'CLEARED' AND `libraryclearance` = 'CLEARED' AND `departmentclearance` = 'CLEARED' AND `expiry` = 'NO' AND `school` IN ('$college', '$college0', '$college1') ORDER BY `dateReq` ASC";
+                }elseif(empty($college1) && !empty($college0)){
+                    $query = "SELECT COUNT(*) FROM `ecle_forms` WHERE `registrarclearance` = 'PENDING' AND `accountingclearance` = 'CLEARED' AND `libraryclearance` = 'CLEARED' AND `departmentclearance` = 'CLEARED' AND `expiry` = 'NO' AND `school` IN ('$college', '$college0') ORDER BY `dateReq` ASC";
+                }elseif(!empty($college1) && empty($college0)){
+                    $query = "SELECT COUNT(*) FROM `ecle_forms` WHERE `registrarclearance` = 'PENDING' AND `accountingclearance` = 'CLEARED' AND `libraryclearance` = 'CLEARED' AND `departmentclearance` = 'CLEARED' AND `expiry` = 'NO' AND `school` IN ('$college', '$college1') ORDER BY `dateReq` ASC";
+                }elseif(empty($college1) && empty($college0)){
+                    $query = "SELECT COUNT(*) FROM `ecle_forms` WHERE `registrarclearance` = 'PENDING' AND `accountingclearance` = 'CLEARED' AND `libraryclearance` = 'CLEARED' AND `departmentclearance` = 'CLEARED' AND `expiry` = 'NO' AND `school` = '$college' ORDER BY `dateReq` ASC";
+                }else{
+                    //error
+                }
+        }else{
+            $query = "SELECT COUNT(*) FROM `ecle_forms` WHERE `registrarclearance` = 'PENDING' AND `accountingclearance` = 'CLEARED' AND `libraryclearance` = 'CLEARED' AND `departmentclearance` = 'CLEARED' AND `expiry` = 'NO'";
+        }
+
+        $con = $this->con();
+        $data= $con->prepare($query);
+        $data->execute();
+        $count = $data->fetchColumn();
+
+        return $count;
+    }
+
+    public function countTotalRegistrarUG(){
+        $user = new user();
+        $username = $user->data()->username;
+
+        if($user->data()->groups == '2'){
+            $con = $this->con();
+            $sql = "SELECT * FROM `tbl_accounts` WHERE `username` = '$username'";
+            $data= $con->prepare($sql);
+            $data->execute();
+            $result = $data->fetchAll(PDO::FETCH_ASSOC);
+                $college = $result[0]['colleges'];
+                $college0 = $result[0]['colleges0'];
+                $college1 = $result[0]['colleges1'];
+
+                if(!empty($college1) && !empty($college0)){
+                    $query = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE `registrarclearance` = 'PENDING' AND `accountingclearance` = 'CLEARED' AND `libraryclearance` = 'CLEARED' AND `departmentclearance` = 'CLEARED' AND `expiry` = 'NO' AND `school` IN ('$college', '$college0', '$college1') ORDER BY `dateReq` ASC";
+                }elseif(empty($college1) && !empty($college0)){
+                    $query = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE `registrarclearance` = 'PENDING' AND `accountingclearance` = 'CLEARED' AND `libraryclearance` = 'CLEARED' AND `departmentclearance` = 'CLEARED' AND `expiry` = 'NO' AND `school` IN ('$college', '$college0') ORDER BY `dateReq` ASC";
+                }elseif(!empty($college1) && empty($college0)){
+                    $query = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE `registrarclearance` = 'PENDING' AND `accountingclearance` = 'CLEARED' AND `libraryclearance` = 'CLEARED' AND `departmentclearance` = 'CLEARED' AND `expiry` = 'NO' AND `school` IN ('$college', '$college1') ORDER BY `dateReq` ASC";
+                }elseif(empty($college1) && empty($college0)){
+                    $query = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE `registrarclearance` = 'PENDING' AND `accountingclearance` = 'CLEARED' AND `libraryclearance` = 'CLEARED' AND `departmentclearance` = 'CLEARED' AND `expiry` = 'NO' AND `school` = '$college' ORDER BY `dateReq` ASC";
+                }else{
+                    //error
+                }
+        }else{
+            $query = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE `registrarclearance` = 'PENDING' AND `accountingclearance` = 'CLEARED' AND `libraryclearance` = 'CLEARED' AND `departmentclearance` = 'CLEARED' AND `expiry` = 'NO'";
+        }
+
+        $con = $this->con();
+        $data= $con->prepare($query);
+        $data->execute();
+        $count = $data->fetchColumn();
+
+        return $count;
+    }
+
+    public function countTotalRegistrar(){
+        $count = new evalassign();
+
+        $con = $this->con();
+        $GD = $count->countTotalRegistrarGD();
+        $UG = $count->countTotalRegistrarUG();
+
+        $count = $GD + $UG;
+
+        return $count;
+    }
 }

@@ -790,32 +790,33 @@ function schoolSelect(){
     foreach ($rows as $row) {
       echo '<option data-tokens=".' . $row->departmentABBR . '." value="' . $row->departmentABBR . '">' . $row->department . '</option>';
     }
-  }
+}
 
-function evaluatorAssignment(){
-    $user = new user();
-    if($user->data()->username == "EFLORENTINO"){
-        $query = " AND `schoolABBR` = 'PHARM'";
-    }elseif($user->data()->username == "CSEETIONG"){
-        $query = " AND (`schoolABBR` = 'NHM' OR `schoolABBR` = 'MEDICINE' OR `schoolABBR` = 'SCITECH') ";
-    }elseif($user->data()->username == "MJACOSALEM"){
-        $query = " AND `schoolABBR` = 'MEDTECH'";
-    }elseif($user->data()->username == "JCRUZ"){
-        $query = " AND (`schoolABBR` = 'SELAMS' OR `schoolABBR` = 'OPTO') ";
-    }elseif($user->data()->username == "MAPOSTOL"){
-        $query = " AND `schoolABBR` = 'DENT'";
-    }elseif($user->data()->username == "MFLORES"){
-         $query = " AND (`schoolABBR` = 'SAM' OR `schoolABBR` = 'NURSING') ";
-    }elseif($user->data()->username == "ERIVERA"){
-        $query = " AND (`schoolABBR` = 'GRADSCH' OR `schoolABBR` = 'SCITECH') ";
-    }elseif($user->data()->username == "JBOCO"){
-        $query = " AND (`schoolABBR` = 'SAM' OR `schoolABBR` = 'NURSING') ";
-    }else{
-        $query = "";
-        //for REGISTRAR and non-evaluator admin only
-    }
-    return $query;
-  }
+// OLD FUNCTION - DEFUNCT
+// function evaluatorAssignment(){
+//     $user = new user();
+//     if($user->data()->username == "EFLORENTINO"){
+//         $query = " AND `schoolABBR` = 'PHARM'";
+//     }elseif($user->data()->username == "CSEETIONG"){
+//         $query = " AND (`schoolABBR` = 'NHM' OR `schoolABBR` = 'MEDICINE' OR `schoolABBR` = 'SCITECH') ";
+//     }elseif($user->data()->username == "MJACOSALEM"){
+//         $query = " AND `schoolABBR` = 'MEDTECH'";
+//     }elseif($user->data()->username == "JCRUZ"){
+//         $query = " AND (`schoolABBR` = 'SELAMS' OR `schoolABBR` = 'OPTO') ";
+//     }elseif($user->data()->username == "MAPOSTOL"){
+//         $query = " AND `schoolABBR` = 'DENT'";
+//     }elseif($user->data()->username == "MFLORES"){
+//          $query = " AND (`schoolABBR` = 'SAM' OR `schoolABBR` = 'NURSING') ";
+//     }elseif($user->data()->username == "ERIVERA"){
+//         $query = " AND (`schoolABBR` = 'GRADSCH' OR `schoolABBR` = 'SCITECH') ";
+//     }elseif($user->data()->username == "JBOCO"){
+//         $query = " AND (`schoolABBR` = 'SAM' OR `schoolABBR` = 'NURSING') ";
+//     }else{
+//         $query = "";
+//         //for REGISTRAR and non-evaluator admin only
+//     }
+//     return $query;
+//   }
 
   function evaluatorName(){
     $user = new user();
