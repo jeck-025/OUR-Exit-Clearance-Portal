@@ -37,7 +37,7 @@ isViewer($user->data()->groups);
             <img src="resource/img/logo.jpg" class="img-fluid logo">
           </div>
           <div class="list-group list-group-flush my-3 p-2 text-center">
-            <h4><i class="fa-solid fa-hand-peace"></i> <?php echo "Hi, ".$user->data()->name; ?>
+            <h5><i class="fa-solid fa-hand-peace"></i> <?php echo "Hi, ".$user->data()->name; ?></h5>
           </div>
           <div class="sch-img text-center">
               <img class="sch-logo-reg" src='resource/img/<?php deptImage(); ?>'>
@@ -76,7 +76,7 @@ isViewer($user->data()->groups);
 
               <div class="row justify-content-md-center next p-3">
                 <div class="col-md-3 pt-3 content">
-                  <h3 class="text-center p-3"><i class="fa-solid fa-magnifying-glass fa-beat-fade fa-lg"></i> Clearance Search</h3>
+                  <h4 class="text-center p-3"><i class="fa-solid fa-magnifying-glass fa-beat-fade fa-lg"></i> Clearance Search</h4>
                 </div>
                 <div class="col-md-9 pt-3">
                   <form method="get">

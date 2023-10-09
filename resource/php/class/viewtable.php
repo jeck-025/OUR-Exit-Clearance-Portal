@@ -2382,45 +2382,52 @@ public function viewReports(){
   echo "</table>";
 }
 
-public function viewTotalRegistrar(){
-  evaluatorAssignment();
-  $evaluator = evaluatorAssignment();
-  $con = $this->con();
-  $sql = "SELECT COUNT(*) FROM `ecle_forms` WHERE `registrarclearance` = 'PENDING' AND `accountingclearance` = 'CLEARED' AND `libraryclearance` = 'CLEARED' AND `departmentclearance` = 'CLEARED' AND `expiry` = 'NO' $evaluator";
-  $data= $con->prepare($sql);
-  $data->execute();
-  $result1 = $data->fetchColumn();
+// public function viewTotalRegistrar(){
+//   $eval = new evalassign();
+//   //evaluatorAssignment();
+//   //$evaluator = evaluatorAssignment();
+//   $con = $this->con();
+//   //$sql = "SELECT COUNT(*) FROM `ecle_forms` WHERE `registrarclearance` = 'PENDING' AND `accountingclearance` = 'CLEARED' AND `libraryclearance` = 'CLEARED' AND `departmentclearance` = 'CLEARED' AND `expiry` = 'NO' $evaluator";
+//   $sql = $eval->countTotalRegistrarGD();
+//   $data= $con->prepare($sql);
+//   $data->execute();
+//   $result1 = $data->fetchColumn();
 
-  $sql2 = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE `registrarclearance` = 'PENDING' AND `accountingclearance` = 'CLEARED' AND `libraryclearance` = 'CLEARED' AND `departmentclearance` = 'CLEARED' AND `expiry` = 'NO' $evaluator";
-  $data2= $con->prepare($sql2);
-  $data2->execute();
-  $result2 = $data2->fetchColumn();
+//   //$sql2 = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE `registrarclearance` = 'PENDING' AND `accountingclearance` = 'CLEARED' AND `libraryclearance` = 'CLEARED' AND `departmentclearance` = 'CLEARED' AND `expiry` = 'NO' $evaluator";
+  
+//   $sql2 = $eval->countTotalRegistrarUG();
+//   $data2= $con->prepare($sql2);
+//   $data2->execute();
+//   $result2 = $data2->fetchColumn();
 
-  $total = $result1 + $result2;
-  return $total;
-}
+//   $total = $result1 + $result2;
+//   return $total;
+// }
 
-public function viewCountPendingRegistrarTR(){
-  evaluatorAssignment();
-  $evaluator = evaluatorAssignment();
-  $con = $this->con();
-  $sql = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE `registrarclearance` = 'PENDING' AND `accountingclearance` = 'CLEARED' AND `libraryclearance` = 'CLEARED' AND `departmentclearance` = 'CLEARED' AND `expiry` = 'NO' AND `studentType` = 'Transfer' $evaluator";
-  $data= $con->prepare($sql);
-  $data->execute();
-  $result = $data->fetchColumn();
-  return $result;
-}
+// public function viewCountPendingRegistrarTR(){
+//   $eval = new evalassign();
+//   // evaluatorAssignment();
+//   // $evaluator = evaluatorAssignment();
+//   $con = $this->con();
+//   //$sql = "SELECT COUNT(*) FROM `ecle_forms_ug` WHERE `registrarclearance` = 'PENDING' AND `accountingclearance` = 'CLEARED' AND `libraryclearance` = 'CLEARED' AND `departmentclearance` = 'CLEARED' AND `expiry` = 'NO' AND `studentType` = 'Transfer' $evaluator";
+//   $sql = $eval->countTotalRegistrarUG();
+//   $data= $con->prepare($sql);
+//   $data->execute();
+//   $result = $data->fetchColumn();
+//   return $result;
+// }
 
-public function viewCountPendingRegistrarGD(){
-  evaluatorAssignment();
-  $evaluator = evaluatorAssignment();
-  $con = $this->con();
-  $sql = "SELECT COUNT(*) FROM `ecle_forms` WHERE `registrarclearance` = 'PENDING' AND `accountingclearance` = 'CLEARED' AND `libraryclearance` = 'CLEARED' AND `departmentclearance` = 'CLEARED' AND `expiry` = 'NO' AND `studentType` = 'Graduate' $evaluator";
-  $data= $con->prepare($sql);
-  $data->execute();
-  $result = $data->fetchColumn();
-  return $result;
-}
+// public function viewCountPendingRegistrarGD(){
+//   $eval = new evalassign();
+//   // $evaluator = evaluatorAssignment();
+//   $con = $this->con();
+//   // $sql = "SELECT COUNT(*) FROM `ecle_forms` WHERE `registrarclearance` = 'PENDING' AND `accountingclearance` = 'CLEARED' AND `libraryclearance` = 'CLEARED' AND `departmentclearance` = 'CLEARED' AND `expiry` = 'NO' AND `studentType` = 'Graduate' $evaluator";
+//   $sql = $eval->countTotalRegistrarGD();
+//   $data= $con->prepare($sql);
+//   $data->execute();
+//   $result = $data->fetchColumn();
+//   return $result;
+// }
 
 public function viewTotalAccounting(){
   $con = $this->con();

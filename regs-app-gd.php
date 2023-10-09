@@ -4,6 +4,7 @@ isLogin();
 $viewtable = new viewtable();
 $user = new user();
 isRegistrar($user->data()->groups);
+$eval = new evalassign();
  ?>
 
 <!DOCTYPE html>
@@ -37,9 +38,8 @@ isRegistrar($user->data()->groups);
           </div>
 
           <div class="list-group list-group-flush my-3">
-           <a class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
-            <i class="fas fa-question-circle me-2"></i>Pendings <?php echo '<span class="badge badge-danger">'
-            .$viewtable->viewTotalRegistrar(). '</span>';  ?>
+            <a class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+            <i class="fas fa-question-circle me-2"></i>Pendings <?php echo '<span class="badge badge-danger">'.$eval->countTotalRegistrar(). '</span>';  ?>
             </a>
 
             <div class="item">
@@ -49,12 +49,12 @@ isRegistrar($user->data()->groups);
             <!-- requests -->
             <div class="item">
               <a class="sub-btn"><i class="fa-solid fa-tag"></i>Requests<i class="fas fa-chevron-right dropdown"></i></a>
-              <div class="sub-menu">
-                <a href="regs-req-tr.php" name="Rtransfer" class="sub-item border-bottom" value="Transfer">
-                  Transfer <?php echo '<span class="badge badge-danger">'.$viewtable->viewCountPendingRegistrarTR(). '</span>';?> </a> 
-                <a href="regs-req-gd.php" name="Rgraduate" class="sub-item" value="Graduate">
-                  Graduate <?php echo '<span class="badge badge-danger">'.$viewtable->viewCountPendingRegistrarGD(). '</span>';?> </a> 
-              </div>
+                <div class="sub-menu">
+                  <a href="regs-req-tr.php" name="Rtransfer" class="sub-item border-bottom" value="Transfer">
+                   Transfer <?php echo '<span class="badge badge-danger">'.$eval->countTotalRegistrarUG(). '</span>';?> </a> 
+                  <a href="regs-req-gd.php" name="Rgraduate" class="sub-item" value="Graduate">
+                   Graduate <?php echo '<span class="badge badge-danger">'.$eval->countTotalRegistrarGD(). '</span>';?> </a> 
+                </div>
             </div>
 
             <!-- approved -->
@@ -119,12 +119,6 @@ isRegistrar($user->data()->groups);
                     <i class="fas fa-user me-2"></i> <?php echo $user->data()->username ?>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <?php 
-                      if($user->data()->username == "REGISTRAR" || $user->data()->username == "RCBOLASOC" || $user->data()->username == "jeck"){
-                        echo "<li><a href='adminconfig.php' class='dropdown-item'>Config</a></li>";
-                        echo "<li><a href='changepasswordRegistrar.php' class='dropdown-item'>Change Password</a></li>";
-                      }
-                    ?>
                     <li><a href= "#" class="dropdown-item" data-bs-toggle='modal' data-bs-target='#reportModal'>Reports</a></li>
                     <li><a href="logout.php" class="dropdown-item">Logout</a></li>
                   </ul>
