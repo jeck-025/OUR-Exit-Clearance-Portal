@@ -5,6 +5,7 @@ $searchtable = new searchAllTable();
 $viewtable = new viewtable();
 $user = new user();
 isRegistrar($user->data()->groups);
+$eval = new evalassign();
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +39,7 @@ isRegistrar($user->data()->groups);
           </div>
           <div class="list-group list-group-flush my-3">
             <a class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
-            <i class="fas fa-question-circle me-2"></i>Pendings <?php echo '<span class="badge badge-danger">'.$viewtable->viewTotalRegistrar(). '</span>';  ?>
+            <i class="fas fa-question-circle me-2"></i>Pendings <?php echo '<span class="badge badge-danger">'.$eval->countTotalRegistrar(). '</span>';  ?>
             </a>
 
             <div class="item">
@@ -50,9 +51,9 @@ isRegistrar($user->data()->groups);
               <a class="sub-btn"><i class="fa-solid fa-tag"></i>Requests<i class="fas fa-chevron-right dropdown"></i></a>
                 <div class="sub-menu">
                   <a href="regs-req-tr.php" name="Rtransfer" class="sub-item border-bottom" value="Transfer">
-                   Transfer <?php echo '<span class="badge badge-danger">'.$viewtable->viewCountPendingRegistrarTR(). '</span>';?> </a> 
+                   Transfer <?php echo '<span class="badge badge-danger">'.$eval->countTotalRegistrarUG(). '</span>';?> </a> 
                   <a href="regs-req-gd.php" name="Rgraduate" class="sub-item" value="Graduate">
-                   Graduate <?php echo '<span class="badge badge-danger">'.$viewtable->viewCountPendingRegistrarGD(). '</span>';?> </a> 
+                   Graduate <?php echo '<span class="badge badge-danger">'.$eval->countTotalRegistrarGD(). '</span>';?> </a> 
                 </div>
             </div>
 
