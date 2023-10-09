@@ -60,12 +60,26 @@ $eval = new evalassign();
             </div>
 
             <!-- hold -->
-            <div class="item pb-3 border-bottom">
+            <div class="item">
               <a class="sub-btn"><i class="fa-sharp fa-solid fa-pause"></i>On Hold<i class="fas fa-chevron-right dropdown"></i></a>
-              <div class="sub-menu">
-                <a href="regs-hld-tr.php" name="Atransfer" class="sub-item" value="Transfer">Transfer</a>
-                <a href="regs-hld-gd.php" name="Agraduate" class="sub-item" value="Graduate">Graduate</a>
-              </div>
+                <div class="sub-menu">
+                  <a href="regs-hld-tr.php" name="Atransfer" class="sub-item border-bottom" value="Transfer">Transfer</a>
+                  <a href="regs-hld-gd.php" name="Agraduate" class="sub-item" value="Graduate">Graduate</a>
+                </div>
+            </div>
+
+            <!-- removed -->
+            <div class="item">
+              <a class="sub-btn"><i class="fa-solid fa-xmark"></i></i>Removed<i class="fas fa-chevron-right dropdown"></i></a>
+                <div class="sub-menu">
+                  <!-- <a href="regs-hld-tr.php" name="Atransfer" class="sub-item border-bottom" value="Transfer">Transfer</a> -->
+                  <a href="regs-rem-gd.php" name="Agraduate" class="sub-item" value="Graduate">Graduate</a>
+                </div>
+            </div>
+
+            <!-- search -->
+            <div class="item pb-3 border-bottom">
+              <a class="sub-btn" href="regs-search.php"><i class="fa-solid fa-magnifying-glass"></i> Search All</a>
             </div>
 
             <script type="text/javascript">
@@ -79,7 +93,7 @@ $eval = new evalassign();
 
           </div>
         <div class="sch-img text-center">
-            <img class="sch-logo" src='resource/img/<?php deptImage(); ?>'>
+            <img class="sch-logo-reg" src='resource/img/<?php deptImage(); ?>'>
         </div>
         </div>
 

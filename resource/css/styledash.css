@@ -20,6 +20,7 @@ body {
   animation-fill-mode: forwards;
 }
 
+
 @keyframes fadeInAnimation {
   0% {
     opacity: 0;
@@ -27,6 +28,24 @@ body {
 
   100% {
     opacity: 1;
+  }
+}
+
+.badge.bg-warning {
+  animation: fading 3s infinite !important;
+}
+
+@keyframes fading {
+  0% {
+    opacity: 0
+  }
+
+  50% {
+    opacity: 1
+  }
+
+  100% {
+    opacity: 0
   }
 }
 
@@ -317,7 +336,8 @@ td.staticon-hold{
   text-align: center;
   vertical-align: middle;
   padding: 0;
-  color:#ffe100
+  color:#ffe100;
+  animation: fading 3s infinite !important;
 }
 
 th.stathead{
@@ -345,6 +365,8 @@ i.remarks{
 
 b.remarks{
   color: red;
+  animation: fading 3s infinite !important;
+
 }
 
 .logo{
