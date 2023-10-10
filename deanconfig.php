@@ -37,49 +37,6 @@ $update = new updateDeanCFG();
             <div class="item">
               <a href="registrar.php"><i class="fa-solid fa-gauge-high"></i>Dashboard</a>
             </div>
-
-            <!-- requests -->
-            <div class="item">
-              <a class="sub-btn"><i class="fa-solid fa-tag"></i>Requests<i class="fas fa-chevron-right dropdown"></i></a>
-                <div class="sub-menu">
-                  <a href="regs-req-tr.php" name="Rtransfer" class="sub-item border-bottom" value="Transfer">
-                   Transfer <?php echo '<span class="badge badge-danger">'.$viewtable->viewCountPendingRegistrarTR(). '</span>';?> </a> 
-                  <a href="regs-req-gd.php" name="Rgraduate" class="sub-item" value="Graduate">
-                   Graduate <?php echo '<span class="badge badge-danger">'.$viewtable->viewCountPendingRegistrarGD(). '</span>';?> </a> 
-                </div>
-            </div>
-
-            <!-- approved -->
-            <div class="item">
-              <a class="sub-btn"><i class="fa-solid fa-thumbs-up"></i>Cleared<i class="fas fa-chevron-right dropdown"></i></a>
-                <div class="sub-menu">
-                  <a href="regs-app-tr.php" name="Atransfer" class="sub-item border-bottom" value="Transfer">Transfer</a>
-                  <a href="regs-app-gd.php" name="Agraduate" class="sub-item" value="Graduate">Graduate</a>
-                </div>
-            </div>
-
-            <!-- hold -->
-            <div class="item">
-              <a class="sub-btn"><i class="fa-sharp fa-solid fa-pause"></i>On Hold<i class="fas fa-chevron-right dropdown"></i></a>
-                <div class="sub-menu">
-                  <a href="regs-hld-tr.php" name="Atransfer" class="sub-item border-bottom" value="Transfer">Transfer</a>
-                  <a href="regs-hld-gd.php" name="Agraduate" class="sub-item" value="Graduate">Graduate</a>
-                </div>
-            </div>
-
-            <!-- removed -->
-            <div class="item">
-              <a class="sub-btn"><i class="fa-solid fa-xmark"></i></i>Removed<i class="fas fa-chevron-right dropdown"></i></a>
-                <div class="sub-menu">
-                  <!-- <a href="regs-hld-tr.php" name="Atransfer" class="sub-item border-bottom" value="Transfer">Transfer</a> -->
-                  <a href="regs-rem-gd.php" name="Agraduate" class="sub-item" value="Graduate">Graduate</a>
-                </div>
-            </div>
-
-            <!-- search -->
-            <div class="item pb-3 border-bottom">
-              <a class="sub-btn" href="regs-search.php"><i class="fa-solid fa-magnifying-glass"></i> Search All</a>
-            </div>
             <script type="text/javascript">
               $(document).ready(function(){
                 $('.sub-btn').click(function(){
@@ -90,7 +47,7 @@ $update = new updateDeanCFG();
             </script>
           </div>
           <div class="sch-img text-center">
-            <img class="sch-logo-reg" src="resource/img/gear.png">
+            <img class="sch-logo" src="resource/img/gear.png">
           </div>
         </div>
 
@@ -131,6 +88,10 @@ $update = new updateDeanCFG();
 
                   if(isset($_POST['updatedeanCFGAdd'])){
                     $update->addDean(); 
+                  }
+
+                  if(isset($_POST['courseNewSubmit'])){
+                    $update->addCourse(); 
                   }
 
                   if(isset($_POST['updatedeanCFGDel'])){
@@ -401,7 +362,6 @@ $update = new updateDeanCFG();
                       <div class="report-dl-form">
                         <div class="col col-md-9 pt-3 pb-3 mb-3 shadow">
                           <div class="col col-md">
-                          
                             <div class='input-group col-md-12'>
                               <div class="col col-md">
                                 <form method="post">
@@ -439,11 +399,139 @@ $update = new updateDeanCFG();
                                     </div>
                                   </div>
                                 </form>
-
                               </div>
                             </div>
-
-
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- NEW SET -->
+              <div class="accordion" id="accordionExample3">
+              <h4 class="text-center m-4">Course Management</h4><hr>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingFive">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                      Add Course
+                    </button>
+                  </h2>
+                  <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample3">
+                    <div class="accordion-body">
+                      <div class="report-dl-form">
+                        <div class="col col-md-9 pt-3 pb-3 mb-3 text-center shadow">
+                          <div class="col col-md text-center">
+                            
+                               <h4>Add Course</h4><hr>
+                                  <form action="" method="post">
+                                    <table class="table ">
+                                        <tr>
+                                            <td>
+                                                <div class="row justify-content-center">
+                                                    <div class="form-group col-8">
+                                                      <label for = "courseName" class=""> Course</label>
+                                                      <input class="form-control"  type = "text" name="courseName" id="courseName" autocomplete="off" required/>
+                                                    </div>
+                                                    <div class="form-group col-4">
+                                                      <label for = "courseABBR" class=""> Course Abbreviaton</label>
+                                                      <input class="form-control"  type = "text" name="courseABBR" id="courseABBR" autocomplete="off" required>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td>
+                                                <div class="row justify-content-center">
+   
+                                                    <div class="form-group col-8">
+                                                      <label for="courseCollege" >Assign to School:</label>
+                                                          <select id="courseCollege" name="courseCollege" class="form-select form-control" data-live-search="true" required>
+                                                            <?php $view->collegeSP2();?>
+                                                          </select>
+                                                    </div>
+                                                    <div class="form-group col-4">
+                                                      <label for="courseGroup" >Assign to Course Group:</label>
+                                                          <select id="courseGroup" name="courseGroup" class="form-select form-control" data-live-search="true" required>
+                                                            <option value="Non-Science">Non-Science</option>
+                                                            <option value="Science">Science</option>
+                                                          </select>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="row justify-content-center">
+                                                    <div class="form-group col-7">
+                                                        <label  >&nbsp;</label>
+                                                    <input type="hidden" name ="Token" value="<?php echo Token::generate();?>" />
+                                                    <input type="submit" value="Add New Course" class=" form-control btn btn-adduser" name="courseNewSubmit" />
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingSix">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                      Edit / Remove User Account
+                    </button>
+                  </h2>
+                  <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample3">
+                    <div class="accordion-body">
+                      <div class="report-dl-form">
+                        <div class="col col-md-9 pt-3 pb-3 mb-3 shadow">
+                          <div class="col col-md">
+                            <div class='input-group col-md-12'>
+                              <div class="col col-md">
+                                <form method="post">
+                                  <div class="row mb-3">
+                                    <h4 class="text-center">Edit / Remove User</h4><hr>
+                                    <div class="col col-md-8">
+                                      <label for="d_user" class="form-label">Name</label>
+                                      <?php $view->loadUserAcct(); ?>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                      <label for="userEdit" class="form-label">&nbsp</label>
+                                        <button type="submit" class="btn btn-editButtons btn-block" name="userEdit" id="userEdit"><i class="fa-solid fa-user-pen"></i> Edit</button>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                      <label for="userEdit" class="form-label">&nbsp</label>
+                                        <button type="button" class="btn btn-danger btn-block" data-bs-toggle="modal" data-bs-target="#userDelModal"><i class="fa-solid fa-trash"></i> Delete</button>
+                                    </div>
+                                  </div>
+                                  <div class="modal fade" id="userDelModal" tabindex="-1" aria-labelledby="userDelModal" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="#userDelModalLabel">Confirm</h5>
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                          Delete User? <br>
+                                          This cannot be undone.
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                          <button type="submit" id="userDel" name="userDel" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete </button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </form>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -452,15 +540,17 @@ $update = new updateDeanCFG();
                 </div>
               </div>
               
+
+                
               <h4 class="text-center m-4">Mailer Configuration</h4><hr>
-              <div class="accordion" id="accordionExample">
+              <div class="accordion" id="accordionExample4">
                 <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingFive">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                  <h2 class="accordion-header" id="headingSeven">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
                       Mailer Credentials
                     </button>
                   </h2>
-                  <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+                  <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample4">
                     <div class="accordion-body">
                       <div class="report-dl-form">
                         <div class="col col-md-12 pt-3 pb-4 mb-3 text-center shadow">
