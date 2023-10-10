@@ -76,7 +76,7 @@ class updateDeanCFG extends config{
 
         $sql0 = "DELETE FROM `tbl_accounts` WHERE `id` = '$user_id'";
         $data0 = $con->prepare($sql0);
-        //$data0 ->execute();
+        $data0 ->execute();
 
         echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
                 <i class='fa-solid fa-circle-check'></i> User Deleted.
@@ -388,6 +388,32 @@ class updateDeanCFG extends config{
                 </div>
             </div>";
         // die();
+    }
+
+    public function addCourse(){
+        $courseName = $_POST['courseName'];
+        $courseABBR = $_POST['courseABBR'];
+        $courseSchool = $_POST['courseCollege'];
+        $courseGroup = $_POST['courseGroup'];
+
+        $config = new config();
+        $con = $config->con();
+
+        $sql = "SELECT `departmentABBR` FROM `courseschool` WHERE `department` = '$courseSchool' LIMIT 1";
+        $data = $con->prepare($sql);
+        $data->execute();
+        $result = $data->fetchAll(PDO::FETCH_ASSOC);
+            $schoolABBR = $result[0]['departmentABBR'];
+
+        $sql0 = "INSERT INTO `courseschool` (`course`, `courseABBR`, `department`, `departmentABBR`, `type`, `status`) VALUES ('$courseName', '$courseABBR', '$courseSchool', '$schoolABBR', '$courseGroup', 'Active')";
+        $data0 = $con->prepare($sql0);
+        
+        $data0->execute();
+            echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+                <i class='fa-solid fa-circle-check'></i> Course Added.
+                <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>";
+
     }
 }
 ?>
