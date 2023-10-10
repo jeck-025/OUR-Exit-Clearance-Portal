@@ -67,6 +67,7 @@ $view = new view();
               $options = array(
                   'http' => array (
                       'method' => 'POST',
+                      'header' => 'Content-type: application/x-www-form-urlencoded',
                       'content' => http_build_query($data)
                   )
               );
