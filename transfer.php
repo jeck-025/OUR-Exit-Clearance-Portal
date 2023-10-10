@@ -54,14 +54,14 @@ $view = new view();
 
           <?php
           if(!empty($_POST)){
-              if($_POST['captcha'] != $_SESSION['digit']){
+              
                 echo '<div class="alert alert-danger alert-dismissible fade show col-12" role="alert">
                         <b>Captcha Error: </b>Wrong Captcha answer.
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>';
-              }else{
+              
 
               $recaptcha_secret_key = '6LcZHmwoAAAAADZh4bK3HzmFGzLXvTvRs3XiQOsz';
               $recaptcha_response = $_POST['g-recaptcha-response'];
@@ -99,7 +99,7 @@ $view = new view();
 
               
               
-              }
+              
           }
           ?>
 
