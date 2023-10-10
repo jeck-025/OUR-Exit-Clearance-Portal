@@ -12,13 +12,13 @@ $view = new view();
     <link rel="stylesheet" type="text/css"  href="vendor/css/bootstrap-select.min.css">
     <link rel="stylesheet" href="resource/css/transfer.css" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <!-- <script src="https://www.google.com/recaptcha/api.js"></script> -->
 
-    <script>
+    <!-- <script>
     function onSubmit(token) {
       document.getElementById("demo-form").submit();
     }
-    </script>
+    </script> -->
 
     <title>ECLE Transfer Form</title>
     <link rel="icon" type="image/x-icon" href="resource/img/icon.ico" />
@@ -53,15 +53,7 @@ $view = new view();
             </div>
 
           <?php
-          if(!empty($_POST)){
-              
-                echo '<div class="alert alert-danger alert-dismissible fade show col-12" role="alert">
-                        <b>Captcha Error: </b>Wrong Captcha answer.
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>';
-              
+          if(!empty($_POST)){         
 
               $recaptcha_secret_key = '6LcZHmwoAAAAADZh4bK3HzmFGzLXvTvRs3XiQOsz';
               $recaptcha_response = $_POST['g-recaptcha-response'];
@@ -84,21 +76,24 @@ $view = new view();
               $captcha_success = json_decode($verify);
 
               if ($captcha_success->success) {
-                  $insert= new insert($_POST['fname'], $_POST['lname'], $_POST['mname'], $_POST['studID'], 
+
+
+              } else {
+
+                  // reCAPTCHA validation failed, handle it accordingly
+                  // For example, you can display an error message and prevent form submission.
+                  echo "reCAPTCHA validation failed.";
+                  exit;
+              }
+
+              
+                                $insert= new insert($_POST['fname'], $_POST['lname'], $_POST['mname'], $_POST['studID'], 
                                 $_POST['email'], $_POST['contact'], $_POST['course'], $_POST['bday'], 
                                 $_POST['year'], $_POST['sem'], $_POST['university'], $_POST['reason'], 
                                 $_FILES['validID'],$_FILES['validID']['tmp_name'],
                                 $_FILES['file_letter'],$_FILES['file_letter']['tmp_name'],
                                 $_FILES['validID']['size'],
                                 $_FILES['file_letter']['size']);
-              } else {
-                  // reCAPTCHA validation failed, handle it accordingly
-                  // For example, you can display an error message and prevent form submission.
-                  echo "reCAPTCHA validation failed.";
-              }
-
-              
-              
               
           }
           ?>
