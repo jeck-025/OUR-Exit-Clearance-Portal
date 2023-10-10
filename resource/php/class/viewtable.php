@@ -2607,10 +2607,12 @@ public function viewReportsTransfer(){
 }
 
 public function viewRemovedTableRegistrarGraduate(){
-  $evaluator = evaluatorAssignment();
+  $eval = new evalassign();
+  // $evaluator = evaluatorAssignment();
   $evaluator_name = evaluatorName();
   $con = $this->con();
-  $sql = "SELECT * FROM `ecle_forms` WHERE `registrarclearance`='REMOVED' AND `studentType` = 'Graduate' AND `expiry` = 'NO' $evaluator ORDER BY `dateReq` ASC";
+  // $sql = "SELECT * FROM `ecle_forms` WHERE `registrarclearance`='REMOVED' AND `studentType` = 'Graduate' AND `expiry` = 'NO' $evaluator ORDER BY `dateReq` ASC";
+  $sql = $eval->evaluatorAssignmentGDR();
   $data= $con->prepare($sql);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
