@@ -224,7 +224,7 @@ $view = new view();
             <hr class="divider">
               <div class="col-md pb-5 pt-3 text-center">
                 <div>
-                  <button type="submit" class="btn btn-sm button-submit btn-info g-recaptcha data-sitekey='reCAPTCHA_site_key' data-callback='onSubmit' data-action='submit'"><i class="fas fa-paper-plane"></i> Submit</button>
+                  <button type="submit" class="btn btn-sm button-submit btn-info"><i class="fas fa-paper-plane"></i> Submit</button>
                 </div>
                 <div>
                   <!-- <button onclick="location.href='index.php'" class="btn btn-sm btn-outline-light mt-2 button-back">Back</button> -->
