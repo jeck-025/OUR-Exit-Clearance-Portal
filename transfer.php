@@ -12,7 +12,13 @@ $view = new view();
     <link rel="stylesheet" type="text/css"  href="vendor/css/bootstrap-select.min.css">
     <link rel="stylesheet" href="resource/css/transfer.css" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <!-- <script src="https://www.google.com/recaptcha/api.js"></script> -->
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+
+    <script>
+    function onSubmit(token) {
+      document.getElementById("demo-form").submit();
+    }
+    </script>
 
     <title>ECLE Transfer Form</title>
     <link rel="icon" type="image/x-icon" href="resource/img/icon.ico" />
@@ -56,13 +62,43 @@ $view = new view();
                         </button>
                     </div>';
               }else{
-              $insert= new insert($_POST['fname'], $_POST['lname'], $_POST['mname'], $_POST['studID'], 
+
+              $recaptcha_secret_key = '6LcZHmwoAAAAADZh4bK3HzmFGzLXvTvRs3XiQOsz';
+              $recaptcha_response = $_POST['g-recaptcha-response'];
+
+              $url = 'https://www.google.com/recaptcha/api/siteverify';
+              $data = array(
+                  'secret' => $recaptcha_secret_key,
+                  'response' => $recaptcha_response
+              );
+
+              $options = array(
+                  'http' => array (
+                      'method' => 'POST',
+                      'content' => http_build_query($data)
+                  )
+              );
+
+              $context = stream_context_create($options);
+              $verify = file_get_contents($url, false, $context);
+              $captcha_success = json_decode($verify);
+
+              if ($captcha_success->success) {
+                  $insert= new insert($_POST['fname'], $_POST['lname'], $_POST['mname'], $_POST['studID'], 
                                 $_POST['email'], $_POST['contact'], $_POST['course'], $_POST['bday'], 
                                 $_POST['year'], $_POST['sem'], $_POST['university'], $_POST['reason'], 
                                 $_FILES['validID'],$_FILES['validID']['tmp_name'],
                                 $_FILES['file_letter'],$_FILES['file_letter']['tmp_name'],
                                 $_FILES['validID']['size'],
                                 $_FILES['file_letter']['size']);
+              } else {
+                  // reCAPTCHA validation failed, handle it accordingly
+                  // For example, you can display an error message and prevent form submission.
+                  echo "reCAPTCHA validation failed.";
+              }
+
+              
+              
               }
           }
           ?>
@@ -174,21 +210,21 @@ $view = new view();
               
               <div class="col-md-6 text-center">
                 <div class="col-12 text-center">
-                <p class="fupload_head"><i class="fas fa-user-check"></i> Captcha</p>
-                <p class="fupload_captcha">Please complete the captcha below before submitting.</p>
+                <!-- <p class="fupload_head"><i class="fas fa-user-check"></i> Captcha</p>
+                <p class="fupload_captcha">Please complete the captcha below before submitting.</p> -->
                 <!-- <div class="form-group col-md-5 justify-content-center"> -->
-                  <p><img src="captcha.php" width="120" height="30" alt="CAPTCHA"></p>
+                  <!-- <p><img src="captcha.php" width="120" height="30" alt="CAPTCHA"></p>
                   <p><input type="text" size="6" maxlength="5" name="captcha" value="">
-                  <small>Copy the digits from the image into this box</small></p>
+                  <small>Copy the digits from the image into this box</small></p> -->
                   <!-- </div> -->
+                  <div class="g-recaptcha" data-sitekey="6LcZHmwoAAAAAMud5aRHZVyMKm80GzSqMM6fFoXz"></div>
               </div>
             </div>
 
             <hr class="divider">
               <div class="col-md pb-5 pt-3 text-center">
                 <div>
-                  <button type="submit" class="btn btn-sm button-submit btn-info"><i class="fas fa-paper-plane"></i> Submit</button>
-                  <!-- <button class="g-recaptcha" data-sitekey="reCAPTCHA_site_key" data-callback='onSubmit' data-action='submit'>Submit</button> -->
+                  <button type="submit" class="btn btn-sm button-submit btn-info g-recaptcha data-sitekey='reCAPTCHA_site_key' data-callback='onSubmit' data-action='submit'"><i class="fas fa-paper-plane"></i> Submit</button>
                 </div>
                 <div>
                   <!-- <button onclick="location.href='index.php'" class="btn btn-sm btn-outline-light mt-2 button-back">Back</button> -->
@@ -208,6 +244,7 @@ $view = new view();
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="vendor/js/bootstrap-select.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
@@ -219,11 +256,7 @@ $view = new view();
     <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script> -->
     
-   <!-- <script>
-   function onSubmit(token) {
-     document.getElementById("demo-form").submit();
-   }
- </script> -->
+
 
 </body>
 </html>
