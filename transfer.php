@@ -7,62 +7,86 @@ $view = new view();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <head>
     <script src="https://kit.fontawesome.com/03ca298d2d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css"  href="vendor/css/bootstrap-select.min.css">
     <link rel="stylesheet" href="resource/css/transfer.css" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-
-    <title>ECLE Transfer Form</title>
     <link rel="icon" type="image/x-icon" href="resource/img/icon.ico" />
   </head>
+
+  <title>ECLE Transfer Form</title>
   <body>
     <header>
-
-        <nav class="navbar navbar-expand-md navbar-dark">
-          <img src="resource/img/ceulogo2.png" class="img-fluid logo">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="icons ml-auto">
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link" href="https:/www.facebook.com/theCEUofficial/"><i class="fab fa-facebook-f"></i></a></li>
-                <li class="nav-item"><a class="nav-link" href="https://www.instagram.com/ceuofficial/"><i class="fab fa-instagram"></i></a></li>
-                <li class="nav-item"><a class="nav-link" href="https://twitter.com/ceumalolos"><i class="fab fa-twitter"></i></a></li>
-              </ul>
-            </div>
+      <nav class="navbar navbar-expand-md navbar-dark">
+        <img src="resource/img/ceulogo2.png" class="img-fluid logo">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="icons ml-auto">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item"><a class="nav-link" href="https:/www.facebook.com/theCEUofficial/"><i class="fab fa-facebook-f"></i></a></li>
+              <li class="nav-item"><a class="nav-link" href="https://www.instagram.com/ceuofficial/"><i class="fab fa-instagram"></i></a></li>
+              <li class="nav-item"><a class="nav-link" href="https://twitter.com/ceumalolos"><i class="fab fa-twitter"></i></a></li>
+            </ul>
           </div>
-        </nav>
+        </div>
+      </nav>
 
       <div class="container mt-5 responsive">
         <div class="row">
           <div class="content px-4 m-auto justify-content-center responsive">
             <div class="col-md pt-3 text-center">
-              <!-- <img class="ecleLogo" src="resource/img/ecle-logo-new.png"> -->
               <h2 class="head-text"><img class="ecleLogo" src="resource/img/ecle-logo-new.png">Exit Clearance Form for Undergraduates</h2>
-              
               <hr class="divider">
             </div>
 
           <?php
           if(!empty($_POST)){
-              if($_POST['captcha'] != $_SESSION['digit']){
-                echo '<div class="alert alert-danger alert-dismissible fade show col-12" role="alert">
-                        <b>Captcha Error: </b>Wrong Captcha answer.
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>';
+            $recaptcha_secret_key = '6LcZHmwoAAAAADZh4bK3HzmFGzLXvTvRs3XiQOsz';
+            $recaptcha_response = $_POST['g-recaptcha-response'];
+
+            $url = 'https://www.google.com/recaptcha/api/siteverify';
+            $data = array(
+                'secret' => $recaptcha_secret_key,
+                'response' => $recaptcha_response);
+
+            $options = array(
+                'http' => array (
+                    'method' => 'POST',
+                    'header' => 'Content-type: application/x-www-form-urlencoded',
+                    'content' => http_build_query($data)));
+
+            $context = stream_context_create($options);
+            $verify = file_get_contents($url, false, $context);
+            $captcha_success = json_decode($verify);
+
+              if ($captcha_success->success){
+                //do nothing, continue script
               }else{
-              $insert= new insert($_POST['fname'], $_POST['lname'], $_POST['mname'], $_POST['studID'], 
-                                $_POST['email'], $_POST['contact'], $_POST['course'], $_POST['bday'], 
-                                $_POST['year'], $_POST['sem'], $_POST['university'], $_POST['reason'], 
-                                $_FILES['validID'],$_FILES['validID']['tmp_name'],
-                                $_FILES['file_letter'],$_FILES['file_letter']['tmp_name'],
-                                $_FILES['validID']['size'],
-                                $_FILES['file_letter']['size']);
+                echo "<div class='row mt-3 mb-5 pb-5 text-center'>
+                        <div class='col-md-12'>
+                          <div class='alert alert-danger p-3' role='alert'>
+                            <h1><i class='fa-solid fa-triangle-exclamation fa-fade'></i> ERROR:</h1> 
+                            <h3> reCAPTCHA validation failed.</h3>
+                            <h4> Fill up the form again and answer the captcha. </h4>
+                          </div>
+                          <button onclick='history.back()' class='btn btn-sm btn-outline-light mt-2 button-back'> <i class='fas fa-long-arrow-alt-left'></i> Back</button>
+                        </div>
+                      </div>";
+
+                exit;
               }
+
+              $insert= new insert($_POST['fname'], $_POST['lname'], $_POST['mname'], $_POST['studID'], 
+              $_POST['email'], $_POST['contact'], $_POST['course'], $_POST['bday'], 
+              $_POST['year'], $_POST['sem'], $_POST['university'], $_POST['reason'], 
+              $_FILES['validID'],$_FILES['validID']['tmp_name'],
+              $_FILES['file_letter'],$_FILES['file_letter']['tmp_name'],
+              $_FILES['validID']['size'],
+              $_FILES['file_letter']['size']);
           }
           ?>
 
@@ -86,6 +110,7 @@ $view = new view();
                 <input type="text" name="lname" class="form-control" pattern="[a-zA-Z\s]*$" oninvalid="this.setCustomValidity('Please use characters!')" oninput="this.setCustomValidity('')" id="lastName" required>
               </div>
             </div>
+            
             <div class="row mt-3 g-3">
               <!---Student Number--->
               <div class="col-md-4">
@@ -106,8 +131,8 @@ $view = new view();
                 <input type="text" name="contact" class="form-control" pattern="09[0-9]{9}" oninvalid="this.setCustomValidity('Please follow the pattern 0XXXXXXXXXX')" oninput="this.setCustomValidity('')" id="contactNumber" required>
               </div>
             </div>
+            
             <div class="row mt-3 g-3">
-              
               <!---Course/Degree--->
               <div class="col-md-8">
                 <label form="course" class="form-label">Course/Degree</label>
@@ -121,6 +146,7 @@ $view = new view();
                 <input type="date" name="bday" class="form-control" id="bday" required>
               </div>
             </div>
+
             <div class="row mt-3 g-3">
               <!---Year Level--->
               <div class="col-md-3">
@@ -173,51 +199,34 @@ $view = new view();
               
               <div class="col-md-6 text-center">
                 <div class="col-12 text-center">
-                <p class="fupload_head"><i class="fas fa-user-check"></i> Captcha</p>
-                <p class="fupload_captcha">Please complete the captcha below before submitting.</p>
-                <!-- <div class="form-group col-md-5 justify-content-center"> -->
-                  <p><img src="captcha.php" width="120" height="30" alt="CAPTCHA"></p>
-                  <p><input type="text" size="6" maxlength="5" name="captcha" value="">
-                  <small>Copy the digits from the image into this box</small></p>
-                  <!-- </div> -->
+                  <p class="fupload_head"><i class="fas fa-user-check"></i> Captcha</p>
+                  <p class="fupload_captcha">Please complete the captcha below before submitting.</p>
+                  <div class="p-1 d-flex justify-content-center">
+                    <div class="g-recaptcha" data-sitekey="6LcZHmwoAAAAAMud5aRHZVyMKm80GzSqMM6fFoXz"></div>
+                  </div>
+                </div>
               </div>
             </div>
 
             <hr class="divider">
-              <div class="col-md pb-5 pt-3 text-center">
-                <div>
-                  <button type="submit" class="btn btn-sm button-submit btn-info"><i class="fas fa-paper-plane"></i> Submit</button>
-                </div>
-                <div>
-                  <!-- <button onclick="location.href='index.php'" class="btn btn-sm btn-outline-light mt-2 button-back">Back</button> -->
-                  <button onclick="history.back()" class="btn btn-sm btn-outline-light mt-2 button-back"> <i class="fas fa-long-arrow-alt-left"></i> Back</button>
-                </div>
+            <div class="col-md pb-5 pt-3 text-center">
+              <div>
+                <button type="submit" class="btn btn-sm button-submit btn-info"><i class="fas fa-paper-plane"></i> Submit</button>
               </div>
-
+              <div>
+                <!-- <button onclick="location.href='index.php'" class="btn btn-sm btn-outline-light mt-2 button-back">Back</button> -->
+                <button onclick="history.back()" class="btn btn-sm btn-outline-light mt-2 button-back"> <i class="fas fa-long-arrow-alt-left"></i> Back</button>
+              </div>
             </div>
           </form>
         </div>
       </div>
-    </div>
-  </div>
-</header>
+    </header>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="vendor/js/bootstrap-select.min.js"></script>
-
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script> -->
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    
-    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script> -->
-    
-   
-
-</body>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  </body>
 </html>
