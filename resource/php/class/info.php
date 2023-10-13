@@ -39,7 +39,7 @@ class info extends config{
           $course = $result[0]["course"];
           $courseABBR = $result[0]["courseABBR"];
           $year = $result[0]["year"];
-          $tSchool = $result[0]["transferredSchool"];
+          $tSchool = strtoupper(str_replace('?', 'Ñ', utf8_decode($result[0]['transferredSchool'])));
           $tReason = $result[0]["reason"];
           $studType = $result[0]["studentType"];
           $schType = $result[0]["schoolType"];
@@ -437,7 +437,7 @@ class info extends config{
         $course = $result[0]["course"];
         $courseABBR = $result[0]["courseABBR"];
         $year = $result[0]["year"];
-        $tSchool = $result[0]["transferredSchool"];
+        $tSchool = strtoupper(str_replace('?', 'Ñ', utf8_decode($result[0]['transferredSchool'])));
         $tReason = $result[0]["reason"];
         $studType = $result[0]["studentType"];
         $schType = $result[0]["schoolType"];
@@ -818,7 +818,7 @@ class info extends config{
           $course = $result[0]["course"];
           $courseABBR = $result[0]["courseABBR"];
           $year = $result[0]["year"];
-          $tSchool = $result[0]["transferredSchool"];
+          $tSchool = strtoupper(str_replace('?', 'Ñ', utf8_decode($result[0]['transferredSchool'])));
           $tReason = $result[0]["reason"];
           $studType = $result[0]["studentType"];
           $schType = $result[0]["schoolType"];
@@ -1222,7 +1222,7 @@ class info extends config{
           $course = $result[0]["course"];
           $courseABBR = $result[0]["courseABBR"];
           $year = $result[0]["year"];
-          $tSchool = $result[0]["transferredSchool"];
+          $tSchool = strtoupper(str_replace('?', 'Ñ', utf8_decode($result[0]['transferredSchool'])));
           $tReason = $result[0]["reason"];
           $studType = $result[0]["studentType"];
           $schType = $result[0]["schoolType"];
@@ -1634,7 +1634,7 @@ class info extends config{
           $course = $result[0]["course"];
           $courseABBR = $result[0]["courseABBR"];
           $year = $result[0]["year"];
-          $tSchool = $result[0]["transferredSchool"];
+          $tSchool = strtoupper(str_replace('?', 'Ñ', utf8_decode($result[0]['transferredSchool'])));
           $tReason = $result[0]["reason"];
           $studType = $result[0]["studentType"];
           $schType = $result[0]["schoolType"];

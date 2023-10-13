@@ -85,8 +85,36 @@ class view extends config{
             $rows =$data-> fetchAll(PDO::FETCH_OBJ);
                 foreach ($rows as $row) {
                   echo '<option data-tokens=".'.$row->course.'." value="'.$row->course.'">'.$row->course.'</option>';
-                  // echo 'success';
                 }
+        }
+
+        public function courseSP3(){
+            $config = new config;
+            $con = $config->con();
+            $sql = "SELECT * FROM `courseschool` WHERE `status` = 'Active'";
+            $data = $con-> prepare($sql);
+            $data ->execute();
+            $rows =$data-> fetchAll(PDO::FETCH_OBJ);
+                foreach ($rows as $row) {
+                  echo '<option data-tokens=".'.$row->id.'." value="'.$row->id.'">'.$row->course.'</option>';
+                }
+        }
+
+        public function courseSP4($id){
+            $config = new config;
+            $con = $config->con();
+            $sql = "SELECT * FROM `courseschool` WHERE `id` = '$id'";
+            $data = $con-> prepare($sql);
+            $data ->execute();
+            $rows =$data-> fetchAll(PDO::FETCH_OBJ);
+                foreach ($rows as $row) {
+                  echo '<option data-tokens=".'.$row->id.'." value="'.$row->type.'">'.$row->type.'</option>';
+                }
+        }
+
+        public function courseSP5(){
+            echo "<option data-tokens='Non-Science' value='Non-Science'>Non-Science</option>";
+            echo "<option data-tokens='Science' value='Science'>Science</option>";
         }
 
         public function semesterChoose(){

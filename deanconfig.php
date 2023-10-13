@@ -111,6 +111,12 @@ $update = new updateDeanCFG();
                     $url = 'edituser.php?id='.$id;
                     echo '<script> window.location ="'.$url.'"</script>';
                   }
+
+                  if(isset($_POST['courseEdit'])){
+                    $id = $_POST['d_course'];
+                    $url = 'editcourse.php?id='.$id;
+                    echo '<script> window.location ="'.$url.'"</script>';
+                  }
                   
                   if(!empty($_POST['mailer-username']) && !empty($_POST['mailer-password'])){
                     $updateMailer = new updateMailer($_POST['mailer-username'], $_POST['mailer-password'], $_POST['mailer-port'], $_POST['mailer-platform']);
@@ -485,7 +491,7 @@ $update = new updateDeanCFG();
                 <div class="accordion-item">
                   <h2 class="accordion-header" id="headingSix">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                      Edit / Remove User Account
+                      Edit / Remove Course
                     </button>
                   </h2>
                   <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample3">
@@ -497,34 +503,38 @@ $update = new updateDeanCFG();
                               <div class="col col-md">
                                 <form method="post">
                                   <div class="row mb-3">
-                                    <h4 class="text-center">Edit / Remove User</h4><hr>
+                                    <h4 class="text-center">Edit / Remove Course</h4><hr>
                                     <div class="col col-md-8">
-                                      <label for="d_user" class="form-label">Name</label>
-                                      <?php $view->loadUserAcct(); ?>
+                                      <label for="d_course" class="form-label">Course Name</label>
+                                      <div class='form-group mb-0'>
+                                        <select name='d_course' class='form-control form-select form-select-sm'>
+                                        <?php $view->courseSP3(); ?>
+                                        </select>
+                                      </div>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                      <label for="userEdit" class="form-label">&nbsp</label>
-                                        <button type="submit" class="btn btn-editButtons btn-block" name="userEdit" id="userEdit"><i class="fa-solid fa-user-pen"></i> Edit</button>
+                                      <label for="courseEdit" class="form-label">&nbsp</label>
+                                        <button type="submit" class="btn btn-editButtons btn-block" name="courseEdit" id="courseEdit"><i class="fa-solid fa-user-pen"></i> Edit</button>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                      <label for="userEdit" class="form-label">&nbsp</label>
-                                        <button type="button" class="btn btn-danger btn-block" data-bs-toggle="modal" data-bs-target="#userDelModal"><i class="fa-solid fa-trash"></i> Delete</button>
+                                      <label for="courseDelete" class="form-label">&nbsp</label>
+                                        <button type="button" class="btn btn-danger btn-block" data-bs-toggle="modal" data-bs-target="#courseDelModal"><i class="fa-solid fa-trash"></i> Delete</button>
                                     </div>
                                   </div>
-                                  <div class="modal fade" id="userDelModal" tabindex="-1" aria-labelledby="userDelModal" aria-hidden="true">
+                                  <div class="modal fade" id="courseDelModal" tabindex="-1" aria-labelledby="courseDelModal" aria-hidden="true">
                                     <div class="modal-dialog">
                                       <div class="modal-content">
                                         <div class="modal-header">
-                                          <h5 class="modal-title" id="#userDelModalLabel">Confirm</h5>
+                                          <h5 class="modal-title" id="#courseDelModalLabel">Confirm</h5>
                                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                          Delete User? <br>
+                                          Delete Course? <br>
                                           This cannot be undone.
                                         </div>
                                         <div class="modal-footer">
                                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                          <button type="submit" id="userDel" name="userDel" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete </button>
+                                          <button type="submit" id="courseDel" name="courseDel" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete </button>
                                         </div>
                                       </div>
                                     </div>
