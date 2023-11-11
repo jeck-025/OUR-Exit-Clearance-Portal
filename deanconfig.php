@@ -106,6 +106,10 @@ $update = new updateDeanCFG();
                     $update->delUser(); 
                   }
 
+                  if(isset($_POST['courseDel'])){
+                    $update->delCourse(); 
+                  }
+
                   if(isset($_POST['userEdit'])){
                     $id = $_POST['d_user'];
                     $url = 'edituser.php?id='.$id;

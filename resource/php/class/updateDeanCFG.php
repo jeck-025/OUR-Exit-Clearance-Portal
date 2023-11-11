@@ -84,6 +84,21 @@ class updateDeanCFG extends config{
             </div>";
     }
 
+    public function delCourse(){
+        $course_id = $_POST['d_course'];
+        $config = new config();
+        $con = $config->con();
+
+        $sql0 = "DELETE FROM `courseschool` WHERE `id` = '$course_id'";
+        $data0 = $con->prepare($sql0);
+        $data0 ->execute();
+
+        echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+                <i class='fa-solid fa-circle-check'></i> Course Deleted.
+                <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>";
+    }
+
     public function setRegistrar(){
         $config = new config();
         $con = $config->con();
@@ -422,43 +437,40 @@ class updateDeanCFG extends config{
         $view = new view();
         $con = $config->con();
 
-        echo $course_id;
-
-
-
-        if(isset($_POST['updUser'])){
-            $uid = $_POST['uid'];
-            $name = $_POST['fullname'];
-            $email = $_POST['email'];
-            $userGroup = $_POST['group'];
-
-            $sch1 = $_POST['college0'];
-
-            if(empty($_POST['college1'])){
-                $sch2 = 'NULL';
+        if(isset($_POST['updCrs'])){
+            $cid = $_POST['cid'];
+            $crsName = $_POST['courseName'];
+            $crsABBR = $_POST['courseABBR'];
+            $school = $_POST['school'];
+            $crsType = $_POST['type'];
+              
+            if(isset($_POST['activeSwitch'])){
+                $crsStatus = 'Active';
             }else{
-                $sch2 = "'".$_POST['college1']."'";
+                $crsStatus = 'Inactive';
             }
 
-            if(empty($_POST['college2'])){
-                $sch3 = 'NULL';
-            }else{
-                $sch3 = "'".$_POST['college2']."'";
-            }
-            
-            if(isset($_POST['secSwitch'])){
-                $pos = "'sec'";
-            }else{
-                $pos = 'NULL';
-            }
+            $sql = "SELECT DISTINCT `departmentABBR` from `courseschool` WHERE `department` = '$school' LIMIT 1";
+            $data = $con->prepare($sql);
+            $data->execute();
+            $result = $data->fetchAll(PDO::FETCH_ASSOC);
+            $deptABBR = $result[0]['departmentABBR'];
 
-            $sql1 = "UPDATE `tbl_accounts` SET `name` = '$name', `email` = '$email', `groups` = '$userGroup', `colleges` = '$sch1', `colleges0` = $sch2, `colleges1` = $sch3, `pos` = $pos WHERE `id` = '$user_id'";
+            // echo $cid."<br>";
+            // echo $crsName."<br>";
+            // echo $crsABBR."<br>";
+            // echo $school."<br>";
+            // echo $crsType."<br>";
+            // echo $crsStatus."<br>";
+            // echo $deptABBR."<br>";
+
+            $sql1 = "UPDATE `courseschool` SET `course` = '$crsName', `courseABBR` = '$crsABBR', `department` = '$school', `departmentABBR` = '$deptABBR', `type` = '$crsType', `status` = '$crsStatus' WHERE `id` = '$cid'";
             $data1 = $con->prepare($sql1);
             
             if($data1 ->execute()){
                 echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
-                            <i class='fa-solid fa-circle-check'></i> Settings Saved.
-                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>    
+                        <i class='fa-solid fa-circle-check'></i> Settings Saved.
+                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>    
                     </div>";
             }else{
                 echo "Error!";
@@ -468,12 +480,12 @@ class updateDeanCFG extends config{
         $sql0 = "SELECT * FROM `courseschool` WHERE `id` = '$course_id'";
         $data0 = $con->prepare($sql0);
         $data0 ->execute();
-        $result = $data0->fetchAll(PDO::FETCH_ASSOC);
-            $courseName = $result[0]['course'];
-            $courseABBR = $result[0]['courseABBR'];
-            $department = $result[0]['department'];
-            $courseType = $result[0]['type'];
-            $courseStatus = $result[0]['status'];
+        $result0 = $data0->fetchAll(PDO::FETCH_ASSOC);
+            $courseName = $result0[0]['course'];
+            $courseABBR = $result0[0]['courseABBR'];
+            $department = $result0[0]['department'];
+            $courseType = $result0[0]['type'];
+            $courseStatus = $result0[0]['status'];
 
             if($courseStatus == "Active"){
                 $check = "checked";
@@ -485,7 +497,7 @@ class updateDeanCFG extends config{
         echo "<div class='report-dl-form mt-3'>
                 <div class='col col-md-9 shadow'>
                     <div class='col col-md'>
-                        <h4 class='text-center mt-4 mb-2'><i class='fa-solid fa-id-card'></i> Edit Course</h4>
+                        <h4 class='text-center mt-4 mb-2'><i class='fa-solid fa-pen-to-square'></i> Edit Course / Degree</h4>
                             <form method='post'>
                                 <table class='table mt-4'>
                                     <tr>
@@ -523,7 +535,8 @@ class updateDeanCFG extends config{
                                                     <label for='active'>Course Status: </label>
                                                     <div class='form-check form-switch ml-3'>
                                                         <input class='form-check-input' type='checkbox' id='activeSwitch' name='activeSwitch' $check>
-                                                        <label class='form-check-label' for='activeSwitch'>Currently set as: $courseStatus</label>
+                                                        <label class='form-check-label' for='activeSwitch'>Currently set as: <h5 class='crsStat'>$courseStatus</h5></label>
+                                                        <label class='form-check-label' for='activeSwitch'>Toggle switch to change status.</label>
                                                     </div>
                                                 </div>
                                                 
@@ -536,41 +549,29 @@ class updateDeanCFG extends config{
                                     <tr>
                                         <td>
                                             <div class='row justify-content-center'>
-                                                <div class='form-group col-2'>
-                                                    <label for='College' >For Dean's Office Use Only</label>
-                                                    <div class='form-check form-switch ml-3'>
-                                                        <input class='form-check-input' type='checkbox' id='secSwitch' name='secSwitch' $poslock $poscheck>
-                                                        <label class='form-check-label' for='secSwitch'>Set as Office Secretary</label>
-                                                    </div>
+                                                <div class='form-group col-4'>
+                                                   
                                                 </div>
                                                 <div class='form-group col-2'>
-                                                    <button type='submit' name='updUser' id='updUser' class='btn btn-adduser btn-block'><i class='fa-solid fa-floppy-disk'></i> Save Changes</button>
+                                                    <button type='submit' name='updCrs' id='updCrs' class='btn btn-adduser btn-block'><i class='fa-solid fa-floppy-disk'></i> Save Changes</button>
                                                     
                                                 </div>
                                                 <div class='form-group col-2'>
                                                     <a href='deanconfig.php' class='btn btn-danger btn-block'>Back</a>
                                                 </div>
-                                                <div class='form-group col-6'>
+                                                <div class='form-group col-4'>
                                                     
                                                 </div>
                                             </div>
                                         </td>
                                     </tr>
                                     </table>
-                                    <input type='hidden' name='uid' value='$user_id'>
+                                    <input type='hidden' name='cid' value='$course_id'>
                                     </form>
                                 </div>
                             </div>
                         </div>";
-        
-        echo "<div class='report-dl-form mt-3'>
-                <div class='col col-md-9 mb-5 shadow'>
-                    <div class='col col-md'>
-                        <h4 class='text-center mt-4 mb-2'><i class='fa-solid fa-file-signature'></i> Signature</h4>
-                       
-                    </div>
-                </div>
-            </div>";
+
         // die();
     }
 }
