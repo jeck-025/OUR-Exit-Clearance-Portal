@@ -11,7 +11,7 @@ class DB{
             //hostinger
             $this->_pdo = new PDO('mysql:local='.Conf::get('mysql/local').';dbname='.Conf::get('mysql/db'),Conf::get('mysql/username'),Conf::get('mysql/password'));
             //local
-            // $this->_pdo = new PDO('mysql:host='.Conf::get('mysql/host').';dbname='.Conf::get('mysql/db'),Conf::get('mysql/username'),Conf::get('mysql/password'));
+            //  $this->_pdo = new PDO('mysql:host='.Conf::get('mysql/host').';dbname='.Conf::get('mysql/db'),Conf::get('mysql/username'),Conf::get('mysql/password'));
         } catch (PDOException $e) {
             die($e->getMessage());
         }
