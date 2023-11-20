@@ -6,6 +6,7 @@ $user = new user();
 $chartForm = new chartForm();
 isRegistrar($user->data()->groups);
 $import = new import();
+$eval = new evalassign();
  ?>
 
 <!DOCTYPE html>
@@ -35,7 +36,7 @@ $import = new import();
           </div>
           <div class="list-group list-group-flush my-3">
             <a class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
-            <i class="fas fa-question-circle me-2"></i>Pendings <?php echo '<span class="badge badge-danger">'.$viewtable->viewTotalRegistrar(). '</span>';  ?>
+            <i class="fas fa-question-circle me-2"></i>Pendings <?php echo '<span class="badge badge-danger">'.$eval->countTotalRegistrar(). '</span>';  ?>
             </a>
 
             <div class="item">
