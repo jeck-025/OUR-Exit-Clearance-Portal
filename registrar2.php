@@ -48,9 +48,9 @@ $eval = new evalassign();
               <a class="sub-btn"><i class="fa-solid fa-tag"></i>Requests<i class="fas fa-chevron-right dropdown"></i></a>
                 <div class="sub-menu">
                   <a href="regs-req-tr.php" name="Rtransfer" class="sub-item border-bottom" value="Transfer">
-                   Transfer <?php echo '<span class="badge badge-danger">'.$viewtable->viewCountPendingRegistrarTR(). '</span>';?> </a> 
+                   Transfer <?php echo '<span class="badge badge-danger">'.$eval->countTotalRegistrarUG(). '</span>';?> </a> 
                   <a href="regs-req-gd.php" name="Rgraduate" class="sub-item" value="Graduate">
-                   Graduate <?php echo '<span class="badge badge-danger">'.$viewtable->viewCountPendingRegistrarGD(). '</span>';?> </a> 
+                   Graduate <?php echo '<span class="badge badge-danger">'.$eval->countTotalRegistrarGD(). '</span>';?> </a> 
                 </div>
             </div>
 
