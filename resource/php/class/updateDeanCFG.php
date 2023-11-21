@@ -273,7 +273,6 @@ class updateDeanCFG extends config{
                                                     <select id='college0' name='college0' class='form-select form-control mt-2' data-live-search='true' $ssMainLock>";
                                                         $view->collegeSP3($college0);
                                                         $view->collegeSP2();
-                                                        // echo "<option data-tokens='NULL' value='NULL'>None</option>";
                                                     echo "</select>
 
                                                     <select id='college1' name='college1' class='form-select form-control mt-2' data-live-search='true' $ssLock>";
@@ -456,14 +455,6 @@ class updateDeanCFG extends config{
             $result = $data->fetchAll(PDO::FETCH_ASSOC);
             $deptABBR = $result[0]['departmentABBR'];
 
-            // echo $cid."<br>";
-            // echo $crsName."<br>";
-            // echo $crsABBR."<br>";
-            // echo $school."<br>";
-            // echo $crsType."<br>";
-            // echo $crsStatus."<br>";
-            // echo $deptABBR."<br>";
-
             $sql1 = "UPDATE `courseschool` SET `course` = '$crsName', `courseABBR` = '$crsABBR', `department` = '$school', `departmentABBR` = '$deptABBR', `type` = '$crsType', `status` = '$crsStatus' WHERE `id` = '$cid'";
             $data1 = $con->prepare($sql1);
             
@@ -543,9 +534,6 @@ class updateDeanCFG extends config{
                                             </div>
                                         </td>
                                     </tr>
-                                    
-                                    
-
                                     <tr>
                                         <td>
                                             <div class='row justify-content-center'>
@@ -571,8 +559,6 @@ class updateDeanCFG extends config{
                                 </div>
                             </div>
                         </div>";
-
-        // die();
     }
 }
 ?>
