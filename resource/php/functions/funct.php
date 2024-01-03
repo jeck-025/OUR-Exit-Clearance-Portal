@@ -44,6 +44,7 @@ function pError($error){
         </div>';
     }
 
+// vald duplicated on updateDeanCFG.php - 01-03-2024
 function vald(){
      if(Input::exists()){
       if(Token::check(Input::get('Token'))){
