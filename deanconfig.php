@@ -130,6 +130,10 @@ $update = new updateDeanCFG();
                       <strong><i class='fa-solid fa-circle-check'></i> Mailer Config Updated</strong><br>
                       <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>";
                   }
+
+                  if(isset($_POST['addUser'])){
+                    $update->addUser();
+                  }
                 ?>
 
                 <h4 class="text-center m-3">Dept. Heads Configuration</h4><hr>
@@ -285,7 +289,12 @@ $update = new updateDeanCFG();
                       <div class="report-dl-form">
                         <div class="col col-md-9 pt-3 pb-3 mb-3 text-center shadow">
                           <div class="col col-md text-center">
-                            <?php vald(); ?>
+                            <?php 
+                              // if(isset($_POST['addUser'])){
+                              //   echo "submitted";
+                              //   die();
+                              //   vald();}
+                                 ?>
                                <h4>Add User</h4><hr>
                                   <form action="" method="post">
                                     <table class="table ">
@@ -298,11 +307,11 @@ $update = new updateDeanCFG();
                                                     </div>
                                                     <div class="form-group col-4">
                                                     <label for = "password"> Password:</label>
-                                                    <input type="password" class="form-control" name="password" id="password" value ="<?php echo input::get('password');?>" autocomplete="off"required/>
+                                                    <input type="password" class="form-control" name="password" id="password" value ="<?php echo input::get('password');?>" autocomplete="off" required/>
                                                     </div>
                                                     <div class="form-group col-4">
                                                     <label for = "ConfirmPassword"> Confirm Password:</label>
-                                                    <input type="password" class="form-control" name="ConfirmPassword" id="ConfirmPassword" value ="<?php echo input::get('ConfirmPassword');?>" autocomplete="off"required/>
+                                                    <input type="password" class="form-control" name="ConfirmPassword" id="ConfirmPassword" value ="<?php echo input::get('ConfirmPassword');?>" autocomplete="off" required/>
                                                     </div>
                                                 </div>
                                             </td>
@@ -312,11 +321,11 @@ $update = new updateDeanCFG();
                                                 <div class="row justify-content-center">
                                                     <div class="form-group col-6">
                                                     <label for = "fullName" class=""> Full Name</label>
-                                                    <input class="form-control"  type = "text" name="fullName" id="fullName" value ="<?php echo input::get('fullName');?>"/required>
+                                                    <input class="form-control"  type = "text" name="fullName" id="fullName" value ="<?php echo input::get('fullName');?>" autocomplete="off" required>
                                                     </div>
                                                     <div class="form-group col-6">
                                                     <label for = "email" class=""> Email Address</label>
-                                                    <input class="form-control"  type = "text" name="email" id="email" value ="<?php echo input::get('email');?>"/required>
+                                                    <input class="form-control"  type = "text" name="email" id="email" value ="<?php echo input::get('email');?>" autocomplete="off" required>
                                                     </div>
                                                 </div>
                                             </td>
@@ -347,7 +356,8 @@ $update = new updateDeanCFG();
                                                     <div class="form-group col-7">
                                                         <label  >&nbsp;</label>
                                                     <input type="hidden" name ="Token" value="<?php echo Token::generate();?>" />
-                                                    <input type="submit" value="Add New Account" class=" form-control btn btn-adduser" />
+                                                    <input type="submit" name ="addUser" value="Add New Account" class=" form-control btn btn-adduser" />
+                                                    <input type="reset" value="Clear" class=" form-control btn " />
                                                     </div>
                                                 </div>
                                             </td>
