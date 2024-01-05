@@ -13,8 +13,7 @@ function CheckSuccess($status){
 function Success(){
     echo '<div class="alert alert-success alert-dismissible fade show col-12" role="alert">
             <b>Congratulations!</b> You have successfully added a new user account.
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+            <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
             </button>
         </div>';
     }
@@ -47,7 +46,8 @@ function pError($error){
 // vald duplicated on updateDeanCFG.php - 01-03-2024
 function vald(){
      if(Input::exists()){
-      if(Token::check(Input::get('Token'))){
+    //   if(Token::check(Input::get('Token'))){
+      if(!empty($_POST['Token'])){
          if(!empty($_POST['College'])){
              $_POST['College'] = implode(',',Input::get('College'));
          }else{
