@@ -3,80 +3,80 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/ecle/resource/php/class/core/init.php';
 
 class updateDeanCFG extends config{
 
-    public function addUser(){
-        if(Input::exists()){
-            // if(Token::check(Input::get('Token'))){
-            if(!empty($_POST['Token'])){
-                if(!empty($_POST['College'])){
-                    $_POST['College'] = implode(',',Input::get('College'));
-                }else{
-                    $_POST['College'] ="";
-                }
+    // public function addUser(){
+    //     if(Input::exists()){
+    //         // if(Token::check(Input::get('Token'))){
+    //         if(!empty($_POST['Token'])){
+    //             if(!empty($_POST['College'])){
+    //                 $_POST['College'] = implode(',',Input::get('College'));
+    //             }else{
+    //                 $_POST['College'] ="";
+    //             }
 
-                $validate = new Validate;
-                $validate = $validate->check($_POST,array(
-                    'username'=>array(
-                        'required'=>'true',
-                        'min'=>4,
-                        'max'=>20,
-                        'unique'=>'tbl_accounts'
-                    ),
-                    'password'=>array(
-                        'required'=>'true',
-                        'min'=>6,
-                    ),
-                    'ConfirmPassword'=>array(
-                        'required'=>'true',
-                        'matches'=>'password'
-                    ),
-                    'fullName'=>array(
-                        'required'=>'true',
-                        'min'=>2,
-                        'max'=>50,
-                    ),
-                    'email'=>array(
-                        'required'=>'true'
-                    ),
-                    'College'=>array(
-                        'required'=>'true')
-                ));
+    //             $validate = new Validate;
+    //             $validate = $validate->check($_POST,array(
+    //                 'username'=>array(
+    //                     'required'=>'true',
+    //                     'min'=>4,
+    //                     'max'=>20,
+    //                     'unique'=>'tbl_accounts'
+    //                 ),
+    //                 'password'=>array(
+    //                     'required'=>'true',
+    //                     'min'=>6,
+    //                 ),
+    //                 'ConfirmPassword'=>array(
+    //                     'required'=>'true',
+    //                     'matches'=>'password'
+    //                 ),
+    //                 'fullName'=>array(
+    //                     'required'=>'true',
+    //                     'min'=>2,
+    //                     'max'=>50,
+    //                 ),
+    //                 'email'=>array(
+    //                     'required'=>'true'
+    //                 ),
+    //                 'College'=>array(
+    //                     'required'=>'true')
+    //             ));
 
-                if($validate->passed()){
-                    $user = new user();
-                    $salt = Hash::salt(32);
-                    try {
-                        $user->create(array(
-                            'username'=>Input::get('username'),
-                            'password'=>Hash::make(Input::get('password'),$salt),
-                            'salt'=>$salt,
-                            'name'=> Input::get('fullName'),
-                            'joined'=>date('Y-m-d H:i:s'),
-                            'groups'=>Input::get('group'),
-                            'colleges'=> Input::get('College'),
-                            'email'=> Input::get('email'),
-                        ));
+    //             if($validate->passed()){
+    //                 $user = new user();
+    //                 $salt = Hash::salt(32);
+    //                 try {
+    //                     $user->create(array(
+    //                         'username'=>Input::get('username'),
+    //                         'password'=>Hash::make(Input::get('password'),$salt),
+    //                         'salt'=>$salt,
+    //                         'name'=> Input::get('fullName'),
+    //                         'joined'=>date('Y-m-d H:i:s'),
+    //                         'groups'=>Input::get('group'),
+    //                         'colleges'=> Input::get('College'),
+    //                         'email'=> Input::get('email'),
+    //                     ));
 
-                    } catch (Exception $e) {
-                        die($e->getMessage());
-                    }
+    //                 } catch (Exception $e) {
+    //                     die($e->getMessage());
+    //                 }
 
-                echo '<div class="alert alert-success alert-dismissible fade show col-12" role="alert">
-                    <b>Congratulations!</b> You have successfully added a new user account.
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>';
+    //             echo '<div class="alert alert-success alert-dismissible fade show col-12" role="alert">
+    //                 <b>Congratulations!</b> You have successfully added a new user account.
+    //                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    //                 <span aria-hidden="true">&times;</span>
+    //                 </button>
+    //             </div>';
 
-                }else{
-                    foreach ($validate->errors()as $error) {
-                    pError($error);
-                    }
-                }
-            }
-        }else{
-            return false;
-        }
-    }
+    //             }else{
+    //                 foreach ($validate->errors()as $error) {
+    //                 pError($error);
+    //                 }
+    //             }
+    //         }
+    //     }else{
+    //         return false;
+    //     }
+    // }
 
     public function setDeans(){
         $dean = $_POST['dean'];
