@@ -130,6 +130,8 @@ $update = new updateDeanCFG();
                       <strong><i class='fa-solid fa-circle-check'></i> Mailer Config Updated</strong><br>
                       <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>";
                   }
+                  
+                  vald(); //add user validation
                 ?>
 
                 <h4 class="text-center m-3">Dept. Heads Configuration</h4><hr>
@@ -285,7 +287,6 @@ $update = new updateDeanCFG();
                       <div class="report-dl-form">
                         <div class="col col-md-9 pt-3 pb-3 mb-3 text-center shadow">
                           <div class="col col-md text-center">
-                            <?php vald(); ?>
                                <h4>Add User</h4><hr>
                                   <form action="" method="post">
                                     <table class="table ">

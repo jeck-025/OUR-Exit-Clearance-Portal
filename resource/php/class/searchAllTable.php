@@ -17,7 +17,7 @@ class searchAllTable extends config{
   echo "<hr>";
   echo "<h5 class='text-center mt-4'><i class='fa-solid fa-graduation-cap'></i> Graduates </h5>";
   echo "<div class='table-responsive pb-3'>";
-  echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+  echo "<table id='scholartable' class='table table-bordered table-sm table-striped table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
   echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
@@ -42,7 +42,7 @@ class searchAllTable extends config{
 
   echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
-  echo "<td>$data[course]</td>";
+  echo "<td>$data[course]<br><b>$data[sy]-$data[semester]</b></td>";
   echo "<td>$data[dateReq]</td>";
   echo "<td>$data[referenceID]</td>";
 
