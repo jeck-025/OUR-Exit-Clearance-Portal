@@ -19,7 +19,7 @@ class viewtable extends config{
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='text-center'> Pending for Registrar (Transfers)</h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+  echo "<table id='scholartable' class='table table-bordered table-sm table-striped table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
   echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
@@ -45,7 +45,7 @@ class viewtable extends config{
 
   echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
-  echo "<td>$data[course]</td>";
+  echo "<td>$data[course]<br><b>$data[sy]-$data[semester]</b></td>";
   echo "<td>$data[dateReq]</td>";
   echo "<td>$data[referenceID]</td>";
 
@@ -125,7 +125,7 @@ class viewtable extends config{
 
   echo "<td>$data2[studentID]</td>";
 	echo "<td>$fname2 $mname2 $lname2</td>";
-  echo "<td>$data2[course]</td>";
+  echo "<td>$data2[course]<br><b>$data2[sy]-$data2[semester]</b></td>";
   echo "<td>$data2[dateReq]</td>";
   echo "<td>$data2[referenceID]</td>";
   if($data2["departmentclearance"] === "PENDING"){
@@ -205,7 +205,7 @@ public function viewRequestTableRegistrarGraduate(){
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='text-center'> Pending for Registrar (Graduates)</h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+  echo "<table id='scholartable' class='table table-bordered table-sm table-striped table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
   echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
@@ -231,7 +231,7 @@ public function viewRequestTableRegistrarGraduate(){
 
   echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
-  echo "<td>$data[course]</td>";
+  echo "<td>$data[course]<br><b>$data[sy]-$data[semester]</b></td>";
   echo "<td>$data[dateReq]</td>";
   echo "<td>$data[referenceID]</td>";
   if($data["libraryclearance"] === "PENDING"){
@@ -301,7 +301,7 @@ public function viewRequestTableRegistrarGraduate(){
 
   echo "<td>$data2[studentID]</td>";
   echo "<td>$fname2 $mname2 $lname2</td>";
-  echo "<td>$data2[course]</td>";
+  echo "<td>$data2[course]<br><b>$data2[sy]-$data2[semester]</b></td>";
   echo "<td>$data2[dateReq]</td>";
   echo "<td>$data2[referenceID]</td>";
   if($data2["libraryclearance"] === "PENDING"){
@@ -367,7 +367,7 @@ public function viewApproveTableRegistrarTransfer(){
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='text-center'> Cleared by Registrar (Transfers)</h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+  echo "<table id='scholartable' class='table table-bordered table-sm table-striped table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
   echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
@@ -394,7 +394,7 @@ public function viewApproveTableRegistrarTransfer(){
   
   echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
-  echo "<td>$data[course]</td>";
+  echo "<td>$data[course]<br><b>$data[sy]-$data[semester]</b></td>";
   echo "<td>$data[dateReq]</td>";
   echo "<td>$data[registrardate]</td>";
   echo "<td>$data[referenceID]</td>";
@@ -453,7 +453,7 @@ public function viewApproveTableRegistrarGraduate(){
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='text-center'> Cleared by Registrar (Graduates)</h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+  echo "<table id='scholartable' class='table table-bordered table-sm table-striped table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
   echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
@@ -475,7 +475,7 @@ public function viewApproveTableRegistrarGraduate(){
 
   echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
-  echo "<td>$data[course]</td>";
+  echo "<td>$data[course]<br><b>$data[sy]-$data[semester]</b></td>";
   echo "<td>$data[dateReq]</td>";
   echo "<td>$data[registrardate]</td>";
   echo "<td>$data[referenceID]</td>";
@@ -495,7 +495,7 @@ public function viewHoldTableRegistrarTransfer(){
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='text-center'> On-Hold by Registrar (Transfers)</h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+  echo "<table id='scholartable' class='table table-bordered table-sm table-striped table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
   echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
@@ -521,7 +521,7 @@ public function viewHoldTableRegistrarTransfer(){
           
   echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
-  echo "<td>$data[course]</td>";
+  echo "<td>$data[course]<br><b>$data[sy]-$data[semester]</b></td>";
   echo "<td>$data[dateReq]</td>";
   echo "<td>$data[referenceID]</td>";
 
@@ -592,7 +592,7 @@ public function viewHoldTableRegistrarGraduate(){
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='text-center'> On-Hold by Registrar (Graduates)</h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+  echo "<table id='scholartable' class='table table-bordered table-sm table-striped table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
   echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
@@ -617,7 +617,7 @@ public function viewHoldTableRegistrarGraduate(){
 
   echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
-  echo "<td>$data[course]</td>";
+  echo "<td>$data[course]<br><b>$data[sy]-$data[semester]</b></td>";
   echo "<td>$data[dateReq]</td>";
   echo "<td>$data[referenceID]</td>";
   if($data["libraryclearance"] === "PENDING"){
@@ -678,7 +678,7 @@ public function viewRequestTableAccountingTransfer(){
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='text-center'> Pending for Accounting (Transfers)</h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+  echo "<table id='scholartable' class='table table-bordered table-sm table-striped table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
   echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
@@ -704,7 +704,7 @@ public function viewRequestTableAccountingTransfer(){
           
   echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
-  echo "<td>$data[course]</td>";
+  echo "<td>$data[course]<br><b>$data[sy]-$data[semester]</b></td>";
   echo "<td>$data[dateReq]</td>";
   echo "<td>$data[referenceID]</td>";
 
@@ -775,7 +775,7 @@ public function viewRequestTableAccountingGraduate(){
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='text-center'> Pending for Accounting (Graduates)</h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+  echo "<table id='scholartable' class='table table-bordered table-sm table-striped table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
   echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
@@ -800,7 +800,7 @@ public function viewRequestTableAccountingGraduate(){
 
   echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
-  echo "<td>$data[course]</td>";
+  echo "<td>$data[course]<br><b>$data[sy]-$data[semester]</b></td>";
   echo "<td>$data[dateReq]</td>";
   echo "<td>$data[referenceID]</td>";
   if($data["departmentclearance"] === "PENDING"){
@@ -862,7 +862,7 @@ public function viewApproveTableAccountingTransfer(){
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='text-center'> Cleared by Accounting (Transfers)</h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+  echo "<table id='scholartable' class='table table-bordered table-sm table-striped table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
   echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
@@ -884,7 +884,7 @@ public function viewApproveTableAccountingTransfer(){
 
   echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
-  echo "<td>$data[course]</td>";
+  echo "<td>$data[course]<br><b>$data[sy]-$data[semester]</b></td>";
   echo "<td>$data[dateReq]</td>";
   echo "<td>$data[accountingdate]</td>";
   echo "<td>$data[referenceID]</td>";
@@ -909,7 +909,7 @@ public function viewApproveTableAccountingGraduate(){
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='text-center'> Cleared by Accounting (Graduates)</h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+  echo "<table id='scholartable' class='table table-bordered table-sm table-striped table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
   echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
@@ -931,7 +931,7 @@ public function viewApproveTableAccountingGraduate(){
 
   echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
-  echo "<td>$data[course]</td>";
+  echo "<td>$data[course]<br><b>$data[sy]-$data[semester]</b></td>";
   echo "<td>$data[dateReq]</td>";
   echo "<td>$data[accountingdate]</td>";
   echo "<td>$data[referenceID]</td>";
@@ -956,7 +956,7 @@ public function viewHoldTableAccountingTransfer(){
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='text-center'> On-Hold by Accounting (Transfers)</h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+  echo "<table id='scholartable' class='table table-bordered table-sm table-striped table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
   echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
@@ -982,7 +982,7 @@ public function viewHoldTableAccountingTransfer(){
           
   echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
-  echo "<td>$data[course]</td>";
+  echo "<td>$data[course]<br><b>$data[sy]-$data[semester]</b></td>";
   echo "<td>$data[dateReq]</td>";
   echo "<td>$data[referenceID]</td>";
 
@@ -1051,7 +1051,7 @@ public function viewHoldTableAccountingGraduate(){
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='text-center'> On-Hold by Accounting (Graduates)</h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+  echo "<table id='scholartable' class='table table-bordered table-sm table-striped table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
   echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
@@ -1076,7 +1076,7 @@ public function viewHoldTableAccountingGraduate(){
 
   echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
-  echo "<td>$data[course]</td>";
+  echo "<td>$data[course]<br><b>$data[sy]-$data[semester]</b></td>";
   echo "<td>$data[dateReq]</td>";
   echo "<td>$data[referenceID]</td>";
   if($data["libraryclearance"] === "PENDING"){
@@ -1139,7 +1139,7 @@ public function viewRequestTableDepartmentTransfer(){
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='text-center'> Pending for $department (Transfers)</h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+  echo "<table id='scholartable' class='table table-bordered table-sm table-striped table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
   echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
@@ -1165,7 +1165,7 @@ public function viewRequestTableDepartmentTransfer(){
   
   echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
-  echo "<td>$data[course]</td>";
+  echo "<td>$data[course]<br><b>$data[sy]-$data[semester]</b></td>";
   echo "<td>$data[dateReq]</td>";
   echo "<td>$data[referenceID]</td>";
 
@@ -1238,7 +1238,7 @@ public function viewRequestTableDepartmentGraduate(){
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='text-center'> Pending for $department (Graduates)</h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+  echo "<table id='scholartable' class='table table-bordered table-sm table-striped table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
   echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
@@ -1263,7 +1263,7 @@ public function viewRequestTableDepartmentGraduate(){
 
   echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
-  echo "<td>$data[course]</td>";
+  echo "<td>$data[course]<br><b>$data[sy]-$data[semester]</b></td>";
   echo "<td>$data[dateReq]</td>";
   echo "<td>$data[referenceID]</td>";
   if($data["libraryclearance"] === "PENDING"){
@@ -1328,7 +1328,7 @@ public function viewApproveTableDepartmentTransfer(){
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='text-center'> Cleared by $department (Transfers)</h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+  echo "<table id='scholartable' class='table table-bordered table-sm table-striped table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
   echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
@@ -1350,7 +1350,7 @@ public function viewApproveTableDepartmentTransfer(){
 
   echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
-  echo "<td>$data[course]</td>";
+  echo "<td>$data[course]<br><b>$data[sy]-$data[semester]</b></td>";
   echo "<td>$data[dateReq]</td>";
   echo "<td>$data[departmentdate]</td>";
   echo "<td>$data[referenceID]</td>";
@@ -1399,7 +1399,7 @@ public function viewApproveTableDepartmentGraduate(){
 
   echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
-  echo "<td>$data[course]</td>";
+  echo "<td>$data[course]<br><b>$data[sy]-$data[semester]</b></td>";
   echo "<td>$data[dateReq]</td>";
   echo "<td>$data[departmentdate]</td>";
   echo "<td>$data[referenceID]</td>";
@@ -1426,7 +1426,7 @@ public function viewHoldTableDepartmentTransfer(){
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='text-center'> On-Hold by $department (Transfers)</h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+  echo "<table id='scholartable' class='table table-bordered table-sm table-striped table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
   echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
@@ -1452,7 +1452,7 @@ public function viewHoldTableDepartmentTransfer(){
 
   echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
-  echo "<td>$data[course]</td>";
+  echo "<td>$data[course]<br><b>$data[sy]-$data[semester]</b></td>";
   echo "<td>$data[dateReq]</td>";
   echo "<td>$data[referenceID]</td>";
 
@@ -1523,7 +1523,7 @@ public function viewHoldTableDepartmentGraduate(){
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='text-center'> On-Hold by $department (Graduates)</h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+  echo "<table id='scholartable' class='table table-bordered table-sm table-striped table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
   echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
@@ -1548,7 +1548,7 @@ public function viewHoldTableDepartmentGraduate(){
 
   echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
-  echo "<td>$data[course]</td>";
+  echo "<td>$data[course]<br><b>$data[sy]-$data[semester]</b></td>";
   echo "<td>$data[dateReq]</td>";
   echo "<td>$data[referenceID]</td>";
   if($data["libraryclearance"] === "PENDING"){
@@ -1609,7 +1609,7 @@ public function viewRequestTableLibraryTransfer(){
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='text-center'> Pending for Library (Transfers)</h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+  echo "<table id='scholartable' class='table table-bordered table-sm table-striped table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
   echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
@@ -1635,7 +1635,7 @@ public function viewRequestTableLibraryTransfer(){
   
   echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
-  echo "<td>$data[course]</td>";
+  echo "<td>$data[course]<br><b>$data[sy]-$data[semester]</b></td>";
   echo "<td>$data[dateReq]</td>";
   echo "<td>$data[referenceID]</td>";
 
@@ -1706,7 +1706,7 @@ public function viewRequestTableLibraryGraduate(){
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='text-center'> Pending for Library (Graduates)</h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+  echo "<table id='scholartable' class='table table-bordered table-sm table-striped table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
   echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
@@ -1731,7 +1731,7 @@ public function viewRequestTableLibraryGraduate(){
 
   echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
-  echo "<td>$data[course]</td>";
+  echo "<td>$data[course]<br><b>$data[sy]-$data[semester]</b></td>";
   echo "<td>$data[dateReq]</td>";
   echo "<td>$data[referenceID]</td>";
   if($data["libraryclearance"] === "PENDING"){
@@ -1791,7 +1791,7 @@ public function viewApproveTableLibraryTransfer(){
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='text-center'> Cleared by Library (Transfers)</h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+  echo "<table id='scholartable' class='table table-bordered table-sm table-striped table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
   echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
@@ -1813,7 +1813,7 @@ public function viewApproveTableLibraryTransfer(){
 
   echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
-  echo "<td>$data[course]</td>";
+  echo "<td>$data[course]<br><b>$data[sy]-$data[semester]</b></td>";
   echo "<td>$data[dateReq]</td>";
   echo "<td>$data[departmentdate]</td>";
   echo "<td>$data[referenceID]</td>";
@@ -1838,7 +1838,7 @@ public function viewApproveTableLibraryGraduate(){
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='text-center'> Cleared by Library (Graduates)</h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+  echo "<table id='scholartable' class='table table-bordered table-sm table-striped table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
   echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
@@ -1860,7 +1860,7 @@ public function viewApproveTableLibraryGraduate(){
 
   echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
-  echo "<td>$data[course]</td>";
+  echo "<td>$data[course]<br><b>$data[sy]-$data[semester]</b></td>";
   echo "<td>$data[dateReq]</td>";
   echo "<td>$data[departmentdate]</td>";
   echo "<td>$data[referenceID]</td>";
@@ -1885,7 +1885,7 @@ public function viewHoldTableLibraryTransfer(){
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='text-center'> On-Hold by Library (Transfers)</h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+  echo "<table id='scholartable' class='table table-bordered table-sm table-striped table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
   echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
@@ -1911,7 +1911,7 @@ public function viewHoldTableLibraryTransfer(){
 
   echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
-  echo "<td>$data[course]</td>";
+  echo "<td>$data[course]<br><b>$data[sy]-$data[semester]</b></td>";
   echo "<td>$data[dateReq]</td>";
   echo "<td>$data[referenceID]</td>";
 
@@ -1980,7 +1980,7 @@ public function viewHoldTableLibraryGraduate(){
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='text-center'> On-Hold by Library (Graduates)</h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+  echo "<table id='scholartable' class='table table-bordered table-sm table-striped table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
   echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
@@ -2005,7 +2005,7 @@ public function viewHoldTableLibraryGraduate(){
 
   echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
-  echo "<td>$data[course]</td>";
+  echo "<td>$data[course]<br><b>$data[sy]-$data[semester]</b></td>";
   echo "<td>$data[dateReq]</td>";
   echo "<td>$data[referenceID]</td>";
  if($data["libraryclearance"] === "PENDING"){
@@ -2066,7 +2066,7 @@ public function viewRequestTableGuidanceTransfer(){
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='text-center'> Pending for Exit Interview </h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+  echo "<table id='scholartable' class='table table-bordered table-sm table-striped table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
   echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
@@ -2092,7 +2092,7 @@ public function viewRequestTableGuidanceTransfer(){
 
   echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
-  echo "<td>$data[course]</td>";
+  echo "<td>$data[course]<br><b>$data[sy]-$data[semester]</b></td>";
   echo "<td>$data[dateReq]</td>";
   echo "<td>$data[referenceID]</td>";
 
@@ -2163,7 +2163,7 @@ public function viewHoldTableGuidanceTransfer(){
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='text-center'> On-Hold </h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+  echo "<table id='scholartable' class='table table-bordered table-sm table-striped table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
     echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
@@ -2189,7 +2189,7 @@ public function viewHoldTableGuidanceTransfer(){
 
   echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
-  echo "<td>$data[course]</td>";
+  echo "<td>$data[course]<br><b>$data[sy]-$data[semester]</b></td>";
   echo "<td>$data[dateReq]</td>";
   echo "<td>$data[referenceID]</td>";
   
@@ -2259,7 +2259,7 @@ public function viewApproveTableGuidanceTransfer(){
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='text-center'> Completed Exit Interview </h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+  echo "<table id='scholartable' class='table table-bordered table-sm table-striped table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
     echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
@@ -2281,7 +2281,7 @@ public function viewApproveTableGuidanceTransfer(){
 
   echo "<td>$data[studentID]</td>";
   echo "<td>$fname $mname $lname</td>";
-  echo "<td>$data[course]</td>";
+  echo "<td>$data[course]<br><b>$data[sy]-$data[semester]</b></td>";
   echo "<td>$data[dateReq]</td>";
   echo "<td>$data[departmentdate]</td>";
   echo "<td>$data[referenceID]</td>";
@@ -2618,7 +2618,7 @@ public function viewRemovedTableRegistrarGraduate(){
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='text-center'> Removed Names (Graduates)</h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%' style='font-size: 12px'>";
+  echo "<table id='scholartable' class='table table-bordered table-sm table-striped table-hover shadow display' width='100%' style='font-size: 12px'>";
   echo "<thead class='thead-dark'>";
   echo "<th>Student Number</th>";
   echo "<th style='width: 250px;'>Student Name</th>";
