@@ -86,8 +86,8 @@ class import extends config{
                                         </div>";
                             }
                         }
-                        
-                        echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+
+                        echo "<div class='alert alert-info alert-dismissible fade show' role='alert'>
                             <strong><i class='fa-solid fa-circle-check'></i> Upload Script Executed. </strong> Any errors will be displayed above.
                             <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                             </div>";
