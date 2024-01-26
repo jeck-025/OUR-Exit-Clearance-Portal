@@ -65,24 +65,33 @@ class import extends config{
 
                                 $semester = $result0[0]['semester'];
                                 $schoolYear = $result0[0]['schoolYear'];
+                                
+                            $sql1 = "INSERT INTO `ecle_forms`(`lname`, `fname`, `mname`, `semester`, `sy`, `school`, `schoolABBR`, `studentID`, `email`, `bday`, `course`, `courseABBR`, `year`, `studentType`, `schoolType`, `referenceID`) 
+                            VALUES ('$lname', '$fname', '$mname', '$semester', '$schoolYear', '$school', '$schoolABBR', '$studentID', '$email', '$bday', '$courseName', '$course', '$year', '$studentType', '$schoolType', '$transnumber')";
+
+                            $data1 = $con->prepare($sql1);
+
+                            try{$data1->execute();
+                                // echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+                                //         <strong><i class='fa-solid fa-circle-check'></i> Upload Success! </strong> Please check the database if data were inserted correctly.
+                                //         <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                                //         </div>";
+
+                                // continue only
+
+                            }catch(PDOException $e){
+                                echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                                        <strong><i class='fa-solid fa-triangle-exclamation'></i> Upload Failed for $studentID - $lname, $fname $mname. </strong>
+                                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                                        </div>";
+                            }
                         }
+                        
+                        echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+                            <strong><i class='fa-solid fa-circle-check'></i> Upload Script Executed. </strong> Any errors will be displayed above.
+                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                            </div>";
 
-                        $sql1 = "INSERT INTO `ecle_forms`(`lname`, `fname`, `mname`, `semester`, `sy`, `school`, `schoolABBR`, `studentID`, `email`, `bday`, `course`, `courseABBR`, `year`, `studentType`, `schoolType`, `referenceID`) 
-                                VALUES ('$lname', '$fname', '$mname', '$semester', '$schoolYear', '$school', '$schoolABBR', '$studentID', '$email', '$bday', '$courseName', '$course', '$year', '$studentType', '$schoolType', '$transnumber')";
-
-                        $data1 = $con->prepare($sql1);
-
-                        try{$data1->execute();
-                            echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    <strong><i class="fa-solid fa-circle-check"></i> Upload Success! </strong> Please check the database if data were inserted correctly.
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                    </div>';
-                        }catch(PDOException $e){
-                            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                    <strong><i class="fa-solid fa-circle-check"></i> Upload Failed. </strong> Please check the data uploaded. Make sure there are no duplicated student numbers.
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                    </div>';
-                        }
                         fclose($csvFile);
                     }
                 }
