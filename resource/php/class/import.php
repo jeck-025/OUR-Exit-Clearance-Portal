@@ -32,8 +32,6 @@ class import extends config{
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>';
                     }else{
-                        // echo" tuloy ";
-                        // die();
                         $csvFile = fopen($_FILES['file']['tmp_name'], 'r');
                         fgetcsv($csvFile);
                         while(($line = fgetcsv($csvFile)) !== FALSE){
@@ -50,63 +48,46 @@ class import extends config{
 
                             $config = new config;
                             $con = $config->con();
-                            $sql2 = "SELECT `type` FROM `courseschool` WHERE `course` = '$course'";
-                            $data2 = $con->prepare($sql2);
-                            $data2 ->execute();
-                            $schoolType = $data2->fetchColumn();
+                            $sql = "SELECT * FROM `courseschool` WHERE `courseABBR` = '$course'";
+                            $data = $con->prepare($sql);
+                            $data->execute();
+                            $result = $data->fetchAll(PDO::FETCH_ASSOC);
 
-                            $con = $config->con();
-                            $sql5 = "SELECT `department` FROM `courseschool` WHERE `course` = '$course'";
-                            $data5 = $con->prepare($sql5);
-                            $data5 ->execute();
-                            $school = $data5->fetchColumn();
+                                $schoolType = $result[0]['type'];
+                                $school = $result[0]['department'];
+                                $schoolABBR = $result[0]['departmentABBR'];
+                                $courseName = $result[0]['course'];
 
-                            $con = $config->con();
-                            $sql6 = "SELECT `departmentABBR` FROM `courseschool` WHERE `course` = '$course'";
-                            $data6 = $con->prepare($sql6);
-                            $data6 ->execute();
-                            $schoolABBR = $data6->fetchColumn();
+                            $sql0 = "SELECT * FROM `config`";
+                            $data0 = $con->prepare($sql0);
+                            $data0->execute();
+                            $result0 = $data0->fetchAll(PDO::FETCH_ASSOC);
 
-                            $con = $config->con();
-                            $sql7 = "SELECT `courseABBR` FROM `courseschool` WHERE `course` = '$course'";
-                            $data7 = $con->prepare($sql7);
-                            $data7 ->execute();
-                            $courseABBR = $data7->fetchColumn();
+                                $semester = $result0[0]['semester'];
+                                $schoolYear = $result0[0]['schoolYear'];
+                        }
 
-                            $con = $config->con();
-                            $sql3 = "SELECT `semester` FROM `config`";
-                            $data3 = $con->prepare($sql3);
-                            $data3 ->execute();
-                            $semester = $data3->fetchColumn();
+                        $sql1 = "INSERT INTO `ecle_forms`(`lname`, `fname`, `mname`, `semester`, `sy`, `school`, `schoolABBR`, `studentID`, `email`, `bday`, `course`, `courseABBR`, `year`, `studentType`, `schoolType`, `referenceID`) 
+                                VALUES ('$lname', '$fname', '$mname', '$semester', '$schoolYear', '$school', '$schoolABBR', '$studentID', '$email', '$bday', '$courseName', '$course', '$year', '$studentType', '$schoolType', '$transnumber')";
 
-                            $con = $config->con();
-                            $sql4 = "SELECT `schoolYear` FROM `config`";
-                            $data4 = $con->prepare($sql4);
-                            $data4 ->execute();
-                            $schoolYear = $data4->fetchColumn();
+                        $data1 = $con->prepare($sql1);
 
-                            //$sy = $schoolYear.'-'.$semester;
-
-                            if($schoolType === "Science"){
-                                $sql1 = "INSERT INTO `ecle_forms`(`lname`, `fname`, `mname`, `semester`, `sy`, `school`, `schoolABBR`, `studentID`, `email`, `bday`, `course`, `courseABBR`, `year`, `studentType`, `schoolType`, `referenceID`) VALUES ('$lname', '$fname', '$mname', '$semester', '$schoolYear', '$school', '$schoolABBR', '$studentID', '$email', '$bday', '$course', '$courseABBR', '$year', '$studentType', '$schoolType', '$transnumber')";
-                                $data1 = $con->prepare($sql1);
-                                $data1->execute();
-                            }else{
-                                $sql1 = "INSERT INTO `ecle_forms`(`lname`, `fname`, `mname`, `semester`, `sy`, `school`, `schoolABBR`, `studentID`, `email`, `bday`, `course`, `courseABBR`, `year`, `studentType`, `schoolType`, `referenceID`) VALUES ('$lname', '$fname', '$mname', '$semester', '$schoolYear', '$school', '$schoolABBR', '$studentID', '$email', '$bday', '$course', '$courseABBR', '$year', '$studentType', '$schoolType', '$transnumber')";
-                                $data1 = $con->prepare($sql1);
-                                $data1->execute();
-                            }
+                        try{$data1->execute();
+                            echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <strong><i class="fa-solid fa-circle-check"></i> Upload Success! </strong> Please check the database if data were inserted correctly.
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>';
+                        }catch(PDOException $e){
+                            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <strong><i class="fa-solid fa-circle-check"></i> Upload Failed. </strong> Please check the data uploaded. Make sure there are no duplicated student numbers.
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>';
                         }
                         fclose($csvFile);
-                        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong><i class="fa-solid fa-circle-check"></i> Upload Success! </strong> Please check the database if data were inserted correctly.
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                </div>';
                     }
                 }
-            }
-            else{
-            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            }else{
+                echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
                     <strong><i class="fa-solid fa-triangle-exclamation"></i> Error:</strong> 
                     Invalid file. Format must be "CSV".
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -116,5 +97,52 @@ class import extends config{
     }
 }
 
+                            // $sql2 = "SELECT `type` FROM `courseschool` WHERE `course` = '$course'";
+                            // $data2 = $con->prepare($sql2);
+                            // $data2 ->execute();
+                            // $schoolType = $data2->fetchColumn();
+
+                            // $con = $config->con();
+                            // $sql5 = "SELECT `department` FROM `courseschool` WHERE `course` = '$course'";
+                            // $data5 = $con->prepare($sql5);
+                            // $data5 ->execute();
+                            // $school = $data5->fetchColumn();
+
+                            // $con = $config->con();
+                            // $sql6 = "SELECT `departmentABBR` FROM `courseschool` WHERE `course` = '$course'";
+                            // $data6 = $con->prepare($sql6);
+                            // $data6 ->execute();
+                            // $schoolABBR = $data6->fetchColumn();
+
+                            // $con = $config->con();
+                            // $sql7 = "SELECT `courseABBR` FROM `courseschool` WHERE `course` = '$course'";
+                            // $data7 = $con->prepare($sql7);
+                            // $data7 ->execute();
+                            // $courseABBR = $data7->fetchColumn();
+
+                            // $con = $config->con();
+                            // $sql3 = "SELECT `semester` FROM `config`";
+                            // $data3 = $con->prepare($sql3);
+                            // $data3 ->execute();
+                            // $semester = $data3->fetchColumn();
+
+                            // $con = $config->con();
+                            // $sql4 = "SELECT `schoolYear` FROM `config`";
+                            // $data4 = $con->prepare($sql4);
+                            // $data4 ->execute();
+                            // $schoolYear = $data4->fetchColumn();
+
+                            // $sy = $schoolYear.'-'.$semester;
+
+                            // if($schoolType === "Science"){
+                            //     $sql1 = "INSERT INTO `ecle_forms`(`lname`, `fname`, `mname`, `semester`, `sy`, `school`, `schoolABBR`, `studentID`, `email`, `bday`, `course`, `courseABBR`, `year`, `studentType`, `schoolType`, `referenceID`) VALUES ('$lname', '$fname', '$mname', '$semester', '$schoolYear', '$school', '$schoolABBR', '$studentID', '$email', '$bday', '$course', '$courseABBR', '$year', '$studentType', '$schoolType', '$transnumber')";
+                            //     $data1 = $con->prepare($sql1);
+                            //     $data1->execute();
+                            // }else{
+                            //     $sql1 = "INSERT INTO `ecle_forms`(`lname`, `fname`, `mname`, `semester`, `sy`, `school`, `schoolABBR`, `studentID`, `email`, `bday`, `course`, `courseABBR`, `year`, `studentType`, `schoolType`, `referenceID`) VALUES ('$lname', '$fname', '$mname', '$semester', '$schoolYear', '$school', '$schoolABBR', '$studentID', '$email', '$bday', '$course', '$courseABBR', '$year', '$studentType', '$schoolType', '$transnumber')";
+                            //     $data1 = $con->prepare($sql1);
+                            //     $data1->execute();
+                            // }
 
 ?>
+
