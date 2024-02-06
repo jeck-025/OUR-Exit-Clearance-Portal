@@ -6,6 +6,7 @@ $user = new user();
 isRegistrar($user->data()->groups);
 $import = new import();
 $view = new view();
+$update = new updateDeanCFG();
  ?>
 
 <!DOCTYPE html>
@@ -21,8 +22,6 @@ $view = new view();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" type="text/css" href="/DataTables/datatables.css">
     <script type="text/javascript" charset="utf8" src="/DataTables/datatables.js"></script>
-
-    
 
     <title>ECLE - Add User</title>
     <link rel="icon" type="image/x-icon" href="resource/img/icon.ico" />
@@ -47,6 +46,7 @@ $view = new view();
               });
             </script>
           </div>
+
           <div class="sch-img text-center">
             <img class="sch-logo" src="resource/img/gear.png">
           </div>
@@ -66,9 +66,8 @@ $view = new view();
                     <i class="fas fa-user me-2"></i> <?php echo $user->data()->username ?>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a href="adminconfig.php" class="dropdown-item">Config</a></li>
-                    <li><a href="changepasswordRegistrar.php" class="dropdown-item">Setting</a></li>
-                    <!-- <li><a href="sendmails.php" class="dropdown-item">Send Mails</a></li> -->
+                    <!-- <li><a href="adminconfig.php" class="dropdown-item">Config</a></li>
+                    <li><a href="changepasswordRegistrar.php" class="dropdown-item">Setting</a></li> -->
                     <li><a href="logout.php" class="dropdown-item">Logout</a></li>
                   </ul>
                 </li>
@@ -81,7 +80,20 @@ $view = new view();
                 <div class="import-grad-form">
                   <div class="col col-md-9 pt-3 pb-3 mb-3 text-center shadow">
                     <h4>Add User</h4><hr>
-                    <?php vald(); ?>
+                    <?php 
+                      if(isset($_POST['userDel'])){
+                        $update->delUser();
+                      }
+                      
+                      if(isset($_POST['userEdit'])){
+                        $id = $_POST['d_user'];
+                        echo $id;
+                        $url = 'edituser.php?id='.$id;
+                        echo '<script> window.location ="'.$url.'"</script>';
+                      }
+
+                      vald();
+                    ?>
                                   <form action="" method="post">
                                     <table class="table ">
                                         <tr>
@@ -151,6 +163,54 @@ $view = new view();
                                 </form>
                   </div>
                 </div>
+
+                <div class="report-dl-form">
+                  <div class="col col-md-9 pt-3 pb-3 mb-3 shadow">
+                    <div class="col col-md">
+                      <div class='input-group col-md-12'>
+                        <div class="col col-md">
+                          <form method="post">
+                            <div class="row mb-3">
+                              <h4 class="text-center">Edit / Remove User</h4><hr>
+                              <div class="col col-md-8">
+                                <label for="d_user" class="form-label">Name</label>
+                                <?php $view->loadUserAcct(); ?>
+                              </div>
+                              <div class="col-md-2 text-center">
+                                <label for="userEdit" class="form-label">&nbsp</label>
+                                  <button type="submit" class="btn btn-editButtons btn-block" name="userEdit" id="userEdit"><i class="fa-solid fa-user-pen"></i> Edit</button>
+                              </div>
+                              <div class="col-md-2 text-center">
+                                <label for="userEdit" class="form-label">&nbsp</label>
+                                  <button type="button" class="btn btn-danger btn-block" data-bs-toggle="modal" data-bs-target="#userDelModal"><i class="fa-solid fa-trash"></i> Delete</button>
+                              </div>
+                            </div>
+                            <div class="modal fade" id="userDelModal" tabindex="-1" aria-labelledby="userDelModal" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="#userDelModalLabel">Confirm</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    Delete User? <br>
+                                    This cannot be undone.
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <button type="submit" id="userDel" name="userDel" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
                 <!-- <div class="semester-config-form">
                   <div class="col col-md-9 pt-3 pb-3 mb-3 text-center shadow">
                     <form method="post">

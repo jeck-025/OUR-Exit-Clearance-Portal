@@ -95,19 +95,19 @@ $view = new view();
               <!---Firstname--->
               <div class="col-md-4">
                 <label for="firstName" class="form-label">First Name</label>
-                <input type="text" name="fname" class="form-control" pattern="[a-zA-Z\s]*$" oninvalid="this.setCustomValidity('Please use characters!')" oninput="this.setCustomValidity('')" id="firstName" required>
+                <input type="text" name="fname" class="form-control" pattern="[a-zA-Z\s]*$" oninvalid="this.setCustomValidity('This field is required')" oninput="this.setCustomValidity('')" id="firstName" required>
               </div>
 
               <!---Middlename--->
               <div class="col-md-4">
                 <label for="middleName" class="form-label">Middle Name</label>
-                <input type="text" name="mname" class="form-control" pattern="[a-zA-Z\s]*$" oninvalid="this.setCustomValidity('Please use characters!')" oninput="this.setCustomValidity('')" id="middleName">
+                <input type="text" name="mname" class="form-control" pattern="[a-zA-Z\s]*$" oninvalid="this.setCustomValidity('This field is required')" oninput="this.setCustomValidity('')" id="middleName">
               </div>
 
               <!---Lastname--->
               <div class="col-md-4">
                 <label for="lastName" class="form-label">Last Name</label>
-                <input type="text" name="lname" class="form-control" pattern="[a-zA-Z\s]*$" oninvalid="this.setCustomValidity('Please use characters!')" oninput="this.setCustomValidity('')" id="lastName" required>
+                <input type="text" name="lname" class="form-control" pattern="[a-zA-Z\s]*$" oninvalid="this.setCustomValidity('This field is required')" oninput="this.setCustomValidity('')" id="lastName" required>
               </div>
             </div>
             
@@ -137,6 +137,7 @@ $view = new view();
               <div class="col-md-8">
                 <label form="course" class="form-label">Course/Degree</label>
                 <select id="course" name="course" class="form-select form-control selectpicker" data-live-search="true" required>
+                  <option value="" selected> -- Select Course / Degree -- </option>
                 <?php $view->courseSP2();?>
                 </select>
               </div>
@@ -164,6 +165,7 @@ $view = new view();
               <div class="col-md-4">
                 <label for="university" class="form-label">Transferring School</label>
                 <select id="university" name="university" class="form-select form-control selectpicker" data-live-search="true" required>
+                <option value="" selected> -- Select an Option -- </option>
                 <?php $view->university();?>
                 </select>
               </div>
@@ -172,6 +174,7 @@ $view = new view();
               <div class="col-md-3">
                 <label for="reason" class="form-label">Reason</label>
                 <select id="reason" name="reason" class="form-select form-control" data-live-search="true" required>
+                <option value="" selected> -- Select an Option -- </option>
                 <?php $view->reason();?>
                 </select>
               </div>
@@ -193,6 +196,9 @@ $view = new view();
                   <div class="col-md-6 fupload wBorder">
                     <label for="file_letter" class="form-label"><b>Letter of Intent for Exit</b></label><br>
                     <input id="file_letter" class="form-control-file " accept=".pdf" type="file" name="file_letter" required>
+                  </div>
+                    <div class="col-12 text-center wBorder">
+                  <p class="mt-3 text-warning"><small>To avoid further delays in the processing of your clearance, kindly make sure that you've attached the right required documents before submitting your request.</small></p>
                   </div>
                 </div>
               </div>

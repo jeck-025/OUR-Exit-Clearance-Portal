@@ -64,8 +64,6 @@ $view = new view();
                     <i class="fas fa-user me-2"></i> <?php echo $user->data()->username ?>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a href="adminconfig.php" class="dropdown-item">Config</a></li>
-                    <li><a href="changepasswordRegistrar.php" class="dropdown-item">Setting</a></li>
                     <!-- <li><a href="sendmails.php" class="dropdown-item">Send Mails</a></li> -->
                     <li><a href="logout.php" class="dropdown-item">Logout</a></li>
                   </ul>
@@ -76,6 +74,24 @@ $view = new view();
           <div class="container-fluid main p-3">
             <div class="row justify-content-md-center next ">
               <div class="col-md-10 pt-3 content">
+
+                <div class="import-grad-form">
+                  <div class="col col-md-9 pt-3 pb-3 mb-3 text-center shadow">
+                    <h4>Advanced Configuration</h4><hr>
+                      <div class="row d-flex justify-content-center">
+                        <div class="col col-md-3" id="importFrm">
+                          <a class="btn btn-dark" href="addusers" target="_blank"><i class="fa-solid fa-users"></i> Add / Remove User</a>
+                        </div>
+                        <div class="col col-md-3" id="importFrm">
+                          <a class="btn btn-dark" href="override" target="_blank"><i class="fa-solid fa-file-pen"></i> Data Override</a>
+                        </div>
+                        <div class="col col-md-3" id="importFrm">
+                          <a class="btn btn-dark" href="deanconfig" target="_blank"><i class="fa-solid fa-screwdriver-wrench"></i> Other Advanced Config</a>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+
                 <div class="import-grad-form">
                   <div class="col col-md-9 pt-3 pb-3 mb-3 text-center shadow">
                     <h4>Import Names of Graduate Students</h4><hr>

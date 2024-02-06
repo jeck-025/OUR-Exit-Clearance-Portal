@@ -26,6 +26,11 @@ body {
   animation-fill-mode: forwards;
 }
 
+.dropdown-menu.show{
+  transform: none !important;
+  max-height: 500px !important;
+}
+
 @keyframes fadeInAnimation {
   0% {
     opacity: 0;
