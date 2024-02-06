@@ -118,12 +118,6 @@ $eval = new evalassign();
                     <i class="fas fa-user me-2"></i> <?php echo $user->data()->username ?>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <?php 
-                      if($user->data()->username == "REGISTRAR" || $user->data()->username == "RCBOLASOC" || $user->data()->username == "jeck"){
-                        echo "<li><a href='adminconfig.php' class='dropdown-item'>Config</a></li>";
-                        echo "<li><a href='changepasswordRegistrar.php' class='dropdown-item'>Change Password</a></li>";
-                      }
-                    ?>
                     <li><a href= "#" class="dropdown-item" data-bs-toggle='modal' data-bs-target='#reportModal'>Reports</a></li>
                     <li><a href="logout.php" class="dropdown-item">Logout</a></li>
                   </ul>

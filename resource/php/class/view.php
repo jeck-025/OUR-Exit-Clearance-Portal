@@ -322,4 +322,34 @@ class view extends config{
                   }
                   echo "</select></div>";
         }
+
+        public function studIDGrad(){
+          $config = new config;
+          $con = $config->con();
+          $sql = "SELECT * FROM `ecle_forms`";
+          $data = $con->prepare($sql);
+          $data->execute();
+          $rows = $data->fetchAll(PDO::FETCH_OBJ);
+          foreach ($rows as $row) {
+            $lname = str_replace('?', 'Ñ', utf8_decode($row->lname));
+            $fname = str_replace('?', 'Ñ', utf8_decode($row->fname));
+            $mname = str_replace('?', 'Ñ', utf8_decode($row->mname));
+            echo '<option data-tokens=".' . $row->studentID . '." value="' . $row->studentID . '">' . $row->studentID." - ". $lname . ", ". $fname . " " . $mname . '</option>';
+          }
+        }
+
+        public function studIDUndergrad(){
+          $config = new config;
+          $con = $config->con();
+          $sql = "SELECT * FROM `ecle_forms_ug`";
+          $data = $con->prepare($sql);
+          $data->execute();
+          $rows = $data->fetchAll(PDO::FETCH_OBJ);
+          foreach ($rows as $row) {
+            $lname = str_replace('?', 'Ñ', utf8_decode($row->lname));
+            $fname = str_replace('?', 'Ñ', utf8_decode($row->fname));
+            $mname = str_replace('?', 'Ñ', utf8_decode($row->mname));
+            echo '<option data-tokens=".' . $row->studentID . '." value="' . $row->studentID . '">' . $row->studentID." - ". $lname . ", ". $fname . " " . $mname . '</option>';
+          }
+        }
 }

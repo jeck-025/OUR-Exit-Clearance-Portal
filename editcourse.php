@@ -63,8 +63,8 @@ $update = new updateDeanCFG();
                     <i class="fas fa-user me-2"></i> <?php echo $user->data()->username ?>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a href="adminconfig.php" class="dropdown-item">Config</a></li>
-                    <li><a href="changepasswordRegistrar.php" class="dropdown-item">Setting</a></li>
+                    <!-- <li><a href="adminconfig.php" class="dropdown-item">Config</a></li>
+                    <li><a href="changepasswordRegistrar.php" class="dropdown-item">Setting</a></li> -->
                     <!-- <li><a href="sendmails.php" class="dropdown-item">Send Mails</a></li> -->
                     <li><a href="logout.php" class="dropdown-item">Logout</a></li>
                   </ul>
