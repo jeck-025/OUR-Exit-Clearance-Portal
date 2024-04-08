@@ -60,7 +60,11 @@ class ovrData extends config{
           $regC = $result[0]["registrarclearance"];
           $regR = $result[0]["registrarremarks"];
           $rawRegD = $result[0]["registrardate"];
-          $evaluator_name = evaluatorName();
+          //$evaluator_name = evaluatorName();
+          $reg_sra = $result[0]["registrar_sra"];
+          $acct_asst = $result[0]["acct_asst"];
+          $lib_asst = $result[0]["lib_asst"];
+          $dean_asst = $result[0]["dean_asst"];
 
           if($studType == "Under"){
             $guidanceC = $result[0]["guidanceclearance"];
@@ -244,6 +248,15 @@ class ovrData extends config{
                         echo "<td>Date: <input type='date' class='form-control' name='acctD' value='$rawAcctD'></td>";
                         echo "<td>Date: <input type='date' class='form-control' name='regD' value='$rawRegD'></td>";
                         echo "</tr>";
+
+                        echo "<tr>";
+                            echo "<td>User: <input type='text' class='form-control' name='dean_asst' value='$dean_asst'></td>";
+                        if($studType == "Transfer"){
+                            echo "<td>Date: <input type='text' class='form-control' name='guid_asst' value='$guid_asst'></td>";}
+                        echo "<td>User: <input type='text' class='form-control' name='lib_asst' value='$lib_asst'></td>";
+                        echo "<td>User: <input type='text' class='form-control' name='acct_asst' value='$acct_asst'></td>";
+                        echo "<td>User: <input type='text' class='form-control' name='reg_sra' value='$reg_sra'></td>";
+                        echo "</tr>";
                     echo "</table>";
                 echo "</div>";
         echo "</div>";
@@ -281,6 +294,7 @@ class ovrData extends config{
     }
 
     public function update(){
+        $view = new view();
         $id = $_POST['studID'];
         $new_lname = $_POST['lastName'];
         $new_fname = $_POST['firstName'];
@@ -303,17 +317,88 @@ class ovrData extends config{
         $new_acctR = $_POST['acctR'];
         $new_regR = $_POST['regR'];
         $type = $_POST['studType'];
-
+        $new_deanasst = $_POST['dean_asst'];
+        $new_libasst = $_POST['lib_asst'];
+        $new_acctasst = $_POST['acct_asst'];
+        $new_regsra = $_POST['reg_sra'];
+        $new_courseABBR = $view->courseSP6($new_course);
+        $new_schoolABBR = $view->collegeSP6($new_school);
+        
         if($type == "Transfer"){
             $new_year = $_POST['year'];
             $new_guidanceC = $_POST['guidanceC'];
             $new_guidanceD = $_POST['guidanceD'];
             $new_guidanceR = $_POST['guidanceR'];
-            $sql = "UPDATE `ecle_forms_ug` SET `lname` = '$new_lname' WHERE `studentID` = '$id'";
+            $new_guidasst = $_POST['guid_asst'];
+            $sql = "UPDATE `ecle_forms` SET 
+                `lname` = '$new_lname',
+                `fname` = '$new_fname',
+                `mname` = '$new_mname',
+                `semester` = '$new_sem',
+                `sy` = '$new_sy',
+                `school` = '$new_school',
+                `schoolABBR` = '$new_schoolABBR',
+                `course` = '$new_course',
+                `courseABBR` = '$new_courseABBR',
+                `email` = '$new_email',
+                `contact` = '$new_contact',
+                `bday` = '$new_bday',
+                `guidanceclearance` = '$new_guidanceC',
+                `guidancedate` = '$new_guidanceD',
+                `guidanceremarks` = '$new_guidanceR',
+                `departmentclearance` = '$new_deptC',
+                `libraryclearance` = '$new_libraryC',
+                `accountingclearance` = '$new_acctC',
+                `registrarclearance` = '$new_regC',
+                `departmentdate` = '$new_deptD',
+                `librarydate` = '$new_libraryD',
+                `accountingdate` = '$new_acctD',
+                `registrardate` = '$new_regD',
+                `departmentremarks` = '$new_deptR',
+                `libraryremarks` = '$new_libraryR',
+                `accountingremarks` = '$new_acctR',
+                `registrarremarks` = '$new_regR',
+                `studenttype` = '$type',
+                `registrar_sra` = '$new_regsra',
+                `acct_asst` = '$new_acctasst',
+                `lib_asst` = '$new_libasst',
+                `dean_asst` = '$new_deanasst'
+                `guid_asst` = '$new_guidasst'
+                WHERE `studentID` = '$id'";
         }elseif($type == "Graduate"){
             $new_sy = $_POST['schYear'];
             $new_sem = $_POST['sem'];
-            $sql = "UPDATE `ecle_forms` SET `lname` = '$new_lname' WHERE `studentID` = '$id'";
+            $sql = "UPDATE `ecle_forms` SET 
+                `lname` = '$new_lname',
+                `fname` = '$new_fname',
+                `mname` = '$new_mname',
+                `semester` = '$new_sem',
+                `sy` = '$new_sy',
+                `school` = '$new_school',
+                `schoolABBR` = '$new_schoolABBR',
+                `course` = '$new_course',
+                `courseABBR` = '$new_courseABBR',
+                `email` = '$new_email',
+                `contact` = '$new_contact',
+                `bday` = '$new_bday',
+                `departmentclearance` = '$new_deptC',
+                `libraryclearance` = '$new_libraryC',
+                `accountingclearance` = '$new_acctC',
+                `registrarclearance` = '$new_regC',
+                `departmentdate` = '$new_deptD',
+                `librarydate` = '$new_libraryD',
+                `accountingdate` = '$new_acctD',
+                `registrardate` = '$new_regD',
+                `departmentremarks` = '$new_deptR',
+                `libraryremarks` = '$new_libraryR',
+                `accountingremarks` = '$new_acctR',
+                `registrarremarks` = '$new_regR',
+                `studenttype` = '$type',
+                `registrar_sra` = '$new_regsra',
+                `acct_asst` = '$new_acctasst',
+                `lib_asst` = '$new_libasst',
+                `dean_asst` = '$new_deanasst'
+                WHERE `studentID` = '$id'";
         }else{
             echo "Error.";
         }
@@ -328,7 +413,7 @@ class ovrData extends config{
                         
             }catch(PDOException $e){
                 echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-                        <strong><i class='fa-solid fa-triangle-exclamation'></i> Update Failed. </strong>
+                        <strong><i class='fa-solid fa-triangle-exclamation'></i> Update Failed. </strong><br><small>$e</small>
                         <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                         </div>";
             }
