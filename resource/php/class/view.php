@@ -52,6 +52,16 @@ class view extends config{
                 }
         }
 
+        public function collegeSP6($college){
+            $config = new config;
+            $con = $config->con();
+            $sql = "SELECT * FROM `courseschool` WHERE `department` = '$college'";
+            $data = $con-> prepare($sql);
+            $data ->execute();
+            $rows =$data-> fetchAll(PDO::FETCH_ASSOC);
+            return $rows[0]['departmentABBR'];
+        }
+
         public function groupSP2(){
             $config = new config;
             $con = $config->con();
@@ -115,6 +125,17 @@ class view extends config{
         public function courseSP5(){
             echo "<option data-tokens='Non-Science' value='Non-Science'>Non-Science</option>";
             echo "<option data-tokens='Science' value='Science'>Science</option>";
+        }
+
+        
+        public function courseSP6($course){
+            $config = new config;
+            $con = $config->con();
+            $sql = "SELECT * FROM `courseschool` WHERE `course` = '$course'";
+            $data = $con-> prepare($sql);
+            $data ->execute();
+            $rows = $data-> fetchAll(PDO::FETCH_ASSOC);
+            return $rows[0]['courseABBR'];
         }
 
         public function semesterChoose(){
