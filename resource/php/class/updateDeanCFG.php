@@ -392,7 +392,7 @@ class updateDeanCFG extends config{
                                                     
                                                 </div>
                                                 <div class='form-group col-2'>
-                                                    <a href='deanconfig.php' class='btn btn-danger btn-block'>Back</a>
+                                                    <a href='addusers.php' class='btn btn-danger btn-block'>Back</a>
                                                 </div>
                                                 <div class='form-group col-6'>
                                                     
