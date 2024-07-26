@@ -124,22 +124,22 @@ class evalassign extends config{
                 $college1 = $result[0]['colleges1'];
 
                 if(!empty($college1) && !empty($college0)){
-                    $query = "SELECT * FROM `ecle_forms` WHERE (`libraryclearance` NOT LIKE 'CLEARED' OR `departmentclearance` NOT LIKE 'CLEARED' OR `accountingclearance` NOT LIKE 'CLEARED') AND `registrarclearance` = 'PENDING' AND `studentType` = 'Graduate' AND `expiry` = 'NO' AND `school` IN ('$college', '$college0', '$college1') ORDER BY `dateReq` DESC;";
+                    $query = "SELECT * FROM `ecle_forms` WHERE (`libraryclearance` NOT LIKE 'CLEARED' OR `departmentclearance` NOT LIKE 'CLEARED' OR `accountingclearance` NOT LIKE 'CLEARED') AND `registrarclearance` = 'PENDING' AND `studentType` = 'Graduate' AND `expiry` = 'NO' AND `school` IN ('$college', '$college0', '$college1') ORDER BY `dateReq` ASC;";
                     // 3 college
                 }elseif(empty($college1) && !empty($college0)){
-                    $query = "SELECT * FROM `ecle_forms` WHERE (`libraryclearance` NOT LIKE 'CLEARED' OR `departmentclearance` NOT LIKE 'CLEARED' OR `accountingclearance` NOT LIKE 'CLEARED') AND `registrarclearance` = 'PENDING' AND `studentType` = 'Graduate' AND `expiry` = 'NO' AND `school` IN ('$college', '$college0') ORDER BY `dateReq` DESC;";
+                    $query = "SELECT * FROM `ecle_forms` WHERE (`libraryclearance` NOT LIKE 'CLEARED' OR `departmentclearance` NOT LIKE 'CLEARED' OR `accountingclearance` NOT LIKE 'CLEARED') AND `registrarclearance` = 'PENDING' AND `studentType` = 'Graduate' AND `expiry` = 'NO' AND `school` IN ('$college', '$college0') ORDER BY `dateReq` ASC;";
                     // 2 college
                 }elseif(!empty($college1) && empty($college0)){
-                    $query = "SELECT * FROM `ecle_forms` WHERE (`libraryclearance` NOT LIKE 'CLEARED' OR `departmentclearance` NOT LIKE 'CLEARED' OR `accountingclearance` NOT LIKE 'CLEARED') AND `registrarclearance` = 'PENDING' AND `studentType` = 'Graduate' AND `expiry` = 'NO' AND `school` IN ('$college', '$college1') ORDER BY `dateReq` DESC;";
+                    $query = "SELECT * FROM `ecle_forms` WHERE (`libraryclearance` NOT LIKE 'CLEARED' OR `departmentclearance` NOT LIKE 'CLEARED' OR `accountingclearance` NOT LIKE 'CLEARED') AND `registrarclearance` = 'PENDING' AND `studentType` = 'Graduate' AND `expiry` = 'NO' AND `school` IN ('$college', '$college1') ORDER BY `dateReq` ASC;";
                     // 2 college
                 }elseif(empty($college1) && empty($college0)){
-                    $query = "SELECT * FROM `ecle_forms` WHERE (`libraryclearance` NOT LIKE 'CLEARED' OR `departmentclearance` NOT LIKE 'CLEARED' OR `accountingclearance` NOT LIKE 'CLEARED') AND `registrarclearance` = 'PENDING' AND `studentType` = 'Graduate' AND `expiry` = 'NO' AND `school` ='$college' ORDER BY `dateReq` DESC;";
+                    $query = "SELECT * FROM `ecle_forms` WHERE (`libraryclearance` NOT LIKE 'CLEARED' OR `departmentclearance` NOT LIKE 'CLEARED' OR `accountingclearance` NOT LIKE 'CLEARED') AND `registrarclearance` = 'PENDING' AND `studentType` = 'Graduate' AND `expiry` = 'NO' AND `school` ='$college' ORDER BY `dateReq` ASC;";
                     // 1 college
                 }else{
                     // error
                 }
         }else{
-            $query = "SELECT * FROM `ecle_forms` WHERE (`libraryclearance` NOT LIKE 'CLEARED' OR `departmentclearance` NOT LIKE 'CLEARED' OR `accountingclearance` NOT LIKE 'CLEARED') AND `registrarclearance` = 'PENDING' AND `studentType` = 'Graduate' AND `expiry` = 'NO' ORDER BY `dateReq` DESC;";
+            $query = "SELECT * FROM `ecle_forms` WHERE (`libraryclearance` NOT LIKE 'CLEARED' OR `departmentclearance` NOT LIKE 'CLEARED' OR `accountingclearance` NOT LIKE 'CLEARED') AND `registrarclearance` = 'PENDING' AND `studentType` = 'Graduate' AND `expiry` = 'NO' ORDER BY `dateReq` ASC;";
         }
         return $query;
     }
