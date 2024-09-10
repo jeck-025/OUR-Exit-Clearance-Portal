@@ -65,25 +65,46 @@ class import extends config{
 
                                 $semester = $result0[0]['semester'];
                                 $schoolYear = $result0[0]['schoolYear'];
+
+
+                            //checker for multiple course
+                            $sql2 = "SELECT COUNT(`studentID`) as 'count' FROM `ecle_forms` WHERE `studentID` = '$studentID' AND `courseABBR` = '$course'";
+                            $data2 = $con->prepare($sql2);
+                            $data2->execute();
+                            $result2 = $data2->fetchAll(PDO::FETCH_ASSOC);
+
+                                $count = $result2[0]['count'];
                                 
-                            $sql1 = "INSERT INTO `ecle_forms`(`lname`, `fname`, `mname`, `semester`, `sy`, `school`, `schoolABBR`, `studentID`, `email`, `bday`, `course`, `courseABBR`, `year`, `studentType`, `schoolType`, `referenceID`) 
-                            VALUES ('$lname', '$fname', '$mname', '$semester', '$schoolYear', '$school', '$schoolABBR', '$studentID', '$email', '$bday', '$courseName', '$course', '$year', '$studentType', '$schoolType', '$transnumber')";
 
-                            $data1 = $con->prepare($sql1);
+                            // echo $count;
+                            // die();
+                            if($count == 0){
+                                
+                                $sql1 = "INSERT INTO `ecle_forms`(`lname`, `fname`, `mname`, `semester`, `sy`, `school`, `schoolABBR`, `studentID`, `email`, `bday`, `course`, `courseABBR`, `year`, `studentType`, `schoolType`, `referenceID`) 
+                                VALUES ('$lname', '$fname', '$mname', '$semester', '$schoolYear', '$school', '$schoolABBR', '$studentID', '$email', '$bday', '$courseName', '$course', '$year', '$studentType', '$schoolType', '$transnumber')";
 
-                            try{$data1->execute();
-                                // echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
-                                //         <strong><i class='fa-solid fa-circle-check'></i> Upload Success! </strong> Please check the database if data were inserted correctly.
-                                //         <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                                //         </div>";
+                                $data1 = $con->prepare($sql1);
 
-                                // continue only
+                                try{$data1->execute();
+                                    // echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+                                    //         <strong><i class='fa-solid fa-circle-check'></i> Upload Success! </strong> Please check the database if data were inserted correctly.
+                                    //         <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                                    //         </div>";
 
-                            }catch(PDOException $e){
+                                    // continue only
+
+                                }catch(PDOException $e){
+                                    echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                                            <strong><i class='fa-solid fa-triangle-exclamation'></i> Upload Failed for $studentID - $lname, $fname $mname. </strong>
+                                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                                            </div>";
+                                }
+                            }
+                            else{
                                 echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-                                        <strong><i class='fa-solid fa-triangle-exclamation'></i> Upload Failed for $studentID - $lname, $fname $mname. </strong>
-                                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                                        </div>";
+                                            <strong><i class='fa-solid fa-triangle-exclamation'></i> Duplicate Entry for $studentID - $lname, $fname $mname - $courseName. </strong>
+                                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                                            </div>";
                             }
                         }
 
